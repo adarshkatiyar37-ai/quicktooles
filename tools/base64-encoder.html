@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Base64 Encoder Online - Free Tool | WebTools</title>
+<meta name="description" content="Encode your text to Base64 online for free. Easy-to-use Base64 Encoder tool for developers, students, and creators.">
+<meta name="keywords" content="base64 encoder, encode text to base64 online, free base64 tool, online base64 encoder">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container{
+    max-width:800px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.tool-container h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+button{
+    padding:12px 20px;
+    background:#3b82f6;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    margin-right:10px;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.result{
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    min-height:60px;
+    word-wrap:break-word;
+}
+
+.related-tools{
+    margin-top:40px;
+    text-align:left;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">WebTools</h2>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">All Tools</a>
+    </nav>
+</header>
+
+<div class="tool-container">
+
+<h1>📦 Base64 Encoder</h1>
+
+<p>Enter text to convert into Base64</p>
+
+<textarea id="textInput" placeholder="Enter text..."></textarea>
+
+<button onclick="encodeBase64()">Encode</button>
+<button onclick="clearText()">Clear</button>
+
+<div class="result" id="result"></div>
+
+<div class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+        <li><a href="base64-decoder.html">Base64 Decoder</a></li>
+        <li><a href="ascii-to-text.html">ASCII to Text Converter</a></li>
+        <li><a href="text-to-ascii.html">Text to ASCII Converter</a></li>
+    </ul>
+</div>
+
+</div>
+
+<script>
+function encodeBase64(){
+    let input=document.getElementById("textInput").value;
+    try{
+        let encoded=btoa(input);
+        document.getElementById("result").innerText=encoded;
+    }catch{
+        document.getElementById("result").innerText="Error encoding text";
+    }
+}
+
+function clearText(){
+    document.getElementById("textInput").value="";
+    document.getElementById("result").innerText="";
+}
+</script>
+
+</body>
+</html>

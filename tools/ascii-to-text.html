@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASCII to Text Converter Online - Free Tool | WebTools</title>
+<meta name="description" content="Convert ASCII codes to readable text online for free. Easy-to-use ASCII to Text converter tool.">
+<meta name="keywords" content="ascii to text, ascii converter, convert ascii codes to text, free ascii tool">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container{
+    max-width:800px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.tool-container h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+button{
+    padding:12px 20px;
+    background:#3b82f6;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.result{
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    min-height:60px;
+}
+
+.related-tools{
+    margin-top:40px;
+    text-align:left;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">WebTools</h2>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">All Tools</a>
+    </nav>
+</header>
+
+<div class="tool-container">
+
+<h1>🔡 ASCII to Text Converter</h1>
+
+<p>Enter ASCII codes separated by space (Example: 72 101 108 108 111)</p>
+
+<textarea id="asciiInput" placeholder="Enter ASCII codes..."></textarea>
+
+<button onclick="convertASCII()">Convert to Text</button>
+
+<div class="result" id="result"></div>
+
+<div class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+        <li><a href="text-to-ascii.html">Text to ASCII Converter</a></li>
+        <li><a href="binary-converter.html">Binary Converter</a></li>
+        <li><a href="random-text.html">Random Text Generator</a></li>
+    </ul>
+</div>
+
+</div>
+
+<script>
+function convertASCII(){
+    let ascii=document.getElementById("asciiInput").value.trim();
+    let codes=ascii.split(" ");
+    let text="";
+    for(let i=0;i<codes.length;i++){
+        text+=String.fromCharCode(codes[i]);
+    }
+    document.getElementById("result").innerText=text;
+}
+</script>
+
+</body>
+</html>

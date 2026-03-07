@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Age Calculator Online - Free Tool | WebTools</title>
+<meta name="description" content="Calculate your age in years, months, and days online for free. Easy-to-use Age Calculator tool for students, developers, and everyone.">
+<meta name="keywords" content="age calculator, calculate age online, free age calculator, age in years months days">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container{
+    max-width:700px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+.tool-container h1{
+    margin-bottom:20px;
+}
+
+input{
+    padding:12px;
+    width:220px;
+    border:none;
+    border-radius:6px;
+    margin:15px 0;
+    font-size:16px;
+}
+
+button{
+    padding:12px 20px;
+    background:#3b82f6;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.result{
+    margin-top:25px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.related-tools{
+    margin-top:40px;
+    text-align:left;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">WebTools</h2>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">All Tools</a>
+    </nav>
+</header>
+
+<div class="tool-container">
+    <h1>🎂 Age Calculator</h1>
+    <p>Select your date of birth</p>
+    <input type="date" id="dob">
+    <br>
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div class="result" id="result"></div>
+
+    <div class="related-tools">
+        <h2>Related Tools</h2>
+        <ul>
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="random-number.html">Random Number Generator</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+function calculateAge(){
+    let dob=document.getElementById("dob").value;
+    if(!dob){
+        document.getElementById("result").innerHTML="Please select your date of birth";
+        return;
+    }
+    let birthDate=new Date(dob);
+    let today=new Date();
+    let years=today.getFullYear()-birthDate.getFullYear();
+    let months=today.getMonth()-birthDate.getMonth();
+    let days=today.getDate()-birthDate.getDate();
+    if(days<0){
+        months--;
+        days+=30;
+    }
+    if(months<0){
+        years--;
+        months+=12;
+    }
+    document.getElementById("result").innerHTML=
+    "Age: "+years+" Years "+months+" Months "+days+" Days";
+}
+</script>
+
+</body>
+</html>

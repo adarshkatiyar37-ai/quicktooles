@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Percentage Calculator - WebTools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Calculate percentage of any number online easily with this Percentage Calculator tool.">
+<meta name="keywords" content="Percentage Calculator, Online Calculator, WebTools">
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.container{
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+h2{
+    margin-bottom: 20px;
+}
+input{
+    width: 120px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+}
+button{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover{
+    background: #2563eb;
+}
+.result{
+    margin-top: 20px;
+    background: #0f172a;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.related-tools{
+    margin-top: 25px;
+    text-align: left;
+}
+.related-tools ul{
+    list-style: none;
+    padding: 0;
+}
+.related-tools ul li{
+    margin-bottom: 10px;
+}
+.related-tools ul li a{
+    color: #3b82f6;
+    text-decoration: none;
+}
+.related-tools ul li a:hover{
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>📊 Percentage Calculator</h2>
+
+<input type="number" id="percent" placeholder="%">
+<span>of</span>
+<input type="number" id="number" placeholder="Number">
+<br>
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result">Result will appear here</div>
+
+<div class="related-tools">
+<h3>Related Tools</h3>
+<ul>
+    <li><a href="calculator.html">Simple Calculator</a></li>
+    <li><a href="discount-calculator.html">Discount Calculator</a></li>
+    <li><a href="emicalculator.html">EMI Calculator</a></li>
+</ul>
+</div>
+</div>
+
+<script>
+function calculate(){
+    let percent = parseFloat(document.getElementById("percent").value);
+    let number = parseFloat(document.getElementById("number").value);
+
+    if(isNaN(percent) || isNaN(number)){
+        alert("Please enter valid numbers");
+        return;
+    }
+
+    let result = (percent/100)*number;
+    document.getElementById("result").innerHTML = "Result: " + result;
+}
+</script>
+
+</body>
+</html>
