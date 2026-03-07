@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Text to ASCII - WebTools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Convert any text to its ASCII code representation using this online Text to ASCII tool.">
+<meta name="keywords" content="Text to ASCII, ASCII Converter, Online Tools, WebTools">
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container{
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+h2{
+    margin-bottom: 20px;
+}
+textarea{
+    width: 90%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    resize: none;
+    font-family: monospace;
+    height: 120px;
+}
+button{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover{
+    background: #2563eb;
+}
+.result{
+    margin-top: 20px;
+    background: #0f172a;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: left;
+    word-break: break-word;
+    font-family: monospace;
+}
+.related-tools{
+    margin-top: 25px;
+    text-align: left;
+}
+.related-tools h3{
+    margin-bottom: 8px;
+}
+.related-tools ul{
+    list-style: none;
+    padding-left: 0;
+}
+.related-tools ul li a{
+    color: #3b82f6;
+    text-decoration: none;
+}
+.related-tools ul li a:hover{
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🖋 Text to ASCII</h2>
+
+<textarea id="text" placeholder="Enter text here"></textarea>
+
+<br>
+
+<button onclick="convertToASCII()">Convert to ASCII</button>
+
+<div class="result" id="result">ASCII codes will appear here</div>
+
+<div class="related-tools">
+<h3>Related Tools</h3>
+<ul>
+    <li><a href="text-reverser.html">Text Reverser</a></li>
+    <li><a href="text-sorter.html">Text Sorter</a></li>
+    <li><a href="remove-spaces.html">Remove Extra Spaces</a></li>
+</ul>
+</div>
+
+</div>
+
+<script>
+function convertToASCII(){
+    let text = document.getElementById("text").value;
+    let ascii = [];
+    for(let i=0; i<text.length; i++){
+        ascii.push(text.charCodeAt(i));
+    }
+    document.getElementById("result").innerText = ascii.join(' ');
+}
+</script>
+
+</body>
+</html>

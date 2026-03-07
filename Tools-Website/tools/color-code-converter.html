@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Color Code Converter - HEX, RGB, HSL | WebTools</title>
+<meta name="description" content="Convert HEX color codes to RGB and HSL easily. Free online Color Code Converter for designers and developers.">
+<meta name="keywords" content="color converter, hex to rgb, hex to hsl, online color tool, free color converter">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container {
+    max-width:700px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+.tool-container h1 {
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input {
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-top:10px;
+}
+
+button {
+    margin-top:15px;
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.preview {
+    margin-top:20px;
+    height:80px;
+    border-radius:6px;
+    border:1px solid #3b82f6;
+}
+
+.result{
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    text-align:left;
+    word-break: break-word;
+}
+
+.related-tools{
+    margin-top:40px;
+    text-align:left;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">WebTools</h2>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">All Tools</a>
+    </nav>
+</header>
+
+<div class="tool-container">
+
+<h1>🎨 Color Code Converter</h1>
+
+<p>Convert HEX color codes to RGB and HSL instantly</p>
+
+<input type="text" id="colorInput" placeholder="Enter HEX color (example: #ff0000)">
+
+<button onclick="convertColor()">Convert</button>
+
+<div class="preview" id="preview"></div>
+
+<div class="result">
+<p><b>HEX:</b> <span id="hex"></span></p>
+<p><b>RGB:</b> <span id="rgb"></span></p>
+<p><b>HSL:</b> <span id="hsl"></span></p>
+</div>
+
+<div class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+        <li><a href="random-color-generator.html">Random Color Generator</a></li>
+        <li><a href="color-code-converter.html">HEX to RGB/HSL</a></li>
+    </ul>
+</div>
+
+</div>
+
+<script>
+function hexToRgb(hex){
+    hex = hex.replace("#","");
+    let r=parseInt(hex.substring(0,2),16);
+    let g=parseInt(hex.substring(2,4),16);
+    let b=parseInt(hex.substring(4,6),16);
+    return {r,g,b};
+}
+
+function rgbToHsl(r,g,b){
+    r/=255; g/=255; b/=255;
+    let max=Math.max(r,g,b), min=Math.min(r,g,b);
+    let h,s,l=(max+min)/2;
+
+    if(max==min){
+        h=s=0;
+    } else {
+        let d=max-min;
+        s=l>0.5 ? d/(2-max-min) : d/(max+min);
+        switch(max){
+            case r: h=(g-b)/d+(g<b?6:0); break;
+            case g: h=(b-r)/d+2; break;
+            case b: h=(r-g)/d+4; break;
+        }
+        h/=6;
+    }
+    return {h:Math.round(h*360), s:Math.round(s*100), l:Math.round(l*100)};
+}
+
+function convertColor(){
+    let hex=document.getElementById("colorInput").value.trim();
+    if(!hex.startsWith("#") || hex.length!=7){
+        alert("Enter valid HEX code (example: #ff0000)");
+        return;
+    }
+    let rgb=hexToRgb(hex);
+    let hsl=rgbToHsl(rgb.r,rgb.g,rgb.b);
+
+    document.getElementById("preview").style.background=hex;
+    document.getElementById("hex").innerText=hex;
+    document.getElementById("rgb").innerText=`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+    document.getElementById("hsl").innerText=`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+}
+</script>
+
+</body>
+</html>

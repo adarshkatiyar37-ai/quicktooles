@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Minifier - WebTools</title>
+<meta name="description" content="Online JavaScript minifier tool. Paste your JS code to remove comments, whitespace and minify it instantly.">
+<meta name="keywords" content="JavaScript Minifier, JS Minify, Online JS Tool, Minify JavaScript, WebTools">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container {
+    max-width:700px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+.tool-container h1 {
+    margin-bottom:20px;
+}
+
+textarea {
+    width:100%;
+    height:160px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-top:15px;
+    font-family:monospace;
+    font-size:14px;
+}
+
+button {
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover {
+    background:#2563eb;
+}
+
+.result {
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    min-height:80px;
+    text-align:left;
+    font-family:monospace;
+    white-space:pre-wrap;
+}
+
+.related-tools {
+    margin-top:30px;
+    text-align:left;
+}
+
+.related-tools ul {
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li {
+    margin-bottom:10px;
+}
+
+.related-tools ul li a {
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover {
+    text-decoration:underline;
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+<h2 class="logo">WebTools</h2>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+</header>
+
+<div class="tool-container">
+
+<h1>🛠 JavaScript Minifier</h1>
+
+<p>Paste your JavaScript code below and click Minify to remove comments and extra spaces.</p>
+
+<textarea id="jsInput" placeholder="Paste your JavaScript here..."></textarea>
+
+<br>
+
+<button onclick="minifyJS()">Minify JS</button>
+
+<div class="result" id="result"></div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<ul>
+<li><a href="css-minifier.html">CSS Minifier</a></li>
+<li><a href="html-minifier.html">HTML Minifier</a></li>
+<li><a href="binary-converter.html">Binary Converter</a></li>
+<li><a href="case-converter.html">Case Converter</a></li>
+</ul>
+</div>
+
+</div>
+
+<script>
+function minifyJS(){
+    let js=document.getElementById("jsInput").value;
+
+    // Remove single-line comments
+    js = js.replace(/\/\/.*$/gm, '');
+    // Remove multi-line comments
+    js = js.replace(/\/\*[\s\S]*?\*\//g,'');
+    // Remove new lines and extra spaces
+    js = js.replace(/\n/g,'');
+    js = js.replace(/\s{2,}/g,' ');
+    js = js.trim();
+
+    document.getElementById("result").innerText = js;
+}
+</script>
+
+</body>
+</html>

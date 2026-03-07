@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Character Counter Online - Word & Paragraph Counter | WebTools</title>
+<meta name="description" content="Count characters, words, sentences, and paragraphs online instantly. Free Character Counter tool for writers, students, and developers.">
+<meta name="keywords" content="character counter, word counter, paragraph counter, sentence counter, online text tool, free tool">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container {
+    max-width:700px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.tool-container h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+textarea{
+    width:100%;
+    height:180px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    resize:none;
+    font-size:16px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.box{
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    text-align:center;
+}
+
+.number{
+    font-size:22px;
+    font-weight:bold;
+    color:#3b82f6;
+}
+
+.related-tools{
+    margin-top:40px;
+    text-align:left;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">WebTools</h2>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">All Tools</a>
+    </nav>
+</header>
+
+<div class="tool-container">
+
+<h1>🔢 Character Counter</h1>
+
+<p>Count characters, words, sentences, and paragraphs instantly</p>
+
+<textarea id="text" placeholder="Type or paste your text here..." oninput="countText()"></textarea>
+
+<div class="stats">
+    <div class="box">
+        Characters
+        <div class="number" id="characters">0</div>
+    </div>
+
+    <div class="box">
+        Words
+        <div class="number" id="words">0</div>
+    </div>
+
+    <div class="box">
+        Sentences
+        <div class="number" id="sentences">0</div>
+    </div>
+
+    <div class="box">
+        Paragraphs
+        <div class="number" id="paragraphs">0</div>
+    </div>
+</div>
+
+<div class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+        <li><a href="word-counter.html">Word Counter</a></li>
+        <li><a href="remove-spaces.html">Remove Extra Spaces</a></li>
+        <li><a href="text-reverser.html">Text Reverser</a></li>
+    </ul>
+</div>
+
+</div>
+
+<script>
+function countText(){
+    let text=document.getElementById("text").value;
+    let characters=text.length;
+    let words=text.trim()=="" ? 0 : text.trim().split(/\s+/).length;
+    let sentences=text.split(/[.!?]+/).filter(Boolean).length;
+    let paragraphs=text.split(/\n+/).filter(Boolean).length;
+
+    document.getElementById("characters").innerText=characters;
+    document.getElementById("words").innerText=words;
+    document.getElementById("sentences").innerText=sentences;
+    document.getElementById("paragraphs").innerText=paragraphs;
+}
+</script>
+
+</body>
+</html>

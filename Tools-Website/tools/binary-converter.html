@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Binary Converter Online - Text to Binary & Binary to Text | WebTools</title>
+<meta name="description" content="Convert text to binary and binary to text online for free. Easy-to-use Binary Converter tool for developers, students, and creators.">
+<meta name="keywords" content="binary converter, text to binary, binary to text, online binary converter, free tool">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+.tool-container{
+    max-width:800px;
+    margin:80px auto;
+    background:#1e293b;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    text-align:center;
+}
+
+.tool-container h1{
+    margin-bottom:20px;
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+button{
+    padding:12px 20px;
+    background:#3b82f6;
+    border:none;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    margin:5px;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.result{
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    min-height:60px;
+    word-wrap:break-word;
+}
+
+.related-tools{
+    margin-top:40px;
+    text-align:left;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2 class="logo">WebTools</h2>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="../index.html">All Tools</a>
+    </nav>
+</header>
+
+<div class="tool-container">
+
+<h1>💻 Binary Converter</h1>
+
+<p>Convert Text to Binary or Binary to Text</p>
+
+<textarea id="inputText" placeholder="Enter text or binary..."></textarea>
+
+<button onclick="textToBinary()">Text → Binary</button>
+<button onclick="binaryToText()">Binary → Text</button>
+<button onclick="clearText()">Clear</button>
+
+<div class="result" id="result"></div>
+
+<div class="related-tools">
+    <h2>Related Tools</h2>
+    <ul>
+        <li><a href="ascii-to-text.html">ASCII to Text Converter</a></li>
+        <li><a href="text-to-ascii.html">Text to ASCII Converter</a></li>
+        <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+    </ul>
+</div>
+
+</div>
+
+<script>
+function textToBinary(){
+    let text=document.getElementById("inputText").value;
+    let binary="";
+    for(let i=0;i<text.length;i++){
+        binary+=text[i].charCodeAt(0).toString(2)+" ";
+    }
+    document.getElementById("result").innerText=binary;
+}
+
+function binaryToText(){
+    let binary=document.getElementById("inputText").value.split(" ");
+    let text="";
+    for(let i=0;i<binary.length;i++){
+        if(binary[i]) text+=String.fromCharCode(parseInt(binary[i],2));
+    }
+    document.getElementById("result").innerText=text;
+}
+
+function clearText(){
+    document.getElementById("inputText").value="";
+    document.getElementById("result").innerText="";
+}
+</script>
+
+</body>
+</html>
