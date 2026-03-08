@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD5 Hash Generator - WebTools</title>
+<title>MD5 Hash Generator - QuickTooles</title>
 <meta name="description" content="Online MD5 Hash Generator. Enter text to quickly generate its MD5 hash instantly.">
-<meta name="keywords" content="MD5 Generator, MD5 Hash Online, Hash Generator, WebTools">
+<meta name="keywords" content="MD5 Generator, MD5 Hash Online, Hash Generator, QuickTools">
 
-<link rel="stylesheet" href="../style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
 <style>
-/* Container */
-.tool-container {
-    max-width:600px;
-    margin:80px auto;
-    background:#1e293b;
-    padding:30px 40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+/* Body */
+body{
+    font-family:Arial, sans-serif;
+    background:#f8fafc;
+    color:#1e293b;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:50px 20px;
+}
+
+/* Navbar / Header */
+header.navbar{
+    width:100%;
+    background:#3b82f6;
+    padding:15px 20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
     text-align:center;
     color:white;
+    font-size:20px;
+    font-weight:bold;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    border-radius:0 0 12px 12px;
+}
+
+/* Container */
+.tool-container{
+    max-width:600px;
+    width:100%;
+    background:#ffffff;
+    padding:30px 40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+    color:#1e293b;
+    margin-top:90px; /* for fixed header */
 }
 
 /* Heading */
@@ -40,10 +69,12 @@
 input[type="text"]{
     width:100%;
     padding:12px;
-    border:none;
+    border:1px solid #cbd5e1;
     border-radius:6px;
     font-size:14px;
     margin-top:15px;
+    background:#f1f5f9;
+    color:#1e293b;
 }
 
 /* Button */
@@ -65,23 +96,31 @@ button:hover{
 /* Result Box */
 .result{
     margin-top:20px;
-    background:#0f172a;
+    background:#f1f5f9;
     padding:15px;
     border-radius:6px;
     word-break:break-all;
     font-family:monospace;
     min-height:50px;
+    border:1px solid #cbd5e1;
+    color:#1e293b;
 }
 
 /* Blog/SEO Section */
 .blog-section{
     margin-top:30px;
     padding:20px;
-    background:#0f172a;
+    background:#f1f5f9;
     border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
     text-align:left;
     font-size:15px;
+    color:#1e293b;
+}
+
+.blog-section h3{
+    color:#3b82f6;
+    margin-bottom:10px;
 }
 
 /* Related Tools */
@@ -127,6 +166,9 @@ button:hover{
 
 <body>
 
+<!-- Navbar/Header -->
+<header class="navbar">QuickTooles</header>
+
 <div class="tool-container">
 
 <h1>🔐 MD5 Hash Generator</h1>
@@ -137,11 +179,11 @@ button:hover{
 
 <button onclick="generateMD5()">Generate MD5</button>
 
-<div class="result" id="result"></div>
+<div class="result" id="result" placeholder="Generated hash will appear here..."></div>
 
 <!-- Blog/SEO Section -->
 <div class="blog-section">
-<h3 style="color:#3b82f6;">How to Use MD5 Hash Generator</h3>
+<h3>How to Use MD5 Hash Generator</h3>
 <p>Type any text into the input box above and click "Generate MD5". The tool will instantly produce the MD5 hash of your text. Use this hash for password testing, data verification, or any application requiring MD5 encryption.</p>
 </div>
 
