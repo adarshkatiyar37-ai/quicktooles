@@ -1,90 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Random Text Generator - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Generate random text online easily.">
-<meta name="keywords" content="Random Text Generator, Lorem Ipsum, Text Tool, WebTools">
+
+<title>Random Text Generator - QuickTooles</title>
+
+<meta name="description" content="Generate random words or text instantly using QuickTooles Random Text Generator.">
+<meta name="keywords" content="Random Text Generator, Lorem Ipsum Generator, Text Generator, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
-.container{
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 500px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
-h2{
-    margin-bottom: 20px;
-}
+
 input{
-    width: 80px;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    margin-top: 10px;
-    text-align: center;
+width:100px;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+margin-top:10px;
+text-align:center;
+background:#f8fafc;
 }
+
 button{
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
+
 button:hover{
-    background: #2563eb;
+background:#2563eb;
 }
+
 .result{
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: left;
-    word-break: break-word;
+margin-top:20px;
+background:#f1f5f9;
+padding:15px;
+border-radius:8px;
+text-align:left;
+word-break:break-word;
+font-size:15px;
 }
+
+/* Blog Section */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+font-size:15px;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related Tools */
+
 .related-tools{
-    margin-top: 25px;
-    text-align: left;
+margin-top:30px;
+text-align:left;
 }
-.related-tools h3{
-    margin-bottom: 8px;
+
+.related-tools h2{
+font-size:20px;
+margin-bottom:15px;
+color:#3b82f6;
 }
+
 .related-tools ul{
-    list-style: none;
-    padding-left: 0;
+list-style:none;
+padding:0;
 }
+
+.related-tools ul li{
+margin-bottom:10px;
+}
+
 .related-tools ul li a{
-    color: #3b82f6;
-    text-decoration: none;
+color:#3b82f6;
+text-decoration:none;
+font-weight:500;
 }
+
 .related-tools ul li a:hover{
-    text-decoration: underline;
+text-decoration:underline;
 }
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h2>📝 Random Text Generator</h2>
+<h2 class="logo">QuickTooles</h2>
+
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+
+</header>
+
+<div class="tool-container">
+
+<h1>📝 Random Text Generator</h1>
+
+<p>Generate random words instantly for testing, design, or placeholder text.</p>
 
 <label>Number of words:</label>
+
+<br>
+
 <input type="number" id="words" value="20" min="1" max="200">
 
 <br>
@@ -93,35 +156,68 @@ button:hover{
 
 <div class="result" id="result"></div>
 
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>How to Use Random Text Generator</h2>
+
+<p>The Random Text Generator tool helps you create random words quickly for testing layouts, 
+design prototypes, or placeholder content. Simply enter the number of words you want to generate and click the Generate button.</p>
+
+<p>This tool is useful for developers, designers, and writers who need quick dummy text for websites or projects.</p>
+
+</div>
+
+<!-- Related Tools -->
+
 <div class="related-tools">
-<h3>Related Tools</h3>
+
+<h2>Related Tools</h2>
+
 <ul>
-    <li><a href="random-number.html">Random Number Generator</a></li>
-    <li><a href="random-color.html">Random Color Generator</a></li>
-    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+<li><a href="random-number.html">Random Number Generator</a></li>
+<li><a href="random-color.html">Random Color Generator</a></li>
+<li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+<li><a href="password-generator.html">Password Generator</a></li>
 </ul>
+
 </div>
 
 </div>
 
 <script>
+
 function generateText(){
-    let count = parseInt(document.getElementById("words").value);
-    let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let text = "";
 
-    for(let i=0; i<count; i++){
-        let wordLength = Math.floor(Math.random()*8)+2; // 2-10 letters per word
-        let word = "";
-        for(let j=0; j<wordLength; j++){
-            word += chars.charAt(Math.floor(Math.random()*chars.length));
-        }
-        text += word + " ";
-    }
+let count=parseInt(document.getElementById("words").value);
 
-    document.getElementById("result").innerText = text.trim();
+let chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let text="";
+
+for(let i=0;i<count;i++){
+
+let wordLength=Math.floor(Math.random()*8)+2;
+
+let word="";
+
+for(let j=0;j<wordLength;j++){
+
+word+=chars.charAt(Math.floor(Math.random()*chars.length));
+
 }
+
+text+=word+" ";
+
+}
+
+document.getElementById("result").innerText=text.trim();
+
+}
+
 </script>
 
 </body>
+
 </html>
