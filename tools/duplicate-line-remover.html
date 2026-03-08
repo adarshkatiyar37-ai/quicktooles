@@ -13,61 +13,109 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Textarea */
 textarea {
     width:100%;
     height:160px;
     padding:12px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     margin-top:15px;
     resize:none;
     font-size:15px;
+    transition:0.3s;
 }
 
+textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.2);
+}
+
+/* Button */
 button {
     margin-top:15px;
     padding:12px 20px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#3b82f6;
     color:white;
     cursor:pointer;
     font-size:16px;
+    transition:0.3s;
 }
 
-button:hover {
+button:hover{
     background:#2563eb;
 }
 
+/* Result Box */
 .result{
     margin-top:20px;
-    background:#0f172a;
-    padding:15px;
-    border-radius:6px;
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:8px;
     min-height:100px;
     white-space:pre-wrap;
     text-align:left;
     word-wrap:break-word;
 }
 
+/* Blog Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -82,13 +130,20 @@ button:hover {
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
 }
-</style>
 
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -104,16 +159,20 @@ button:hover {
 <div class="tool-container">
 
 <h1>📝 Duplicate Line Remover</h1>
-
 <p>Paste text below to remove duplicate lines automatically.</p>
 
 <textarea id="inputText" placeholder="Enter your text here..."></textarea>
-
 <br>
-
 <button onclick="removeDuplicates()">Remove Duplicate Lines</button>
 
 <div class="result" id="result"></div>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>How This Tool Helps You</h2>
+<p>The Duplicate Line Remover is perfect for writers, developers, and students who want to clean up their text quickly. It automatically removes repeated lines, making your content neat and organized.</p>
+<p>Simply paste your text, click the button, and get unique lines instantly. This tool saves time and ensures your text is clean for further editing or publishing.</p>
+</div>
 
 <div class="related-tools">
     <h2>Related Tools</h2>
