@@ -8,124 +8,131 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-
 body{
-background:#f9f9f9;
-color:#111;
+  background:#f9f9f9;
+  color:#111;
 }
 
 .navbar{
-background:#ffffff;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  background:#ffffff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
 .navbar a{
-color:#111;
+  color:#111;
 }
 
 .contact-hero{
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-color:white;
-text-align:center;
-padding:80px 20px;
-border-radius:0 0 30px 30px;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+  border-radius:0 0 30px 30px;
 }
 
 .contact-hero h1{
-font-size:36px;
-margin-bottom:15px;
+  font-size:36px;
+  margin-bottom:15px;
 }
 
 .contact-hero p{
-font-size:18px;
-opacity:0.9;
+  font-size:18px;
+  opacity:0.9;
 }
 
 .contact-content{
-max-width:900px;
-margin:50px auto;
-padding:0 20px;
-line-height:1.8;
+  max-width:900px;
+  margin:50px auto;
+  padding:0 20px;
+  line-height:1.8;
 }
 
 .contact-content h2{
-font-size:28px;
-margin-bottom:15px;
-color:#2563eb;
+  font-size:28px;
+  margin-bottom:15px;
+  color:#2563eb;
 }
 
 .contact-info{
-margin-bottom:30px;
+  margin-bottom:30px;
 }
 
 .contact-info a{
-color:#3b82f6;
-text-decoration:none;
+  color:#3b82f6;
+  text-decoration:none;
 }
 
 .contact-info a:hover{
-text-decoration:underline;
+  text-decoration:underline;
 }
 
 .contact-form{
-background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  background:white;
+  padding:25px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .contact-form input,
 .contact-form textarea{
-width:100%;
-padding:12px;
-margin-top:10px;
-border:1px solid #ddd;
-border-radius:6px;
-font-size:14px;
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  font-size:14px;
 }
 
 .contact-form button{
-margin-top:15px;
-padding:12px 20px;
-background:#3b82f6;
-border:none;
-color:white;
-border-radius:6px;
-cursor:pointer;
+  margin-top:15px;
+  padding:12px 20px;
+  background:#3b82f6;
+  border:none;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
 }
 
 .contact-form button:hover{
-background:#2563eb;
+  background:#2563eb;
 }
 
 footer{
-background:#111;
-color:#fff;
-text-align:center;
-padding:25px;
-margin-top:40px;
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
 }
 
+/* Bottom Left Icons initially hidden */
 .bottom-left-icons{
-position:fixed;
-bottom:20px;
-left:20px;
-display:flex;
-flex-direction:column;
-gap:10px;
-z-index:1000;
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:1000;
+  opacity:0; /* hidden initially */
+  pointer-events:none;
+  transition: opacity 0.5s ease;
+}
+
+.bottom-left-icons.show{
+  opacity:1; /* show icons */
+  pointer-events:auto;
 }
 
 .bottom-left-icons img{
-width:40px;
-height:40px;
-transition:0.3s;
+  width:40px;
+  height:40px;
+  transition:transform 0.3s;
 }
 
 .bottom-left-icons img:hover{
-transform:scale(1.1);
+  transform:scale(1.1);
 }
-
 </style>
 
 </head>
@@ -202,7 +209,6 @@ Adarsh Kumar Katiyar
 </section>
 
 <!-- Bottom Left Icons -->
-
 <div class="bottom-left-icons">
 
 <a href="mailto:adarshkatiyar37@gmail.com" target="_blank">
@@ -220,6 +226,22 @@ Adarsh Kumar Katiyar
 <p>© 2026 QuickTooles. All Rights Reserved.</p>
 
 </footer>
+
+<!-- Scroll JS for fade in/out icons -->
+<script>
+window.addEventListener("scroll", function(){
+    let icons = document.querySelector(".bottom-left-icons");
+    
+    let scrollPosition = window.scrollY + window.innerHeight;
+    let pageHeight = document.body.offsetHeight;
+
+    if(scrollPosition > pageHeight - 200){
+        icons.classList.add("show"); // fade in
+    } else {
+        icons.classList.remove("show"); // fade out
+    }
+});
+</script>
 
 </body>
 </html>
