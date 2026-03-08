@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lorem Ipsum Generator - QuickTooles</title>
+<meta name="description" content="Generate placeholder Lorem Ipsum text for design mockups and testing.">
+<meta name="keywords" content="Lorem Ipsum, Placeholder Text, QuickTools">
 
 <style>
-/* Body */
 body{
     font-family:Arial, sans-serif;
     background:#f8fafc;
@@ -18,20 +19,6 @@ body{
     min-height:100vh;
     padding:50px 20px;
 }
-
-/* Container */
-.container{
-    background:#ffffff;
-    padding:30px 40px;
-    border-radius:15px;
-    width:100%;
-    max-width:600px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    color:#1e293b;
-}
-
-/* Navbar / Header */
 header.navbar{
     width:100%;
     background:#3b82f6;
@@ -47,31 +34,34 @@ header.navbar{
     z-index:1000;
     border-radius:0 0 12px 12px;
 }
-
-/* Adjust container for fixed header */
-.container{
+.tool-container{
+    max-width:600px;
+    width:100%;
+    background:#ffffff;
+    padding:30px 40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+    color:#1e293b;
     margin-top:90px;
 }
-
-/* Heading */
-.container h2{
+.tool-container h1{
     color:#3b82f6;
     margin-bottom:20px;
 }
-
-/* Input */
-input{
+.tool-container p{
+    margin-bottom:25px;
+    font-size:16px;
+}
+input[type="number"]{
+    width:80px;
     padding:10px;
     border:1px solid #cbd5e1;
     border-radius:6px;
-    width:80px;
+    font-size:14px;
     margin-top:10px;
     text-align:center;
-    background:#f1f5f9;
-    color:#1e293b;
 }
-
-/* Button */
 button{
     margin-top:15px;
     padding:10px 25px;
@@ -82,12 +72,7 @@ button{
     cursor:pointer;
     font-size:16px;
 }
-
-button:hover{
-    background:#2563eb;
-}
-
-/* Result Box */
+button:hover{ background:#2563eb; }
 .result{
     margin-top:20px;
     background:#f1f5f9;
@@ -95,71 +80,79 @@ button:hover{
     border-radius:6px;
     text-align:left;
     font-family:monospace;
-    max-height:400px;
-    overflow-y:auto;
+    min-height:80px;
     border:1px solid #cbd5e1;
-    color:#1e293b;
 }
-
-/* Blog / Guidance Section */
 .blog-section{
     margin-top:30px;
     padding:20px;
     background:#f1f5f9;
     border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
     text-align:left;
     font-size:15px;
-    color:#1e293b;
 }
-
-.blog-section h3{
+.blog-section h3{ color:#3b82f6; margin-bottom:10px; }
+.related-tools{
+    margin-top:30px;
+    text-align:left;
+}
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
     color:#3b82f6;
-    margin-bottom:10px;
 }
-
-/* Responsive */
+.related-tools ul{ list-style:none; padding:0; }
+.related-tools ul li{ margin-bottom:10px; }
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+    font-weight:500;
+}
+.related-tools ul li a:hover{ text-decoration:underline; }
 @media(max-width:600px){
-    .container{
-        padding:25px 20px;
-    }
+    .tool-container{ margin:50px 20px; padding:25px; }
 }
 </style>
-
 </head>
+
 <body>
 
-<!-- Navbar/Header -->
 <header class="navbar">QuickTooles</header>
 
-<div class="container">
+<div class="tool-container">
+<h1>📝 Lorem Ipsum Generator</h1>
+<p>Enter the number of paragraphs below and click Generate.</p>
 
-<h2>📝 Lorem Ipsum Generator</h2>
-
-<label>Number of Paragraphs:</label>
-<br>
 <input type="number" id="count" value="1" min="1" max="20">
 <br>
 <button onclick="generateLorem()">Generate</button>
 
-<div class="result" id="result" placeholder="Generated text will appear here..."></div>
+<div class="result" id="result"></div>
 
-<!-- Blog / Guidance Section -->
 <div class="blog-section">
 <h3>How to Use Lorem Ipsum Generator</h3>
-<p>Enter the number of paragraphs you want in the input box and click "Generate". The tool will produce placeholder text instantly, which you can copy and use for design mockups, templates, or content testing.</p>
+<p>Type the number of paragraphs you want and click "Generate". This tool creates placeholder text instantly for mockups, templates, or content testing.</p>
 </div>
 
+<div class="related-tools">
+<h2>Related Tools</h2>
+<ul>
+<li><a href="js-minifier.html">JavaScript Minifier</a></li>
+<li><a href="json-formatter.html">JSON Formatter</a></li>
+<li><a href="html-minifier.html">HTML Minifier</a></li>
+<li><a href="css-minifier.html">CSS Minifier</a></li>
+</ul>
+</div>
 </div>
 
 <script>
-const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
-
+const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 function generateLorem(){
     let count = document.getElementById("count").value;
-    if(count < 1) count = 1;
+    if(count<1) count=1;
     let output = "";
-    for(let i=0; i<count; i++){
+    for(let i=0;i<count;i++){
         output += "<p>"+lorem+"</p>";
     }
     document.getElementById("result").innerHTML = output;
