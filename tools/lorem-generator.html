@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lorem Ipsum Generator - WebTools</title>
+<title>Lorem Ipsum Generator - QuickTooles</title>
 
 <style>
 /* Body */
 body{
     font-family:Arial, sans-serif;
-    background:#f8fafc; /* light background */
-    color:#1e293b; /* dark text */
+    background:#f8fafc;
+    color:#1e293b;
     margin:0;
     display:flex;
     justify-content:center;
@@ -21,7 +21,7 @@ body{
 
 /* Container */
 .container{
-    background:#ffffff; /* light container */
+    background:#ffffff;
     padding:30px 40px;
     border-radius:15px;
     width:100%;
@@ -29,6 +29,28 @@ body{
     text-align:center;
     box-shadow:0 10px 30px rgba(0,0,0,0.1);
     color:#1e293b;
+}
+
+/* Navbar / Header */
+header.navbar{
+    width:100%;
+    background:#3b82f6;
+    padding:15px 20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    border-radius:0 0 12px 12px;
+}
+
+/* Adjust container for fixed header */
+.container{
+    margin-top:90px;
 }
 
 /* Heading */
@@ -68,7 +90,7 @@ button:hover{
 /* Result Box */
 .result{
     margin-top:20px;
-    background:#f1f5f9; /* light box */
+    background:#f1f5f9;
     padding:15px;
     border-radius:6px;
     text-align:left;
@@ -83,7 +105,7 @@ button:hover{
 .blog-section{
     margin-top:30px;
     padding:20px;
-    background:#f1f5f9; /* light blog */
+    background:#f1f5f9;
     border-radius:12px;
     box-shadow:0 5px 15px rgba(0,0,0,0.05);
     text-align:left;
@@ -106,6 +128,9 @@ button:hover{
 
 </head>
 <body>
+
+<!-- Navbar/Header -->
+<header class="navbar">QuickTooles</header>
 
 <div class="container">
 
