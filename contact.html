@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Contact Us - QuickTooles</title>
-
-<meta name="description" content="Contact QuickTooles for support, suggestions or collaboration.">
-
-<link rel="icon" href="/logo.png">
+<title>Contact QuickTooles</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
 
-.container{
-max-width:800px;
-margin:60px auto;
-background:#1e293b;
-padding:40px;
-border-radius:10px;
-color:white;
+body{
+background:#f9f9f9;
+color:#111;
 }
 
-h1{
+.navbar{
+background:#ffffff;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar a{
+color:#111;
+}
+
+.contact-hero{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
 text-align:center;
-margin-bottom:20px;
+padding:80px 20px;
+border-radius:0 0 30px 30px;
+}
+
+.contact-hero h1{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.contact-hero p{
+font-size:18px;
+opacity:0.9;
+}
+
+.contact-content{
+max-width:900px;
+margin:50px auto;
+padding:0 20px;
+line-height:1.8;
+}
+
+.contact-content h2{
+font-size:28px;
+margin-bottom:15px;
+color:#2563eb;
 }
 
 .contact-info{
-margin-top:30px;
-line-height:1.8;
+margin-bottom:30px;
 }
 
 .contact-info a{
@@ -42,19 +67,24 @@ text-decoration:none;
 text-decoration:underline;
 }
 
-form{
-margin-top:30px;
+.contact-form{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-input,textarea{
+.contact-form input,
+.contact-form textarea{
 width:100%;
 padding:12px;
 margin-top:10px;
-border:none;
+border:1px solid #ddd;
 border-radius:6px;
+font-size:14px;
 }
 
-button{
+.contact-form button{
 margin-top:15px;
 padding:12px 20px;
 background:#3b82f6;
@@ -64,15 +94,36 @@ border-radius:6px;
 cursor:pointer;
 }
 
-button:hover{
+.contact-form button:hover{
 background:#2563eb;
 }
 
-.back-home{
-margin-top:20px;
-display:block;
-color:#3b82f6;
-text-decoration:none;
+footer{
+background:#111;
+color:#fff;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+.bottom-left-icons{
+position:fixed;
+bottom:20px;
+left:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:1000;
+}
+
+.bottom-left-icons img{
+width:40px;
+height:40px;
+transition:0.3s;
+}
+
+.bottom-left-icons img:hover{
+transform:scale(1.1);
 }
 
 </style>
@@ -81,52 +132,94 @@ text-decoration:none;
 
 <body>
 
-<div class="container">
+<header class="navbar">
+<h2 class="logo">QuickTooles</h2>
 
-<h1>📩 Contact QuickTooles</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">All Tools</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
 
-<p>
-If you have any questions, suggestions, or feedback about our tools,
-feel free to contact us. We always appreciate hearing from our users.
-</p>
+</header>
+
+<section class="contact-hero">
+
+<h1>Contact QuickTooles</h1>
+
+<p>Have questions, suggestions, or feedback? We'd love to hear from you.</p>
+
+</section>
+
+<section class="contact-content">
+
+<h2>Get in Touch</h2>
 
 <div class="contact-info">
 
-<p><b>Email:</b>  
-<a href="mailto:adarshkatiyar37@gmail.com">adarshkatiyar37@gmail.com</a>
+<p>
+📧 Email: 
+<a href="mailto:adarshkatiyar37@gmail.com">
+adarshkatiyar37@gmail.com
+</a>
 </p>
 
-<p><b>Instagram:</b>  
+<p>
+📸 Instagram: 
 <a href="https://instagram.com/quicktooles" target="_blank">
 instagram.com/quicktooles
 </a>
 </p>
 
-<p><b>LinkedIn:</b>  
+<p>
+💼 LinkedIn: 
 <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank">
-Visit LinkedIn Profile
+Adarsh Kumar Katiyar
 </a>
 </p>
 
 </div>
 
-<form>
-
 <h2>Send a Message</h2>
 
-<input type="text" placeholder="Your Name" required>
+<div class="contact-form">
 
-<input type="email" placeholder="Your Email" required>
+<form action="mailto:adarshkatiyar37@gmail.com" method="post" enctype="text/plain">
 
-<textarea rows="5" placeholder="Your Message"></textarea>
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" rows="5" placeholder="Your Message"></textarea>
 
 <button type="submit">Send Message</button>
 
 </form>
 
-<a href="index.html" class="back-home">⬅ Back to Home</a>
+</div>
+
+</section>
+
+<!-- Bottom Left Icons -->
+
+<div class="bottom-left-icons">
+
+<a href="mailto:adarshkatiyar37@gmail.com" target="_blank">
+<img src="icons/gmail.png" alt="Email">
+</a>
+
+<a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank">
+<img src="icons/linkedin.png" alt="LinkedIn">
+</a>
 
 </div>
+
+<footer>
+
+<p>© 2026 QuickTooles. All Rights Reserved.</p>
+
+</footer>
 
 </body>
 </html>
