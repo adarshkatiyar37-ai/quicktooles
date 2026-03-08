@@ -1,68 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Word to PDF</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.1.0/docx.umd.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word to PDF Converter - QuickTooles</title>
+
+<meta name="description" content="Convert Word text to PDF instantly using the QuickTooles Word to PDF Converter.">
+<meta name="keywords" content="Word to PDF, Convert Word to PDF, Online PDF Converter, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#0f172a;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-margin:0;
-}
-.container{
-background:#1e293b;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
 padding:30px;
-border-radius:10px;
-width:500px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
 text-align:center;
+color:#1e293b;
 }
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
+}
+
 textarea{
-width:90%;
+width:100%;
+height:200px;
 padding:12px;
-border:none;
+border:1px solid #cbd5e1;
 border-radius:6px;
 margin-top:10px;
 resize:none;
+background:#f8fafc;
 }
+
 button{
-margin-top:15px;
-padding:10px 20px;
+margin-top:20px;
+padding:12px 25px;
 border:none;
 border-radius:6px;
 background:#3b82f6;
 color:white;
 cursor:pointer;
-font-size:16px;
+font-size:15px;
 }
+
 button:hover{
 background:#2563eb;
 }
+
+/* Blog */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related Tools */
+
+.related-tools{
+margin-top:30px;
+text-align:left;
+}
+
+.related-tools h2{
+color:#3b82f6;
+margin-bottom:10px;
+}
+
+.related-tools ul{
+list-style:none;
+padding:0;
+}
+
+.related-tools ul li{
+margin-bottom:8px;
+}
+
+.related-tools ul li a{
+color:#3b82f6;
+text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+text-decoration:underline;
+}
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
+
 <body>
-<div class="container">
-<h2>Word to PDF</h2>
-<textarea id="text" rows="10" placeholder="Paste your Word content here"></textarea>
-<br>
+
+<header class="navbar">
+
+<h2 class="logo">QuickTooles</h2>
+
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+
+</header>
+
+<div class="tool-container">
+
+<h1>📄 Word to PDF Converter</h1>
+
+<p>Convert your Word text content into a downloadable PDF instantly.</p>
+
+<textarea id="text" placeholder="Paste your Word content here"></textarea>
+
 <button onclick="convertWordToPDF()">Convert to PDF</button>
+
+<!-- Blog -->
+
+<div class="blog-section">
+
+<h2>What is Word to PDF Conversion?</h2>
+
+<p>Word to PDF conversion allows you to transform text or Word document content into a PDF file. PDFs are widely used because they preserve formatting and are easy to share.</p>
+
+<p>The QuickTooles Word to PDF tool helps you quickly convert your text into a downloadable PDF document.</p>
+
+</div>
+
+<!-- Related Tools -->
+
+<div class="related-tools">
+
+<h2>Related Tools</h2>
+
+<ul>
+
+<li><a href="pdf-to-word.html">PDF to Word</a></li>
+
+<li><a href="text-to-pdf.html">Text to PDF</a></li>
+
+<li><a href="word-counter.html">Word Counter</a></li>
+
+</ul>
+
+</div>
 
 </div>
 
 <script>
+
 function convertWordToPDF(){
+
 let content=document.getElementById("text").value;
-if(!content){alert("Enter text first!"); return;}
-let element=document.createElement('div');
-element.innerText=content;
-html2pdf().from(element).save('document.pdf');
+
+if(!content){
+
+alert("Enter text first!");
+
+return;
+
 }
+
+let element=document.createElement('div');
+
+element.innerText=content;
+
+html2pdf().from(element).save('document.pdf');
+
+}
+
 </script>
+
 </body>
+
 </html>
