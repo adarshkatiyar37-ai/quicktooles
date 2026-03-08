@@ -13,77 +13,133 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container {
     max-width:500px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Input fields */
 input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:6px;
-font-size:16px;
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:16px;
+    transition:0.3s;
 }
 
+input:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.2);
+}
+
+/* Button */
 button{
-margin-top:15px;
-padding:12px;
-width:100%;
-border:none;
-border-radius:6px;
-background:#3b82f6;
-color:white;
-cursor:pointer;
-font-size:16px;
+    margin-top:15px;
+    padding:12px;
+    width:100%;
+    border:none;
+    border-radius:8px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
 }
 
 button:hover{
-background:#2563eb;
+    background:#2563eb;
 }
 
+/* Result Box */
 .result{
-margin-top:20px;
-background:#0f172a;
-padding:15px;
-border-radius:6px;
-min-height:50px;
-text-align:left;
-font-size:16px;
+    margin-top:20px;
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:8px;
+    min-height:50px;
+    text-align:left;
+    font-size:16px;
 }
 
+/* Blog Section */
+.blog-section{
+    margin-top:40px;
+    background:#f8fafc;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:22px;
+    margin-bottom:12px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:12px;
+}
+
+/* Related Tools */
 .related-tools{
-margin-top:30px;
-text-align:left;
+    margin-top:30px;
+    text-align:left;
+}
+
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
-list-style:none;
-padding:0;
+    list-style:none;
+    padding:0;
 }
 
 .related-tools ul li{
-margin-bottom:10px;
+    margin-bottom:10px;
 }
 
 .related-tools ul li a{
-color:#3b82f6;
-text-decoration:none;
+    color:#3b82f6;
+    text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
-text-decoration:underline;
+    text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
 }
 </style>
 
@@ -102,7 +158,6 @@ text-decoration:underline;
 <div class="tool-container">
 
 <h1>💰 EMI Calculator</h1>
-
 <p>Enter loan details to calculate your monthly EMI</p>
 
 <input type="number" id="loan" placeholder="Loan Amount">
@@ -112,6 +167,14 @@ text-decoration:underline;
 <button onclick="calculateEMI()">Calculate EMI</button>
 
 <div class="result" id="result"></div>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>How to Use the EMI Calculator</h2>
+<p>The EMI Calculator helps you quickly compute your monthly loan payment based on principal amount, interest rate, and tenure.</p>
+<p>Simply enter the loan amount, annual interest rate, and the tenure in months, then click "Calculate EMI" to get your monthly installment instantly.</p>
+<p>This tool is useful for planning personal loans, home loans, or vehicle loans efficiently.</p>
+</div>
 
 <div class="related-tools">
 <h2>Related Tools</h2>
