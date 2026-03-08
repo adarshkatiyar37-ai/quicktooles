@@ -13,57 +13,105 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container{
-    max-width:600px;
+    max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1{
+    color:#2563eb;
     margin-bottom:20px;
 }
 
+.tool-container p{
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+/* Textarea */
 textarea{
     width:100%;
     height:150px;
     padding:12px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     margin-bottom:15px;
     font-size:16px;
+    transition:0.3s;
 }
 
+textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.3);
+}
+
+/* Buttons */
 button{
-    padding:12px 20px;
+    padding:12px 25px;
     margin:5px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#3b82f6;
     color:white;
     cursor:pointer;
-    font-size:15px;
+    font-size:16px;
+    transition:0.3s;
 }
 
 button:hover{
     background:#2563eb;
+    transform:translateY(-2px);
 }
 
+/* Result */
 .result{
     margin-top:20px;
-    background:#0f172a;
+    min-height:60px;
     padding:15px;
-    border-radius:6px;
-    min-height:50px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     word-wrap:break-word;
 }
 
+/* Blog / Info Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    color:#1e293b;
+    line-height:1.7;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -78,10 +126,22 @@ button:hover{
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
+    textarea{
+        height:130px;
+    }
 }
 </style>
 </head>
@@ -99,7 +159,6 @@ button:hover{
 <div class="tool-container">
 
 <h1>🔤 Case Converter</h1>
-
 <p>Convert your text to Uppercase, Lowercase, Capitalize, or Sentence case</p>
 
 <textarea id="inputText" placeholder="Enter your text here..."></textarea>
@@ -112,6 +171,14 @@ button:hover{
 <button onclick="toSentence()">Sentence case</button>
 
 <div class="result" id="result"></div>
+
+<!-- Blog / Info Section -->
+<div class="blog-section">
+    <h2>About This Tool</h2>
+    <p>The Case Converter is a simple and fast tool to modify the format of your text. You can convert your text to uppercase, lowercase, capitalize each word, or apply sentence case.</p>
+    <p>This tool is useful for writers, students, developers, and anyone who needs to format text quickly without using complex software.</p>
+    <p>Just type or paste your text, select the desired conversion button, and get your formatted text instantly.</p>
+</div>
 
 <div class="related-tools">
     <h2>Related Tools</h2>
