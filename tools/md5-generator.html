@@ -1,69 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MD5 Hash Generator - QuickTooles</title>
-<meta name="description" content="Generate MD5 hash for any text instantly.">
-<meta name="keywords" content="MD5 Generator, Hash Generator, WebTools">
+<meta name="description" content="Generate MD5 hash online instantly. Enter text and get its MD5 hash.">
+<meta name="keywords" content="MD5 Generator, MD5 Hash Online, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
 <style>
-body{font-family:Arial,sans-serif;background:#f8fafc;color:#1e293b;margin:0;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:50px 20px;}
-header.navbar{width:100%;background:#3b82f6;padding:15px 20px;box-shadow:0 5px 15px rgba(0,0,0,0.1);text-align:center;color:white;font-size:20px;font-weight:bold;position:fixed;top:0;left:0;z-index:1000;border-radius:0 0 12px 12px;}
-.tool-container{max-width:600px;width:100%;background:#ffffff;padding:30px 40px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.1);text-align:center;color:#1e293b;margin-top:90px;}
-.tool-container h1{color:#3b82f6;margin-bottom:20px;}
-.tool-container p{margin-bottom:25px;font-size:16px;}
-input[type="text"]{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px;margin-top:15px;background:#f1f5f9;color:#1e293b;}
-button{margin-top:15px;padding:10px 25px;border:none;border-radius:6px;background:#3b82f6;color:white;cursor:pointer;font-size:16px;}
-button:hover{background:#2563eb;}
-.result{margin-top:20px;background:#f1f5f9;padding:15px;border-radius:6px;word-break:break-all;font-family:monospace;min-height:50px;border:1px solid #cbd5e1;color:#1e293b;}
-.blog-section{margin-top:30px;padding:20px;background:#f1f5f9;border-radius:12px;box-shadow:0 5px 20px rgba(0,0,0,0.05);text-align:left;font-size:15px;color:#1e293b;}
-.blog-section h3{color:#3b82f6;margin-bottom:10px;}
-.related-tools{margin-top:30px;text-align:left;}
-.related-tools h2{font-size:20px;margin-bottom:15px;color:#3b82f6;}
-.related-tools ul{list-style:none;padding:0;}
-.related-tools ul li{margin-bottom:10px;}
-.related-tools ul li a{color:#3b82f6;text-decoration:none;font-weight:500;}
-.related-tools ul li a:hover{text-decoration:underline;}
-@media(max-width:600px){.tool-container{margin:50px 20px;padding:25px;}}
+
+/* Tool Container */
+.tool-container {
+    max-width:700px;
+    margin:80px auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+    color:#1e293b;
+}
+
+/* Heading */
+.tool-container h1 {
+    margin-bottom:20px;
+    color:#3b82f6;
+}
+
+/* Paragraph */
+.tool-container p{
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Textarea */
+textarea {
+    width:100%;
+    height:150px;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    font-family:monospace;
+    font-size:14px;
+    margin-top:15px;
+    background:#f8fafc;
+    color:#1e293b;
+}
+
+/* Button */
+button {
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover {
+    background:#2563eb;
+}
+
+/* Result Box */
+.result {
+    margin-top:20px;
+    background:#f1f5f9;
+    padding:15px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    min-height:60px;
+    text-align:left;
+    font-family:monospace;
+    word-break:break-all;
+    color:#1e293b;
+}
+
+/* Blog Section */
+.blog-section{
+    margin-top:30px;
+    padding:20px;
+    background:#f1f5f9;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    text-align:left;
+    font-size:15px;
+}
+
+.blog-section h2{
+    color:#3b82f6;
+}
+
+/* Related Tools */
+.related-tools{
+    margin-top:30px;
+    text-align:left;
+}
+
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#3b82f6;
+}
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
+}
+
+.related-tools ul li{
+    margin-bottom:10px;
+}
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:25px;
+    }
+}
+
 </style>
+
 </head>
+
 <body>
-<header class="navbar">QuickTooles</header>
+
+<header class="navbar">
+<h2 class="logo">QuickTooles</h2>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+</header>
 
 <div class="tool-container">
-<h1>🔐 MD5 Hash Generator</h1>
-<p>Enter text below to generate its MD5 hash instantly.</p>
 
-<input type="text" id="inputText" placeholder="Enter text to generate MD5 hash">
+<h1>🔐 MD5 Hash Generator</h1>
+
+<p>Enter text below and click <strong>Generate MD5</strong> to create its MD5 hash.</p>
+
+<textarea id="inputText" placeholder="Enter text here..."></textarea>
+
 <button onclick="generateMD5()">Generate MD5</button>
 
 <div class="result" id="result"></div>
 
+<!-- Blog Section -->
+
 <div class="blog-section">
-<h3>How to Use MD5 Hash Generator</h3>
-<p>Type any text and click "Generate MD5". The MD5 hash will appear instantly. Useful for password testing or data verification.</p>
+
+<h2>How to Use MD5 Hash Generator</h2>
+
+<p>Enter any text in the box above and click the Generate MD5 button. The tool will instantly create an MD5 hash of your text. MD5 hashes are commonly used for password encryption, file verification, and data security purposes.</p>
+
 </div>
 
 <div class="related-tools">
+
 <h2>Related Tools</h2>
+
 <ul>
-<li><a href="sha1-generator.html">SHA1 Hash Generator</a></li>
-<li><a href="sha256-generator.html">SHA256 Hash Generator</a></li>
-<li><a href="hash-encoder.html">Hash Encoder/Decoder</a></li>
-<li><a href="base64-converter.html">Base64 Converter</a></li>
+<li><a href="json-formatter.html">JSON Formatter</a></li>
+<li><a href="js-minifier.html">JavaScript Minifier</a></li>
+<li><a href="html-minifier.html">HTML Minifier</a></li>
+<li><a href="css-minifier.html">CSS Minifier</a></li>
 </ul>
+
 </div>
+
 </div>
 
 <script>
+
 function generateMD5(){
-    let text = document.getElementById("inputText").value;
-    if(!text.trim()){document.getElementById("result").innerText="Please enter some text!"; return;}
-    let hash = md5(text);
-    document.getElementById("result").innerText = hash;
+
+let text=document.getElementById("inputText").value;
+
+if(!text.trim()){
+document.getElementById("result").innerText="Please enter some text!";
+return;
 }
+
+let hash=md5(text);
+
+document.getElementById("result").innerText=hash;
+
+}
+
 </script>
 
 </body>
