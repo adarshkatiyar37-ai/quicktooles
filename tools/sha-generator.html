@@ -1,139 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>SHA Generator - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Generate SHA-1, SHA-256, or SHA-512 hashes of your text easily.">
-<meta name="keywords" content="SHA Generator, SHA-256, SHA-512, SHA-1, Hash Generator, WebTools">
+
+<title>SHA Generator - QuickTooles</title>
+
+<meta name="description" content="Generate SHA-1, SHA-256, and SHA-512 hashes easily using QuickTooles SHA Generator.">
+<meta name="keywords" content="SHA Generator, SHA-256 Generator, SHA-512 Hash, SHA-1 Hash Tool, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
-.container{
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 500px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
-h2{
-    margin-bottom: 20px;
+
+textarea,select{
+width:100%;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+margin-top:10px;
+font-family:monospace;
+background:#f8fafc;
 }
-input, select, textarea{
-    width: 90%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    margin-top: 10px;
-    font-family: monospace;
-}
+
 textarea{
-    resize: none;
-    height: 80px;
+resize:none;
 }
+
 button{
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
+
 button:hover{
-    background: #2563eb;
+background:#2563eb;
 }
+
 .result{
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: left;
-    word-break: break-word;
+margin-top:20px;
+background:#f1f5f9;
+padding:15px;
+border-radius:8px;
+text-align:left;
+word-break:break-word;
+font-family:monospace;
 }
+
+/* Blog */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related */
+
 .related-tools{
-    margin-top: 25px;
-    text-align: left;
+margin-top:30px;
+text-align:left;
 }
-.related-tools h3{
-    margin-bottom: 8px;
+
+.related-tools h2{
+margin-bottom:10px;
+color:#3b82f6;
 }
+
 .related-tools ul{
-    list-style: none;
-    padding-left: 0;
+list-style:none;
+padding:0;
 }
+
+.related-tools ul li{
+margin-bottom:8px;
+}
+
 .related-tools ul li a{
-    color: #3b82f6;
-    text-decoration: none;
+color:#3b82f6;
+text-decoration:none;
 }
+
 .related-tools ul li a:hover{
-    text-decoration: underline;
+text-decoration:underline;
 }
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h2>🔐 SHA Generator</h2>
+<h2 class="logo">QuickTooles</h2>
+
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+
+</header>
+
+<div class="tool-container">
+
+<h1>🔐 SHA Generator</h1>
+
+<p>Generate SHA-1, SHA-256, and SHA-512 hashes instantly.</p>
 
 <label>Enter Text:</label>
+
 <textarea id="text" rows="4" placeholder="Enter text here"></textarea>
 
 <label>Select SHA Type:</label>
+
 <select id="shaType">
+
 <option value="SHA-1">SHA-1</option>
 <option value="SHA-256" selected>SHA-256</option>
 <option value="SHA-512">SHA-512</option>
+
 </select>
 
-<br>
-
-<button onclick="generateSHA()">Generate SHA</button>
+<button onclick="generateSHA()">Generate SHA Hash</button>
 
 <div class="result" id="result">Hash will appear here</div>
 
+<!-- Blog -->
+
+<div class="blog-section">
+
+<h2>What is SHA Hash?</h2>
+
+<p>SHA (Secure Hash Algorithm) is a cryptographic hashing algorithm used to convert text into a fixed-length hash value. 
+It is widely used for data integrity, digital signatures, and password security.</p>
+
+<p>Using the QuickTooles SHA Generator, you can instantly generate SHA-1, SHA-256, or SHA-512 hashes from any text.</p>
+
+</div>
+
+<!-- Related Tools -->
+
 <div class="related-tools">
-<h3>Related Tools</h3>
+
+<h2>Related Tools</h2>
+
 <ul>
-    <li><a href="md5-generator.html">MD5 Generator</a></li>
-    <li><a href="base64-encoder.html">Base64 Encoder</a></li>
-    <li><a href="password-generator.html">Password Generator</a></li>
+
+<li><a href="md5-generator.html">MD5 Generator</a></li>
+
+<li><a href="base64-encoder.html">Base64 Encoder</a></li>
+
+<li><a href="password-generator.html">Password Generator</a></li>
+
+<li><a href="random-text.html">Random Text Generator</a></li>
+
 </ul>
+
 </div>
 
 </div>
 
 <script>
+
 async function generateSHA(){
-    let text = document.getElementById("text").value;
-    let type = document.getElementById("shaType").value;
 
-    if(!text){
-        alert("Please enter text to hash");
-        return;
-    }
+let text=document.getElementById("text").value;
 
-    let encoder = new TextEncoder();
-    let data = encoder.encode(text);
-    let hashBuffer = await crypto.subtle.digest(type, data);
-    let hashArray = Array.from(new Uint8Array(hashBuffer));
-    let hashHex = hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
+let type=document.getElementById("shaType").value;
 
-    document.getElementById("result").innerText = hashHex;
+if(!text){
+
+alert("Please enter text to hash");
+
+return;
+
 }
+
+let encoder=new TextEncoder();
+
+let data=encoder.encode(text);
+
+let hashBuffer=await crypto.subtle.digest(type,data);
+
+let hashArray=Array.from(new Uint8Array(hashBuffer));
+
+let hashHex=hashArray.map(b=>b.toString(16).padStart(2,'0')).join('');
+
+document.getElementById("result").innerText=hashHex;
+
+}
+
 </script>
 
 </body>
+
 </html>
