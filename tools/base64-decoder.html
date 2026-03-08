@@ -13,57 +13,108 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container{
     max-width:800px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    color:#1e293b;
+    transition:0.3s;
 }
 
 .tool-container h1{
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+/* Textarea */
 textarea{
     width:100%;
     height:150px;
     padding:12px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     margin-bottom:15px;
     font-size:15px;
+    transition:0.3s;
 }
 
+textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.3);
+}
+
+/* Buttons */
 button{
-    padding:12px 20px;
+    padding:12px 25px;
     background:#3b82f6;
     border:none;
     color:white;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
     font-size:16px;
     margin-right:10px;
+    transition:0.3s;
 }
 
 button:hover{
     background:#2563eb;
+    transform:translateY(-2px);
 }
 
+/* Result */
 .result{
     margin-top:20px;
-    background:#0f172a;
+    background:#f1f5f9;
     padding:15px;
-    border-radius:6px;
+    border-radius:8px;
     min-height:60px;
+    color:#1e293b;
+    font-weight:500;
     word-wrap:break-word;
 }
 
+/* Blog / Info Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    color:#1e293b;
+    line-height:1.7;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -78,10 +129,22 @@ button:hover{
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
+    textarea{
+        height:130px;
+    }
 }
 </style>
 </head>
@@ -99,7 +162,6 @@ button:hover{
 <div class="tool-container">
 
 <h1>📦 Base64 Decoder</h1>
-
 <p>Paste your Base64 encoded text below</p>
 
 <textarea id="base64Input" placeholder="Enter Base64 text..."></textarea>
@@ -108,6 +170,14 @@ button:hover{
 <button onclick="clearText()">Clear</button>
 
 <div class="result" id="result"></div>
+
+<!-- Blog / Info Section -->
+<div class="blog-section">
+    <h2>About This Tool</h2>
+    <p>The Base64 Decoder allows you to decode any Base64 encoded string into readable text instantly. This is extremely useful for developers, students, and creators who deal with encoded data or need to decode messages.</p>
+    <p>You can use this tool to debug encoded content, retrieve hidden text, or understand Base64 encoded messages. It works entirely in your browser, requires no software, and is free to use on all devices.</p>
+    <p>Simply paste your Base64 text, click "Decode", and get your readable content immediately. You can also clear the input to start fresh.</p>
+</div>
 
 <div class="related-tools">
     <h2>Related Tools</h2>
@@ -122,7 +192,11 @@ button:hover{
 
 <script>
 function decodeBase64(){
-    let input=document.getElementById("base64Input").value;
+    let input=document.getElementById("base64Input").value.trim();
+    if(!input){
+        document.getElementById("result").innerText="Please enter Base64 text";
+        return;
+    }
     try{
         let decoded=atob(input);
         document.getElementById("result").innerText=decoded;
