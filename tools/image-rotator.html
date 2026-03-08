@@ -7,37 +7,52 @@
 
 <title>Image Rotator - WebTools</title>
 <meta name="description" content="Rotate your images online for free. Use our Image Rotator tool to rotate images by 90°, 180°, or 270° and download the result.">
-<meta name="keywords" content="Image Rotator, Rotate Image Online, Free Image Rotate, PNG Rotate, JPG Rotate">
+<meta name="keywords" content="Image Rotator, Rotate Image Online, Free Image Rotate, PNG Rotate, JPG Rotate, WebTools">
 <meta name="robots" content="index, follow">
 
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Inputs */
+input[type="file"] {
+    margin-top:10px;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #cbd5e1;
+}
+
+/* Canvas */
 canvas {
     margin-top:20px;
     max-width:100%;
-    border-radius:6px;
+    border-radius:8px;
+    border:1px solid #cbd5e1;
 }
 
-input[type="file"] {
-    margin-top:10px;
-}
-
+/* Buttons */
 button {
     margin-top:10px;
     margin-right:5px;
@@ -47,12 +62,14 @@ button {
     background:#3b82f6;
     color:white;
     cursor:pointer;
+    font-size:16px;
 }
 
 button:hover {
     background:#2563eb;
 }
 
+/* Download Link */
 a#download {
     display:block;
     margin-top:15px;
@@ -60,27 +77,63 @@ a#download {
     font-weight:bold;
 }
 
-.related-tools {
+/* Blog Section */
+.blog-section{
+    margin-top:40px;
+    background:#f8fafc;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:22px;
+    margin-bottom:12px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:12px;
+}
+
+/* Related Tools */
+.related-tools{
     margin-top:30px;
     text-align:left;
 }
 
-.related-tools ul {
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.related-tools ul{
     list-style:none;
     padding:0;
 }
 
-.related-tools ul li {
+.related-tools ul li{
     margin-bottom:10px;
 }
 
-.related-tools ul li a {
+.related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
-.related-tools ul li a:hover {
+.related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
 }
 </style>
 
@@ -100,7 +153,7 @@ a#download {
 
 <h1>🔄 Image Rotator</h1>
 
-<p>Upload your image and rotate it by 90°, 180°, or 270°.</p>
+<p>Upload your image and rotate it by 90°, 180°, or 270° easily.</p>
 
 <input type="file" id="upload">
 
@@ -113,6 +166,13 @@ a#download {
 <canvas id="canvas"></canvas>
 
 <a id="download" style="display:none;">Download Rotated Image</a>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>How to Use the Image Rotator</h2>
+<p>Upload any image, then select the rotation angle by clicking one of the buttons. The rotated image will be displayed instantly. You can then download the rotated image directly.</p>
+<p>This tool is perfect for photographers, designers, and web developers who need images oriented correctly for websites, social media, or presentations.</p>
+</div>
 
 <div class="related-tools">
 <h2>Related Tools</h2>
@@ -128,10 +188,8 @@ a#download {
 
 <script>
 let img = new Image();
-let angle = 0;
-
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 
 document.getElementById("upload").addEventListener("change", function(e){
     const file = e.target.files[0];
@@ -149,9 +207,8 @@ img.onload = function(){
 }
 
 function rotate(deg){
-    angle = deg * Math.PI / 180;
+    const angle = deg * Math.PI / 180;
 
-    // swap canvas width/height for 90° or 270° rotations
     if(deg === 90 || deg === 270){
         canvas.width = img.height;
         canvas.height = img.width;
