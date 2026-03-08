@@ -13,30 +13,48 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
-.tool-container {
+/* Tool Container */
+.tool-container{
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    color:#1e293b;
 }
 
 .tool-container h1{
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    text-align:center;
+    font-size:16px;
+    margin-bottom:25px;
+}
+
+/* Textarea */
 textarea{
     width:100%;
     height:180px;
     padding:12px;
-    border:none;
-    border-radius:6px;
-    resize:none;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     font-size:16px;
+    resize:none;
+    transition:0.3s;
 }
 
+textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.3);
+}
+
+/* Stats Grid */
 .stats{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -45,21 +63,52 @@ textarea{
 }
 
 .box{
-    background:#0f172a;
+    background:#f1f5f9;
     padding:15px;
-    border-radius:6px;
+    border-radius:8px;
     text-align:center;
+    color:#1e293b;
+    box-shadow:0 3px 10px rgba(0,0,0,0.05);
 }
 
 .number{
     font-size:22px;
     font-weight:bold;
     color:#3b82f6;
+    margin-top:5px;
 }
 
+/* Blog / Info Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    color:#1e293b;
+    line-height:1.7;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -74,10 +123,19 @@ textarea{
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
 }
 </style>
 </head>
@@ -95,7 +153,6 @@ textarea{
 <div class="tool-container">
 
 <h1>🔢 Character Counter</h1>
-
 <p>Count characters, words, sentences, and paragraphs instantly</p>
 
 <textarea id="text" placeholder="Type or paste your text here..." oninput="countText()"></textarea>
@@ -120,6 +177,14 @@ textarea{
         Paragraphs
         <div class="number" id="paragraphs">0</div>
     </div>
+</div>
+
+<!-- Blog / Info Section -->
+<div class="blog-section">
+    <h2>About This Tool</h2>
+    <p>The Character Counter helps you quickly measure the length of your text. It counts characters, words, sentences, and paragraphs in real-time as you type or paste text.</p>
+    <p>This tool is perfect for writers, students, and developers who need to check text limits, analyze content, or format documents efficiently.</p>
+    <p>Just type or paste your text and instantly see all statistics. No registration or downloads are required.</p>
 </div>
 
 <div class="related-tools">
