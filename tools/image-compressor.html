@@ -7,56 +7,71 @@
 
 <title>Image Compressor - WebTools</title>
 <meta name="description" content="Compress images online easily using this free Image Compressor tool. Reduce image size without losing quality.">
-<meta name="keywords" content="Image Compressor, compress image online, reduce image size, JPG compressor, PNG compressor">
+<meta name="keywords" content="Image Compressor, compress image online, reduce image size, JPG compressor, PNG compressor, webtools">
 <meta name="robots" content="index, follow">
 
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Inputs */
 input[type="file"],
 input[type="number"] {
     margin-top:10px;
-    padding:8px;
+    padding:10px;
     border-radius:6px;
-    border:none;
+    border:1px solid #cbd5e1;
     width:80%;
 }
 
+/* Canvas */
 canvas {
     margin-top:20px;
     max-width:100%;
-    border-radius:6px;
+    border-radius:8px;
+    border:1px solid #cbd5e1;
 }
 
+/* Button */
 button {
     margin-top:20px;
-    padding:10px 20px;
+    padding:12px 20px;
     border:none;
     border-radius:6px;
     background:#3b82f6;
     color:white;
     cursor:pointer;
+    font-size:16px;
 }
 
 button:hover {
     background:#2563eb;
 }
 
+/* Download Link */
 a#download {
     display:block;
     margin-top:15px;
@@ -64,27 +79,63 @@ a#download {
     font-weight:bold;
 }
 
-.related-tools {
+/* Blog Section */
+.blog-section{
+    margin-top:40px;
+    background:#f8fafc;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:22px;
+    margin-bottom:12px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:12px;
+}
+
+/* Related Tools */
+.related-tools{
     margin-top:30px;
     text-align:left;
 }
 
-.related-tools ul {
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.related-tools ul{
     list-style:none;
     padding:0;
 }
 
-.related-tools ul li {
+.related-tools ul li{
     margin-bottom:10px;
 }
 
-.related-tools ul li a {
+.related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
-.related-tools ul li a:hover {
+.related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
 }
 </style>
 
@@ -121,6 +172,13 @@ a#download {
 <canvas id="canvas"></canvas>
 
 <a id="download" style="display:none;">Download Compressed Image</a>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>How to Use the Image Compressor</h2>
+<p>This tool helps you reduce the file size of your images without losing quality. Upload any JPG or PNG image, adjust the compression quality, and click the compress button. You can then download the optimized image instantly.</p>
+<p>This is useful for web designers, bloggers, and developers who want faster loading times and optimized images.</p>
+</div>
 
 <div class="related-tools">
 <h2>Related Tools</h2>
