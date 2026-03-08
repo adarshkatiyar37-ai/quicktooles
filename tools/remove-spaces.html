@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Remove Extra Spaces</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Remove Extra Spaces - QuickTooles</title>
+
+<meta name="description" content="Remove extra spaces, tabs, and line breaks from your text instantly using QuickTooles.">
+<meta name="keywords" content="Remove Extra Spaces, Text Cleaner, Remove Spaces Tool, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
 
 <style>
-body{
-font-family:Arial, sans-serif;
-background:#0f172a;
-color:white;
-margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
 
-.container{
-background:#1e293b;
-padding:30px;
-border-radius:10px;
-width:500px;
-text-align:center;
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
 
 textarea{
-width:90%;
+width:100%;
 padding:12px;
-border:none;
+border:1px solid #cbd5e1;
 border-radius:6px;
 margin-top:10px;
 resize:none;
+background:#f8fafc;
 }
 
 button{
-margin-top:15px;
-padding:10px 20px;
+margin-top:20px;
+padding:12px 25px;
 border:none;
 border-radius:6px;
 background:#3b82f6;
 color:white;
 cursor:pointer;
-font-size:16px;
+font-size:15px;
 }
 
 button:hover{
@@ -50,41 +58,141 @@ background:#2563eb;
 
 .result{
 margin-top:20px;
-background:#0f172a;
+background:#f1f5f9;
 padding:15px;
-border-radius:6px;
+border-radius:8px;
 text-align:left;
 word-break:break-word;
 }
+
+/* Blog Section */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+font-size:15px;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related Tools */
+
+.related-tools{
+margin-top:30px;
+text-align:left;
+}
+
+.related-tools h2{
+font-size:20px;
+margin-bottom:15px;
+color:#3b82f6;
+}
+
+.related-tools ul{
+list-style:none;
+padding:0;
+}
+
+.related-tools ul li{
+margin-bottom:10px;
+}
+
+.related-tools ul li a{
+color:#3b82f6;
+text-decoration:none;
+font-weight:500;
+}
+
+.related-tools ul li a:hover{
+text-decoration:underline;
+}
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h2>Remove Extra Spaces</h2>
+<h2 class="logo">QuickTooles</h2>
 
-<textarea id="text" rows="5" placeholder="Enter your text here"></textarea>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
 
-<br>
+</header>
+
+<div class="tool-container">
+
+<h1>🧹 Remove Extra Spaces</h1>
+
+<p>Clean your text by removing extra spaces, tabs, and line breaks instantly.</p>
+
+<textarea id="text" rows="6" placeholder="Enter your text here"></textarea>
 
 <button onclick="removeSpaces()">Remove Spaces</button>
 
 <div class="result" id="result">Result will appear here</div>
 
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>How to Remove Extra Spaces from Text</h2>
+
+<p>The Remove Extra Spaces tool helps you quickly clean your text by removing unnecessary spaces, tabs, and line breaks. 
+Simply paste your text into the input box and click the Remove Spaces button.</p>
+
+<p>This tool is useful for writers, developers, students, and anyone who wants to format text properly for documents, coding, or websites.</p>
+
+</div>
+
+<!-- Related Tools -->
+
+<div class="related-tools">
+
+<h2>Related Tools</h2>
+
+<ul>
+<li><a href="text-case-converter.html">Text Case Converter</a></li>
+<li><a href="word-counter.html">Word Counter</a></li>
+<li><a href="random-text.html">Random Text Generator</a></li>
+<li><a href="password-generator.html">Password Generator</a></li>
+</ul>
+
+</div>
+
 </div>
 
 <script>
+
 function removeSpaces(){
-let text = document.getElementById("text").value;
 
-// Replace multiple spaces, tabs, newlines with single space
-let result = text.replace(/\s+/g,' ').trim();
+let text=document.getElementById("text").value;
 
-document.getElementById("result").innerText = result;
+let result=text.replace(/\s+/g,' ').trim();
+
+document.getElementById("result").innerText=result;
+
 }
+
 </script>
 
 </body>
+
 </html>
