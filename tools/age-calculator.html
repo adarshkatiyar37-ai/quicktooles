@@ -13,70 +13,134 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
-.tool-container{
+/* Tool Container */
+.tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
+    transition:0.3s;
 }
 
-.tool-container h1{
+.tool-container h1 {
+    margin-bottom:20px;
+    font-size:32px;
+    color:#2563eb;
+}
+
+.tool-container p {
+    font-size:16px;
     margin-bottom:20px;
 }
 
-input{
-    padding:12px;
+/* Input Fields */
+input[type="date"] {
+    padding:12px 15px;
     width:220px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     margin:15px 0;
     font-size:16px;
+    transition:0.3s;
 }
 
-button{
-    padding:12px 20px;
+input[type="date"]:focus {
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.3);
+}
+
+/* Button */
+button {
+    padding:12px 25px;
     background:#3b82f6;
     border:none;
     color:white;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
     font-size:16px;
+    transition:0.3s;
 }
 
-button:hover{
+button:hover {
     background:#2563eb;
+    transform:translateY(-2px);
 }
 
-.result{
+/* Result */
+.result {
     margin-top:25px;
     font-size:20px;
     font-weight:bold;
+    color:#1e293b;
 }
 
-.related-tools{
+/* Blog / Info Section */
+.blog-section {
+    margin-top:50px;
+    text-align:left;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    color:#1e293b;
+}
+
+.blog-section h2 {
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p {
+    margin-bottom:15px;
+    line-height:1.7;
+}
+
+/* Related Tools */
+.related-tools {
     margin-top:40px;
     text-align:left;
 }
 
-.related-tools ul{
+.related-tools h2 {
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.related-tools ul {
     list-style:none;
     padding:0;
 }
 
-.related-tools ul li{
+.related-tools ul li {
     margin-bottom:10px;
 }
 
-.related-tools ul li a{
+.related-tools ul li a {
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
-.related-tools ul li a:hover{
+.related-tools ul li a:hover {
     text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .tool-container {
+        margin:50px 20px;
+        padding:30px;
+    }
+    input[type="date"] {
+        width:100%;
+    }
 }
 </style>
 </head>
@@ -98,6 +162,14 @@ button:hover{
     <br>
     <button onclick="calculateAge()">Calculate Age</button>
     <div class="result" id="result"></div>
+
+    <!-- Blog / Info Section -->
+    <div class="blog-section">
+        <h2>About This Tool</h2>
+        <p>The Age Calculator is a simple and easy-to-use online tool that calculates your age in years, months, and days. All you need to do is select your date of birth, and click the "Calculate Age" button. It instantly gives you your exact age based on the current date.</p>
+        <p>This tool is useful for students, developers, professionals, and anyone who wants to know their age precisely. It can also help in planning birthdays, events, or calculating age-based eligibility.</p>
+        <p>Using our Age Calculator is completely free and requires no downloads or installations. You can use it directly in your browser on any device.</p>
+    </div>
 
     <div class="related-tools">
         <h2>Related Tools</h2>
