@@ -1,149 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Time Converter - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Convert hours, minutes, and seconds easily using this online Time Converter tool.">
-<meta name="keywords" content="Time Converter, Hours to Minutes, Minutes to Seconds, Online Tools, WebTools">
+
+<title>Time Converter - QuickTooles</title>
+
+<meta name="description" content="Convert hours, minutes, and seconds instantly using the QuickTooles Time Converter.">
+<meta name="keywords" content="Time Converter, Hours to Minutes, Minutes to Seconds, Online Tools, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
-.container{
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 500px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
-h2{
-    margin-bottom: 20px;
+
+input,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+text-align:center;
+font-size:16px;
+background:#f8fafc;
 }
-input, select{
-    width: 80%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 6px;
-    text-align: center;
-    font-size: 16px;
-}
+
 button{
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
+
 button:hover{
-    background: #2563eb;
+background:#2563eb;
 }
+
 .result{
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
+margin-top:20px;
+background:#f1f5f9;
+padding:15px;
+border-radius:8px;
+text-align:center;
+font-weight:bold;
 }
+
+/* Blog */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related Tools */
+
 .related-tools{
-    margin-top: 25px;
-    text-align: left;
+margin-top:30px;
+text-align:left;
 }
-.related-tools h3{
-    margin-bottom: 8px;
+
+.related-tools h2{
+margin-bottom:10px;
+color:#3b82f6;
 }
+
 .related-tools ul{
-    list-style: none;
-    padding-left: 0;
+list-style:none;
+padding:0;
 }
+
+.related-tools ul li{
+margin-bottom:8px;
+}
+
 .related-tools ul li a{
-    color: #3b82f6;
-    text-decoration: none;
+color:#3b82f6;
+text-decoration:none;
 }
+
 .related-tools ul li a:hover{
-    text-decoration: underline;
+text-decoration:underline;
 }
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h2>⏱ Time Converter</h2>
+<h2 class="logo">QuickTooles</h2>
 
-<input type="number" id="value" placeholder="Enter value" min="0">
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
 
-<br>
+</header>
+
+<div class="tool-container">
+
+<h1>⏱ Time Converter</h1>
+
+<p>Convert hours, minutes, and seconds easily.</p>
+
+<input type="number" id="value" placeholder="Enter value">
 
 <select id="unitFrom">
-    <option value="hours">Hours</option>
-    <option value="minutes">Minutes</option>
-    <option value="seconds">Seconds</option>
+<option value="hours">Hours</option>
+<option value="minutes">Minutes</option>
+<option value="seconds">Seconds</option>
 </select>
 
 <select id="unitTo">
-    <option value="hours">Hours</option>
-    <option value="minutes">Minutes</option>
-    <option value="seconds">Seconds</option>
+<option value="hours">Hours</option>
+<option value="minutes">Minutes</option>
+<option value="seconds">Seconds</option>
 </select>
-
-<br>
 
 <button onclick="convertTime()">Convert</button>
 
 <div class="result" id="result">Result will appear here</div>
 
+<!-- Blog -->
+
+<div class="blog-section">
+
+<h2>What is a Time Converter?</h2>
+
+<p>A time converter helps convert time values between hours, minutes, and seconds. This is useful in many situations such as calculations, programming, and daily tasks.</p>
+
+<p>The QuickTooles Time Converter lets you instantly convert time units with just a few clicks.</p>
+
+</div>
+
+<!-- Related Tools -->
+
 <div class="related-tools">
-<h3>Related Tools</h3>
+
+<h2>Related Tools</h2>
+
 <ul>
-    <li><a href="number-base-converter.html">Number Base Converter</a></li>
-    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+
+<li><a href="number-base-converter.html">Number Base Converter</a></li>
+
+<li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+
+<li><a href="json-formatter.html">JSON Formatter</a></li>
+
 </ul>
+
 </div>
 
 </div>
 
 <script>
+
 function convertTime(){
-    let val = parseFloat(document.getElementById("value").value);
-    let from = document.getElementById("unitFrom").value;
-    let to = document.getElementById("unitTo").value;
 
-    if(isNaN(val)){
-        alert("Enter a valid number");
-        return;
-    }
+let val=parseFloat(document.getElementById("value").value);
+let from=document.getElementById("unitFrom").value;
+let to=document.getElementById("unitTo").value;
 
-    // Convert input to seconds first
-    let seconds;
-    if(from==="hours") seconds = val*3600;
-    else if(from==="minutes") seconds = val*60;
-    else seconds = val;
-
-    // Convert seconds to target unit
-    let result;
-    if(to==="hours") result = seconds/3600;
-    else if(to==="minutes") result = seconds/60;
-    else result = seconds;
-
-    document.getElementById("result").innerText = `${val} ${from} = ${result} ${to}`;
+if(isNaN(val)){
+alert("Enter a valid number");
+return;
 }
+
+let seconds;
+
+if(from==="hours") seconds=val*3600;
+else if(from==="minutes") seconds=val*60;
+else seconds=val;
+
+let result;
+
+if(to==="hours") result=seconds/3600;
+else if(to==="minutes") result=seconds/60;
+else result=seconds;
+
+document.getElementById("result").innerText=`${val} ${from} = ${result} ${to}`;
+
+}
+
 </script>
 
 </body>
+
 </html>
