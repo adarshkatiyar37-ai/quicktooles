@@ -13,55 +13,106 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container{
     max-width:800px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    color:#1e293b;
+    transition:0.3s;
 }
 
 .tool-container h1{
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    font-size:16px;
+    margin-bottom:20px;
+}
+
+/* Textarea */
 textarea{
     width:100%;
     height:150px;
     padding:12px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     margin-bottom:15px;
     font-size:15px;
+    transition:0.3s;
 }
 
+textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.3);
+}
+
+/* Button */
 button{
-    padding:12px 20px;
+    padding:12px 25px;
     background:#3b82f6;
     border:none;
     color:white;
-    border-radius:6px;
+    border-radius:8px;
     cursor:pointer;
     font-size:16px;
+    transition:0.3s;
 }
 
 button:hover{
     background:#2563eb;
+    transform:translateY(-2px);
 }
 
+/* Result */
 .result{
     margin-top:20px;
-    background:#0f172a;
+    background:#f1f5f9;
     padding:15px;
-    border-radius:6px;
+    border-radius:8px;
     min-height:60px;
+    color:#1e293b;
+    font-weight:500;
 }
 
+/* Blog / Info Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    color:#1e293b;
+    line-height:1.7;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -76,10 +127,22 @@ button:hover{
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
+    textarea{
+        height:130px;
+    }
 }
 </style>
 </head>
@@ -97,7 +160,6 @@ button:hover{
 <div class="tool-container">
 
 <h1>🔡 ASCII to Text Converter</h1>
-
 <p>Enter ASCII codes separated by space (Example: 72 101 108 108 111)</p>
 
 <textarea id="asciiInput" placeholder="Enter ASCII codes..."></textarea>
@@ -105,6 +167,14 @@ button:hover{
 <button onclick="convertASCII()">Convert to Text</button>
 
 <div class="result" id="result"></div>
+
+<!-- Blog / Info Section -->
+<div class="blog-section">
+    <h2>About This Tool</h2>
+    <p>The ASCII to Text Converter is a simple online tool that allows you to convert numeric ASCII codes into readable text. Just enter the ASCII values separated by spaces, and click "Convert to Text" to get the original message instantly.</p>
+    <p>This tool is useful for developers, students, cryptography enthusiasts, and anyone who works with ASCII codes. It helps in understanding encoded messages, debugging code, or learning about character encoding.</p>
+    <p>Our converter works directly in your browser, requires no installation, and is completely free to use on any device.</p>
+</div>
 
 <div class="related-tools">
     <h2>Related Tools</h2>
@@ -120,10 +190,16 @@ button:hover{
 <script>
 function convertASCII(){
     let ascii=document.getElementById("asciiInput").value.trim();
+    if(!ascii){
+        document.getElementById("result").innerText="Please enter ASCII codes";
+        return;
+    }
     let codes=ascii.split(" ");
     let text="";
     for(let i=0;i<codes.length;i++){
-        text+=String.fromCharCode(codes[i]);
+        if(!isNaN(codes[i])){
+            text+=String.fromCharCode(codes[i]);
+        }
     }
     document.getElementById("result").innerText=text;
 }
