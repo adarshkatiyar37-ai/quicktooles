@@ -1,127 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>Number Base Converter - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Convert numbers between Decimal, Binary, Octal, and Hexadecimal online with WebTools.">
-<meta name="keywords" content="Number Base Converter, Decimal, Binary, Octal, Hexadecimal, WebTools">
+<title>Number Base Converter - QuickTooles</title>
+<meta name="description" content="Convert numbers between Decimal, Binary, Octal, and Hexadecimal online.">
+<meta name="keywords" content="Number Base Converter, Decimal to Binary, Hex Converter, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+
+/* Tool Container */
 .tool-container {
-    max-width: 500px;
-    margin: 50px auto;
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    text-align: center;
+    max-width:700px;
+    margin:80px auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+    color:#1e293b;
 }
+
+/* Heading */
 .tool-container h1 {
-    margin-bottom: 20px;
+    margin-bottom:20px;
+    color:#3b82f6;
 }
+
+/* Input */
 input {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    margin-top: 15px;
-    font-size: 14px;
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    margin-top:15px;
+    font-size:14px;
+    background:#f8fafc;
 }
+
+/* Button */
 button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
 }
+
 button:hover {
-    background: #2563eb;
+    background:#2563eb;
 }
+
+/* Result Box */
 .result {
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: left;
-    font-family: monospace;
-    white-space: pre-wrap;
+    margin-top:20px;
+    background:#f1f5f9;
+    padding:15px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    text-align:left;
+    font-family:monospace;
+    color:#1e293b;
 }
+
+/* Blog Section */
+.blog-section{
+    margin-top:30px;
+    padding:20px;
+    background:#f1f5f9;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    text-align:left;
+    font-size:15px;
+}
+
+.blog-section h2{
+    color:#3b82f6;
+}
+
+/* Related Tools */
 .related-tools {
-    margin-top: 30px;
-    text-align: left;
+    margin-top:30px;
+    text-align:left;
 }
-.related-tools ul {
-    list-style: none;
-    padding: 0;
+
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#3b82f6;
 }
-.related-tools ul li {
-    margin-bottom: 10px;
+
+.related-tools ul{
+    list-style:none;
+    padding:0;
 }
-.related-tools ul li a {
-    color: #3b82f6;
-    text-decoration: none;
+
+.related-tools ul li{
+    margin-bottom:10px;
 }
-.related-tools ul li a:hover {
-    text-decoration: underline;
+
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+    font-weight:500;
 }
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:25px;
+    }
+}
+
 </style>
+
 </head>
+
 <body>
+
+<header class="navbar">
+<h2 class="logo">QuickTooles</h2>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+</header>
 
 <div class="tool-container">
 
 <h1>🔢 Number Base Converter</h1>
+
+<p>Enter a decimal number and convert it into Binary, Octal, and Hexadecimal formats.</p>
 
 <input type="text" id="numberInput" placeholder="Enter Decimal Number">
 
 <button onclick="convertNumber()">Convert</button>
 
 <div class="result" id="result">
+
 <p>Binary: <span id="binary"></span></p>
 <p>Octal: <span id="octal"></span></p>
 <p>Decimal: <span id="decimal"></span></p>
 <p>Hexadecimal: <span id="hex"></span></p>
+
+</div>
+
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>How to Use Number Base Converter</h2>
+
+<p>Enter a decimal number in the input box and click the Convert button. The tool will instantly convert the number into Binary, Octal, and Hexadecimal formats. This tool is useful for programmers, developers, and students working with different number systems.</p>
+
 </div>
 
 <div class="related-tools">
+
 <h2>Related Tools</h2>
+
 <ul>
-    <li><a href="calculator.html">Online Calculator</a></li>
-    <li><a href="hex-to-rgb.html">Hex to RGB Converter</a></li>
-    <li><a href="base64-encoder.html">Base64 Encoder</a></li>
+<li><a href="json-formatter.html">JSON Formatter</a></li>
+<li><a href="js-minifier.html">JavaScript Minifier</a></li>
+<li><a href="html-minifier.html">HTML Minifier</a></li>
+<li><a href="css-minifier.html">CSS Minifier</a></li>
 </ul>
+
 </div>
 
 </div>
 
 <script>
+
 function convertNumber() {
-    let input = document.getElementById("numberInput").value.trim();
-    let num = parseInt(input);
 
-    if(isNaN(num)){
-        alert("Please enter a valid decimal number");
-        return;
-    }
+let input = document.getElementById("numberInput").value.trim();
 
-    document.getElementById("decimal").innerText = num;
-    document.getElementById("binary").innerText = num.toString(2);
-    document.getElementById("octal").innerText = num.toString(8);
-    document.getElementById("hex").innerText = num.toString(16).toUpperCase();
+let num = parseInt(input);
+
+if(isNaN(num)){
+alert("Please enter a valid decimal number");
+return;
 }
+
+document.getElementById("decimal").innerText = num;
+
+document.getElementById("binary").innerText = num.toString(2);
+
+document.getElementById("octal").innerText = num.toString(8);
+
+document.getElementById("hex").innerText = num.toString(16).toUpperCase();
+
+}
+
 </script>
 
 </body>
