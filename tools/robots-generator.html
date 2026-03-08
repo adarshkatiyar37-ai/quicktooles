@@ -1,92 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>Robots.txt Generator - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Easily generate your robots.txt file to control search engine crawlers.">
-<meta name="keywords" content="Robots.txt Generator, SEO Tools, WebTools">
+
+<title>Robots.txt Generator - QuickTooles</title>
+
+<meta name="description" content="Generate a robots.txt file easily to control how search engines crawl your website.">
+<meta name="keywords" content="Robots.txt Generator, SEO Tool, Generate Robots.txt, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
-.container{
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 500px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
-h2{
-    margin-bottom: 20px;
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+margin-top:10px;
+font-family:monospace;
+background:#f8fafc;
 }
-input, select, textarea{
-    width: 90%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    margin-top: 10px;
-    font-family: monospace;
-}
-textarea{
-    resize: none;
-    height: 80px;
-}
+
 button{
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
+
 button:hover{
-    background: #2563eb;
+background:#2563eb;
 }
+
 .result{
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: left;
-    white-space: pre-wrap;
+margin-top:20px;
+background:#f1f5f9;
+padding:15px;
+border-radius:8px;
+text-align:left;
+white-space:pre-wrap;
+font-family:monospace;
 }
+
+.download{
+margin-top:15px;
+display:none;
+color:#3b82f6;
+text-decoration:none;
+font-weight:500;
+}
+
+/* Blog */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related */
+
 .related-tools{
-    margin-top: 25px;
-    text-align: left;
+margin-top:30px;
+text-align:left;
 }
-.related-tools h3{
-    margin-bottom: 8px;
+
+.related-tools h2{
+margin-bottom:10px;
+color:#3b82f6;
 }
+
 .related-tools ul{
-    list-style: none;
-    padding-left: 0;
+list-style:none;
+padding:0;
 }
+
+.related-tools ul li{
+margin-bottom:8px;
+}
+
 .related-tools ul li a{
-    color: #3b82f6;
-    text-decoration: none;
+color:#3b82f6;
+text-decoration:none;
 }
+
 .related-tools ul li a:hover{
-    text-decoration: underline;
+text-decoration:underline;
 }
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h2>🤖 Robots.txt Generator</h2>
+<h2 class="logo">QuickTooles</h2>
+
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+
+</header>
+
+<div class="tool-container">
+
+<h1>🤖 Robots.txt Generator</h1>
+
+<p>Create a robots.txt file to control how search engines crawl your website.</p>
 
 <label>User-Agent:</label>
 <input type="text" id="userAgent" placeholder="*">
@@ -97,54 +158,82 @@ button:hover{
 <label>Allow (comma separated):</label>
 <input type="text" id="allow" placeholder="/public/, /images/">
 
-<br>
-<button onclick="generateRobots()">Generate</button>
+<button onclick="generateRobots()">Generate robots.txt</button>
 
 <div class="result" id="result">Generated robots.txt will appear here</div>
 
-<br>
-<a id="download" style="display:none;color:#3b82f6;">Download robots.txt</a>
+<a id="download" class="download">Download robots.txt</a>
+
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>What is Robots.txt?</h2>
+
+<p>The robots.txt file tells search engines which pages or sections of your website they are allowed or not allowed to crawl. 
+It helps website owners control indexing and improve SEO.</p>
+
+<p>With the QuickTooles Robots.txt Generator you can easily create a correct robots.txt file without writing code manually.</p>
+
+</div>
+
+<!-- Related Tools -->
 
 <div class="related-tools">
-<h3>Related Tools</h3>
+
+<h2>Related Tools</h2>
+
 <ul>
-    <li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
-    <li><a href="sitemap-generator.html">Sitemap Generator</a></li>
-    <li><a href="seo-analyzer.html">SEO Analyzer</a></li>
+<li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
+<li><a href="sitemap-generator.html">Sitemap Generator</a></li>
+<li><a href="seo-analyzer.html">SEO Analyzer</a></li>
+<li><a href="json-formatter.html">JSON Formatter</a></li>
 </ul>
+
 </div>
 
 </div>
 
 <script>
+
 function generateRobots(){
-    let userAgent = document.getElementById("userAgent").value || "*";
-    let disallow = document.getElementById("disallow").value.split(',').map(s=>s.trim()).filter(Boolean);
-    let allow = document.getElementById("allow").value.split(',').map(s=>s.trim()).filter(Boolean);
 
-    let content = `User-agent: ${userAgent}\n`;
+let userAgent=document.getElementById("userAgent").value||"*";
 
-    disallow.forEach(path => {
-        content += `Disallow: ${path}\n`;
-    });
+let disallow=document.getElementById("disallow").value.split(',').map(s=>s.trim()).filter(Boolean);
 
-    allow.forEach(path => {
-        content += `Allow: ${path}\n`;
-    });
+let allow=document.getElementById("allow").value.split(',').map(s=>s.trim()).filter(Boolean);
 
-    document.getElementById("result").innerText = content;
+let content=`User-agent: ${userAgent}\n`;
 
-    // Download link
-    let blob = new Blob([content], {type:"text/plain"});
-    let url = URL.createObjectURL(blob);
+disallow.forEach(path=>{
+content+=`Disallow: ${path}\n`;
+});
 
-    let link = document.getElementById("download");
-    link.href = url;
-    link.download = "robots.txt";
-    link.style.display = "block";
-    link.innerText = "Download robots.txt";
+allow.forEach(path=>{
+content+=`Allow: ${path}\n`;
+});
+
+document.getElementById("result").innerText=content;
+
+let blob=new Blob([content],{type:"text/plain"});
+
+let url=URL.createObjectURL(blob);
+
+let link=document.getElementById("download");
+
+link.href=url;
+
+link.download="robots.txt";
+
+link.style.display="block";
+
+link.innerText="Download robots.txt";
+
 }
+
 </script>
 
 </body>
+
 </html>
