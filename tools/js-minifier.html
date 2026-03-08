@@ -15,19 +15,21 @@
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
-    color:#f8fafc;
+    color:#1e293b;
 }
 
+/* Heading */
 .tool-container h1 {
     margin-bottom:20px;
     color:#3b82f6;
 }
 
+/* Paragraph */
 .tool-container p{
     margin-bottom:25px;
     font-size:16px;
@@ -36,18 +38,18 @@
 /* Textarea */
 textarea {
     width:100%;
-    height:180px;
+    height:160px;
     padding:12px;
-    border:none;
+    border:1px solid #cbd5e1;
     border-radius:6px;
     font-family:monospace;
     font-size:14px;
     margin-top:15px;
 }
 
-/* Buttons */
+/* Button */
 button {
-    margin-top:20px;
+    margin-top:15px;
     padding:10px 25px;
     border:none;
     border-radius:6px;
@@ -64,8 +66,9 @@ button:hover {
 /* Result Box */
 .result {
     margin-top:20px;
-    background:#0f172a;
+    background:#f1f5f9;
     padding:15px;
+    border:1px solid #cbd5e1;
     border-radius:6px;
     min-height:80px;
     text-align:left;
@@ -73,8 +76,24 @@ button:hover {
     white-space:pre-wrap;
 }
 
+/* Blog / Guidance Section */
+.blog-section{
+    margin-top:30px;
+    padding:20px;
+    background:#f1f5f9;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    text-align:left;
+    font-size:15px;
+}
+
+.blog-section h2{
+    color:#3b82f6;
+    margin-bottom:10px;
+}
+
 /* Related Tools */
-.related-tools{
+.related-tools {
     margin-top:30px;
     text-align:left;
 }
@@ -104,24 +123,10 @@ button:hover {
     text-decoration:underline;
 }
 
-.blog-section{
-    margin-top:30px;
-    padding:20px;
-    background:#0f172a;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-    text-align:left;
-    font-size:15px;
-}
-
-.blog-section h2{
-    color:#3b82f6;
-}
-
 @media(max-width:600px){
     .tool-container{
         margin:50px 20px;
-        padding:30px;
+        padding:25px;
     }
 }
 </style>
@@ -142,18 +147,18 @@ button:hover {
 
 <h1>🛠 JavaScript Minifier</h1>
 
-<p>Paste your JavaScript code below and click Minify to remove comments, whitespace and minify it instantly.</p>
+<p>Paste your JavaScript code below and click <strong>Minify JS</strong> to remove comments, extra spaces, and line breaks instantly.</p>
 
 <textarea id="jsInput" placeholder="Paste your JavaScript here..."></textarea>
 
 <button onclick="minifyJS()">Minify JS</button>
 
-<div class="result" id="result"></div>
+<div class="result" id="result" placeholder="Minified JS will appear here..."></div>
 
-<!-- Blog Section for SEO -->
+<!-- Blog / Guidance Section -->
 <div class="blog-section">
 <h2>How to Use JavaScript Minifier</h2>
-<p>Copy your JavaScript code into the input box above. Click the "Minify JS" button to remove all comments, unnecessary spaces, and line breaks. The minified code will appear below in the result box, ready for use in production or deployment.</p>
+<p>Copy your JavaScript code into the textarea above. Click the "Minify JS" button to remove all comments, unnecessary spaces, and line breaks. The minified code will appear below in the result box, ready for use in production or deployment.</p>
 </div>
 
 <div class="related-tools">
@@ -169,7 +174,7 @@ button:hover {
 </div>
 
 <script>
-function minifyJS(){
+function minifyJS() {
     let js = document.getElementById("jsInput").value;
 
     if(!js.trim()){
