@@ -1,76 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>PNG to JPG Converter - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Convert PNG images to JPG online easily with this PNG to JPG Converter tool.">
-<meta name="keywords" content="PNG to JPG, Image Converter, Online Tools">
+
+<title>PNG to JPG Converter - QuickTooles</title>
+
+<meta name="description" content="Convert PNG images to JPG online easily with QuickTooles PNG to JPG Converter.">
+<meta name="keywords" content="PNG to JPG Converter, Image Converter, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
-.container{
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 500px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
-h2{
-    margin-bottom: 20px;
-}
+
 input[type="file"]{
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 6px;
-    border: none;
-    width: 80%;
+margin-top:15px;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+width:100%;
+background:#f8fafc;
 }
+
 button{
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
+
 button:hover{
-    background: #2563eb;
+background:#2563eb;
 }
+
 img{
-    margin-top: 20px;
-    max-width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+margin-top:20px;
+max-width:100%;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
+
 #download{
-    display: none;
-    margin-top: 15px;
-    color: #3b82f6;
-    font-weight: bold;
-    text-decoration: none;
+display:none;
+margin-top:15px;
+color:#3b82f6;
+font-weight:bold;
+text-decoration:none;
 }
+
+#download:hover{
+text-decoration:underline;
+}
+
+/* Blog Section */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+font-size:15px;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related Tools */
+
+.related-tools{
+margin-top:30px;
+text-align:left;
+}
+
+.related-tools h2{
+font-size:20px;
+margin-bottom:15px;
+color:#3b82f6;
+}
+
+.related-tools ul{
+list-style:none;
+padding:0;
+}
+
+.related-tools ul li{
+margin-bottom:10px;
+}
+
+.related-tools ul li a{
+color:#3b82f6;
+text-decoration:none;
+font-weight:500;
+}
+
+.related-tools ul li a:hover{
+text-decoration:underline;
+}
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="container">
-<h2>🖼️ PNG to JPG Converter</h2>
+<header class="navbar">
+
+<h2 class="logo">QuickTooles</h2>
+
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+
+</header>
+
+<div class="tool-container">
+
+<h1>🖼️ PNG to JPG Converter</h1>
+
+<p>Upload a PNG image and convert it to JPG instantly.</p>
 
 <input type="file" id="upload" accept="image/png">
-
-<br>
 
 <img id="preview" alt="Image Preview">
 
@@ -84,51 +166,93 @@ img{
 
 <canvas id="canvas" style="display:none;"></canvas>
 
-<div class="related-tools" style="margin-top:20px; text-align:left;">
-<h3>Related Tools</h3>
-<ul style="list-style:none; padding-left:0;">
-    <li><a href="image-compressor.html" style="color:#3b82f6; text-decoration:none;">Image Compressor</a></li>
-    <li><a href="image-converter.html" style="color:#3b82f6; text-decoration:none;">Image Converter</a></li>
-    <li><a href="jpg-to-png.html" style="color:#3b82f6; text-decoration:none;">JPG to PNG Converter</a></li>
-</ul>
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>How to Use PNG to JPG Converter</h2>
+
+<p>This tool allows you to convert PNG images into JPG format quickly. 
+Simply upload your PNG image using the file upload option, click the 
+Convert button, and download the JPG version instantly. This is useful 
+for reducing file size or making images compatible with platforms that 
+require JPG format.</p>
+
 </div>
+
+<!-- Related Tools -->
+
+<div class="related-tools">
+
+<h2>Related Tools</h2>
+
+<ul>
+<li><a href="image-compressor.html">Image Compressor</a></li>
+<li><a href="image-converter.html">Image Converter</a></li>
+<li><a href="jpg-to-png.html">JPG to PNG Converter</a></li>
+<li><a href="qr-code-generator.html">QR Code Generator</a></li>
+</ul>
+
+</div>
+
 </div>
 
 <script>
+
 let img = new Image();
 
 document.getElementById("upload").addEventListener("change", function(e){
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(event){
-        img.src = event.target.result;
-        document.getElementById("preview").src = event.target.result;
-    }
-    reader.readAsDataURL(file);
+
+const file = e.target.files[0];
+
+const reader = new FileReader();
+
+reader.onload = function(event){
+
+img.src = event.target.result;
+
+document.getElementById("preview").src = event.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
 });
 
 function convertImage(){
-    if(!img.src){
-        alert("Please select a PNG image first!");
-        return;
-    }
 
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
+if(!img.src){
 
-    canvas.width = img.width;
-    canvas.height = img.height;
+alert("Please select a PNG image first!");
 
-    ctx.drawImage(img,0,0);
+return;
 
-    let jpg = canvas.toDataURL("image/jpeg", 0.9);
-
-    let link = document.getElementById("download");
-    link.href = jpg;
-    link.download = "converted-image.jpg";
-    link.style.display = "block";
-    link.innerText = "Download JPG";
 }
+
+let canvas = document.getElementById("canvas");
+
+let ctx = canvas.getContext("2d");
+
+canvas.width = img.width;
+
+canvas.height = img.height;
+
+ctx.drawImage(img,0,0);
+
+let jpg = canvas.toDataURL("image/jpeg",0.9);
+
+let link = document.getElementById("download");
+
+link.href = jpg;
+
+link.download = "converted-image.jpg";
+
+link.style.display = "block";
+
+link.innerText = "Download JPG";
+
+}
+
 </script>
 
 </body>
