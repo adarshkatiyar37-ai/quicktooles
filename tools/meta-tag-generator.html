@@ -1,98 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meta Tag Generator - WebTools</title>
+<title>Meta Tag Generator - QuickTooles</title>
 <meta name="description" content="Online Meta Tag Generator. Quickly generate SEO meta tags for your website.">
-<meta name="keywords" content="Meta Tag Generator, SEO Meta Tags, HTML Meta, WebTools">
+<meta name="keywords" content="Meta Tag Generator, SEO Meta Tags, HTML Meta, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
 
+/* Tool Container */
 .tool-container {
-    max-width: 600px;
-    margin: 80px auto;
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    text-align: center;
+    max-width:700px;
+    margin:80px auto;
+    background:#ffffff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+    color:#1e293b;
 }
 
+/* Heading */
 .tool-container h1 {
-    margin-bottom: 20px;
+    margin-bottom:20px;
+    color:#3b82f6;
 }
 
+/* Inputs */
 input, textarea {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    margin-top: 10px;
-    font-size: 14px;
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    margin-top:12px;
+    font-size:14px;
+    background:#f8fafc;
+    color:#1e293b;
 }
 
+/* Button */
 button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
 }
 
 button:hover {
-    background: #2563eb;
+    background:#2563eb;
 }
 
+/* Result Box */
 .result {
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 15px;
-    border-radius: 6px;
-    text-align: left;
-    white-space: pre-wrap;
-    font-family: monospace;
+    margin-top:20px;
+    background:#f1f5f9;
+    padding:15px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    text-align:left;
+    white-space:pre-wrap;
+    font-family:monospace;
+    color:#1e293b;
 }
 
+/* Blog Section */
+.blog-section{
+    margin-top:30px;
+    padding:20px;
+    background:#f1f5f9;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    text-align:left;
+    font-size:15px;
+}
+
+.blog-section h2{
+    color:#3b82f6;
+}
+
+/* Related Tools */
 .related-tools {
-    margin-top: 30px;
-    text-align: left;
+    margin-top:30px;
+    text-align:left;
 }
 
-.related-tools ul {
-    list-style: none;
-    padding: 0;
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#3b82f6;
 }
 
-.related-tools ul li {
-    margin-bottom: 10px;
+.related-tools ul{
+    list-style:none;
+    padding:0;
 }
 
-.related-tools ul li a {
-    color: #3b82f6;
-    text-decoration: none;
+.related-tools ul li{
+    margin-bottom:10px;
 }
 
-.related-tools ul li a:hover {
-    text-decoration: underline;
+.related-tools ul li a{
+    color:#3b82f6;
+    text-decoration:none;
+    font-weight:500;
 }
+
+.related-tools ul li a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:25px;
+    }
+}
+
 </style>
+
 </head>
 
 <body>
+
+<header class="navbar">
+<h2 class="logo">QuickTooles</h2>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+</header>
 
 <div class="tool-container">
 
@@ -110,39 +154,53 @@ button:hover {
 
 <div class="result" id="result"></div>
 
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>How to Use Meta Tag Generator</h2>
+
+<p>Enter your website title, description, keywords, and author name. Click the Generate Meta Tags button and the tool will instantly create SEO meta tags that you can copy and paste into your website's HTML head section.</p>
+
+</div>
+
 <div class="related-tools">
 <h2>Related Tools</h2>
 <ul>
-    <li><a href="meta-validator.html">Meta Tag Validator</a></li>
-    <li><a href="seo-analyzer.html">SEO Analyzer</a></li>
-    <li><a href="html-minifier.html">HTML Minifier</a></li>
-    <li><a href="json-formatter.html">JSON Formatter</a></li>
+<li><a href="json-formatter.html">JSON Formatter</a></li>
+<li><a href="js-minifier.html">JavaScript Minifier</a></li>
+<li><a href="html-minifier.html">HTML Minifier</a></li>
+<li><a href="css-minifier.html">CSS Minifier</a></li>
 </ul>
 </div>
 
 </div>
 
 <script>
+
 function generateMeta() {
-    let title = document.getElementById("title").value.trim();
-    let desc = document.getElementById("description").value.trim();
-    let keywords = document.getElementById("keywords").value.trim();
-    let author = document.getElementById("author").value.trim();
 
-    if(!title && !desc && !keywords && !author){
-        document.getElementById("result").innerText = "Please enter at least one field!";
-        return;
-    }
+let title = document.getElementById("title").value.trim();
+let desc = document.getElementById("description").value.trim();
+let keywords = document.getElementById("keywords").value.trim();
+let author = document.getElementById("author").value.trim();
 
-    let metaTags = 
+if(!title && !desc && !keywords && !author){
+document.getElementById("result").innerText = "Please enter at least one field!";
+return;
+}
+
+let metaTags =
 `<title>${title}</title>
 <meta name="description" content="${desc}">
 <meta name="keywords" content="${keywords}">
 <meta name="author" content="${author}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">`;
 
-    document.getElementById("result").innerText = metaTags;
+document.getElementById("result").innerText = metaTags;
+
 }
+
 </script>
 
 </body>
