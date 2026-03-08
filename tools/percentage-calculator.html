@@ -1,119 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>Percentage Calculator - WebTools</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Calculate percentage of any number online easily with this Percentage Calculator tool.">
-<meta name="keywords" content="Percentage Calculator, Online Calculator, WebTools">
+
+<title>Percentage Calculator - QuickTooles</title>
+
+<meta name="description" content="Calculate percentage of any number online easily with QuickTooles Percentage Calculator.">
+<meta name="keywords" content="Percentage Calculator, Online Calculator, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
-.container{
-    background: #1e293b;
-    padding: 30px;
-    border-radius: 12px;
-    width: 400px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
-h2{
-    margin-bottom: 20px;
-}
+
 input{
-    width: 120px;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 6px;
-    text-align: center;
-    font-size: 16px;
+width:130px;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:6px;
+margin-top:15px;
+font-size:14px;
+background:#f8fafc;
+text-align:center;
 }
+
 button{
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #3b82f6;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+font-size:15px;
 }
+
 button:hover{
-    background: #2563eb;
+background:#2563eb;
 }
+
 .result{
-    margin-top: 20px;
-    background: #0f172a;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: bold;
+margin-top:20px;
+padding:15px;
+background:#f1f5f9;
+border-radius:6px;
+font-weight:bold;
 }
+
+/* Blog Section */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+font-size:15px;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related Tools */
+
 .related-tools{
-    margin-top: 25px;
-    text-align: left;
+margin-top:30px;
+text-align:left;
 }
+
+.related-tools h2{
+font-size:20px;
+margin-bottom:15px;
+color:#3b82f6;
+}
+
 .related-tools ul{
-    list-style: none;
-    padding: 0;
+list-style:none;
+padding:0;
 }
+
 .related-tools ul li{
-    margin-bottom: 10px;
+margin-bottom:10px;
 }
+
 .related-tools ul li a{
-    color: #3b82f6;
-    text-decoration: none;
+color:#3b82f6;
+text-decoration:none;
+font-weight:500;
 }
+
 .related-tools ul li a:hover{
-    text-decoration: underline;
+text-decoration:underline;
 }
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="container">
-<h2>📊 Percentage Calculator</h2>
+<header class="navbar">
+
+<h2 class="logo">QuickTooles</h2>
+
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
+
+</header>
+
+<div class="tool-container">
+
+<h1>📊 Percentage Calculator</h1>
+
+<p>Enter percentage and number to calculate the result instantly.</p>
+
+<br>
 
 <input type="number" id="percent" placeholder="%">
-<span>of</span>
+
+<span> of </span>
+
 <input type="number" id="number" placeholder="Number">
+
 <br>
+
 <button onclick="calculate()">Calculate</button>
 
-<div class="result" id="result">Result will appear here</div>
+<div class="result" id="result">
+Result will appear here
+</div>
+
+<!-- Blog Section -->
+
+<div class="blog-section">
+
+<h2>How to Use Percentage Calculator</h2>
+
+<p>This tool helps you calculate the percentage of any number quickly. 
+Simply enter the percentage value and the number. For example, if you want 
+to find 25% of 200, just enter 25 and 200 and click calculate. The result 
+will appear instantly. This tool is useful for students, shopping discounts, 
+business calculations, and everyday math problems.</p>
+
+</div>
+
+<!-- Related Tools -->
 
 <div class="related-tools">
-<h3>Related Tools</h3>
+
+<h2>Related Tools</h2>
+
 <ul>
-    <li><a href="calculator.html">Simple Calculator</a></li>
-    <li><a href="discount-calculator.html">Discount Calculator</a></li>
-    <li><a href="emicalculator.html">EMI Calculator</a></li>
+<li><a href="emicalculator.html">EMI Calculator</a></li>
+<li><a href="password-generator.html">Password Generator</a></li>
 </ul>
+
 </div>
+
 </div>
 
 <script>
+
 function calculate(){
-    let percent = parseFloat(document.getElementById("percent").value);
-    let number = parseFloat(document.getElementById("number").value);
 
-    if(isNaN(percent) || isNaN(number)){
-        alert("Please enter valid numbers");
-        return;
-    }
+let percent = parseFloat(document.getElementById("percent").value);
 
-    let result = (percent/100)*number;
-    document.getElementById("result").innerHTML = "Result: " + result;
+let number = parseFloat(document.getElementById("number").value);
+
+if(isNaN(percent) || isNaN(number)){
+alert("Please enter valid numbers");
+return;
 }
+
+let result = (percent/100)*number;
+
+document.getElementById("result").innerHTML = "Result: " + result;
+
+}
+
 </script>
 
 </body>
