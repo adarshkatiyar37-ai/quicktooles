@@ -7,75 +7,129 @@
 
 <title>Image Color Picker - WebTools</title>
 <meta name="description" content="Pick colors from any image using this free online Image Color Picker tool. Get HEX and RGB values easily.">
-<meta name="keywords" content="Image Color Picker, color picker online, HEX color picker, RGB color picker">
+<meta name="keywords" content="Image Color Picker, color picker online, HEX color picker, RGB color picker, webtools">
 <meta name="robots" content="index, follow">
 
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
-input[type="file"] {
+.tool-container p{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* File Input */
+input[type="file"]{
     margin-top:10px;
+    padding:8px;
+    border-radius:6px;
+    border:1px solid #cbd5e1;
+    cursor:pointer;
 }
 
+/* Canvas */
 canvas {
     margin-top:20px;
     max-width:100%;
-    border-radius:6px;
+    border-radius:8px;
     cursor:crosshair;
+    border:1px solid #cbd5e1;
 }
 
+/* Color Box */
 .color-box {
     margin-top:20px;
     height:60px;
-    border-radius:6px;
+    border-radius:8px;
     border:2px solid #3b82f6;
 }
 
-.result {
+/* Result */
+.result{
     margin-top:15px;
-    background:#0f172a;
-    padding:12px;
-    border-radius:6px;
+    background:#f1f5f9;
+    padding:15px;
+    border-radius:8px;
     font-family:monospace;
     word-break: break-word;
 }
 
-.related-tools {
+/* Blog Section */
+.blog-section{
+    margin-top:40px;
+    background:#f8fafc;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:22px;
+    margin-bottom:12px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:12px;
+}
+
+/* Related Tools */
+.related-tools{
     margin-top:30px;
     text-align:left;
 }
 
-.related-tools ul {
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.related-tools ul{
     list-style:none;
     padding:0;
 }
 
-.related-tools ul li {
+.related-tools ul li{
     margin-bottom:10px;
 }
 
-.related-tools ul li a {
+.related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
-.related-tools ul li a:hover {
+.related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
 }
 </style>
 
@@ -94,7 +148,6 @@ canvas {
 <div class="tool-container">
 
 <h1>🎨 Image Color Picker</h1>
-
 <p>Upload an image and click on it to get HEX and RGB values of any pixel.</p>
 
 <input type="file" id="upload">
@@ -106,6 +159,14 @@ canvas {
 <div class="result">
 <p><b>HEX:</b> <span id="hex"></span></p>
 <p><b>RGB:</b> <span id="rgb"></span></p>
+</div>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>How to Use the Image Color Picker</h2>
+<p>This tool allows you to extract the color information of any pixel in your image. Simply upload an image, click on the area of the image you want to pick, and the tool will display the HEX and RGB values instantly.</p>
+<p>You can use these values for web design, graphic design, or any other creative project.</p>
+<p>This is especially helpful for designers and developers to ensure color accuracy in their work.</p>
 </div>
 
 <div class="related-tools">
