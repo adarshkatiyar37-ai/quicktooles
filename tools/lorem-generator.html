@@ -2,101 +2,121 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Lorem Ipsum Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lorem Ipsum Generator - WebTools</title>
 
 <style>
-
+/* Body */
 body{
-font-family:Arial, sans-serif;
-background:#0f172a;
-color:white;
-margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:50px 20px;
 }
 
+/* Container */
 .container{
-background:#1e293b;
-padding:30px;
-border-radius:10px;
-width:600px;
-text-align:center;
+    background:#1e293b;
+    padding:30px 40px;
+    border-radius:15px;
+    width:100%;
+    max-width:600px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
+/* Heading */
+.container h2{
+    color:#3b82f6;
+    margin-bottom:20px;
+}
+
+/* Input */
 input{
-padding:10px;
-border:none;
-border-radius:6px;
-width:80px;
-margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    width:80px;
+    margin-top:10px;
+    text-align:center;
 }
 
+/* Button */
 button{
-margin-top:15px;
-padding:10px 20px;
-border:none;
-border-radius:6px;
-background:#3b82f6;
-color:white;
-cursor:pointer;
+    margin-top:15px;
+    padding:10px 25px;
+    border:none;
+    border-radius:6px;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
 }
 
 button:hover{
-background:#2563eb;
+    background:#2563eb;
 }
 
+/* Result Box */
 .result{
-margin-top:20px;
-background:#0f172a;
-padding:15px;
-border-radius:6px;
-text-align:left;
+    margin-top:20px;
+    background:#0f172a;
+    padding:15px;
+    border-radius:6px;
+    text-align:left;
+    font-family:monospace;
+    max-height:400px;
+    overflow-y:auto;
 }
 
+/* Responsive */
+@media(max-width:600px){
+    .container{
+        padding:25px 20px;
+    }
+}
 </style>
 
 </head>
-
 <body>
 
 <div class="container">
 
-<h2>Lorem Ipsum Generator</h2>
+<h2>📝 Lorem Ipsum Generator</h2>
 
 <label>Number of Paragraphs:</label>
-
 <br>
-
 <input type="number" id="count" value="1" min="1" max="20">
-
 <br>
-
 <button onclick="generateLorem()">Generate</button>
 
 <div class="result" id="result"></div>
 
+<!-- Blog / SEO Section -->
+<div class="blog-section" style="margin-top:30px; padding:20px; background:#0f172a; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.2); text-align:left; font-size:15px;">
+<h3 style="color:#3b82f6;">How to Use Lorem Ipsum Generator</h3>
+<p>Enter the number of paragraphs you want in the input box and click "Generate". The tool will produce placeholder text instantly, which you can copy and use for design mockups, templates, or content testing.</p>
+</div>
+
 </div>
 
 <script>
-
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.";
 
 function generateLorem(){
-
-let count=document.getElementById("count").value;
-
-let output="";
-
-for(let i=0;i<count;i++){
-output += "<p>"+lorem+"</p>";
+    let count = document.getElementById("count").value;
+    if(count < 1) count = 1;
+    let output = "";
+    for(let i=0; i<count; i++){
+        output += "<p>"+lorem+"</p>";
+    }
+    document.getElementById("result").innerHTML = output;
 }
-
-document.getElementById("result").innerHTML=output;
-
-}
-
 </script>
 
 </body>
