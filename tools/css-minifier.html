@@ -16,57 +16,104 @@
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Textarea */
 textarea {
     width:100%;
     height:160px;
     padding:12px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
     margin-top:15px;
     font-family:monospace;
+    transition:0.3s;
 }
 
+textarea:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.2);
+}
+
+/* Button */
 button {
     margin-top:15px;
     padding:12px 20px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#3b82f6;
     color:white;
     cursor:pointer;
     font-size:16px;
+    transition:0.3s;
 }
 
 button:hover{
     background:#2563eb;
 }
 
+/* Result */
 .result{
     margin-top:20px;
-    background:#0f172a;
-    padding:15px;
-    border-radius:6px;
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:8px;
     min-height:80px;
     text-align:left;
     font-family:monospace;
     word-break: break-word;
 }
 
+/* Blog Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -81,13 +128,20 @@ button:hover{
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
 }
-</style>
 
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -103,16 +157,20 @@ button:hover{
 <div class="tool-container">
 
 <h1>🎯 CSS Minifier</h1>
-
 <p>Paste your CSS code below and click Minify to compress it.</p>
 
 <textarea id="cssInput" placeholder="Paste your CSS here..."></textarea>
-
 <br>
-
 <button onclick="minifyCSS()">Minify CSS</button>
 
 <div class="result" id="result"></div>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>About This Tool</h2>
+<p>This CSS Minifier helps developers reduce the size of CSS files by removing unnecessary spaces, comments, and line breaks. Minified CSS files load faster and improve website performance.</p>
+<p>Simply paste your CSS code, click the Minify button, and get the optimized CSS instantly. Use this tool for web development, optimization, and improving page load speed.</p>
+</div>
 
 <div class="related-tools">
     <h2>Related Tools</h2>
