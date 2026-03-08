@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>URL Decoder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>URL Decoder - QuickTooles</title>
+
+<meta name="description" content="Decode encoded URLs instantly using the QuickTooles URL Decoder tool.">
+<meta name="keywords" content="URL Decoder, Decode URL, URL Encoding, Online Tools, QuickTooles">
+
+<link rel="stylesheet" href="../style.css">
 
 <style>
-body{
-font-family:Arial, sans-serif;
-background:#0f172a;
-color:white;
-margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+
+.tool-container{
+max-width:700px;
+margin:80px auto;
+background:#ffffff;
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+color:#1e293b;
 }
 
-.container{
-background:#1e293b;
-padding:30px;
-border-radius:10px;
-width:500px;
-text-align:center;
+.tool-container h1{
+margin-bottom:20px;
+color:#3b82f6;
 }
 
 textarea{
-width:90%;
+width:100%;
 padding:12px;
-border:none;
+border:1px solid #cbd5e1;
 border-radius:6px;
 margin-top:10px;
 resize:none;
+font-family:monospace;
+height:120px;
+background:#f8fafc;
 }
 
 button{
-margin-top:15px;
-padding:10px 20px;
+margin-top:20px;
+padding:12px 25px;
 border:none;
 border-radius:6px;
 background:#3b82f6;
 color:white;
 cursor:pointer;
-font-size:16px;
+font-size:15px;
 }
 
 button:hover{
@@ -50,42 +60,151 @@ background:#2563eb;
 
 .result{
 margin-top:20px;
-background:#0f172a;
+background:#f1f5f9;
 padding:15px;
-border-radius:6px;
+border-radius:8px;
 text-align:left;
 word-break:break-word;
+font-family:monospace;
 }
+
+/* Blog */
+
+.blog-section{
+margin-top:30px;
+padding:20px;
+background:#f1f5f9;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.blog-section h2{
+color:#3b82f6;
+}
+
+/* Related tools */
+
+.related-tools{
+margin-top:30px;
+text-align:left;
+}
+
+.related-tools h2{
+margin-bottom:10px;
+color:#3b82f6;
+}
+
+.related-tools ul{
+list-style:none;
+padding:0;
+}
+
+.related-tools ul li{
+margin-bottom:8px;
+}
+
+.related-tools ul li a{
+color:#3b82f6;
+text-decoration:none;
+}
+
+.related-tools ul li a:hover{
+text-decoration:underline;
+}
+
+@media(max-width:600px){
+.tool-container{
+margin:50px 20px;
+padding:25px;
+}
+}
+
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<header class="navbar">
 
-<h2>URL Decoder</h2>
+<h2 class="logo">QuickTooles</h2>
 
-<textarea id="urlInput" rows="5" placeholder="Enter encoded URL here"></textarea>
+<nav>
+<a href="../index.html">Home</a>
+<a href="../index.html">All Tools</a>
+</nav>
 
-<br>
+</header>
+
+<div class="tool-container">
+
+<h1>🔗 URL Decoder</h1>
+
+<p>Decode encoded URLs instantly.</p>
+
+<textarea id="urlInput" placeholder="Enter encoded URL here"></textarea>
 
 <button onclick="decodeURL()">Decode URL</button>
 
 <div class="result" id="result">Decoded URL will appear here</div>
 
+<!-- Blog -->
+
+<div class="blog-section">
+
+<h2>What is URL Decoding?</h2>
+
+<p>URL decoding converts encoded URL characters back into their original readable format. Encoded URLs often contain symbols like %20 which represent spaces.</p>
+
+<p>The QuickTooles URL Decoder allows you to quickly convert encoded URLs into normal readable text, which is useful for developers and web debugging.</p>
+
+</div>
+
+<!-- Related Tools -->
+
+<div class="related-tools">
+
+<h2>Related Tools</h2>
+
+<ul>
+
+<li><a href="url-encoder.html">URL Encoder</a></li>
+
+<li><a href="base64-encoder.html">Base64 Encoder</a></li>
+
+<li><a href="json-formatter.html">JSON Formatter</a></li>
+
+</ul>
+
+</div>
+
 </div>
 
 <script>
+
 function decodeURL(){
+
 let input=document.getElementById("urlInput").value;
+
 try{
+
 let decoded=decodeURIComponent(input);
+
 document.getElementById("result").innerText=decoded;
-}catch(e){
+
+}
+
+catch(e){
+
 document.getElementById("result").innerText="Invalid URL encoding!";
+
 }
+
 }
+
 </script>
 
 </body>
+
 </html>
