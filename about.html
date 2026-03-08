@@ -6,21 +6,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About QuickTooles</title>
 <link rel="stylesheet" href="style.css">
+
 <style>
 /* About Page Custom Styling */
 
 body {
   background: #f9f9f9;
   color: #111;
+  font-family: Arial, sans-serif;
 }
 
 .navbar {
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
 .navbar a {
   color: #111;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.navbar a:hover {
+  color: #2563eb;
 }
 
 .about-hero {
@@ -103,8 +115,7 @@ footer {
   position: relative;
 }
 
-/* Bottom Left Social Icons */
-
+/* Bottom Left Social Icons (hidden initially) */
 .bottom-left-icons {
   position: fixed;
   bottom: 20px;
@@ -112,24 +123,42 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s ease;
   z-index: 1000;
 }
 
-.bottom-left-icons a img {
-  width: 40px;
-  height: 40px;
-  transition: 0.3s;
+.bottom-left-icons.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.bottom-left-icons a img:hover {
+.bottom-left-icons img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.bottom-left-icons img:hover {
   transform: scale(1.1);
 }
 
 /* Responsive */
-
 @media(max-width:600px){
   .features {
     grid-template-columns: 1fr;
+  }
+  .bottom-left-icons {
+    bottom: 15px;
+    left: 10px;
+    gap: 8px;
+  }
+  .bottom-left-icons img {
+    width: 30px;
+    height: 30px;
   }
 }
 </style>
@@ -199,6 +228,21 @@ footer {
 <footer>
   <p>© 2026 QuickTooles. All Rights Reserved.</p>
 </footer>
+
+<script>
+// Scroll JS for showing icons near footer
+window.addEventListener("scroll", function() {
+  const icons = document.querySelector(".bottom-left-icons");
+  const scrollPosition = window.scrollY + window.innerHeight;
+  const pageHeight = document.body.offsetHeight;
+
+  if(scrollPosition > pageHeight - 250){
+    icons.classList.add("show");
+  } else {
+    icons.classList.remove("show");
+  }
+});
+</script>
 
 </body>
 </html>
