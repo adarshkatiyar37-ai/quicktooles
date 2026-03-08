@@ -16,60 +16,109 @@
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     text-align:center;
     margin-bottom:20px;
+    color:#2563eb;
 }
 
-input {
+.tool-container p{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Input */
+input{
     width:100%;
     padding:12px;
-    border:none;
-    border-radius:6px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:16px;
     margin-top:10px;
+    transition:0.3s;
 }
 
+input:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 8px rgba(59,130,246,0.2);
+}
+
+/* Button */
 button {
     margin-top:15px;
     padding:12px 20px;
     border:none;
-    border-radius:6px;
+    border-radius:8px;
     background:#3b82f6;
     color:white;
     cursor:pointer;
     font-size:16px;
+    transition:0.3s;
 }
 
 button:hover{
     background:#2563eb;
 }
 
-.preview {
+/* Preview */
+.preview{
     margin-top:20px;
     height:80px;
-    border-radius:6px;
+    border-radius:8px;
     border:1px solid #3b82f6;
 }
 
+/* Result */
 .result{
     margin-top:20px;
-    background:#0f172a;
-    padding:15px;
-    border-radius:6px;
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:8px;
     text-align:left;
-    word-break: break-word;
+    word-break:break-word;
 }
 
+/* Blog Section */
+.blog-section{
+    margin-top:50px;
+    background:#f8fafc;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+    line-height:1.7;
+    color:#1e293b;
+}
+
+.blog-section h2{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.blog-section p{
+    margin-bottom:15px;
+}
+
+/* Related Tools */
 .related-tools{
     margin-top:40px;
     text-align:left;
+}
+
+.related-tools h2{
+    font-size:22px;
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
 .related-tools ul{
@@ -84,13 +133,20 @@ button:hover{
 .related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
 .related-tools ul li a:hover{
     text-decoration:underline;
 }
-</style>
 
+@media(max-width:768px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -106,11 +162,9 @@ button:hover{
 <div class="tool-container">
 
 <h1>🎨 Color Code Converter</h1>
-
 <p>Convert HEX color codes to RGB and HSL instantly</p>
 
 <input type="text" id="colorInput" placeholder="Enter HEX color (example: #ff0000)">
-
 <button onclick="convertColor()">Convert</button>
 
 <div class="preview" id="preview"></div>
@@ -119,6 +173,13 @@ button:hover{
 <p><b>HEX:</b> <span id="hex"></span></p>
 <p><b>RGB:</b> <span id="rgb"></span></p>
 <p><b>HSL:</b> <span id="hsl"></span></p>
+</div>
+
+<!-- Blog Section -->
+<div class="blog-section">
+<h2>About This Tool</h2>
+<p>This Color Code Converter allows designers and developers to quickly convert HEX codes into RGB and HSL values. It helps you preview colors instantly and ensures accuracy in your web projects, design systems, and applications.</p>
+<p>Simply enter a valid HEX code (starting with #), click Convert, and see the results immediately. You can use this tool for learning, coding, or graphic design purposes.</p>
 </div>
 
 <div class="related-tools">
