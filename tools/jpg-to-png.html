@@ -11,28 +11,38 @@
 <link rel="stylesheet" href="../style.css">
 
 <style>
+/* Tool Container */
 .tool-container {
     max-width:700px;
     margin:80px auto;
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background:#ffffff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     text-align:center;
+    color:#1e293b;
 }
 
 .tool-container h1 {
     margin-bottom:20px;
+    color:#2563eb;
 }
 
+.tool-container p{
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+/* Inputs */
 input[type="file"] {
     margin-top:10px;
     padding:10px;
     border-radius:6px;
-    border:none;
+    border:1px solid #cbd5e1;
     width:90%;
 }
 
+/* Buttons */
 button {
     margin-top:15px;
     padding:10px 20px;
@@ -48,39 +58,57 @@ button:hover {
     background:#2563eb;
 }
 
-img {
+/* Images & Canvas */
+img, canvas {
     margin-top:20px;
     max-width:100%;
     border-radius:6px;
 }
 
-canvas {
-    margin-top:20px;
-    max-width:100%;
-    border-radius:6px;
+/* Download Link */
+a#download{
+    display:block;
+    margin-top:15px;
+    color:#3b82f6;
+    font-weight:500;
 }
 
-.related-tools {
+/* Related Tools */
+.related-tools{
     margin-top:30px;
     text-align:left;
 }
 
-.related-tools ul {
+.related-tools h2{
+    font-size:20px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.related-tools ul{
     list-style:none;
     padding:0;
 }
 
-.related-tools ul li {
+.related-tools ul li{
     margin-bottom:10px;
 }
 
-.related-tools ul li a {
+.related-tools ul li a{
     color:#3b82f6;
     text-decoration:none;
+    font-weight:500;
 }
 
-.related-tools ul li a:hover {
+.related-tools ul li a:hover{
     text-decoration:underline;
+}
+
+@media(max-width:600px){
+    .tool-container{
+        margin:50px 20px;
+        padding:30px;
+    }
 }
 </style>
 
@@ -100,21 +128,23 @@ canvas {
 
 <h1>🖼 JPG to PNG Converter</h1>
 
-<p>Upload a JPG image to convert it into PNG format.</p>
+<p>Upload a JPG image to convert it into PNG format instantly.</p>
 
 <input type="file" id="upload" accept="image/jpeg">
 
-<img id="preview" alt="Image Preview">
+<img id="preview" alt="Image Preview" style="display:none;">
 
-<canvas id="canvas"></canvas>
-
-<br>
+<canvas id="canvas" style="display:none;"></canvas>
 
 <button onclick="convertImage()">Convert to PNG</button>
 
-<br>
+<a id="download" style="display:none;">Download PNG</a>
 
-<a id="download" style="display:none;color:#3b82f6;">Download PNG</a>
+<!-- Blog Section for SEO -->
+<div class="blog-section" style="margin-top:30px; padding:20px; background:#f8fafc; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.05);">
+<h2>How to Use JPG to PNG Converter</h2>
+<p>Upload your JPG image using the file selector. Click "Convert to PNG" to generate a PNG version of your image instantly. You can then download it directly. This tool is useful for web usage, editing, and maintaining transparency in images.</p>
+</div>
 
 <div class="related-tools">
 <h2>Related Tools</h2>
@@ -133,28 +163,33 @@ let img = new Image();
 
 document.getElementById("upload").addEventListener("change", function(e){
     const file = e.target.files[0];
-    const reader = new FileReader();
+    if(!file) return;
 
+    const reader = new FileReader();
     reader.onload = function(event){
         img.src = event.target.result;
-        document.getElementById("preview").src = event.target.result;
+        const preview = document.getElementById("preview");
+        preview.src = event.target.result;
+        preview.style.display = "block";
     }
-
     reader.readAsDataURL(file);
 });
 
 function convertImage(){
+    if(!img.src) return alert("Please upload a JPG image first!");
+
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
 
     canvas.width = img.width;
     canvas.height = img.height;
+    canvas.style.display = "block";
 
     ctx.drawImage(img, 0, 0);
 
-    let png = canvas.toDataURL("image/png");
+    const png = canvas.toDataURL("image/png");
 
-    let link = document.getElementById("download");
+    const link = document.getElementById("download");
     link.href = png;
     link.download = "converted-image.png";
     link.style.display = "block";
