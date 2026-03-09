@@ -18,44 +18,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "QuickTooles",
-      "url": "https://quicktooles.in/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://quicktooles.in/?search={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Are the tools on QuickTooles really free?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! All 51+ tools on our platform are 100% free to use with no hidden charges, no subscriptions, and no limits." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to download any software?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. QuickTooles is completely cloud-based. Every tool runs entirely within your web browser." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is my data safe when using text or image tools?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Most of our tools use client-side processing (JavaScript), meaning your text, images, and data never leave your browser." }
-        }
-      ]
-    }
-    </script>
-
     <style>
         :root {
             --primary: #2563eb;
@@ -66,99 +28,89 @@
             --text-main: #334155;
             --text-light: #64748b;
             --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* NAVBAR */
+        /* NAVBAR - Responsive Fix */
         header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
-        .logo { font-size: 26px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; height: 70px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
         .logo span { color: var(--secondary); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 16px; transition: var(--transition); }
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
-        /* HERO SECTION */
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 90px 20px 140px 20px; position: relative; }
-        .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2; }
-        .hero p { font-size: 20px; color: #cbd5e1; max-width: 750px; margin: 0 auto 40px auto; font-weight: 300; }
+        /* Mobile Menu Toggle */
+        .mobile-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--secondary); border: none; background: none; }
+
+        /* HERO SECTION - Responsive */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 80px 20px 120px 20px; }
+        .hero h1 { font-size: clamp(32px, 8vw, 52px); font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.1; }
+        .hero p { font-size: clamp(16px, 4vw, 20px); color: #cbd5e1; max-width: 750px; margin: 0 auto 40px auto; font-weight: 300; }
         
-        .search-container { max-width: 700px; margin: auto; position: relative; z-index: 10; }
-        .search-container input { width: 100%; padding: 22px 30px; font-size: 18px; border: 2px solid transparent; border-radius: 50px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); outline: none; transition: var(--transition); color: var(--secondary); }
+        .search-container { max-width: 700px; margin: auto; padding: 0 10px; }
+        .search-container input { width: 100%; padding: 20px 30px; font-size: clamp(14px, 4vw, 18px); border-radius: 50px; border: 2px solid transparent; box-shadow: 0 15px 30px rgba(0,0,0,0.15); outline: none; transition: var(--transition); color: var(--secondary); }
         .search-container input:focus { border-color: var(--primary); box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.2); }
 
-        /* QUICK NAVIGATION (INTERLINKING) */
-        .quick-nav { max-width: 1300px; margin: -50px auto 40px auto; padding: 0 20px; position: relative; z-index: 20; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .quick-nav a { background: var(--card-bg); color: var(--secondary); padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: var(--shadow); transition: var(--transition); border: 1px solid var(--border); }
-        .quick-nav a:hover { background: var(--primary); color: white; transform: translateY(-3px); border-color: var(--primary); }
-
-        /* MAIN CONTENT CONTAINER */
-        .container { max-width: 1300px; margin: 0 auto 50px auto; padding: 0 20px; }
+        /* CONTAINER */
+        .container { max-width: 1300px; margin: -50px auto 50px auto; padding: 0 15px; position: relative; z-index: 20; }
         
-        /* CATEGORY SECTIONS */
-        .category-wrapper { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 40px; border-top: 5px solid var(--primary); scroll-margin-top: 100px; }
-        .category-title { font-size: 24px; font-weight: 800; color: var(--secondary); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--bg-light); padding-bottom: 15px; }
+        .category-wrapper { background: var(--card-bg); padding: clamp(20px, 5vw, 40px); border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 40px; border-top: 5px solid var(--primary); }
+        .category-title { font-size: clamp(20px, 5vw, 24px); font-weight: 800; color: var(--secondary); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--bg-light); padding-bottom: 15px; }
         
+        /* TOOLS GRID - Better Mobile Layout */
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
         
         .tool-card { background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; transition: var(--transition); }
         .tool-card a { display: flex; align-items: center; padding: 15px 18px; text-decoration: none; color: var(--secondary); font-weight: 600; font-size: 15px; }
-        .tool-card .icon { font-size: 20px; margin-right: 12px; background: white; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .tool-card .icon { font-size: 20px; margin-right: 12px; background: white; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); flex-shrink: 0; }
         
         .tool-card:hover { transform: translateY(-3px); box-shadow: 0 8px 15px -3px rgba(0,0,0,0.1); border-color: var(--primary); background: white; }
         .tool-card:hover a { color: var(--primary); }
-        
-        .no-results { display: none; text-align: center; color: var(--text-light); padding: 50px; font-size: 20px; font-weight: 600; background: var(--card-bg); border-radius: 20px; margin-top: 20px; }
 
-        /* MASSIVE SEO CONTENT SECTION */
-        .seo-content-section { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
-        .seo-box { background: var(--card-bg); padding: 50px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
-        
-        .seo-box h2 { font-size: 32px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; }
-        .seo-box p { font-size: 17px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
-        .seo-box h3 { font-size: 24px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
-        
-        /* Features Grid */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        /* SEO SECTION */
+        .seo-content-section { max-width: 1300px; margin: 60px auto; padding: 0 15px; }
+        .seo-box { background: var(--card-bg); padding: clamp(25px, 6vw, 50px); border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .seo-box h2 { font-size: clamp(26px, 6vw, 32px); margin-bottom: 20px; font-weight: 800; }
+        .seo-box p { font-size: 16px; margin-bottom: 20px; line-height: 1.8; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 40px 0; }
         .feature-item { background: var(--bg-light); padding: 30px; border-radius: 16px; text-align: center; border: 1px solid var(--border); }
-        .feature-item .icon { font-size: 40px; margin-bottom: 15px; }
-        .feature-item h4 { font-size: 20px; color: var(--secondary); margin-bottom: 10px; }
-        .feature-item p { font-size: 15px; margin: 0; }
 
-        /* FAQs */
-        .faq-container { margin-top: 40px; border-top: 2px solid var(--bg-light); padding-top: 30px; }
-        .faq-item { margin-bottom: 25px; }
-        .faq-item h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
-        .faq-item p { margin: 0; font-size: 16px; color: var(--text-main); }
-
-        /* FOOTER & CONTACT SECTION */
+        /* FOOTER */
         footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px 30px 20px; margin-top: 50px; }
         .footer-container { max-width: 1300px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-bottom: 1px solid #334155; padding-bottom: 40px; margin-bottom: 30px; }
-        
-        .footer-col h3 { color: white; font-size: 22px; margin-bottom: 20px; font-weight: 700; }
-        .footer-col p { margin-bottom: 15px; line-height: 1.8; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #cbd5e1; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .footer-links a:hover { color: white; transform: translateX(5px); }
-        
         .contact-box { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
-        .contact-box a { display: block; background: var(--primary); color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 15px; transition: 0.3s; }
-        .contact-box a:hover { background: var(--primary-dark); }
-        .contact-box .linkedin { background: #0077b5; margin-top: 10px; }
-        .contact-box .linkedin:hover { background: #005e93; }
+        .contact-box a { display: block; background: var(--primary); color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 15px; }
 
-        .copyright { text-align: center; font-size: 15px; }
+        .no-results { display: none; text-align: center; padding: 40px; font-size: 18px; font-weight: 600; background: white; border-radius: 20px; }
 
-        @media(max-width: 768px) {
-            .hero h1 { font-size: 38px; }
-            .nav-links { display: none; }
-            .category-wrapper, .seo-box { padding: 25px; }
-            .tools-grid { grid-template-columns: 1fr; }
+        /* MOBILE OVERRIDES */
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-links { 
+                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px); 
+                background: white; flex-direction: column; gap: 0; padding: 20px; 
+                transition: 0.4s; box-shadow: 10px 0 15px rgba(0,0,0,0.1); overflow-y: auto;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links a { width: 100%; padding: 20px; font-size: 18px; border-bottom: 1px solid var(--border); text-align: center; }
+            
+            .tools-grid { grid-template-columns: 1fr 1fr; } /* 2 columns on mobile for better space */
+            .hero { padding: 50px 15px 100px 15px; }
+            .footer-container { text-align: center; }
+            .footer-links a { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .tools-grid { grid-template-columns: 1fr; } /* 1 column on very small phones */
+            .navbar { padding: 10px 15px; }
+            .logo { font-size: 20px; }
         }
     </style>
 </head>
@@ -167,10 +119,11 @@
 <header>
     <div class="navbar">
         <a href="index.html" class="logo">Quick<span>Tooles</span></a>
-        <nav class="nav-links" aria-label="Main Navigation">
-            <a href="#">Home</a>
-            <a href="#seo-section">About</a>
-            <a href="#contact-section">Contact Us</a>
+        <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+        <nav class="nav-links" id="mobileMenu">
+            <a href="#" onclick="toggleMenu()">Home</a>
+            <a href="#seo-section" onclick="toggleMenu()">About</a>
+            <a href="#contact-section" onclick="toggleMenu()">Contact Us</a>
         </nav>
     </div>
 </header>
@@ -179,14 +132,14 @@
     <h1>Free Online Tools</h1>
     <p>Fast & Simple Tools for Developers and Creators</p>
     <div class="search-container">
-        <input type="text" id="toolSearch" placeholder="🔍 Search among 51+ tools (e.g., HTML Minifier, Age Calculator)..." aria-label="Search tools">
+        <input type="text" id="toolSearch" placeholder="🔍 Search among 51+ tools (e.g., HTML Minifier, Age Calculator)...">
     </div>
 </section>
 
 <main class="container" id="all-tools">
 
     <div id="noResultsMsg" class="no-results">
-        😞 Oops! No tools found matching your search. Please try a different keyword.
+        😞 Oops! No tools found matching your search.
     </div>
 
     <section class="category-wrapper" id="cat-text">
@@ -276,8 +229,7 @@
     <article class="seo-box">
         <h2>The Ultimate Hub for Free Online Developer and Creator Tools</h2>
         <p>Welcome to <strong>QuickTooles</strong>, your one-stop digital workspace designed to make your daily tasks faster, easier, and completely hassle-free. Whether you are a software developer looking to format a messy JSON file, a student needing an accurate word count for an essay, or a digital marketer resizing images for social media, we have a tool specifically built for you.</p>
-        <p>Fast & Simple Tools for Developers and Creators</p>
-
+        
         <h3>Why Choose QuickTooles?</h3>
         <div class="features-grid">
             <div class="feature-item">
@@ -309,7 +261,7 @@
             </div>
             <div class="faq-item">
                 <h4>Is my data safe when using text or image tools?</h4>
-                <p>Absolutely. We respect your privacy. The vast majority of our tools process your text, images, and sensitive data locally on your device. We do not store or track your input data.</p>
+                <p>Absolutely. We respect your privacy. The vast majority of our tools process your text, images, and sensitive data locally on your device.</p>
             </div>
         </div>
     </article>
@@ -334,67 +286,51 @@
 
         <div class="footer-col">
             <h3 style="font-size: 18px;">Get In Touch</h3>
-            <p>Have a suggestion, found a bug, or want a new tool added? Reach out directly!</p>
+            <p>Have a suggestion, found a bug, or want a new tool added?</p>
             <div class="contact-box">
                 <p style="font-size: 14px; margin-bottom: 5px;">Adarsh Kumar Katiyar</p>
-                <a href="mailto:adarshkatiyar37@gmail.com" target="_blank">✉️ Email Adarsh</a>
-                <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank" class="linkedin">💼 Connect on LinkedIn</a>
+                <a href="mailto:adarshkatiyar37@gmail.com">✉️ Email Adarsh</a>
+                <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank" style="background:#0077b5; margin-top:10px;">💼 Connect on LinkedIn</a>
             </div>
         </div>
     </div>
-    
     <div class="copyright">
         <p>© 2026 QuickTooles. Designed & Developed with passion. All Rights Reserved.</p>
     </div>
 </footer>
 
 <script>
-    // Robust Search Script that perfectly handles 51 tools and Categories
+    // Menu Toggle Logic
+    function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("active");
+    }
+
+    // Search Logic (Original Kept)
     const searchInput = document.getElementById("toolSearch");
     const categories = document.querySelectorAll(".category-wrapper");
     const noResultsMsg = document.getElementById("noResultsMsg");
-    const quickNav = document.querySelector(".quick-nav");
 
     searchInput.addEventListener("input", function() {
         let filter = searchInput.value.toLowerCase().trim();
-        let totalVisibleTools = 0;
-
-        // Hide quick nav when searching
-        if(filter.length > 0) {
-            quickNav.style.display = 'none';
-        } else {
-            quickNav.style.display = 'flex';
-        }
+        let totalVisible = 0;
 
         categories.forEach(category => {
-            let toolsInCat = category.querySelectorAll(".tool-card");
-            let visibleInCat = 0;
-
-            toolsInCat.forEach(tool => {
-                let text = tool.innerText.toLowerCase();
-                if (text.includes(filter)) {
-                    tool.style.display = "block";
-                    visibleInCat++;
-                    totalVisibleTools++;
+            let toolCards = category.querySelectorAll(".tool-card");
+            let hasVisible = false;
+            toolCards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if(text.includes(filter)) {
+                    card.style.display = "block";
+                    hasVisible = true;
+                    totalVisible++;
                 } else {
-                    tool.style.display = "none";
+                    card.style.display = "none";
                 }
             });
-
-            // Hide category title and box if no tools match inside it
-            if (visibleInCat === 0) {
-                category.style.display = "none";
-            } else {
-                category.style.display = "block";
-            }
+            category.style.display = hasVisible ? "block" : "none";
         });
-
-        // Show "No Results" message if zero tools match the search
-        if (totalVisibleTools === 0) {
-            noResultsMsg.style.display = "block";
-        } else {
-            noResultsMsg.style.display = "none";
-        }
+        noResultsMsg.style.display = totalVisible === 0 ? "block" : "none";
     });
 </script>
 
