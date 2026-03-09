@@ -1,173 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTooles - 50+ Free Online Tools for Developers & Creators</title>
+    
+    <meta name="description" content="Access 51+ free online tools instantly. Word counter, JSON formatter, image resizer, exact age calculator, password generator, HTML minifier, and more. No installation required.">
+    <meta name="keywords" content="free online tools, developer tools, image converter, text formatters, online calculators, JSON formatter, word counter, quicktooles, pdf converter, seo tools">
+    <meta name="author" content="Adarsh Kumar Katiyar">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <meta property="og:title" content="QuickTooles - All In One Free Online Tools">
+    <meta property="og:description" content="Fast & simple tools for developers and creators. No installation required. Always free.">
+    <meta property="og:url" content="https://quicktooles.in/">
+    <meta property="og:type" content="website">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="icon" type="image/png" href="logo.png">  
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "QuickTooles",
+      "url": "https://quicktooles.in/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://quicktooles.in/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
-<title>Free Online Tools - All In One QuickTooles</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are the tools on QuickTooles really free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! All 51+ tools on our platform are 100% free to use with no hidden charges, no subscriptions, and no limits." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to download any software?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. QuickTooles is completely cloud-based. Every tool runs entirely within your web browser." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data safe when using text or image tools?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Most of our tools use client-side processing (JavaScript), meaning your text, images, and data never leave your browser." }
+        }
+      ]
+    }
+    </script>
 
-<meta name="description" content="Free online tools for developers, students and creators. Word counter, JSON formatter, password generator and 50+ tools.">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --bg-light: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --transition: all 0.3s ease;
+        }
 
-<link rel="stylesheet" href="style.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 26px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 16px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 90px 20px 140px 20px; position: relative; }
+        .hero h1 { font-size: 52px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2; }
+        .hero p { font-size: 20px; color: #cbd5e1; max-width: 750px; margin: 0 auto 40px auto; font-weight: 300; }
+        
+        .search-container { max-width: 700px; margin: auto; position: relative; z-index: 10; }
+        .search-container input { width: 100%; padding: 22px 30px; font-size: 18px; border: 2px solid transparent; border-radius: 50px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); outline: none; transition: var(--transition); color: var(--secondary); }
+        .search-container input:focus { border-color: var(--primary); box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.2); }
+
+        /* QUICK NAVIGATION (INTERLINKING) */
+        .quick-nav { max-width: 1300px; margin: -50px auto 40px auto; padding: 0 20px; position: relative; z-index: 20; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .quick-nav a { background: var(--card-bg); color: var(--secondary); padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: var(--shadow); transition: var(--transition); border: 1px solid var(--border); }
+        .quick-nav a:hover { background: var(--primary); color: white; transform: translateY(-3px); border-color: var(--primary); }
+
+        /* MAIN CONTENT CONTAINER */
+        .container { max-width: 1300px; margin: 0 auto 50px auto; padding: 0 20px; }
+        
+        /* CATEGORY SECTIONS */
+        .category-wrapper { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 40px; border-top: 5px solid var(--primary); scroll-margin-top: 100px; }
+        .category-title { font-size: 24px; font-weight: 800; color: var(--secondary); margin-bottom: 25px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid var(--bg-light); padding-bottom: 15px; }
+        
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        
+        .tool-card { background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; transition: var(--transition); }
+        .tool-card a { display: flex; align-items: center; padding: 15px 18px; text-decoration: none; color: var(--secondary); font-weight: 600; font-size: 15px; }
+        .tool-card .icon { font-size: 20px; margin-right: 12px; background: white; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        
+        .tool-card:hover { transform: translateY(-3px); box-shadow: 0 8px 15px -3px rgba(0,0,0,0.1); border-color: var(--primary); background: white; }
+        .tool-card:hover a { color: var(--primary); }
+        
+        .no-results { display: none; text-align: center; color: var(--text-light); padding: 50px; font-size: 20px; font-weight: 600; background: var(--card-bg); border-radius: 20px; margin-top: 20px; }
+
+        /* MASSIVE SEO CONTENT SECTION */
+        .seo-content-section { max-width: 1300px; margin: 60px auto; padding: 0 20px; }
+        .seo-box { background: var(--card-bg); padding: 50px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        
+        .seo-box h2 { font-size: 32px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; }
+        .seo-box p { font-size: 17px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-box h3 { font-size: 24px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        
+        /* Features Grid */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .feature-item { background: var(--bg-light); padding: 30px; border-radius: 16px; text-align: center; border: 1px solid var(--border); }
+        .feature-item .icon { font-size: 40px; margin-bottom: 15px; }
+        .feature-item h4 { font-size: 20px; color: var(--secondary); margin-bottom: 10px; }
+        .feature-item p { font-size: 15px; margin: 0; }
+
+        /* FAQs */
+        .faq-container { margin-top: 40px; border-top: 2px solid var(--bg-light); padding-top: 30px; }
+        .faq-item { margin-bottom: 25px; }
+        .faq-item h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-item p { margin: 0; font-size: 16px; color: var(--text-main); }
+
+        /* FOOTER & CONTACT SECTION */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px 30px 20px; margin-top: 50px; }
+        .footer-container { max-width: 1300px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; border-bottom: 1px solid #334155; padding-bottom: 40px; margin-bottom: 30px; }
+        
+        .footer-col h3 { color: white; font-size: 22px; margin-bottom: 20px; font-weight: 700; }
+        .footer-col p { margin-bottom: 15px; line-height: 1.8; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #cbd5e1; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .footer-links a:hover { color: white; transform: translateX(5px); }
+        
+        .contact-box { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .contact-box a { display: block; background: var(--primary); color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 15px; transition: 0.3s; }
+        .contact-box a:hover { background: var(--primary-dark); }
+        .contact-box .linkedin { background: #0077b5; margin-top: 10px; }
+        .contact-box .linkedin:hover { background: #005e93; }
+
+        .copyright { text-align: center; font-size: 15px; }
+
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 38px; }
+            .nav-links { display: none; }
+            .category-wrapper, .seo-box { padding: 25px; }
+            .tools-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-
-<h2 class="logo">QuickTooles</h2>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">All Tools</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</nav>
-
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links" aria-label="Main Navigation">
+            <a href="#">Home</a>
+            <a href="#seo-section">About</a>
+            <a href="#contact-section">Contact Us</a>
+        </nav>
+    </div>
 </header>
 
-
 <section class="hero">
-
-<h1>Free Online Tools</h1>
-<p>Fast & Simple Tools for Developers and Creators</p>
-
-<input type="text" id="toolSearch" placeholder="Search tool..." class="search">
-
-
-
-
-</section>
-
-
-<section class="tools">
-
-<div class="tool-card"><a href="tools/word-counter.html">📝 Word Counter</a></div>
-<div class="tool-card"><a href="tools/character-counter.html">🔤 Character Counter</a></div>
-<div class="tool-card"><a href="tools/case-converter.html">🔠 Case Converter</a></div>
-<div class="tool-card"><a href="tools/remove-spaces.html">✂ Remove Extra Spaces</a></div>
-<div class="tool-card"><a href="tools/text-sorter.html">🔃 Text Sorter</a></div>
-<div class="tool-card"><a href="tools/text-reverser.html">🔁 Text Reverser</a></div>
-<div class="tool-card"><a href="tools/duplicate-line-remover.html">📄 Duplicate Line Remover</a></div>
-<div class="tool-card"><a href="tools/random-text.html">🎲 Random Text Generator</a></div>
-
-<div class="tool-card"><a href="tools/password-generator.html">🔑 Password Generator</a></div>
-<div class="tool-card"><a href="tools/password-checker.html">🔐 Password Checker</a></div>
-<div class="tool-card"><a href="tools/qr-generator.html">📷 QR Generator</a></div>
-<div class="tool-card"><a href="tools/uuid-generator.html">🆔 UUID Generator</a></div>
-<div class="tool-card"><a href="tools/random-number.html">🔢 Random Number</a></div>
-<div class="tool-card"><a href="tools/age-calculator.html">🎂 Age Calculator</a></div>
-<div class="tool-card"><a href="tools/percentage-calculator.html">📊 Percentage Calculator</a></div>
-<div class="tool-card"><a href="tools/emi-calculator.html">💰 EMI Calculator</a></div>
-
-<div class="tool-card"><a href="tools/json-formatter.html">📄 JSON Formatter</a></div>
-<div class="tool-card"><a href="tools/html-minifier.html">🌐 HTML Minifier</a></div>
-<div class="tool-card"><a href="tools/css-minifier.html">🎨 CSS Minifier</a></div>
-<div class="tool-card"><a href="tools/js-minifier.html">⚡ JS Minifier</a></div>
-
-<div class="tool-card"><a href="tools/url-encoder.html">🔗 URL Encoder</a></div>
-<div class="tool-card"><a href="tools/url-decoder.html">🔓 URL Decoder</a></div>
-<div class="tool-card"><a href="tools/base64-encoder.html">📦 Base64 Encoder</a></div>
-<div class="tool-card"><a href="tools/base64-decoder.html">📤 Base64 Decoder</a></div>
-<div class="tool-card"><a href="tools/regex-tester.html">🧪 Regex Tester</a></div>
-<div class="tool-card"><a href="tools/color-code-converter.html">🎨 Color Converter</a></div>
-<div class="tool-card"><a href="tools/md5-generator.html">🔑 MD5 Generator</a></div>
-<div class="tool-card"><a href="tools/sha-generator.html">🔐 SHA Generator</a></div>
-
-<div class="tool-card"><a href="tools/lorem-generator.html">📝 Lorem Generator</a></div>
-<div class="tool-card"><a href="tools/time-converter.html">⏱ Time Converter</a></div>
-<div class="tool-card"><a href="tools/unit-converter.html">📏 Unit Converter</a></div>
-<div class="tool-card"><a href="tools/binary-converter.html">💻 Binary Converter</a></div>
-<div class="tool-card"><a href="tools/ascii-to-text.html">🔡 ASCII to Text</a></div>
-<div class="tool-card"><a href="tools/text-to-ascii.html">🔤 Text to ASCII</a></div>
-<div class="tool-card"><a href="tools/number-base-converter.html">🔢 Number Base Converter</a></div>
-<div class="tool-card"><a href="tools/random-color-generator.html">🎨 Random Color Generator</a></div>
-
-<div class="tool-card"><a href="tools/meta-tag-generator.html">🏷 Meta Tag Generator</a></div>
-<div class="tool-card"><a href="tools/robots-generator.html">🤖 Robots Generator</a></div>
-<div class="tool-card"><a href="tools/sitemap-generator.html">🗺 Sitemap Generator</a></div>
-
-<div class="tool-card"><a href="tools/image-resizer.html">🖼 Image Resizer</a></div>
-<div class="tool-card"><a href="tools/image-compressor.html">📉 Image Compressor</a></div>
-<div class="tool-card"><a href="tools/image-to-base64.html">📦 Image to Base64</a></div>
-<div class="tool-card"><a href="tools/base64-to-image.html">📤 Base64 to Image</a></div>
-<div class="tool-card"><a href="tools/image-rotator.html">🔄 Image Rotator</a></div>
-<div class="tool-card"><a href="tools/image-cropper.html">✂ Image Cropper</a></div>
-<div class="tool-card"><a href="tools/image-color-picker.html">🎯 Image Color Picker</a></div>
-<div class="tool-card"><a href="tools/png-to-jpg.html">🖼 PNG to JPG</a></div>
-<div class="tool-card"><a href="tools/jpg-to-png.html">🖼 JPG to PNG</a></div>
-<div class="tool-card"><a href="tools/word-to-pdf.html">🖼 Word to PDF</a></div>
-<div class="tool-card"><a href="tools/image-converter.html">🖼 Image Converter</a></div>
-<div class="tool-card"><a href="tools/image-to-pdf.html">🖼 image to pdf</a></div>
-
-</section>
-
-
-<section class="seo">
-
-<h2>Free Online Tools for Everyone</h2>
-
-<p>
-Our website provides simple and powerful tools that help developers,
-students and creators complete daily tasks quickly.
-
-You can use tools like word counter, JSON formatter,
-password generator and many more directly in your browser
-without installing software.
-</p>
-
-
-</section>
-
-
-
-<footer>
-<div class="bottom-left-icons">
-  <div class="contact-tooltip">
-    Contact
-    <div class="contact-links">
-      <a href="mailto:adarshkatiyar37@gmail.com" target="_blank">📧 Email</a>
-      <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank">🔗 LinkedIn</a>
+    <h1>Free Online Tools</h1>
+    <p>The ultimate free online toolbox for developers, students, and creators. Powerful utilities that process instantly inside your browser.</p>
+    <div class="search-container">
+        <input type="text" id="toolSearch" placeholder="🔍 Search among 51+ tools (e.g., HTML Minifier, Age Calculator)..." aria-label="Search tools">
     </div>
-  </div>
-</div>
-<p>© 2026 QuickTooles. All Rights Reserved.</p>
+</section>
 
+<nav class="quick-nav" aria-label="Tool Categories">
+    <a href="#cat-text">📝 Text Tools</a>
+    <a href="#cat-image">🖼️ Image Tools</a>
+    <a href="#cat-dev">💻 Developer Tools</a>
+    <a href="#cat-security">🔐 Security Tools</a>
+    <a href="#cat-calc">🔢 Calculators</a>
+</nav>
+
+<main class="container" id="all-tools">
+
+    <div id="noResultsMsg" class="no-results">
+        😞 Oops! No tools found matching your search. Please try a different keyword.
+    </div>
+
+    <section class="category-wrapper" id="cat-text">
+        <h2 class="category-title">📝 Text & Content Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-card"><a href="tools/word-counter.html"><span class="icon">📝</span> Word Counter</a></div>
+            <div class="tool-card"><a href="tools/character-counter.html"><span class="icon">🔤</span> Character Counter</a></div>
+            <div class="tool-card"><a href="tools/case-converter.html"><span class="icon">🔠</span> Case Converter</a></div>
+            <div class="tool-card"><a href="tools/remove-spaces.html"><span class="icon">✂️</span> Remove Extra Spaces</a></div>
+            <div class="tool-card"><a href="tools/text-sorter.html"><span class="icon">🔃</span> Text Sorter</a></div>
+            <div class="tool-card"><a href="tools/text-reverser.html"><span class="icon">🔁</span> Text Reverser</a></div>
+            <div class="tool-card"><a href="tools/duplicate-line-remover.html"><span class="icon">📄</span> Duplicate Line Remover</a></div>
+            <div class="tool-card"><a href="tools/random-text.html"><span class="icon">🎲</span> Random Text Generator</a></div>
+            <div class="tool-card"><a href="tools/lorem-generator.html"><span class="icon">📜</span> Lorem Generator</a></div>
+            <div class="tool-card"><a href="tools/ascii-to-text.html"><span class="icon">🔡</span> ASCII to Text</a></div>
+            <div class="tool-card"><a href="tools/text-to-ascii.html"><span class="icon">🔤</span> Text to ASCII</a></div>
+        </div>
+    </section>
+
+    <section class="category-wrapper" id="cat-image">
+        <h2 class="category-title">🖼️ Image & PDF Utilities</h2>
+        <div class="tools-grid">
+            <div class="tool-card"><a href="tools/image-resizer.html"><span class="icon">🖼️</span> Image Resizer</a></div>
+            <div class="tool-card"><a href="tools/image-compressor.html"><span class="icon">📉</span> Image Compressor</a></div>
+            <div class="tool-card"><a href="tools/png-to-jpg.html"><span class="icon">🔄</span> PNG to JPG</a></div>
+            <div class="tool-card"><a href="tools/jpg-to-png.html"><span class="icon">🔄</span> JPG to PNG</a></div>
+            <div class="tool-card"><a href="tools/image-to-base64.html"><span class="icon">📦</span> Image to Base64</a></div>
+            <div class="tool-card"><a href="tools/base64-to-image.html"><span class="icon">📤</span> Base64 to Image</a></div>
+            <div class="tool-card"><a href="tools/image-rotator.html"><span class="icon">🔄</span> Image Rotator</a></div>
+            <div class="tool-card"><a href="tools/image-cropper.html"><span class="icon">✂️</span> Image Cropper</a></div>
+            <div class="tool-card"><a href="tools/image-color-picker.html"><span class="icon">🎯</span> Image Color Picker</a></div>
+            <div class="tool-card"><a href="tools/image-converter.html"><span class="icon">🎨</span> Image Converter</a></div>
+            <div class="tool-card"><a href="tools/image-to-pdf.html"><span class="icon">📑</span> Image to PDF</a></div>
+            <div class="tool-card"><a href="tools/word-to-pdf.html"><span class="icon">📄</span> Word to PDF</a></div>
+        </div>
+    </section>
+
+    <section class="category-wrapper" id="cat-dev">
+        <h2 class="category-title">💻 Developer & Web Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-card"><a href="tools/json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a></div>
+            <div class="tool-card"><a href="tools/html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a></div>
+            <div class="tool-card"><a href="tools/css-minifier.html"><span class="icon">🎨</span> CSS Minifier</a></div>
+            <div class="tool-card"><a href="tools/js-minifier.html"><span class="icon">⚡</span> JS Minifier</a></div>
+            <div class="tool-card"><a href="tools/url-encoder.html"><span class="icon">🔗</span> URL Encoder</a></div>
+            <div class="tool-card"><a href="tools/url-decoder.html"><span class="icon">🔓</span> URL Decoder</a></div>
+            <div class="tool-card"><a href="tools/base64-encoder.html"><span class="icon">🔒</span> Base64 Encoder</a></div>
+            <div class="tool-card"><a href="tools/base64-decoder.html"><span class="icon">🔑</span> Base64 Decoder</a></div>
+            <div class="tool-card"><a href="tools/regex-tester.html"><span class="icon">🧪</span> Regex Tester</a></div>
+            <div class="tool-card"><a href="tools/color-code-converter.html"><span class="icon">🎨</span> Color Converter</a></div>
+            <div class="tool-card"><a href="tools/meta-tag-generator.html"><span class="icon">🏷️</span> Meta Tag Generator</a></div>
+            <div class="tool-card"><a href="tools/robots-generator.html"><span class="icon">🤖</span> Robots Generator</a></div>
+            <div class="tool-card"><a href="tools/sitemap-generator.html"><span class="icon">🗺️</span> Sitemap Generator</a></div>
+            <div class="tool-card"><a href="tools/binary-converter.html"><span class="icon">💻</span> Binary Converter</a></div>
+            <div class="tool-card"><a href="tools/number-base-converter.html"><span class="icon">🔢</span> Number Base Converter</a></div>
+        </div>
+    </section>
+
+    <section class="category-wrapper" id="cat-security">
+        <h2 class="category-title">🔐 Security & Random Generators</h2>
+        <div class="tools-grid">
+            <div class="tool-card"><a href="tools/password-generator.html"><span class="icon">🔑</span> Password Generator</a></div>
+            <div class="tool-card"><a href="tools/password-checker.html"><span class="icon">🔐</span> Password Checker</a></div>
+            <div class="tool-card"><a href="tools/qr-generator.html"><span class="icon">📷</span> QR Generator</a></div>
+            <div class="tool-card"><a href="tools/uuid-generator.html"><span class="icon">🆔</span> UUID Generator</a></div>
+            <div class="tool-card"><a href="tools/random-number.html"><span class="icon">🔢</span> Random Number</a></div>
+            <div class="tool-card"><a href="tools/random-color-generator.html"><span class="icon">🎨</span> Random Color Gen</a></div>
+            <div class="tool-card"><a href="tools/md5-generator.html"><span class="icon">🛡️</span> MD5 Generator</a></div>
+            <div class="tool-card"><a href="tools/sha-generator.html"><span class="icon">🛡️</span> SHA Generator</a></div>
+        </div>
+    </section>
+
+    <section class="category-wrapper" id="cat-calc">
+        <h2 class="category-title">🔢 Calculators & Measurements</h2>
+        <div class="tools-grid">
+            <div class="tool-card"><a href="tools/age-calculator.html"><span class="icon">🎂</span> Age Calculator</a></div>
+            <div class="tool-card"><a href="tools/percentage-calculator.html"><span class="icon">📊</span> Percentage Calculator</a></div>
+            <div class="tool-card"><a href="tools/emi-calculator.html"><span class="icon">💰</span> EMI Calculator</a></div>
+            <div class="tool-card"><a href="tools/time-converter.html"><span class="icon">⏱️</span> Time Converter</a></div>
+            <div class="tool-card"><a href="tools/unit-converter.html"><span class="icon">📏</span> Unit Converter</a></div>
+        </div>
+    </section>
+
+</main>
+
+<section class="seo-content-section" id="seo-section">
+    <article class="seo-box">
+        <h2>The Ultimate Hub for Free Online Developer and Creator Tools</h2>
+        <p>Welcome to <strong>QuickTooles</strong>, your one-stop digital workspace designed to make your daily tasks faster, easier, and completely hassle-free. Whether you are a software developer looking to format a messy JSON file, a student needing an accurate word count for an essay, or a digital marketer resizing images for social media, we have a tool specifically built for you.</p>
+        <p>Instead of downloading multiple heavy applications or paying for premium software subscriptions, our platform offers a massive collection of 51+ utilities directly in your web browser.</p>
+
+        <h3>Why Choose QuickTooles?</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon">🚀</div>
+                <h4>Lightning Fast Execution</h4>
+                <p>No waiting in server queues. Our tools utilize client-side processing (JavaScript) to deliver instant results directly on your screen.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🔒</div>
+                <h4>Strict Data Privacy</h4>
+                <p>Your security is our priority. Since most calculations and formatting happen locally in your browser, your sensitive data and files never touch our servers.</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">💸</div>
+                <h4>100% Free Forever</h4>
+                <p>Say goodbye to paywalls and premium limits. Every single tool on our platform is completely free to use, as many times as you want.</p>
+            </div>
+        </div>
+
+        <div class="faq-container">
+            <h3>Frequently Asked Questions</h3>
+            <div class="faq-item">
+                <h4>Are the tools on QuickTooles really free?</h4>
+                <p>Yes! All 51+ tools on our platform—including image converters, code minifiers, and calculators—are 100% free to use with no hidden charges or subscriptions.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do I need to download any software?</h4>
+                <p>No. QuickTooles is a completely cloud-based web application. Every tool runs directly inside your web browser on any device (mobile, tablet, or desktop).</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is my data safe when using text or image tools?</h4>
+                <p>Absolutely. We respect your privacy. The vast majority of our tools process your text, images, and sensitive data locally on your device. We do not store or track your input data.</p>
+            </div>
+        </div>
+    </article>
+</section>
+
+<footer id="contact-section">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>QuickTooles</h3>
+            <p>Our mission is to provide simple, powerful, and secure web tools that help developers, students, and content creators complete their daily digital tasks effortlessly.</p>
+        </div>
+        
+        <div class="footer-col">
+            <h3 style="font-size: 18px;">Important Links</h3>
+            <ul class="footer-links">
+                <li><a href="#cat-text">→ Text Formatting Tools</a></li>
+                <li><a href="#cat-image">→ Image Utilities</a></li>
+                <li><a href="#cat-dev">→ Developer Toolkit</a></li>
+                <li><a href="#">→ Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3 style="font-size: 18px;">Get In Touch</h3>
+            <p>Have a suggestion, found a bug, or want a new tool added? Reach out directly!</p>
+            <div class="contact-box">
+                <p style="font-size: 14px; margin-bottom: 5px;">Adarsh Kumar Katiyar</p>
+                <a href="mailto:adarshkatiyar37@gmail.com" target="_blank">✉️ Email Adarsh</a>
+                <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank" class="linkedin">💼 Connect on LinkedIn</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2026 QuickTooles. Designed & Developed with passion. All Rights Reserved.</p>
+    </div>
 </footer>
 
-
 <script>
+    // Robust Search Script that perfectly handles 51 tools and Categories
+    const searchInput = document.getElementById("toolSearch");
+    const categories = document.querySelectorAll(".category-wrapper");
+    const noResultsMsg = document.getElementById("noResultsMsg");
+    const quickNav = document.querySelector(".quick-nav");
 
-const searchInput = document.getElementById("toolSearch");
-const tools = document.querySelectorAll(".tool-card");
+    searchInput.addEventListener("input", function() {
+        let filter = searchInput.value.toLowerCase().trim();
+        let totalVisibleTools = 0;
 
-searchInput.addEventListener("keyup", function(){
+        // Hide quick nav when searching
+        if(filter.length > 0) {
+            quickNav.style.display = 'none';
+        } else {
+            quickNav.style.display = 'flex';
+        }
 
-let filter = searchInput.value.toLowerCase();
+        categories.forEach(category => {
+            let toolsInCat = category.querySelectorAll(".tool-card");
+            let visibleInCat = 0;
 
-tools.forEach(function(tool){
+            toolsInCat.forEach(tool => {
+                let text = tool.innerText.toLowerCase();
+                if (text.includes(filter)) {
+                    tool.style.display = "block";
+                    visibleInCat++;
+                    totalVisibleTools++;
+                } else {
+                    tool.style.display = "none";
+                }
+            });
 
-let text = tool.innerText.toLowerCase();
+            // Hide category title and box if no tools match inside it
+            if (visibleInCat === 0) {
+                category.style.display = "none";
+            } else {
+                category.style.display = "block";
+            }
+        });
 
-
-if(text.includes(filter)){
-tool.style.display="block";
-}else{
-tool.style.display="none";
-}
-
-});
-
-});
-
+        // Show "No Results" message if zero tools match the search
+        if (totalVisibleTools === 0) {
+            noResultsMsg.style.display = "block";
+        } else {
+            noResultsMsg.style.display = "none";
+        }
+    });
 </script>
 
-
 </body>
-
 </html>
