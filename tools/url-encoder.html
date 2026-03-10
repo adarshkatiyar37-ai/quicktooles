@@ -1,210 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Decoder – Decode Percent-Encoded URLs Online | QuickTooles</title>
+    
+    <meta name="description" content="Free online URL Decoder. Instantly decode percent-encoded URLs to readable plain text. Secure, fast, and 100% private tool for developers and SEO experts. Convert %20 to space and other special characters instantly.">
+    <meta name="keywords" content="url decoder, online url decode, percent decoder, decode url string, unescape url, url encoder decoder, link decoder, quicktooles, rfc 3986 decoder, web developer tools">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/url-decoder">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Professional URL Decoder & Unescape Tool | QuickTooles">
+    <meta property="og:description" content="Convert encoded URL strings into human-readable text instantly. 100% secure client-side decoding for developers.">
+    <meta property="og:url" content="https://quicktooles.in/tools/url-decoder">
+    <meta property="og:type" content="website">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<title>URL Encoder - QuickTooles</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles URL Decoder",
+      "operatingSystem": "Web",
+      "applicationCategory": "DeveloperApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced online utility to decode and encode URL strings using percent-encoding standards (RFC 3986)."
+    }
+    </script>
 
-<meta name="description" content="Encode any URL or text instantly using the QuickTooles URL Encoder tool.">
-<meta name="keywords" content="URL Encoder, Encode URL, URL Encoding Tool, Online Tools, QuickTooles">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-<link rel="stylesheet" href="../style.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-<style>
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
 
-.tool-container{
-max-width:700px;
-margin:80px auto;
-background:#ffffff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-text-align:center;
-color:#1e293b;
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 800px; margin: auto; font-weight: 300; }
+
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+        /* MAIN LAYOUT (3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
+
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        .mode-toggle { display: flex; gap: 10px; margin-bottom: 25px; background: #f1f5f9; padding: 6px; border-radius: 12px; width: fit-content; }
+        .toggle-btn { padding: 10px 20px; border: none; border-radius: 8px; font-weight: 800; font-size: 13px; cursor: pointer; transition: var(--transition); color: var(--text-light); background: transparent; }
+        .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; font-weight: 800; color: var(--secondary); font-size: 13px; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
+        
+        textarea { width: 100%; height: 160px; padding: 18px; border: 2px solid var(--border); border-radius: 12px; font-size: 16px; color: var(--secondary); background: #f8fafc; outline: none; transition: var(--transition); resize: none; font-family: 'Fira Code', monospace; }
+        textarea:focus { border-color: var(--primary); background: white; }
+
+        .result-box { background: #f1f5f9; border-radius: 15px; padding: 25px; margin-top: 30px; border: 1px solid var(--border); }
+        .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .result-header h3 { font-size: 14px; font-weight: 800; color: var(--text-main); text-transform: uppercase; }
+        
+        #outputArea { width: 100%; min-height: 100px; background: white; border: 1px solid var(--border); border-radius: 10px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 15px; color: var(--primary-dark); word-break: break-all; }
+
+        .action-bar { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-success { background: var(--success); color: white; }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+
+        /* MONSTER SEO CONTENT (2500+ WORDS LOGIC) */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 20px; margin-bottom: 15px; color: var(--secondary); }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        .seo-article h2 { font-size: 30px; color: var(--secondary); margin: 45px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article p { font-size: 16px; margin-bottom: 22px; line-height: 1.9; color: var(--text-main); }
+        .seo-article ul { margin-bottom: 25px; padding-left: 20px; }
+        .seo-article li { margin-bottom: 12px; }
+
+        .data-table-container { overflow-x: auto; margin: 30px 0; }
+        .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .data-table th, .data-table td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border); }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; text-transform: uppercase; font-size: 13px; }
+
+        /* RIGHT SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 19px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); transform: translateX(5px); }
+
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .hero h1 { font-size: 34px; }
+        }
+      /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
+    }
 }
-
-.tool-container h1{
-margin-bottom:20px;
-color:#3b82f6;
-}
-
-textarea{
-width:100%;
-padding:12px;
-border:1px solid #cbd5e1;
-border-radius:6px;
-margin-top:10px;
-resize:none;
-font-family:monospace;
-height:120px;
-background:#f8fafc;
-}
-
-button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-background:#3b82f6;
-color:white;
-cursor:pointer;
-font-size:15px;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-.result{
-margin-top:20px;
-background:#f1f5f9;
-padding:15px;
-border-radius:8px;
-text-align:left;
-word-break:break-word;
-font-family:monospace;
-}
-
-/* Blog */
-
-.blog-section{
-margin-top:30px;
-padding:20px;
-background:#f1f5f9;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-text-align:left;
-}
-
-.blog-section h2{
-color:#3b82f6;
-}
-
-/* Related tools */
-
-.related-tools{
-margin-top:30px;
-text-align:left;
-}
-
-.related-tools h2{
-margin-bottom:10px;
-color:#3b82f6;
-}
-
-.related-tools ul{
-list-style:none;
-padding:0;
-}
-
-.related-tools ul li{
-margin-bottom:8px;
-}
-
-.related-tools ul li a{
-color:#3b82f6;
-text-decoration:none;
-}
-
-.related-tools ul li a:hover{
-text-decoration:underline;
-}
-
-@media(max-width:600px){
-.tool-container{
-margin:50px 20px;
-padding:25px;
-}
-}
-
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-
-<h2 class="logo">QuickTooles</h2>
-
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
-
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Professional URL Decoder & Encoder</h1>
+    <p>Instantly decode percent-encoded URLs or transform strings into SEO-friendly web links. The most reliable and private online utility for developers and marketing specialists.</p>
+</section>
 
-<h1>🔒 URL Encoder</h1>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-dev">Developer Tools</a> › URL Decoder
+</div>
 
-<p>Encode any URL or text instantly.</p>
+<div class="layout">
+    
+    <div class="main-content">
+        <main class="tool-workspace">
+            <div class="mode-toggle">
+                <button class="toggle-btn active" id="btnDecode" onclick="setMode('decode')">URL DECODE</button>
+                <button class="toggle-btn" id="btnEncode" onclick="setMode('encode')">URL ENCODE</button>
+            </div>
 
-<textarea id="urlInput" placeholder="Enter URL or text here"></textarea>
+            <div class="input-group">
+                <label id="inputLabel">Enter Encoded URL String below</label>
+                <textarea id="urlInput" placeholder="Paste your string here... (e.g., https%3A%2F%2Fgoogle.com%3Fq%3Dquicktooles)" oninput="processURL()"></textarea>
+            </div>
 
-<button onclick="encodeURL()">Encode URL</button>
+            <div class="result-box">
+                <div class="result-header">
+                    <h3 id="resultLabel">Decoded Plain Text Output:</h3>
+                </div>
+                <div id="outputArea">Waiting for input...</div>
+                
+                <div class="action-bar">
+                    <button id="copyBtn" class="btn btn-success" onclick="copyResult()">📋 Copy Result</button>
+                    <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear Everything</button>
+                </div>
+            </div>
+        </main>
 
-<div class="result" id="result">Encoded URL will appear here</div>
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Comprehensive URL Encoding Guide</h3>
+                <ul>
+                    <li><a href="#what-is-url-decoding">1. What is URL Decoding? (The Basics)</a></li>
+                    <li><a href="#percent-encoding">2. Understanding Percent-Encoding (RFC 3986)</a></li>
+                    <li><a href="#reserved-table">3. Reserved Characters Reference Table</a></li>
+                    <li><a href="#why-needed">4. Why Do We Need URL Encoding?</a></li>
+                    <li><a href="#phishing">5. Security Warning: Encoded URLs and Phishing</a></li>
+                    <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
 
-<!-- Blog -->
+            <h2 id="what-is-url-decoding">1. What is URL Decoding?</h2>
+            <p><strong>URL Decoding</strong> (also known as Percent-Decoding) is the process of converting a URL that contains special escape characters back into its original, human-readable format. In a standard URL, only a limited set of US-ASCII characters are allowed. Any character outside this set (like spaces, emojis, or non-English letters) must be "escaped" using a percent sign followed by a two-digit hexadecimal representation of its character code.</p>
+            <p>For example, if you see <code>%20</code> in a link, a <em>percent decoder</em> will transform it back into a simple space. This process is vital for developers who need to read server logs, analyze API queries, or debug complex redirection chains.</p>
 
-<div class="blog-section">
+            <h2 id="percent-encoding">2. Understanding Percent-Encoding (RFC 3986)</h2>
+            <p>The standard for how characters are encoded in a URI (Uniform Resource Identifier) is defined by <strong>RFC 3986</strong>. This standard splits characters into two groups: <strong>Unreserved</strong> (characters that never need encoding, like a-z, 0-9, dash, and dot) and <strong>Reserved</strong> (characters that have special meaning, like ?, &, and #).</p>
+            <p>When a reserved character is used as part of the data (rather than as a delimiter), it must be encoded. Our tool follows these international standards to ensure that every decoding operation is 100% accurate across all web browsers and server environments.</p>
 
-<h2>What is URL Encoding?</h2>
+            <h2 id="reserved-table">3. Reserved Characters Reference Table</h2>
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Character</th>
+                            <th>Encoded Value</th>
+                            <th>Common Meaning in URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Space</strong></td><td><code>%20</code> or <code>+</code></td><td>Space between words</td></tr>
+                        <tr><td><strong>/</strong></td><td><code>%2F</code></td><td>Directory separator</td></tr>
+                        <tr><td><strong>?</strong></td><td><code>%3F</code></td><td>Start of Query string</td></tr>
+                        <tr><td><strong>&</strong></td><td><code>%26</code></td><td>Separator for parameters</td></tr>
+                        <tr><td><strong>:</strong></td><td><code>%3A</code></td><td>Protocol separator (https:)</td></tr>
+                        <tr><td><strong>#</strong></td><td><code>%23</code></td><td>Anchor/Fragment identifier</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-<p>URL encoding converts special characters in URLs into a format that can be safely transmitted over the internet. For example, spaces are converted into %20.</p>
+            <h2 id="why-needed">4. Why Do We Need URL Encoding?</h2>
+            <p>The internet relies on the <strong>HTTP protocol</strong>, which was originally designed to transmit plain text. Because certain characters have functional roles (like the question mark starting a search query), sending raw data that includes those characters would break the link. Encoding ensures that the data is transmitted safely as "Plain ASCII," preventing server errors and broken links.</p>
 
-<p>The QuickTooles URL Encoder allows developers and users to quickly encode URLs or text for safe usage in web applications.</p>
+            <h2 id="phishing">5. Security Warning: Encoded URLs and Phishing</h2>
+            <p>Cybersecurity experts often use our <em>online url decode tool</em> to investigate suspicious links. Hackers frequently hide malicious domains or tracking scripts by double or triple encoding the URL. By decoding the string, you can reveal the true destination of a link before clicking on it, protecting yourself from phishing attacks and malware downloads.</p>
+
+            <h2 id="faqs">6. Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <p><strong>Q: Is URL Decoding the same as Base64?</strong><br>A: No. URL decoding targets percent-encoded characters used in web links. Base64 is a different binary-to-text encoding scheme. You can use our <a href="base64-decoder.html">Base64 Decoder</a> for that.</p>
+                <br>
+                <p><strong>Q: Why do some spaces become '+' and others '%20'?</strong><br>A: It depends on the context. In the query part of a URL (after the '?'), a '+' is commonly used for a space. In the path part, '%20' is the standard.</p>
+                <br>
+                <p><strong>Q: Is my data private?</strong><br>A: 100%. QuickTooles processes all URL logic on your device using local JavaScript. Nothing is sent to our servers.</p>
+            </div>
+        </article>
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="widget">
+            <h3>💻 Developer Hub</h3>
+            <div class="widget-links">
+                <a href="base64-encoder.html"><span class="icon">🔓</span> Base64 Encoder</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+                <a href="js-minifier.html"><span class="icon">⚡</span> JS Minifier</a>
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro Web Tip</h3>
+            <p>If you are an SEO professional, always ensure your URL slugs are <strong>Encoded</strong> properly. Search engines might ignore pages with raw special characters or non-ASCII letters in the URL!</p>
+        </div>
+
+        <div class="widget">
+            <h3>🛡️ Security Tools</h3>
+            <div class="widget-links">
+                <a href="sha256-generator.html"><span class="icon">🛡️</span> SHA-256 Gen</a>
+                <a href="md5-generator.html"><span class="icon">🔐</span> MD5 Generator</a>
+                <a href="password-generator.html"><span class="icon">🔑</span> Password Gen</a>
+            </div>
+        </div>
+
+    </aside>
 
 </div>
 
-<!-- Related Tools -->
-
-<div class="related-tools">
-
-<h2>Related Tools</h2>
-
-<ul>
-
-<li><a href="url-decoder.html">URL Decoder</a></li>
-
-<li><a href="base64-encoder.html">Base64 Encoder</a></li>
-
-<li><a href="json-formatter.html">JSON Formatter</a></li>
-
-</ul>
-
-</div>
-
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Professional Online Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
+    let currentMode = 'decode';
 
-function encodeURL(){
+    function setMode(mode) {
+        currentMode = mode;
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        if(mode === 'decode') {
+            document.getElementById('btnDecode').classList.add('active');
+            document.getElementById('inputLabel').innerText = 'Enter Encoded URL String below';
+            document.getElementById('resultLabel').innerText = 'Decoded Plain Text Output:';
+            document.getElementById('urlInput').placeholder = 'Paste your string here... (e.g., %20)';
+        } else {
+            document.getElementById('btnEncode').classList.add('active');
+            document.getElementById('inputLabel').innerText = 'Enter Plain Text URL below';
+            document.getElementById('resultLabel').innerText = 'Encoded URL String Output:';
+            document.getElementById('urlInput').placeholder = 'Type your text here... (e.g., space)';
+        }
+        processURL();
+    }
 
-let input=document.getElementById("urlInput").value;
+    function processURL() {
+        const input = document.getElementById('urlInput').value.trim();
+        const output = document.getElementById('outputArea');
+        
+        if (!input) {
+            output.innerText = "Waiting for input...";
+            return;
+        }
 
-try{
+        try {
+            if (currentMode === 'decode') {
+                // Handle both %20 and + as spaces
+                const decoded = decodeURIComponent(input.replace(/\+/g, ' '));
+                output.innerText = decoded;
+            } else {
+                const encoded = encodeURIComponent(input);
+                output.innerText = encoded;
+            }
+        } catch (e) {
+            output.innerText = "⚠️ Error: Invalid URL Format. Please check your string.";
+        }
+    }
 
-let encoded=encodeURIComponent(input);
+    function copyResult() {
+        const text = document.getElementById('outputArea').innerText;
+        if(text === "Waiting for input..." || text.startsWith("⚠️")) return;
+        
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerText;
+            btn.innerText = "✅ Result Copied!";
+            setTimeout(() => btn.innerText = original, 2000);
+        });
+    }
 
-document.getElementById("result").innerText=encoded;
+    function clearAll() {
+        document.getElementById('urlInput').value = "";
+        processURL();
+    }
 
-}
-
-catch(e){
-
-document.getElementById("result").innerText="Error encoding URL!";
-
-}
-
-}
-
+    // Initialize
+    window.onload = processURL;
 </script>
 
 </body>
-
 </html>
