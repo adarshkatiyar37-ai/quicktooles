@@ -1,240 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Code Converter – HEX, RGB, HSL & CMYK Online | QuickTooles</title>
+    
+    <meta name="description" content="Free online Color Code Converter. Instantly translate HEX to RGB, RGB to HSL, and CMYK color codes. Features a live color picker and 1-click CSS copy.">
+    <meta name="keywords" content="color code converter, hex to rgb, rgb to hex, hsl converter, cmyk to rgb, html color codes, web colors, css color picker, hex color generator, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/color-code-converter">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Color Code Converter & Picker | QuickTooles">
+    <meta property="og:description" content="Instantly convert HEX, RGB, HSL, and CMYK colors. The ultimate tool for web developers and designers. 100% Free.">
+    <meta property="og:url" content="https://quicktooles.in/tools/color-code-converter">
+    <meta property="og:type" content="website">
 
-<title>Color Code Converter - HEX, RGB, HSL | QuickTooles</title>
-<meta name="description" content="Convert HEX color codes to RGB and HSL easily. Free online Color Code Converter for designers and developers.">
-<meta name="keywords" content="color converter, hex to rgb, hex to hsl, online color tool, free color converter">
-<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Color Code Converter",
+      "operatingSystem": "Web",
+      "applicationCategory": "DesignApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced, real-time online utility to convert and translate color codes between HEX, RGB, HSL, and CMYK formats."
+    }
+    </script>
 
-<style>
-.tool-container {
-    max-width:700px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-    color:#1e293b;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Color Code Converter"
+      }]
+    }
+    </script>
 
-.tool-container h1 {
-    text-align:center;
-    margin-bottom:20px;
-    color:#2563eb;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert HEX to RGB?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simply paste your HEX code (e.g., #FF5733) into the HEX input field. Our tool instantly calculates and displays the exact RGB equivalent, along with HSL and CMYK." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between RGB and CMYK?",
+          "acceptedAnswer": { "@type": "Answer", "text": "RGB is a light-based color model used for digital screens (monitors, phones). CMYK is an ink-based color model used for physical printing. You should always use RGB for web design." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the color picker to find a code?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! Click the large color preview box on our tool. It will open your device's native color picker. Choose any color, and we will generate the HEX, RGB, HSL, and CMYK codes for it instantly." }
+        }
+      ]
+    }
+    </script>
 
-.tool-container p{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:16px;
-}
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-/* Input */
-input{
-    width:100%;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:8px;
-    font-size:16px;
-    margin-top:10px;
-    transition:0.3s;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-input:focus{
-    outline:none;
-    border-color:#3b82f6;
-    box-shadow:0 0 8px rgba(59,130,246,0.2);
-}
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-/* Button */
-button {
-    margin-top:15px;
-    padding:12px 20px;
-    border:none;
-    border-radius:8px;
-    background:#3b82f6;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-    transition:0.3s;
-}
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 750px; margin: auto; font-weight: 300; }
 
-button:hover{
-    background:#2563eb;
-}
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
 
-/* Preview */
-.preview{
-    margin-top:20px;
-    height:80px;
-    border-radius:8px;
-    border:1px solid #3b82f6;
-}
+        /* MAIN LAYOUT */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; }
 
-/* Result */
-.result{
-    margin-top:20px;
-    background:#f1f5f9;
-    padding:20px;
-    border-radius:8px;
-    text-align:left;
-    word-break:break-word;
-}
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+        
+        /* Color Preview Side */
+        .color-preview-container { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .color-box-wrapper { position: relative; width: 100%; max-width: 250px; aspect-ratio: 1/1; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; border: 4px solid white; outline: 1px solid var(--border); cursor: pointer; transition: var(--transition); }
+        .color-box-wrapper:hover { transform: scale(1.02); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+        .color-box { width: 100%; height: 100%; background-color: #4f46e5; transition: background-color 0.2s ease; }
+        
+        /* Hidden native color input stretched over the box */
+        .native-picker { position: absolute; top: -10px; left: -10px; width: 150%; height: 150%; opacity: 0; cursor: pointer; }
+        
+        .preview-label { margin-top: 20px; font-weight: 600; color: var(--text-light); font-size: 15px; text-align: center; }
+        .preview-label span { display: block; font-size: 13px; font-weight: 400; margin-top: 5px; }
 
-/* Blog Section */
-.blog-section{
-    margin-top:50px;
-    background:#f8fafc;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    line-height:1.7;
-    color:#1e293b;
-}
+        /* Inputs Side */
+        .inputs-container { display: flex; flex-direction: column; gap: 20px; }
+        .input-group { position: relative; }
+        .input-group label { display: block; font-weight: 700; color: var(--secondary); margin-bottom: 8px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .input-with-btn { display: flex; background: var(--bg-light); border: 2px solid var(--border); border-radius: 10px; overflow: hidden; transition: var(--transition); }
+        .input-with-btn:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+        
+        .input-with-btn input { flex: 1; border: none; padding: 16px; font-size: 16px; font-family: 'Fira Code', monospace; color: var(--secondary); background: transparent; outline: none; width: 100%; }
+        
+        .copy-btn { background: var(--primary); color: white; border: none; padding: 0 20px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 14px; }
+        .copy-btn:hover { background: var(--primary-dark); }
+        .copy-btn.copied { background: var(--success); }
 
-.blog-section h2{
-    font-size:24px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
+        .error-msg { color: var(--danger); font-size: 13px; font-weight: 600; margin-top: 5px; display: none; }
 
-.blog-section p{
-    margin-bottom:15px;
-}
+        /* LONG FORM SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); grid-column: 1 / -1; }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h2:first-of-type { margin-top: 0; }
+        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); }
+        .seo-article li { margin-bottom: 10px; }
+        
+        /* FAQs */
+        .faq-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--bg-light); }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-box p { margin: 0; color: var(--text-main); line-height: 1.6; }
 
-/* Related Tools */
-.related-tools{
-    margin-top:40px;
-    text-align:left;
-}
+        /* SIDEBAR */
+        .sidebar { position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 30px; border: 1px solid var(--border); }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 700; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 500; background: var(--bg-light); transition: var(--transition); }
+        .widget-links a:hover { background: var(--primary); color: white; transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 18px; }
 
-.related-tools h2{
-    font-size:22px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 50px 20px; margin-top: 60px; text-align: center; }
+        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .tool-workspace { grid-template-columns: 1fr; gap: 30px; }
+            .color-box-wrapper { max-width: 200px; }
+            .hero h1 { font-size: 34px; }
+            .seo-article { grid-column: 1; padding: 25px; }
+        }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
 
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
 
-.related-tools ul li{
-    margin-bottom:10px;
-}
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
 
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
 
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
-
-@media(max-width:768px){
-    .tool-container{
-        margin:50px 20px;
-        padding:30px;
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
     }
 }
-</style>
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-    <h2 class="logo">QuickTooles</h2>
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../index.html">All Tools</a>
-    </nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Color Code Converter</h1>
+    <p>The ultimate tool for UI/UX designers and developers. Seamlessly convert between HEX, RGB, HSL, and CMYK colors in real-time.</p>
+</section>
 
-<h1>🎨 Color Code Converter</h1>
-<p>Convert HEX color codes to RGB and HSL instantly</p>
-
-<input type="text" id="colorInput" placeholder="Enter HEX color (example: #ff0000)">
-<button onclick="convertColor()">Convert</button>
-
-<div class="preview" id="preview"></div>
-
-<div class="result">
-<p><b>HEX:</b> <span id="hex"></span></p>
-<p><b>RGB:</b> <span id="rgb"></span></p>
-<p><b>HSL:</b> <span id="hsl"></span></p>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-dev">Developer Tools</a> › Color Code Converter
 </div>
 
-<!-- Blog Section -->
-<div class="blog-section">
-<h2>About This Tool</h2>
-<p>This Color Code Converter allows designers and developers to quickly convert HEX codes into RGB and HSL values. It helps you preview colors instantly and ensures accuracy in your web projects, design systems, and applications.</p>
-<p>Simply enter a valid HEX code (starting with #), click Convert, and see the results immediately. You can use this tool for learning, coding, or graphic design purposes.</p>
+<div class="layout">
+    <main>
+        <section class="tool-workspace">
+            
+            <div class="color-preview-container">
+                <div class="color-box-wrapper" title="Click to open color picker">
+                    <div class="color-box" id="colorBox"></div>
+                    <input type="color" id="nativePicker" class="native-picker" value="#4f46e5" oninput="handleNativePicker(this.value)">
+                </div>
+                <div class="preview-label">
+                    Live Preview
+                    <span>(Click the box to pick a color)</span>
+                </div>
+            </div>
+
+            <div class="inputs-container">
+                
+                <div class="input-group">
+                    <label for="hexInput">HEX Code (Web Standard)</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="hexInput" value="#4F46E5" oninput="handleHexInput(this.value)" placeholder="#FFFFFF" maxlength="7">
+                        <button class="copy-btn" onclick="copyToClipboard('hexInput', this)">Copy</button>
+                    </div>
+                    <div id="hexError" class="error-msg">Invalid HEX code</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="rgbInput">RGB (Red, Green, Blue)</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="rgbInput" value="rgb(79, 70, 229)" oninput="handleRgbInput(this.value)" placeholder="rgb(255, 255, 255)">
+                        <button class="copy-btn" onclick="copyToClipboard('rgbInput', this)">Copy</button>
+                    </div>
+                    <div id="rgbError" class="error-msg">Invalid RGB format</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="hslInput">HSL (Hue, Saturation, Lightness)</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="hslInput" value="hsl(243, 76%, 59%)" oninput="handleHslInput(this.value)" placeholder="hsl(0, 0%, 100%)">
+                        <button class="copy-btn" onclick="copyToClipboard('hslInput', this)">Copy</button>
+                    </div>
+                    <div id="hslError" class="error-msg">Invalid HSL format</div>
+                </div>
+
+                <div class="input-group">
+                    <label for="cmykInput">CMYK (Print Format)</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="cmykInput" value="cmyk(65%, 69%, 0%, 10%)" readonly placeholder="cmyk(0%, 0%, 0%, 0%)">
+                        <button class="copy-btn" onclick="copyToClipboard('cmykInput', this)">Copy</button>
+                    </div>
+                    </div>
+
+            </div>
+        </section>
+
+        <article class="seo-article">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-converter">1. What is a Color Code Converter?</a></li>
+                    <li><a href="#understanding-formats">2. Understanding HEX, RGB, HSL, and CMYK</a></li>
+                    <li><a href="#web-vs-print">3. Web vs. Print: Why Use Different Colors?</a></li>
+                    <li><a href="#faqs">4. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-converter">What is a Color Code Converter?</h2>
+            <p>In the digital design world, colors are represented by complex mathematical codes. A graphic designer might use a CMYK code for a printable flyer, while a frontend web developer needs a HEX code to write CSS for a website. A <strong>Color Code Converter</strong> is a bridge between these disciplines.</p>
+            <p>Our QuickTooles omni-converter allows you to type a color code in <em>any</em> standard format, and it instantly translates it into all the other standard formats using precise mathematical algorithms embedded in your browser.</p>
+
+            <h2 id="understanding-formats">Understanding HEX, RGB, HSL, and CMYK</h2>
+            <p>Choosing the right color format depends entirely on the medium you are designing for. Here is a breakdown of the primary color models:</p>
+            
+            <h3>HEX Code (Hexadecimal)</h3>
+            <p>The standard for HTML and CSS web development. It is a 6-digit alphanumeric code starting with a hashtag (e.g., <code>#FF0000</code> for red). It represents the same values as RGB but uses a base-16 mathematical system to keep the code short and clean.</p>
+            
+            <h3>RGB (Red, Green, Blue)</h3>
+            <p>RGB is an additive color model based on the emission of light. Every pixel on your phone, monitor, or TV is made of three tiny LEDs: Red, Green, and Blue. Values range from 0 to 255. <code>rgb(255, 255, 255)</code> mixes all light together to create pure white.</p>
+            [Image of RGB color model mixing light]
+
+            <h3>HSL (Hue, Saturation, Lightness)</h3>
+            <p>While HEX and RGB are great for computers, they are hard for human brains to read. HSL solves this by formatting color the way human eyes perceive it. <strong>Hue</strong> is the color degree on the color wheel (0-360), <strong>Saturation</strong> is the intensity (0-100%), and <strong>Lightness</strong> dictates how dark or light the color is (0-100%).</p>
+            [Image of HSL color cylinder]
+
+            <h3>CMYK (Cyan, Magenta, Yellow, Key/Black)</h3>
+            <p>CMYK is a subtractive color model used exclusively for physical printing (like magazines or business cards). Instead of adding light, physical ink absorbs light. Mixing all CMY inks together creates black (or muddy brown), which is why true black (Key) ink is added to printers.</p>
+            [Image of CMYK color model mixing ink]
+
+            <h2 id="web-vs-print">Web vs. Print: Why Use Different Colors?</h2>
+            <p>The golden rule for designers is: <strong>Use HEX/RGB for Screens, and CMYK for Print.</strong></p>
+            <p>Digital screens emit light, allowing them to display bright, vibrant, and neon colors (RGB). Physical paper does not emit light; it only reflects the room's light off the ink (CMYK). If you design a neon green logo using RGB and send it to a printer without converting it to CMYK, the printed result will look dull and washed out because printer ink cannot physically replicate neon screen light.</p>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <h4>How do I convert HEX to RGB?</h4>
+                <p>You don't need to do any manual math. Simply paste your HEX code (e.g., <code>#FF5733</code>) into the top HEX input field. Our tool instantly calculates and displays the exact RGB equivalent (e.g., <code>rgb(255, 87, 51)</code>) in real-time.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Can I use the color picker to find a code?</h4>
+                <p>Yes! We have integrated a massive, interactive color preview box. Click on it, and it will open your device's native color picker (on Mac, Windows, iOS, or Android). Select any color visually, and we will generate the precise mathematical codes for it instantly.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Is my color search data private?</h4>
+                <p>Absolutely. The QuickTooles Color Converter performs all mathematical translations locally within your web browser using JavaScript. No data is sent to or stored on our servers.</p>
+            </div>
+        </article>
+    </main>
+
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>Related Web & Dev Tools</h3>
+            <div class="widget-links">
+                <a href="image-color-picker.html"><span class="icon">🎯</span> Image Color Picker</a>
+                <a href="random-color-generator.html"><span class="icon">🎨</span> Random Color Gen</a>
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+                <a href="base64-to-image.html"><span class="icon">🖼️</span> Base64 to Image</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+        
+        <div class="widget" style="background: linear-gradient(135deg, #e0e7ff, #ffffff); border: 2px dashed #a5b4fc;">
+            <h3 style="border:none; margin-bottom: 10px; font-size: 18px;">💡 Pro Tip</h3>
+            <p style="font-size: 14px; color: var(--text-main); margin: 0;">Building a website theme? Use the <strong>HSL</strong> format. You can easily create a dark mode palette just by lowering the "Lightness" percentage while keeping the Hue the same!</p>
+        </div>
+    </aside>
 </div>
 
-<div class="related-tools">
-    <h2>Related Tools</h2>
-    <ul>
-        <li><a href="random-color-generator.html">Random Color Generator</a></li>
-        <li><a href="color-code-converter.html">HEX to RGB/HSL</a></li>
-    </ul>
-</div>
-
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Web Design Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
-function hexToRgb(hex){
-    hex = hex.replace("#","");
-    let r=parseInt(hex.substring(0,2),16);
-    let g=parseInt(hex.substring(2,4),16);
-    let b=parseInt(hex.substring(4,6),16);
-    return {r,g,b};
-}
+    // --- COLOR MATH FUNCTIONS ---
 
-function rgbToHsl(r,g,b){
-    r/=255; g/=255; b/=255;
-    let max=Math.max(r,g,b), min=Math.min(r,g,b);
-    let h,s,l=(max+min)/2;
+    // HEX to RGB Object
+    function hexToRgb(hex) {
+        let h = hex.replace('#', '');
+        if (h.length === 3) { h = h.split('').map(char => char + char).join(''); }
+        return {
+            r: parseInt(h.substring(0, 2), 16),
+            g: parseInt(h.substring(2, 4), 16),
+            b: parseInt(h.substring(4, 6), 16)
+        };
+    }
 
-    if(max==min){
-        h=s=0;
-    } else {
-        let d=max-min;
-        s=l>0.5 ? d/(2-max-min) : d/(max+min);
-        switch(max){
-            case r: h=(g-b)/d+(g<b?6:0); break;
-            case g: h=(b-r)/d+2; break;
-            case b: h=(r-g)/d+4; break;
+    // RGB to HEX String
+    function rgbToHex(r, g, b) {
+        return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1).toUpperCase();
+    }
+
+    // RGB to HSL Object
+    function rgbToHsl(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        let max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+
+        if (max === min) {
+            h = s = 0; // achromatic
+        } else {
+            let d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
         }
-        h/=6;
+        return {
+            h: Math.round(h * 360),
+            s: Math.round(s * 100),
+            l: Math.round(l * 100)
+        };
     }
-    return {h:Math.round(h*360), s:Math.round(s*100), l:Math.round(l*100)};
-}
 
-function convertColor(){
-    let hex=document.getElementById("colorInput").value.trim();
-    if(!hex.startsWith("#") || hex.length!=7){
-        alert("Enter valid HEX code (example: #ff0000)");
-        return;
+    // RGB to CMYK Object
+    function rgbToCmyk(r, g, b) {
+        let c = 1 - (r / 255);
+        let m = 1 - (g / 255);
+        let y = 1 - (b / 255);
+        let k = Math.min(c, Math.min(m, y));
+
+        if (k === 1) {
+            return { c: 0, m: 0, y: 0, k: 100 };
+        }
+
+        c = Math.round(((c - k) / (1 - k)) * 100);
+        m = Math.round(((m - k) / (1 - k)) * 100);
+        y = Math.round(((y - k) / (1 - k)) * 100);
+        k = Math.round(k * 100);
+
+        return { c, m, y, k };
     }
-    let rgb=hexToRgb(hex);
-    let hsl=rgbToHsl(rgb.r,rgb.g,rgb.b);
 
-    document.getElementById("preview").style.background=hex;
-    document.getElementById("hex").innerText=hex;
-    document.getElementById("rgb").innerText=`rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-    document.getElementById("hsl").innerText=`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
-}
+
+    // --- UI UPDATE CONTROLLERS ---
+
+    const hexIn = document.getElementById('hexInput');
+    const rgbIn = document.getElementById('rgbInput');
+    const hslIn = document.getElementById('hslInput');
+    const cmykIn = document.getElementById('cmykInput');
+    const colorBox = document.getElementById('colorBox');
+    const nativePicker = document.getElementById('nativePicker');
+
+    // Central Update Function (Takes HEX as source of truth)
+    function updateAllFromHex(hexStr) {
+        try {
+            const rgb = hexToRgb(hexStr);
+            const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+            const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+
+            // Update UI Inputs
+            if (document.activeElement !== hexIn) hexIn.value = hexStr.toUpperCase();
+            if (document.activeElement !== rgbIn) rgbIn.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            if (document.activeElement !== hslIn) hslIn.value = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+            cmykIn.value = `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
+
+            // Update Visuals
+            colorBox.style.backgroundColor = hexStr;
+            nativePicker.value = hexStr;
+            
+            clearErrors();
+        } catch(e) {
+            // Wait for valid input
+        }
+    }
+
+    // Input Handlers
+    function handleHexInput(val) {
+        const hexRegex = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+        if (hexRegex.test(val)) {
+            let hex = val.startsWith('#') ? val : '#' + val;
+            updateAllFromHex(hex);
+        } else {
+            document.getElementById('hexError').style.display = "block";
+        }
+    }
+
+    function handleRgbInput(val) {
+        const rgbRegex = /rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)/i;
+        const match = val.match(rgbRegex);
+        if (match) {
+            let r = parseInt(match[1]), g = parseInt(match[2]), b = parseInt(match[3]);
+            if (r<=255 && g<=255 && b<=255) {
+                let hex = rgbToHex(r, g, b);
+                updateAllFromHex(hex);
+            } else {
+                document.getElementById('rgbError').style.display = "block";
+            }
+        } else {
+            document.getElementById('rgbError').style.display = "block";
+        }
+    }
+
+    function handleHslInput(val) {
+        // Basic parser to assist UX, though converting HSL back to RGB is complex,
+        // we parse the string and calculate it.
+        const hslRegex = /hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%?\s*,\s*(\d{1,3})%?\s*\)/i;
+        const match = val.match(hslRegex);
+        if(match) {
+            let h = parseInt(match[1]) / 360;
+            let s = parseInt(match[2]) / 100;
+            let l = parseInt(match[3]) / 100;
+            
+            let r, g, b;
+            if(s === 0){
+                r = g = b = l; // achromatic
+            } else {
+                const hue2rgb = function hue2rgb(p, q, t){
+                    if(t < 0) t += 1;
+                    if(t > 1) t -= 1;
+                    if(t < 1/6) return p + (q - p) * 6 * t;
+                    if(t < 1/2) return q;
+                    if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                    return p;
+                }
+                let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                let p = 2 * l - q;
+                r = hue2rgb(p, q, h + 1/3);
+                g = hue2rgb(p, q, h);
+                b = hue2rgb(p, q, h - 1/3);
+            }
+            let hex = rgbToHex(Math.round(r * 255), Math.round(g * 255), Math.round(b * 255));
+            updateAllFromHex(hex);
+        } else {
+             document.getElementById('hslError').style.display = "block";
+        }
+    }
+
+    function handleNativePicker(hexVal) {
+        hexIn.value = hexVal.toUpperCase();
+        updateAllFromHex(hexVal);
+    }
+
+    function clearErrors() {
+        document.getElementById('hexError').style.display = "none";
+        document.getElementById('rgbError').style.display = "none";
+        document.getElementById('hslError').style.display = "none";
+    }
+
+    // Copy Function
+    function copyToClipboard(inputId, btnElement) {
+        const copyText = document.getElementById(inputId);
+        if(!copyText.value) return;
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            // Reset all buttons first
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.innerText = "Copy";
+                btn.classList.remove('copied');
+            });
+            
+            // Show success on clicked button
+            btnElement.innerText = "Copied!";
+            btnElement.classList.add('copied');
+            
+            setTimeout(() => {
+                btnElement.innerText = "Copy";
+                btnElement.classList.remove('copied');
+            }, 2000);
+        });
+    }
 </script>
 
 </body>
