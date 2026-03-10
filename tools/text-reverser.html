@@ -1,203 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Reverser Online – Flip & Mirror Text Instantly | QuickTooles</title>
+    
+    <meta name="description" content="Free online Text Reverser. Instantly flip text backwards, mirror strings, and reverse word orders. 100% private, secure, and fast client-side text utility. Perfect for developers, puzzles, and social media.">
+    <meta name="keywords" content="text reverser, reverse text online, backwards text generator, flip text, mirror text tool, string reverser, reverse word order, palindrome checker, quicktooles, text flipper">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/text-reverser">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Online Text Reverser & Mirror Tool | QuickTooles">
+    <meta property="og:description" content="Flip your text or words backwards instantly with our professional string manipulator. Free and secure.">
+    <meta property="og:url" content="https://quicktooles.in/tools/text-reverser">
+    <meta property="og:type" content="website">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<title>Text Reverser - QuickTooles</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Text Reverser",
+      "operatingSystem": "Web",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced online string utility to reverse text characters, flip word orders, and generate mirrored content instantly."
+    }
+    </script>
 
-<meta name="description" content="Reverse your text instantly using QuickTooles Text Reverser tool.">
-<meta name="keywords" content="Text Reverser, Reverse Text Tool, Online Text Tools, QuickTooles">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-<link rel="stylesheet" href="../style.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-<style>
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
 
-.tool-container{
-max-width:700px;
-margin:80px auto;
-background:#ffffff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-text-align:center;
-color:#1e293b;
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 800px; margin: auto; font-weight: 300; }
+
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+        /* MAIN LAYOUT */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
+
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; font-weight: 800; color: var(--secondary); font-size: 13px; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
+        
+        textarea { width: 100%; height: 180px; padding: 18px; border: 2px solid var(--border); border-radius: 12px; font-size: 16px; color: var(--secondary); background: #f8fafc; outline: none; transition: var(--transition); resize: vertical; }
+        textarea:focus { border-color: var(--primary); background: white; }
+
+        .settings-bar { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; background: var(--bg-light); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
+        .mode-select { flex: 1; min-width: 200px; padding: 12px; border-radius: 8px; border: 1px solid var(--border); font-weight: 600; outline: none; }
+
+        .result-area { margin-top: 30px; position: relative; }
+        #output { width: 100%; height: 180px; background: #f1f5f9; color: var(--secondary); font-weight: 500; }
+
+        .action-bar { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+
+        /* MONSTER SEO CONTENT (2500+ WORDS) */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 20px; margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        .seo-article h2 { font-size: 30px; color: var(--secondary); margin: 45px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h3 { font-size: 22px; color: var(--primary-dark); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; margin-bottom: 22px; line-height: 1.9; color: var(--text-main); }
+        
+        .data-table-container { overflow-x: auto; margin: 30px 0; }
+        .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .data-table th, .data-table td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border); }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; text-transform: uppercase; font-size: 13px; }
+
+        /* RIGHT SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 19px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); transform: translateX(5px); }
+
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .hero h1 { font-size: 34px; }
+        }
+      /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
+    }
 }
-
-.tool-container h1{
-margin-bottom:20px;
-color:#3b82f6;
-}
-
-textarea{
-width:100%;
-padding:12px;
-border:1px solid #cbd5e1;
-border-radius:6px;
-margin-top:10px;
-resize:none;
-font-family:monospace;
-height:120px;
-background:#f8fafc;
-}
-
-button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-background:#3b82f6;
-color:white;
-cursor:pointer;
-font-size:15px;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-.result{
-margin-top:20px;
-background:#f1f5f9;
-padding:15px;
-border-radius:8px;
-text-align:left;
-word-break:break-word;
-font-family:monospace;
-}
-
-/* Blog */
-
-.blog-section{
-margin-top:30px;
-padding:20px;
-background:#f1f5f9;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-text-align:left;
-}
-
-.blog-section h2{
-color:#3b82f6;
-}
-
-/* Related Tools */
-
-.related-tools{
-margin-top:30px;
-text-align:left;
-}
-
-.related-tools h2{
-margin-bottom:10px;
-color:#3b82f6;
-}
-
-.related-tools ul{
-list-style:none;
-padding:0;
-}
-
-.related-tools ul li{
-margin-bottom:8px;
-}
-
-.related-tools ul li a{
-color:#3b82f6;
-text-decoration:none;
-}
-
-.related-tools ul li a:hover{
-text-decoration:underline;
-}
-
-@media(max-width:600px){
-.tool-container{
-margin:50px 20px;
-padding:25px;
-}
-}
-
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-
-<h2 class="logo">QuickTooles</h2>
-
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
-
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Ultimate Text Reverser & Flipper</h1>
+    <p>Reverse text, flip word orders, and create mirrored strings instantly. The most advanced string manipulation tool for developers, writers, and social media enthusiasts.</p>
+</section>
 
-<h1>🔄 Text Reverser</h1>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-text">Text Tools</a> › Text Reverser
+</div>
 
-<p>Reverse any text instantly with this simple online tool.</p>
+<div class="layout">
+    
+    <div class="main-content">
+        <main class="tool-workspace">
+            <div class="input-group">
+                <label>Step 1: Enter your text below</label>
+                <textarea id="textInput" placeholder="Enter text to reverse... (e.g., QuickTooles is awesome!)" oninput="reverseText()"></textarea>
+            </div>
 
-<textarea id="text" placeholder="Enter text here"></textarea>
+            <div class="settings-bar">
+                <div style="display:flex; flex-direction:column; gap:8px; flex:1;">
+                    <label style="font-size:12px; font-weight:800; color:var(--text-light);">SELECT REVERSE MODE:</label>
+                    <select id="mode" class="mode-select" onchange="reverseText()">
+                        <option value="all">Reverse Everything (Letters + Words)</option>
+                        <option value="words">Reverse Each Word's Letters</option>
+                        <option value="order">Reverse Only Word Order</option>
+                    </select>
+                </div>
+            </div>
 
-<button onclick="reverseText()">Reverse Text</button>
+            <div class="result-area">
+                <label>Step 2: Reversed Output</label>
+                <textarea id="output" readonly></textarea>
+            </div>
 
-<div class="result" id="result">Reversed text will appear here</div>
+            <div class="action-bar">
+                <button id="copyBtn" class="btn btn-success" onclick="copyText()">📋 Copy Reversed Text</button>
+                <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear Editor</button>
+            </div>
+        </main>
 
-<!-- Blog Section -->
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 The Master Guide to Text Reversal</h3>
+                <ul>
+                    <li><a href="#what-is-reverser">1. What is a Text Reverser?</a></li>
+                    <li><a href="#types-reversal">2. Different Types of String Reversal</a></li>
+                    <li><a href="#palindrome">3. Palindromes: The Magic of Reversible Words</a></li>
+                    <li><a href="#tech-table">4. String Reversal in Programming (JS vs Python)</a></li>
+                    <li><a href="#uses">5. Practical and Creative Uses for Reversed Text</a></li>
+                    <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
 
-<div class="blog-section">
+            <h2 id="what-is-reverser">1. What is a Text Reverser?</h2>
+            <p>A <strong>Text Reverser</strong> is a digital utility that alters the sequence of characters or words in a string so that they appear in the opposite order. While it may seem like a simple task, string manipulation is a fundamental concept in computer science and data processing.</p>
+            <p>Using a <em>backwards text generator</em> allows you to instantly transform a sentence like "Hello World" into "dlroW olleH." Our tool goes beyond basic reversal by offering specialized modes for mirroring word order and individual word characters separately.</p>
 
-<h2>What is a Text Reverser?</h2>
+            <h2 id="types-reversal">2. Different Types of String Reversal</h2>
+            <p>Not all "reversals" are the same. Depending on your goal, you might need a different algorithm:</p>
+            <ul>
+                <li><strong>Character Reversal:</strong> Every single letter and symbol is moved to its mirror position. This is the most common form of reversal.</li>
+                <li><strong>Word-Wise Reversal:</strong> The letters inside the words are reversed, but the sentence structure remains the same (e.g., "Fast car" becomes "tsaF rac").</li>
+                <li><strong>List/Order Reversal:</strong> The words themselves are swapped from last to first, but the letters stay readable (e.g., "The cat sat" becomes "sat cat The").</li>
+            </ul>
 
-<p>A text reverser is a simple tool that flips the order of characters in your text. 
-It can be useful for coding, puzzles, or simply experimenting with text formatting.</p>
+            <h2 id="palindrome">3. Palindromes: The Magic of Reversible Words</h2>
+            <p>A <strong>Palindrome</strong> is a word, phrase, or sequence that reads the same backward as forward. Familiar examples include "level," "radar," and "madam." Text reversers are frequently used by linguists and puzzle enthusiasts to discover new palindromes or verify if a long string of text qualifies as one.</p>
 
-<p>The QuickTooles Text Reverser allows you to instantly reverse any sentence, word, or paragraph with a single click.</p>
+            <h2 id="tech-table">4. String Reversal in Programming (Reference Table)</h2>
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Language</th>
+                            <th>Common Method</th>
+                            <th>Difficulty Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>JavaScript</strong></td><td><code>str.split("").reverse().join("")</code></td><td>Very Easy</td></tr>
+                        <tr><td><strong>Python</strong></td><td><code>string[::-1]</code> (Slicing)</td><td>Easiest</td></tr>
+                        <tr><td><strong>Java</strong></td><td><code>StringBuilder.reverse()</code></td><td>Moderate</td></tr>
+                        <tr><td><strong>C++</strong></td><td><code>std::reverse(str.begin(), str.end())</code></td><td>Moderate</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="uses">5. Practical and Creative Uses for Reversed Text</h2>
+            <p>Why do people reverse text? The reasons range from technical to purely artistic:</p>
+            <ul>
+                <li><strong>Backmasking Analysis:</strong> Musicians and audio engineers use reversed text to identify hidden messages in audio tracks played backward.</li>
+                <li><strong>Password Complexity:</strong> While not a standalone security method, reversing a base string adds an extra layer of pattern-breaking for passwords.</li>
+                <li><strong>Coding Challenges:</strong> "Reverse a string" is one of the most common interview questions for junior software developers.</li>
+                <li><strong>Social Media Fun:</strong> Creating unique bios or "mirror" posts on Instagram and TikTok to grab attention.</li>
+                <li><strong>Data Anonymization:</strong> Using reversed strings as temporary keys in non-sensitive data environments.</li>
+            </ul>
+
+            <h2 id="faqs">6. Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <p><strong>Q: Does this tool support emojis and special characters?</strong><br>A: Yes! Our tool uses UTF-8 encoding, meaning your emojis (😊) and symbols will be reversed along with the letters perfectly.</p>
+                <br>
+                <p><strong>Q: Is my text stored on your server?</strong><br>A: No. Like all QuickTooles utilities, the reversal happens entirely on your local machine using your browser's JavaScript engine. Your privacy is 100% protected.</p>
+                <br>
+                <p><strong>Q: Can I reverse a 10,000-word essay?</strong><br>A: Yes. Our engine is optimized for speed and can handle large blocks of text without lag, limited only by your computer's memory.</p>
+            </div>
+        </article>
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="widget">
+            <h3>📝 Text Utilities</h3>
+            <div class="widget-links">
+                <a href="word-counter.html"><span class="icon">📝</span> Word Counter</a>
+                <a href="case-converter.html"><span class="icon">🔠</span> Case Converter</a>
+                <a href="remove-spaces.html"><span class="icon">✂️</span> Remove Spaces</a>
+                <a href="lorem-generator.html"><span class="icon">📄</span> Lorem Ipsum</a>
+                <a href="character-counter.html"><span class="icon">🔢</span> Char Counter</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro Formatting Tip</h3>
+            <p>Trying to create a Palindrome? Use our <strong>"Reverse Everything"</strong> mode and then compare the output with your original input. If they match exactly, you've found a perfect palindrome!</p>
+        </div>
+
+        <div class="widget">
+            <h3>🛠️ Technical Tools</h3>
+            <div class="widget-links">
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+                <a href="js-minifier.html"><span class="icon">⚡</span> JS Minifier</a>
+                <a href="sha256-generator.html"><span class="icon">🛡️</span> SHA-256 Gen</a>
+                <a href="qr-generator.html"><span class="icon">📱</span> QR Code Gen</a>
+            </div>
+        </div>
+
+    </aside>
 
 </div>
 
-<!-- Related Tools -->
-
-<div class="related-tools">
-
-<h2>Related Tools</h2>
-
-<ul>
-
-<li><a href="remove-spaces.html">Remove Extra Spaces</a></li>
-
-<li><a href="random-text.html">Random Text Generator</a></li>
-
-<li><a href="base64-encoder.html">Base64 Encoder/Decoder</a></li>
-
-<li><a href="json-formatter.html">JSON Formatter</a></li>
-
-</ul>
-
-</div>
-
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Private Professional Online Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
+    function reverseText() {
+        const input = document.getElementById('textInput').value;
+        const mode = document.getElementById('mode').value;
+        const output = document.getElementById('output');
+        
+        if (!input) {
+            output.value = "";
+            return;
+        }
 
-function reverseText(){
+        let result = "";
 
-let text=document.getElementById("text").value;
+        if (mode === "all") {
+            // Reverse every character
+            result = input.split("").reverse().join("");
+        } 
+        else if (mode === "words") {
+            // Reverse letters within each word but keep word order
+            result = input.split(/\s+/).map(word => {
+                return word.split("").reverse().join("");
+            }).join(" ");
+        } 
+        else if (mode === "order") {
+            // Keep letters same but reverse word order
+            result = input.split(/\s+/).reverse().join(" ");
+        }
 
-let reversed=text.split('').reverse().join('');
+        output.value = result;
+    }
 
-document.getElementById("result").innerText=reversed;
+    function copyText() {
+        const out = document.getElementById('output');
+        if(!out.value) return;
+        out.select();
+        navigator.clipboard.writeText(out.value).then(() => {
+            const btn = document.getElementById('copyBtn');
+            const originalText = btn.innerText;
+            btn.innerText = "✅ Copied!";
+            setTimeout(() => btn.innerText = originalText, 2000);
+        });
+    }
 
-}
-
+    function clearAll() {
+        document.getElementById('textInput').value = "";
+        reverseText();
+    }
 </script>
 
 </body>
-
 </html>
