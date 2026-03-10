@@ -1,230 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer – Resize Photos Online Without Losing Quality | QuickTooles</title>
+    
+    <meta name="description" content="Free online Image Resizer. Change picture dimensions, reduce image size, and scale photos for Instagram, Facebook, or your website instantly. Maintain aspect ratio perfectly.">
+    <meta name="keywords" content="image resizer, resize image online free, change picture dimensions, reduce image dimensions, photo resizer, resize image without losing quality, resize photo for instagram, scale image online, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/image-resizer">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Free Image Resizer | QuickTooles">
+    <meta property="og:description" content="Resize your photos perfectly for social media or web. Lock aspect ratio, enter dimensions, and download instantly.">
+    <meta property="og:url" content="https://quicktooles.in/tools/image-resizer">
+    <meta property="og:type" content="website">
 
-<title>Image Resizer - QuickTooles</title>
-<meta name="description" content="Resize your images online easily with our free Image Resizer tool. Adjust width and height and download the resized image.">
-<meta name="keywords" content="Image Resizer, Resize Image Online, Free Image Resize, PNG Resizer, JPG Resizer, WebTools">
-<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Image Resizer",
+      "operatingSystem": "Web",
+      "applicationCategory": "DesignApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "A high-performance online utility to resize image dimensions (width and height) precisely while maintaining aspect ratio and image quality."
+    }
+    </script>
 
-<style>
-/* Tool Container */
-.tool-container {
-    max-width:700px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-    color:#1e293b;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Image Resizer"
+      }]
+    }
+    </script>
 
-.tool-container h1 {
-    text-align:center;
-    margin-bottom:20px;
-    color:#2563eb;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I resize an image without stretching it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "To prevent stretching, keep the 'Lock Aspect Ratio' checkbox ticked. When you change the width, our tool will automatically calculate the perfect height to keep the image looking natural." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my photo uploaded to the internet?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The entire image resizing process occurs locally on your web browser via HTML5 Canvas. Your photos are 100% private and never touch our servers." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best image size for a website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For hero banners, a width of 1920px is standard. For blog post images, 1200px or 800px width is recommended to ensure fast loading times (SEO)." }
+        }
+      ]
+    }
+    </script>
 
-.tool-container p{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:16px;
-}
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-/* Inputs */
-input[type="file"],
-input[type="number"] {
-    margin-top:10px;
-    padding:10px;
-    border-radius:6px;
-    border:1px solid #cbd5e1;
-    width:150px;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-/* Canvas */
-canvas {
-    margin-top:20px;
-    max-width:100%;
-    border-radius:8px;
-    border:1px solid #cbd5e1;
-}
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-/* Button */
-button {
-    margin-top:20px;
-    padding:12px 20px;
-    border:none;
-    border-radius:6px;
-    background:#3b82f6;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 750px; margin: auto; font-weight: 300; }
 
-button:hover {
-    background:#2563eb;
-}
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
 
-/* Download Link */
-a#download {
-    display:block;
-    margin-top:15px;
-    color:#3b82f6;
-    font-weight:bold;
-}
+        /* MAIN LAYOUT (RESTORED 3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
 
-/* Blog Section */
-.blog-section{
-    margin-top:40px;
-    background:#f8fafc;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    line-height:1.7;
-    color:#1e293b;
-}
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        /* Upload Area */
+        .upload-area { border: 2px dashed var(--primary); background: #eff6ff; border-radius: 12px; padding: 50px 20px; text-align: center; cursor: pointer; transition: var(--transition); position: relative; }
+        .upload-area:hover { background: #e0e7ff; border-color: var(--primary-dark); }
+        .upload-area input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .upload-icon { font-size: 48px; margin-bottom: 15px; }
+        .upload-text { font-weight: 700; color: var(--primary-dark); font-size: 22px; margin-bottom: 8px; }
+        .upload-subtext { color: var(--text-light); font-size: 15px; }
 
-.blog-section h2{
-    font-size:22px;
-    margin-bottom:12px;
-    color:#2563eb;
-}
+        /* Editor Workspace (Hidden Initially) */
+        .editor-workspace { display: none; }
+        
+        .preview-container { text-align: center; margin-bottom: 30px; background: #f1f5f9; border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+        .preview-container img { max-width: 100%; max-height: 400px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: contain; }
+        .current-dims { margin-top: 15px; font-weight: 700; color: var(--secondary); font-size: 16px; }
+        .current-dims span { color: var(--text-light); font-weight: 500; }
 
-.blog-section p{
-    margin-bottom:12px;
-}
+        /* Controls Grid */
+        .controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; background: white; border: 1px solid var(--border); padding: 25px; border-radius: 12px; }
+        .input-group label { display: block; font-weight: 700; color: var(--secondary); margin-bottom: 8px; font-size: 14px; text-transform: uppercase; }
+        .input-wrapper { display: flex; align-items: center; border: 2px solid var(--border); border-radius: 8px; overflow: hidden; transition: var(--transition); }
+        .input-wrapper:focus-within { border-color: var(--primary); }
+        .input-wrapper input { flex: 1; border: none; padding: 14px; font-size: 18px; font-weight: 600; text-align: center; color: var(--secondary); outline: none; width: 100%; }
+        .input-wrapper .suffix { background: #f1f5f9; padding: 14px 15px; font-weight: 700; color: var(--text-light); border-left: 1px solid var(--border); }
 
-/* Related Tools */
-.related-tools{
-    margin-top:30px;
-    text-align:left;
-}
+        .lock-container { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; color: var(--secondary); background: #eff6ff; padding: 12px; border-radius: 8px; border: 1px solid #bfdbfe; cursor: pointer; }
+        .lock-container input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
 
-.related-tools h2{
-    font-size:20px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
+        /* Action Buttons */
+        .action-bar { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 16px 32px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+        .btn-secondary:hover { background: #cbd5e1; }
 
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
+        /* Hidden Canvas */
+        canvas { display: none; }
 
-.related-tools ul li{
-    margin-bottom:10px;
-}
+        /* LONG FORM SEO CONTENT (EXPANDED) */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h2:first-of-type { margin-top: 0; }
+        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); }
+        .seo-article li { margin-bottom: 10px; line-height: 1.6; }
+        
+        /* Data Table for Social Media */
+        .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 15px; }
+        .data-table th, .data-table td { border: 1px solid var(--border); padding: 15px; text-align: left; }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; }
+        .data-table tr:nth-child(even) { background: var(--bg-light); }
+        .data-table strong { color: var(--primary-dark); }
+        
+        /* FAQs */
+        .faq-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--bg-light); }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-box p { margin: 0; color: var(--text-main); line-height: 1.6; }
 
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
+        /* RIGHT SIDEBAR (RESTORED & IMPROVED) */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 20px; }
 
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
+        /* Pro Tip Box */
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; margin: 0; }
 
-@media(max-width:600px){
-    .tool-container{
-        margin:50px 20px;
-        padding:30px;
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            .controls-grid { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
     }
 }
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-<h2 class="logo">QuickTooles</h2>
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Perfect Image Resizer</h1>
+    <p>Change your picture dimensions in seconds. Resize images for Instagram, Facebook, or your blog while maintaining the perfect aspect ratio.</p>
+</section>
 
-<h1>📏 Image Resizer</h1>
-
-<p>Upload your image and set the width and height to resize it.</p>
-
-<input type="file" id="upload">
-
-<br>
-
-<input type="number" id="width" placeholder="Width">
-<input type="number" id="height" placeholder="Height">
-
-<br>
-
-<button onclick="resizeImage()">Resize Image</button>
-
-<canvas id="canvas"></canvas>
-
-<a id="download" style="display:none;">Download Resized Image</a>
-
-<!-- Blog Section -->
-<div class="blog-section">
-<h2>How to Use the Image Resizer</h2>
-<p>Resize your images online easily. Upload an image, set the desired width and height, and click "Resize Image". The resized image will be generated instantly and can be downloaded directly.</p>
-<p>This tool is perfect for content creators, web developers, and designers who need images in specific dimensions for websites, blogs, or social media.</p>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-image">Image Tools</a> › Image Resizer
 </div>
 
-<div class="related-tools">
-<h2>Related Tools</h2>
-<ul>
-<li><a href="image-compressor.html">Image Compressor</a></li>
-<li><a href="image-cropper.html">Image Cropper</a></li>
-<li><a href="image-converter.html">Image Converter</a></li>
-</ul>
-</div>
+<div class="layout">
+    
+    <div class="main-content">
+        
+        <main class="tool-workspace">
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📏</div>
+                <div class="upload-text">Click or Drag Image Here to Resize</div>
+                <div class="upload-subtext">Supports PNG, JPG, WebP. 100% Secure & Local processing.</div>
+                <input type="file" id="imageInput" accept="image/jpeg, image/png, image/webp">
+            </div>
+
+            <div class="editor-workspace" id="editorWorkspace">
+                
+                <div class="preview-container">
+                    <img id="imgPreview" src="" alt="Image to resize">
+                    <div class="current-dims">Original Dimensions: <span id="origDims">0 x 0 px</span></div>
+                </div>
+
+                <div class="controls-grid">
+                    <div class="input-group">
+                        <label>New Width</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="inputWidth" value="0" min="10" oninput="handleWidthChange()">
+                            <div class="suffix">px</div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>New Height</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="inputHeight" value="0" min="10" oninput="handleHeightChange()">
+                            <div class="suffix">px</div>
+                        </div>
+                    </div>
+                    
+                    <label class="lock-container" title="Check this to prevent the image from stretching">
+                        <input type="checkbox" id="lockRatio" checked>
+                        🔒 Lock Aspect Ratio
+                    </label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-primary" onclick="resizeAndDownload()">⬇️ Resize & Download</button>
+                    <button class="btn btn-secondary" onclick="resetWorkspace()">🔄 Choose New Image</button>
+                </div>
+            </div>
+
+            <canvas id="resizingCanvas"></canvas>
+
+        </main>
+
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-resizer">1. What is an Online Image Resizer?</a></li>
+                    <li><a href="#aspect-ratio">2. Why Aspect Ratio is Critical</a></li>
+                    <li><a href="#social-media-sizes">3. Optimal Social Media Image Sizes (2026 Guide)</a></li>
+                    <li><a href="#resizing-vs-compressing">4. Resizing vs. Compressing: What's the difference?</a></li>
+                    <li><a href="#faqs">5. Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-resizer">What is an Online Image Resizer?</h2>
+            <p>An <strong>Image Resizer</strong> is a highly sought-after digital tool that allows users to alter the physical dimensions (measured in pixels for width and height) of a photograph or graphic. Unlike cropping—which cuts off parts of the image—resizing scales the entire image up or down, preserving all the original visual information.</p>
+            <p>Whether you need to <em>reduce image dimensions</em> to fit a specific website banner slot, or scale down a massive 4K camera photo so it can be uploaded as a tiny forum avatar, our photo resizer handles the complex pixel-math in milliseconds using your browser's local processor.</p>
+
+            <h2 id="aspect-ratio">Why "Locking the Aspect Ratio" is Critical</h2>
+            <p>When you use an online tool to change picture dimensions, you will notice a setting called <strong>"Lock Aspect Ratio"</strong>. This is the most important feature of image resizing.</p>
+            <p>The aspect ratio is the proportional relationship between the width and height of an image (for example, a standard TV is 16:9, while an Instagram square is 1:1). If you have an image that is 1000px wide and 500px tall, it has a 2:1 ratio. </p>
+            <p>If you manually force the width to 500px, but leave the height at 500px (destroying the ratio), the image will look horribly squeezed and unnatural. By keeping the <strong>"Lock Aspect Ratio"</strong> box checked in the QuickTooles app, changing the width to 500px will automatically calculate and change the height to 250px. Your image scales down perfectly, without any distortion!</p>
+
+            
+
+            <h2 id="social-media-sizes">Optimal Social Media Image Sizes (2026 Guide)</h2>
+            <p>One of the main reasons people search for a "resize image online free" tool is to fit social media requirements. Uploading an image with the wrong dimensions can result in awkward cropping by the platform. Here are the exact dimensions you should input into our tool:</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Platform & Format</th>
+                        <th>Recommended Dimensions (Width x Height)</th>
+                        <th>Aspect Ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Instagram Square Post</strong></td>
+                        <td>1080 x 1080 px</td>
+                        <td>1:1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Instagram Portrait Post</strong></td>
+                        <td>1080 x 1350 px</td>
+                        <td>4:5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Facebook Link Image</strong></td>
+                        <td>1200 x 630 px</td>
+                        <td>1.91:1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Twitter (X) In-Stream Photo</strong></td>
+                        <td>1600 x 900 px</td>
+                        <td>16:9</td>
+                    </tr>
+                    <tr>
+                        <td><strong>YouTube Thumbnail</strong></td>
+                        <td>1280 x 720 px</td>
+                        <td>16:9</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Website Hero Banner</strong></td>
+                        <td>1920 x 1080 px</td>
+                        <td>16:9</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="resizing-vs-compressing">Resizing vs. Compressing: What's the difference?</h2>
+            <p>Many users confuse resizing with compressing. While both can reduce the file size (KB/MB) of an image, they do it in entirely different ways:</p>
+            <ul>
+                <li><strong>Resizing:</strong> Changes the actual width and height of the image. For example, shrinking a 4000px wide image to 800px wide. Because there are fewer physical pixels to render, the file size drops dramatically. This is the best way to improve SEO and <em>Core Web Vitals</em>.</li>
+                <li><strong>Compressing:</strong> Keeps the image dimensions exactly the same (e.g., 4000px wide), but uses algorithms to delete hidden color data and metadata. If you want to compress an image without changing its dimensions, use our dedicated <a href="image-compressor.html">Image Compressor</a> tool.</li>
+            </ul>
+
+            <h2 id="faqs">Frequently Asked Questions</h2>
+            <div class="faq-box">
+                <h4>How do I resize an image without stretching it?</h4>
+                <p>Simply ensure the 'Lock Aspect Ratio' checkbox is ticked. When you type in a new width, our JavaScript engine will instantly calculate the perfect mathematical height to keep the image looking 100% natural and un-stretched.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Is my photo uploaded to the internet?</h4>
+                <p>No. Your privacy is our top priority. The entire image scaling process occurs locally on your device via HTML5 Canvas. Your personal photos or confidential client logos never touch our servers.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Will resizing an image reduce its quality?</h4>
+                <p>Scaling an image <em>down</em> (making it smaller) will generally retain its crispness while significantly reducing the file size. However, scaling an image <em>up</em> (making a tiny 200px image into a 2000px image) will cause it to look blurry and pixelated, as computers cannot magically invent missing data.</p>
+            </div>
+        </article>
+
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="widget">
+            <h3>🎨 Image Utilities</h3>
+            <div class="widget-links">
+                <a href="image-compressor.html"><span class="icon">📉</span> Image Compressor</a>
+                <a href="image-color-picker.html"><span class="icon">🎯</span> Image Color Picker</a>
+                <a href="image-cropper.html"><span class="icon">✂️</span> Image Cropper</a>
+                <a href="png-to-jpg.html"><span class="icon">🔄</span> PNG to JPG</a>
+                <a href="base64-to-image.html"><span class="icon">🖼️</span> Base64 to Image</a>
+                <a href="image-to-base64.html"><span class="icon">📦</span> Image to Base64</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro SEO Tip</h3>
+            <p>Never upload images wider than <strong>1920px</strong> to your website! Extremely large images hurt your <em>Largest Contentful Paint (LCP)</em> score, causing Google to rank your page lower. Always run your raw photos through this resizer first.</p>
+        </div>
+
+        <div class="widget">
+            <h3>💻 Top Developer Tools</h3>
+            <div class="widget-links">
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+
+    </aside>
 
 </div>
+
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Design Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
-let img = new Image();
+    const imageInput = document.getElementById('imageInput');
+    const uploadArea = document.getElementById('uploadArea');
+    const editorWorkspace = document.getElementById('editorWorkspace');
+    const imgPreview = document.getElementById('imgPreview');
+    const origDimsText = document.getElementById('origDims');
+    
+    const inputWidth = document.getElementById('inputWidth');
+    const inputHeight = document.getElementById('inputHeight');
+    const lockRatio = document.getElementById('lockRatio');
+    
+    const canvas = document.getElementById('resizingCanvas');
+    const ctx = canvas.getContext('2d');
 
-document.getElementById("upload").addEventListener("change", function(e){
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(event){
-        img.src = event.target.result;
+    let originalFile = null;
+    let imgObj = new Image();
+    let aspectRatio = 1;
+
+    // --- Upload Handlers ---
+    imageInput.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) handleFileLoad(e.target.files[0]);
+    });
+
+    uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.style.backgroundColor = '#e0e7ff'; });
+    uploadArea.addEventListener('dragleave', (e) => { e.preventDefault(); uploadArea.style.backgroundColor = '#eff6ff'; });
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.backgroundColor = '#eff6ff';
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFileLoad(e.dataTransfer.files[0]);
+    });
+
+    function handleFileLoad(file) {
+        if (!file.type.match(/image\/(jpeg|png|webp)/)) {
+            alert("Unsupported file type. Please upload a JPG, PNG, or WebP.");
+            return;
+        }
+
+        originalFile = file;
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            imgObj.onload = function() {
+                // Set initial data
+                const w = imgObj.width;
+                const h = imgObj.height;
+                aspectRatio = w / h;
+                
+                origDimsText.innerText = `${w} x ${h} px`;
+                inputWidth.value = w;
+                inputHeight.value = h;
+
+                // Show preview
+                imgPreview.src = event.target.result;
+                
+                // Switch UI
+                uploadArea.style.display = 'none';
+                editorWorkspace.style.display = 'block';
+            }
+            imgObj.src = event.target.result;
+        }
+        reader.readAsDataURL(file);
     }
-    reader.readAsDataURL(file);
-});
 
-function resizeImage(){
-    let width = parseInt(document.getElementById("width").value);
-    let height = parseInt(document.getElementById("height").value);
-
-    if(!width || !height){
-        alert("Please enter valid width and height.");
-        return;
+    // --- Dimension Logic (Aspect Ratio Lock) ---
+    function handleWidthChange() {
+        let w = parseInt(inputWidth.value);
+        if (isNaN(w) || w <= 0) return;
+        
+        if (lockRatio.checked) {
+            inputHeight.value = Math.round(w / aspectRatio);
+        }
     }
 
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
+    function handleHeightChange() {
+        let h = parseInt(inputHeight.value);
+        if (isNaN(h) || h <= 0) return;
+        
+        if (lockRatio.checked) {
+            inputWidth.value = Math.round(h * aspectRatio);
+        }
+    }
 
-    canvas.width = width;
-    canvas.height = height;
+    // --- Execution Engine ---
+    function resizeAndDownload() {
+        if (!imgObj.src) return;
 
-    ctx.drawImage(img,0,0,width,height);
+        let newW = parseInt(inputWidth.value);
+        let newH = parseInt(inputHeight.value);
 
-    let link = document.getElementById("download");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "resized-image.png";
-    link.style.display = "block";
-    link.innerText = "Download Resized Image";
-}
+        if (isNaN(newW) || newW <= 0 || isNaN(newH) || newH <= 0) {
+            alert("Please enter valid width and height numbers.");
+            return;
+        }
+
+        // Set canvas to NEW dimensions
+        canvas.width = newW;
+        canvas.height = newH;
+
+        // Draw image onto canvas scaling it to new dimensions
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Preserve transparency for PNGs
+        if (originalFile.type !== 'image/png') {
+             ctx.fillStyle = "#ffffff";
+             ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        ctx.drawImage(imgObj, 0, 0, newW, newH);
+
+        // Export and Download
+        const dataUrl = canvas.toDataURL(originalFile.type, 1.0); // 1.0 keeps highest quality possible at new dimension
+        
+        const ext = originalFile.type.split('/')[1];
+        const originalName = originalFile.name.split('.')[0];
+        
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `${originalName}-${newW}x${newH}.${ext}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    // --- Reset Workspace ---
+    function resetWorkspace() {
+        imageInput.value = "";
+        originalFile = null;
+        imgPreview.src = "";
+        
+        editorWorkspace.style.display = 'none';
+        uploadArea.style.display = 'block';
+    }
 </script>
 
 </body>
