@@ -1,0 +1,93 @@
+/* GLOBAL RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+width:100%;
+overflow-x:hidden;
+font-family:'Inter',sans-serif;
+background:#f8fafc;
+}
+
+/* CONTAINER */
+
+.layout{
+max-width:1300px;
+margin:auto;
+padding:0 20px;
+}
+
+/* HERO FIX */
+
+.hero{
+width:100%;
+padding:70px 20px;
+text-align:center;
+}
+
+/* TOOL BOX */
+
+.tool-workspace{
+width:100%;
+max-width:100%;
+}
+
+/* TEXTAREA */
+
+textarea{
+width:100%;
+max-width:100%;
+}
+
+/* FOOTER FIX */
+
+footer{
+width:100%;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero{
+padding:50px 20px;
+}
+
+.hero h1{
+font-size:26px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.layout{
+grid-template-columns:1fr;
+padding:0 15px;
+}
+
+.tool-workspace{
+padding:20px;
+}
+
+.seo-article{
+padding:20px;
+}
+
+.sidebar{
+position:static;
+}
+
+textarea{
+height:150px;
+}
+
+.btn{
+width:100%;
+}
+
+}
