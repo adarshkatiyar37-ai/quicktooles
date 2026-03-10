@@ -173,100 +173,24 @@
         footer { background: var(--secondary); color: #cbd5e1; padding: 50px 20px; margin-top: 60px; text-align: center; }
         footer p { font-size: 15px; margin-bottom: 10px; }
         footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-        @media(max-width: 992px) {
-
-.layout {
-grid-template-columns: 1fr;
-gap:25px;
-}
-
-.hero h1 {
-font-size: 34px;
-}
-
-.sidebar{
-position:relative;
-top:0;
-}
-
-.tool-workspace{
-padding:25px;
-}
-
-.seo-article{
-padding:25px;
-}
-
-textarea{
-height:170px;
-font-size:15px;
-}
-
-.action-bar{
-flex-wrap:wrap;
-}
-
-.btn{
-width:100%;
-justify-content:center;
-}
-
-.navbar{
-flex-direction:column;
-gap:10px;
-}
-
-.nav-links{
-gap:18px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-}
-
-/* MOBILE TABLE FIX */
-
-@media(max-width:700px){
-
-.ascii-table{
-display:block;
-overflow-x:auto;
-white-space:nowrap;
-}
-
-}
-
-/* SMALL PHONE FIX */
-
-@media(max-width:480px){
-
-.hero{
-padding:50px 15px 60px 15px;
-}
-
-.hero h1{
-font-size:24px;
-}
-
-.hero p{
-font-size:14px;
-}
-
-.tool-workspace{
-padding:20px;
-}
-
-.seo-article{
-padding:20px;
-}
-
-textarea{
-height:150px;
-}
-
-}
-      
         
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            
+        }
+                /* --- MOBILE FIX (Phone ke liye) --- */
+        @media (max-width: 768px) {
+            .tool-workspace { padding: 20px; }
+            .sidebar { position: static; }
+            .btn { width: 100%; justify-content: center; }
+            .action-bar { flex-direction: column; }
+            textarea { height: 150px; }
+            .hero { padding: 50px 15px 60px 15px; }
+            .hero h1 { font-size: 28px; }
+            .seo-article { padding: 25px; }
+            .layout { gap: 20px; }
+        }
     </style>
 </head>
 <body>
