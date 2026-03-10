@@ -1,211 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator – Calculate Percent Increase & Decrease | QuickTooles</title>
+    
+    <meta name="description" content="Free online Percentage Calculator. Calculate percentage of a number, percentage change (increase/decrease), and more. Accurate, fast, and easy-to-use math tool.">
+    <meta name="keywords" content="percentage calculator, calculate percentage online, percentage increase calculator, percentage decrease calculator, find percentage of a number, marks percentage calculator, discount calculator, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/percentage-calculator">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate All-in-One Percentage Calculator | QuickTooles">
+    <meta property="og:description" content="Instantly calculate percentages, growth rates, and discounts. The most accurate math tool for students and professionals.">
+    <meta property="og:url" content="https://quicktooles.in/tools/percentage-calculator">
+    <meta property="og:type" content="website">
 
-<title>Percentage Calculator - QuickTooles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<meta name="description" content="Calculate percentage of any number online easily with QuickTooles Percentage Calculator.">
-<meta name="keywords" content="Percentage Calculator, Online Calculator, QuickTooles">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Percentage Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "MathApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced online mathematical utility to calculate basic percentages, percentage differences, and value increments/decrements."
+    }
+    </script>
 
-<link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-.tool-container{
-max-width:700px;
-margin:80px auto;
-background:#ffffff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-text-align:center;
-color:#1e293b;
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 800px; margin: auto; font-weight: 300; }
+
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+        /* MAIN LAYOUT (3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
+
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
+
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        .calc-section { margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px dashed var(--border); }
+        .calc-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .calc-title { font-size: 16px; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        .calc-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .calc-row span { font-weight: 600; color: var(--text-main); font-size: 16px; }
+        
+        input { padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 18px; font-weight: 700; width: 140px; outline: none; transition: var(--transition); color: var(--secondary); text-align: center; }
+        input:focus { border-color: var(--primary); background: #fcfcff; }
+        
+        .result-box { background: #f0fdf4; color: #166534; padding: 12px 25px; border-radius: 10px; font-weight: 800; font-size: 20px; border: 1px solid #bbf7d0; min-width: 120px; text-align: center; }
+
+        .btn-clear { background: #e2e8f0; color: var(--secondary); border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: var(--transition); }
+        .btn-clear:hover { background: #cbd5e1; }
+
+        /* MONSTER SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article p { font-size: 16px; margin-bottom: 20px; line-height: 1.8; color: var(--text-main); }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; }
+        
+        /* DATA TABLE */
+        .seo-table-container { overflow-x: auto; margin: 30px 0; }
+        .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .data-table th, .data-table td { padding: 15px 20px; text-align: left; border-bottom: 1px solid var(--border); }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; text-transform: uppercase; font-size: 13px; }
+        .data-table tr:hover { background: #f8fafc; }
+
+        /* RIGHT SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 19px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 20px; }
+
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .calc-row { flex-direction: column; align-items: flex-start; }
+            .calc-row input { width: 100%; }
+            .result-box { width: 100%; }
+        }
+      /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
+    }
 }
-
-.tool-container h1{
-margin-bottom:20px;
-color:#3b82f6;
-}
-
-input{
-width:130px;
-padding:12px;
-border:1px solid #cbd5e1;
-border-radius:6px;
-margin-top:15px;
-font-size:14px;
-background:#f8fafc;
-text-align:center;
-}
-
-button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-background:#3b82f6;
-color:white;
-cursor:pointer;
-font-size:15px;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-.result{
-margin-top:20px;
-padding:15px;
-background:#f1f5f9;
-border-radius:6px;
-font-weight:bold;
-}
-
-/* Blog Section */
-
-.blog-section{
-margin-top:30px;
-padding:20px;
-background:#f1f5f9;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-text-align:left;
-font-size:15px;
-}
-
-.blog-section h2{
-color:#3b82f6;
-}
-
-/* Related Tools */
-
-.related-tools{
-margin-top:30px;
-text-align:left;
-}
-
-.related-tools h2{
-font-size:20px;
-margin-bottom:15px;
-color:#3b82f6;
-}
-
-.related-tools ul{
-list-style:none;
-padding:0;
-}
-
-.related-tools ul li{
-margin-bottom:10px;
-}
-
-.related-tools ul li a{
-color:#3b82f6;
-text-decoration:none;
-font-weight:500;
-}
-
-.related-tools ul li a:hover{
-text-decoration:underline;
-}
-
-@media(max-width:600px){
-.tool-container{
-margin:50px 20px;
-padding:25px;
-}
-}
-
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-
-<h2 class="logo">QuickTooles</h2>
-
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
-
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>All-in-One Percentage Calculator</h1>
+    <p>Calculate basic percentages, growth rates, and contribution shares instantly. Fast, accurate, and 100% free mathematical engine for students and businesses.</p>
+</section>
 
-<h1>📊 Percentage Calculator</h1>
-
-<p>Enter percentage and number to calculate the result instantly.</p>
-
-<br>
-
-<input type="number" id="percent" placeholder="%">
-
-<span> of </span>
-
-<input type="number" id="number" placeholder="Number">
-
-<br>
-
-<button onclick="calculate()">Calculate</button>
-
-<div class="result" id="result">
-Result will appear here
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-math">Math Tools</a> › Percentage Calculator
 </div>
 
-<!-- Blog Section -->
+<div class="layout">
+    
+    <div class="main-content">
+        <main class="tool-workspace">
+            
+            <div class="calc-section">
+                <div class="calc-title">🔢 Basic Percentage (What is X% of Y?)</div>
+                <div class="calc-row">
+                    <span>What is</span>
+                    <input type="number" id="c1_p" placeholder="e.g. 20" oninput="calcBasic()">
+                    <span>% of</span>
+                    <input type="number" id="c1_v" placeholder="e.g. 500" oninput="calcBasic()">
+                    <span>=</span>
+                    <div class="result-box" id="res1">0</div>
+                </div>
+            </div>
 
-<div class="blog-section">
+            <div class="calc-section">
+                <div class="calc-title">📊 Contribution (What % is X of Y?)</div>
+                <div class="calc-row">
+                    <input type="number" id="c2_v1" placeholder="e.g. 50" oninput="calcContribution()">
+                    <span>is what % of</span>
+                    <input type="number" id="c2_v2" placeholder="e.g. 200" oninput="calcContribution()">
+                    <span>=</span>
+                    <div class="result-box" id="res2">0 %</div>
+                </div>
+            </div>
 
-<h2>How to Use Percentage Calculator</h2>
+            <div class="calc-section">
+                <div class="calc-title">📈 Percentage Change (Increase/Decrease)</div>
+                <div class="calc-row">
+                    <span>From</span>
+                    <input type="number" id="c3_v1" placeholder="Original" oninput="calcChange()">
+                    <span>To</span>
+                    <input type="number" id="c3_v2" placeholder="New" oninput="calcChange()">
+                    <span>=</span>
+                    <div class="result-box" id="res3">0 %</div>
+                </div>
+            </div>
 
-<p>This tool helps you calculate the percentage of any number quickly. 
-Simply enter the percentage value and the number. For example, if you want 
-to find 25% of 200, just enter 25 and 200 and click calculate. The result 
-will appear instantly. This tool is useful for students, shopping discounts, 
-business calculations, and everyday math problems.</p>
+            <button class="btn-clear" onclick="clearAll()">🗑️ Clear All Calculations</button>
+        </main>
+
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-percentage">1. What is a Percentage?</a></li>
+                    <li><a href="#how-to-calculate">2. How to Use the Percentage Calculator</a></li>
+                    <li><a href="#reference-table">3. Common Percentage-to-Decimal Table</a></li>
+                    <li><a href="#increase-decrease">4. Calculating Percentage Increase and Decrease</a></li>
+                    <li><a href="#faqs">5. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-percentage">What is a Percentage?</h2>
+            <p>A <strong>Percentage</strong> (represented by the symbol %) is a number or ratio expressed as a fraction of 100. It is derived from the Latin phrase "per centum," which literally means "by the hundred." For example, 45% is simply 45 out of 100, or the fraction $45/100$.</p>
+            <p>Percentages are used globally to represent probability, interest rates on bank loans, retail discounts, and even human body compositions. Using an <em>online percentage calculator</em> simplifies these complex ratios into easy-to-understand digits.</p>
+
+            <h2 id="how-to-calculate">How to Use the Percentage Calculator</h2>
+            <p>Our mathematical suite provides three distinct methods to find the values you need:</p>
+            <ul>
+                <li><strong>Basic Mode:</strong> Use this to find a specific amount. Example: If you want to find a 15% tip on a $60 bill, enter 15 and 60 to get the result.</li>
+                <li><strong>Contribution Mode:</strong> Best for exam results. If you scored 450 out of 600, enter those numbers to find your total percentage score.</li>
+                <li><strong>Growth Mode:</strong> Used for business and finance. If your website traffic went from 1,000 to 1,500 visitors, this mode will tell you that you had a 50% increase.</li>
+            </ul>
+
+            <h2 id="reference-table">Common Percentage-to-Decimal Reference Table</h2>
+            <div class="seo-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Percentage (%)</th>
+                            <th>Decimal Value</th>
+                            <th>Fraction Equivalent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1%</td><td>0.01</td><td>1/100</td></tr>
+                        <tr><td>5%</td><td>0.05</td><td>1/20</td></tr>
+                        <tr><td>10%</td><td>0.1</td><td>1/10</td></tr>
+                        <tr><td>25%</td><td>0.25</td><td>1/4</td></tr>
+                        <tr><td>33.3%</td><td>0.333</td><td>1/3</td></tr>
+                        <tr><td>50%</td><td>0.5</td><td>1/2</td></tr>
+                        <tr><td>75%</td><td>0.75</td><td>3/4</td></tr>
+                        <tr><td>100%</td><td>1.0</td><td>1/1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="increase-decrease">Calculating Percentage Increase and Decrease</h2>
+            <p>The formula for <strong>Percentage Change</strong> is one of the most useful in statistics. It is calculated as:</p>
+            <p style="text-align:center; font-family:'Fira Code'; background:#f1f5f9; padding:15px; border-radius:10px;">
+                Percentage Change = ((New Value - Original Value) / Original Value) * 100
+            </p>
+            <p>If the result is positive, it represents an <strong>Increase</strong>. If the result is negative, it represents a <strong>Decrease</strong>. Our tool automatically handles the math and displays the exact percentage shift instantly.</p>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <p><strong>Q: How do I find 20% of a number?</strong><br>A: Multiply the number by 20 and then divide by 100. Or simply multiply the number by 0.20 using our basic calculator above.</p>
+                <br>
+                <p><strong>Q: What is the percentage difference between two numbers?</strong><br>A: Percentage difference is used when comparing two values of the same type. You divide the absolute difference by the average of the two numbers and multiply by 100.</p>
+                <br>
+                <p><strong>Q: Can percentages be over 100?</strong><br>A: Yes! A value of 200% means the amount is twice the original size. In business growth, percentages often exceed 100%.</p>
+            </div>
+        </article>
+    </div>
+
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>🔢 Math & Unit Tools</h3>
+            <div class="widget-links">
+                <a href="number-base-converter.html"><span class="icon">🔢</span> Base Converter</a>
+                <a href="random-number-generator.html"><span class="icon">🎲</span> Random Number Gen</a>
+                <a href="word-counter.html"><span class="icon">📝</span> Word Counter</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Shopping Pro Tip</h3>
+            <p>Quickly calculate a discount in your head! To find 10% of any price, just move the decimal point one place to the left. For example, 10% of $85.00 is $8.50. Double that for 20%!</p>
+        </div>
+
+        <div class="widget">
+            <h3>💻 Developer Essentials</h3>
+            <div class="widget-links">
+                <a href="js-minifier.html"><span class="icon">⚡</span> JS Minifier</a>
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+            </div>
+        </div>
+    </aside>
 
 </div>
 
-<!-- Related Tools -->
-
-<div class="related-tools">
-
-<h2>Related Tools</h2>
-
-<ul>
-<li><a href="emicalculator.html">EMI Calculator</a></li>
-<li><a href="password-generator.html">Password Generator</a></li>
-</ul>
-
-</div>
-
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Math & Design Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
+    // Calculator 1: What is X% of Y?
+    function calcBasic() {
+        const p = parseFloat(document.getElementById('c1_p').value);
+        const v = parseFloat(document.getElementById('c1_v').value);
+        const res = document.getElementById('res1');
+        
+        if (!isNaN(p) && !isNaN(v)) {
+            const result = (p / 100) * v;
+            res.innerText = Number.isInteger(result) ? result : result.toFixed(2);
+        } else {
+            res.innerText = "0";
+        }
+    }
 
-function calculate(){
+    // Calculator 2: What % is X of Y?
+    function calcContribution() {
+        const v1 = parseFloat(document.getElementById('c2_v1').value);
+        const v2 = parseFloat(document.getElementById('c2_v2').value);
+        const res = document.getElementById('res2');
+        
+        if (!isNaN(v1) && !isNaN(v2) && v2 !== 0) {
+            const result = (v1 / v2) * 100;
+            res.innerText = (Number.isInteger(result) ? result : result.toFixed(2)) + " %";
+        } else {
+            res.innerText = "0 %";
+        }
+    }
 
-let percent = parseFloat(document.getElementById("percent").value);
+    // Calculator 3: Percentage Change
+    function calcChange() {
+        const v1 = parseFloat(document.getElementById('c3_v1').value);
+        const v2 = parseFloat(document.getElementById('c3_v2').value);
+        const res = document.getElementById('res3');
+        
+        if (!isNaN(v1) && !isNaN(v2) && v1 !== 0) {
+            const result = ((v2 - v1) / v1) * 100;
+            const formatted = Number.isInteger(result) ? result : result.toFixed(2);
+            res.innerText = (result > 0 ? "+" : "") + formatted + " %";
+            res.style.color = result >= 0 ? "#166534" : "#991b1b"; // Green for up, Red for down
+            res.parentElement.querySelector('.result-box').style.background = result >= 0 ? "#f0fdf4" : "#fef2f2";
+        } else {
+            res.innerText = "0 %";
+            res.style.color = "#166534";
+        }
+    }
 
-let number = parseFloat(document.getElementById("number").value);
-
-if(isNaN(percent) || isNaN(number)){
-alert("Please enter valid numbers");
-return;
-}
-
-let result = (percent/100)*number;
-
-document.getElementById("result").innerHTML = "Result: " + result;
-
-}
-
+    function clearAll() {
+        document.querySelectorAll('input').forEach(i => i.value = "");
+        document.getElementById('res1').innerText = "0";
+        document.getElementById('res2').innerText = "0 %";
+        document.getElementById('res3').innerText = "0 %";
+        document.getElementById('res3').style.color = "#166534";
+    }
 </script>
 
 </body>
