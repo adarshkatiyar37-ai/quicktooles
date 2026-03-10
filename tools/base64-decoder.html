@@ -1,214 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Decoder – Online Base64 to Text Converter | QuickTooles</title>
+    
+    <meta name="description" content="Decode Base64 to readable text instantly with our free online Base64 Decoder. Supports UTF-8, emojis, and secure client-side decoding. No data is saved.">
+    <meta name="keywords" content="base64 decoder, online base64 decode, decode base64 to text, base64 to string, base64 translator, base64 decode online free, base64 to plain text, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/base64-decoder">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Base64 Decoder | QuickTooles">
+    <meta property="og:description" content="Instantly decode Base64 strings into readable human text. 100% Free, Secure, and Private.">
+    <meta property="og:url" content="https://quicktooles.in/tools/base64-decoder">
+    <meta property="og:type" content="website">
 
-<title>Base64 Decoder Online - Free Tool | QuickTooles</title>
-<meta name="description" content="Decode Base64 encoded text online for free. Easy-to-use Base64 Decoder tool for developers, students, and creators.">
-<meta name="keywords" content="base64 decoder, decode base64 online, free base64 tool, online base64 decoder">
-<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../style.css">
-
-<style>
-/* Tool Container */
-.tool-container{
-    max-width:800px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    color:#1e293b;
-    transition:0.3s;
-}
-
-.tool-container h1{
-    text-align:center;
-    margin-bottom:20px;
-    color:#2563eb;
-}
-
-.tool-container p{
-    font-size:16px;
-    margin-bottom:20px;
-}
-
-/* Textarea */
-textarea{
-    width:100%;
-    height:150px;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:8px;
-    margin-bottom:15px;
-    font-size:15px;
-    transition:0.3s;
-}
-
-textarea:focus{
-    outline:none;
-    border-color:#3b82f6;
-    box-shadow:0 0 8px rgba(59,130,246,0.3);
-}
-
-/* Buttons */
-button{
-    padding:12px 25px;
-    background:#3b82f6;
-    border:none;
-    color:white;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
-    margin-right:10px;
-    transition:0.3s;
-}
-
-button:hover{
-    background:#2563eb;
-    transform:translateY(-2px);
-}
-
-/* Result */
-.result{
-    margin-top:20px;
-    background:#f1f5f9;
-    padding:15px;
-    border-radius:8px;
-    min-height:60px;
-    color:#1e293b;
-    font-weight:500;
-    word-wrap:break-word;
-}
-
-/* Blog / Info Section */
-.blog-section{
-    margin-top:50px;
-    background:#f8fafc;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    color:#1e293b;
-    line-height:1.7;
-}
-
-.blog-section h2{
-    font-size:24px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
-
-.blog-section p{
-    margin-bottom:15px;
-}
-
-/* Related Tools */
-.related-tools{
-    margin-top:40px;
-    text-align:left;
-}
-
-.related-tools h2{
-    font-size:22px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
-
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
-
-.related-tools ul li{
-    margin-bottom:10px;
-}
-
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
-
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
-
-/* Responsive */
-@media(max-width:768px){
-    .tool-container{
-        margin:50px 20px;
-        padding:30px;
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Base64 Decoder",
+      "operatingSystem": "Web",
+      "applicationCategory": "DeveloperApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced, real-time online utility to decode Base64 encoded strings back into readable UTF-8 text."
     }
-    textarea{
-        height:130px;
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Base64 Decoder"
+      }]
     }
-}
-</style>
+    </script>
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 700px; margin: auto; font-weight: 300; }
+
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+        /* MAIN LAYOUT */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; }
+
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        .tool-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; }
+        .textarea-container { position: relative; margin-bottom: 30px; width: 100%; }
+        .textarea-container label { display: block; font-weight: 600; color: var(--secondary); margin-bottom: 10px; font-size: 16px; }
+        
+        textarea { width: 100%; height: 200px; padding: 20px; border: 2px solid var(--border); border-radius: 12px; font-size: 16px; font-family: 'Fira Code', monospace; color: var(--secondary); background: #f8fafc; resize: vertical; transition: var(--transition); outline: none; }
+        textarea:focus { border-color: var(--primary); background: var(--card-bg); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+        
+        .action-bar { display: flex; gap: 15px; margin-bottom: 10px; }
+        .btn { padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: flex; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+        .btn-success { background: var(--success); color: white; }
+        
+        .error-msg { color: var(--danger); font-size: 14px; font-weight: 600; margin-top: 10px; display: none; background: #fee2e2; padding: 10px; border-radius: 8px; border-left: 4px solid var(--danger); }
+
+        /* SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .info-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 15px; }
+        .info-table th, .info-table td { border: 1px solid var(--border); padding: 12px; text-align: left; }
+        .info-table th { background: var(--secondary); color: white; }
+
+        /* SIDEBAR */
+        .sidebar { position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 30px; border: 1px solid var(--border); width: 100%; }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 700; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 500; background: var(--bg-light); transition: var(--transition); }
+        .widget-links a:hover { background: var(--primary); color: white; }
+
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; text-align: center; margin-top: 60px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        /* --- 🚀 THE MOBILE MAGIC BLOCK --- */
+        @media (max-width: 992px) {
+            .navbar { flex-direction: column !important; height: auto !important; padding: 15px 10px !important; text-align: center; }
+            .nav-links { margin-top: 15px !important; gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
+            .hero { padding: 50px 15px 70px 15px !important; }
+            .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+            .hero p { font-size: 14px !important; }
+
+            /* BREADCRUMBS FIX (No Cut) */
+            .breadcrumbs { text-align: center !important; margin: 15px auto !important; padding: 10px !important; position: relative !important; z-index: 10 !important; }
+            
+            .layout { display: flex !important; flex-direction: column !important; padding: 0 15px !important; gap: 30px !important; width: 100% !important; }
+            .tool-workspace { padding: 25px 15px !important; margin-top: 0 !important; width: 100% !important; }
+            
+            .action-bar { flex-direction: column !important; width: 100% !important; gap: 10px !important; }
+            .btn { width: 100% !important; padding: 15px !important; justify-content: center !important; }
+            
+            /* Copy Button Section Fix (Important for Screenshot 2) */
+            .tool-header { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; text-align: left !important; }
+            #copyBtn { width: 100% !important; height: 50px !important; font-size: 15px !important; justify-content: center !important; }
+
+            .sidebar { position: static !important; width: 100% !important; }
+            .widget { padding: 20px !important; width: 100% !important; box-sizing: border-box !important; }
+            
+            /* Table responsiveness fix */
+            .info-table { display: block !important; overflow-x: auto !important; white-space: nowrap !important; }
+            .seo-article { padding: 25px 15px !important; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-    <h2 class="logo">QuickTooles</h2>
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../index.html">All Tools</a>
-    </nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Base64 Decoder</h1>
+    <p>Instantly decode Base64 encoded strings back into readable plain text. Secure, fast, and completely free developer utility.</p>
+</section>
 
-<h1>📦 Base64 Decoder</h1>
-<p>Paste your Base64 encoded text below</p>
-
-<textarea id="base64Input" placeholder="Enter Base64 text..."></textarea>
-
-<button onclick="decodeBase64()">Decode</button>
-<button onclick="clearText()">Clear</button>
-
-<div class="result" id="result"></div>
-
-<!-- Blog / Info Section -->
-<div class="blog-section">
-    <h2>About This Tool</h2>
-    <p>The Base64 Decoder allows you to decode any Base64 encoded string into readable text instantly. This is extremely useful for developers, students, and creators who deal with encoded data or need to decode messages.</p>
-    <p>You can use this tool to debug encoded content, retrieve hidden text, or understand Base64 encoded messages. It works entirely in your browser, requires no software, and is free to use on all devices.</p>
-    <p>Simply paste your Base64 text, click "Decode", and get your readable content immediately. You can also clear the input to start fresh.</p>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-dev">Developer Tools</a> › Base64 Decoder
 </div>
 
-<div class="related-tools">
-    <h2>Related Tools</h2>
-    <ul>
-        <li><a href="base64-encoder.html">Base64 Encoder</a></li>
-        <li><a href="ascii-to-text.html">ASCII to Text Converter</a></li>
-        <li><a href="text-to-ascii.html">Text to ASCII Converter</a></li>
-    </ul>
+<div class="layout">
+    <main>
+        <section class="tool-workspace">
+            <div class="textarea-container">
+                <label for="b64Input">Step 1: Paste Your Base64 Encoded String Here</label>
+                <textarea id="b64Input" placeholder="Example: SGVsbG8gV29ybGQh" oninput="decodeBase64()"></textarea>
+                <div id="errorBox" class="error-msg">⚠️ Invalid Base64 String. Please ensure your input is correct.</div>
+            </div>
+
+            <div class="action-bar">
+                <button class="btn btn-primary" onclick="decodeBase64()">🔓 Decode to Text</button>
+                <button class="btn btn-secondary" onclick="clearFields()">🗑️ Clear Data</button>
+            </div>
+
+            <div class="textarea-container" style="margin-top: 30px;">
+                <div class="tool-header">
+                    <label for="textOutput" style="margin: 0;">Step 2: Get Your Decoded Plain Text</label>
+                    <button id="copyBtn" class="btn btn-secondary" onclick="copyText()">📋 Copy Text</button>
+                </div>
+                <textarea id="textOutput" placeholder="Your decoded text will appear here..." readonly style="background: #fff; cursor: text;"></textarea>
+            </div>
+        </section>
+
+        <article class="seo-article">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-base64">1. What is Base64 Encoding?</a></li>
+                    <li><a href="#how-it-works">2. How the Base64 Decoder Works</a></li>
+                    <li><a href="#why-use-it">3. Common Use Cases for Base64 Decoding</a></li>
+                    <li><a href="#base64-characters">4. The 64 Characters of Base64</a></li>
+                    <li><a href="#faqs">5. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-base64">What is Base64 Encoding and Decoding?</h2>
+            <p><strong>Base64</strong> is a generic term for a number of similar encoding schemes that encode binary data and translate it into a readable string format. A <strong>Base64 Decoder</strong> reversals this process.</p>
+            
+            <h2 id="how-it-works">How the Base64 Decoder Works</h2>
+            <p>Our online Base64 Decoder uses advanced client-side JavaScript. It performs bit reversal and UTF-8 rendering safely in your browser.</p>
+
+            <h2 id="base64-characters">The 64 Characters of Base64 Index Table</h2>
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Value Range</th>
+                        <th>Characters Used</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>0 - 25</td><td><code>A - Z</code></td><td>Uppercase English alphabet</td></tr>
+                    <tr><td>26 - 51</td><td><code>a - z</code></td><td>Lowercase English alphabet</td></tr>
+                    <tr><td>52 - 61</td><td><code>0 - 9</code></td><td>Numbers</td></tr>
+                </tbody>
+            </table>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <h4>Is my decoded data stored anywhere?</h4>
+                <p>Absolutely not. The decoding happens directly inside your computer's browser memory.</p>
+            </div>
+        </article>
+    </main>
+
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>Related Tools</h3>
+            <div class="widget-links">
+                <a href="base64-encoder.html"><span class="icon">🔒</span> Base64 Encoder</a>
+                <a href="url-decoder.html"><span class="icon">🔓</span> URL Decoder</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+        
+        <div class="widget" style="background: linear-gradient(135deg, #e0e7ff, #ffffff); border: 2px dashed #a5b4fc;">
+            <h3>💡 Pro Tip</h3>
+            <p style="font-size: 14px;">If your string starts with <code>eyJ</code>, it is highly likely to be a JWT header!</p>
+        </div>
+    </aside>
 </div>
 
-</div>
+<footer>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
-function decodeBase64(){
-    let input=document.getElementById("base64Input").value.trim();
-    if(!input){
-        document.getElementById("result").innerText="Please enter Base64 text";
-        return;
+    function decodeBase64() {
+        const inputStr = document.getElementById("b64Input").value.trim();
+        const outputBox = document.getElementById("textOutput");
+        const errorBox = document.getElementById("errorBox");
+        if (inputStr === "") { outputBox.value = ""; errorBox.style.display = "none"; return; }
+        try {
+            const decodedData = decodeURIComponent(escape(window.atob(inputStr)));
+            outputBox.value = decodedData;
+            errorBox.style.display = "none";
+        } catch (e) {
+            outputBox.value = "";
+            errorBox.style.display = "block";
+        }
     }
-    try{
-        let decoded=atob(input);
-        document.getElementById("result").innerText=decoded;
-    }catch{
-        document.getElementById("result").innerText="Invalid Base64 string";
+    function clearFields() {
+        document.getElementById("b64Input").value = "";
+        document.getElementById("textOutput").value = "";
+        document.getElementById("errorBox").style.display = "none";
     }
-}
-
-function clearText(){
-    document.getElementById("base64Input").value="";
-    document.getElementById("result").innerText="";
-}
+    function copyText() {
+        const outputText = document.getElementById("textOutput");
+        if (outputText.value.trim() === "") return;
+        navigator.clipboard.writeText(outputText.value).then(() => {
+            const btn = document.getElementById("copyBtn");
+            btn.innerText = "✅ Copied!";
+            setTimeout(() => { btn.innerText = "📋 Copy Text"; }, 2000);
+        });
+    }
 </script>
 
 </body>
