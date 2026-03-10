@@ -1,241 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cropper – Crop Photos Online for Free | QuickTooles</title>
+    
+    <meta name="description" content="Free online Image Cropper. Crop your photos instantly for Instagram, YouTube, and Facebook. Professional cropping tool with preset aspect ratios. 100% private.">
+    <meta name="keywords" content="image cropper, crop image online, crop photo free, cut image online, picture cropper, crop image to 16:9, instagram image cropper, square photo cropper, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/image-cropper">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Image Cropper & Photo Editor | QuickTooles">
+    <meta property="og:description" content="Crop your images perfectly in seconds. Use professional 1-click aspect ratio presets for social media.">
+    <meta property="og:url" content="https://quicktooles.in/tools/image-cropper">
+    <meta property="og:type" content="website">
 
-<title>Image Cropper - QuickTooles</title>
-<meta name="description" content="Crop images online easily with our free Image Cropper tool. Select a portion of your image and download cropped version.">
-<meta name="keywords" content="Image Cropper, Crop Image Online, Free Image Crop, PNG Cropper, JPG Cropper, WebTools">
-<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
 
-<style>
-/* Tool Container */
-.tool-container {
-    max-width:700px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-    color:#1e293b;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Image Cropper",
+      "operatingSystem": "Web",
+      "applicationCategory": "DesignApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "A high-performance online utility to intuitively crop, reframe, and adjust aspect ratios of images securely in the browser."
+    }
+    </script>
 
-.tool-container h1 {
-    text-align:center;
-    margin-bottom:20px;
-    color:#2563eb;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Image Cropper"
+      }]
+    }
+    </script>
 
-.tool-container p{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:16px;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I crop an image for Instagram?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Upload your photo, click the '1:1 Square' or '4:5 Portrait' aspect ratio button, adjust the box over your subject, and click Crop. Your image is now perfectly sized for Instagram." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does cropping reduce image quality?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Cropping only removes the outer, unwanted pixels. The remaining area inside the crop box retains its original high-resolution quality." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my photos safe?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, 100% safe. The entire cropping process happens locally in your web browser. We do not upload your photos to our servers." }
+        }
+      ]
+    }
+    </script>
 
-/* Inputs */
-input[type="file"] {
-    margin-top:10px;
-    padding:10px;
-    border-radius:6px;
-    border:1px solid #cbd5e1;
-    width:80%;
-}
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-/* Canvas */
-canvas {
-    margin-top:20px;
-    max-width:100%;
-    border-radius:8px;
-    border:1px solid #cbd5e1;
-    cursor:crosshair;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-/* Button */
-button {
-    margin-top:20px;
-    padding:12px 20px;
-    border:none;
-    border-radius:6px;
-    background:#3b82f6;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-button:hover {
-    background:#2563eb;
-}
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 800px; margin: auto; font-weight: 300; }
 
-/* Download Link */
-a#download {
-    display:block;
-    margin-top:15px;
-    color:#3b82f6;
-    font-weight:bold;
-}
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
 
-/* Blog Section */
-.blog-section{
-    margin-top:40px;
-    background:#f8fafc;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    line-height:1.7;
-    color:#1e293b;
-}
+        /* MAIN LAYOUT (3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
 
-.blog-section h2{
-    font-size:22px;
-    margin-bottom:12px;
-    color:#2563eb;
-}
+        /* LEFT CONTENT AREA */
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
 
-.blog-section p{
-    margin-bottom:12px;
-}
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        /* Upload Area (With Explicit Button) */
+        .upload-area { border: 2px dashed var(--primary); background: #eff6ff; border-radius: 12px; padding: 50px 20px; text-align: center; transition: var(--transition); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .upload-area.dragover { background: #e0e7ff; border-color: var(--primary-dark); }
+        
+        .upload-icon { font-size: 48px; margin-bottom: 15px; }
+        .upload-text { font-weight: 700; color: var(--primary-dark); font-size: 22px; margin-bottom: 5px; }
+        .upload-subtext { color: var(--text-light); font-size: 15px; margin-bottom: 25px; }
+        
+        .btn-upload { background: var(--primary); color: white; padding: 14px 30px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); transition: var(--transition); }
+        .btn-upload:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .upload-area input[type="file"] { display: none; }
 
-/* Related Tools */
-.related-tools{
-    margin-top:30px;
-    text-align:left;
-}
+        /* Editor Workspace (Hidden Initially) */
+        .editor-workspace { display: none; }
 
-.related-tools h2{
-    font-size:20px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
+        /* Aspect Ratio Toolbar */
+        .ratio-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; padding: 15px; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border); justify-content: center; }
+        .ratio-btn { background: white; border: 1px solid var(--border); color: var(--secondary); padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer; transition: var(--transition); }
+        .ratio-btn:hover, .ratio-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
+        /* Cropper Container */
+        .cropper-container-wrapper { width: 100%; max-height: 500px; background: #f1f5f9 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVQYV2N89erVfwY0ICYmRhTGwEBFMGoQo4oBBQkJiQGjo58MKBjA6GZCFyTGA2gShzC2kOAEAKuPEr9tX4ePAAAAAElFTkSuQmCC') repeat; margin-bottom: 25px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        #imageToCrop { display: block; max-width: 100%; }
 
-.related-tools ul li{
-    margin-bottom:10px;
-}
+        /* Result Preview Container */
+        .result-container { display: none; margin-top: 30px; text-align: center; border-top: 2px dashed var(--border); padding-top: 30px; }
+        .result-container h3 { color: var(--secondary); margin-bottom: 15px; }
+        .result-container img { max-width: 100%; max-height: 400px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid var(--border); }
 
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
+        /* Action Buttons */
+        .action-bar { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-success { background: var(--success); color: white; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); }
+        .btn-success:hover { background: #059669; transform: translateY(-2px); }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+        .btn-secondary:hover { background: #cbd5e1; transform: translateY(-2px); }
 
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
+        /* MONSTER SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h2:first-of-type { margin-top: 0; }
+        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); line-height: 1.6; }
+        .seo-article li { margin-bottom: 10px; }
+        
+        /* Table */
+        .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 15px; }
+        .data-table th, .data-table td { border: 1px solid var(--border); padding: 15px; text-align: left; }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; }
+        .data-table tr:nth-child(even) { background: var(--bg-light); }
+        .data-table strong { color: var(--primary-dark); }
+        
+        /* FAQs */
+        .faq-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--bg-light); }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-box p { margin: 0; color: var(--text-main); line-height: 1.6; }
 
-@media(max-width:600px){
-    .tool-container{
-        margin:50px 20px;
-        padding:30px;
+        /* RIGHT SIDEBAR (STICKY & RELATED TOOLS) */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 20px; }
+
+        /* Pro Tip Box */
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; margin: 0; }
+
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            .sidebar { position: static; }
+            .ratio-toolbar { justify-content: flex-start; }
+            .tool-workspace { padding: 25px; }
+            .seo-article { padding: 25px; }
+        }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
     }
 }
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-<h2 class="logo">QuickTooles</h2>
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Professional Image Cropper</h1>
+    <p>Cut, frame, and crop your photos precisely. Use smart aspect ratio presets to perfectly size your images for Instagram, YouTube, and Facebook.</p>
+</section>
 
-<h1>✂️ Image Cropper</h1>
-
-<p>Upload your image, select the area, and crop it easily.</p>
-
-<input type="file" id="upload">
-
-<canvas id="canvas"></canvas>
-
-<button onclick="cropImage()">Crop & Download</button>
-
-<a id="download" style="display:none;">Download Cropped Image</a>
-
-<!-- Blog Section -->
-<div class="blog-section">
-<h2>How to Use the Image Cropper</h2>
-<p>This online tool allows you to crop any image quickly. Upload an image, select the area you want to keep by dragging your mouse on the image, and click "Crop & Download". The cropped image can be downloaded instantly.</p>
-<p>This tool is useful for designers, content creators, and anyone who needs precise image crops for web or print.</p>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-image">Image Tools</a> › Image Cropper
 </div>
 
-<div class="related-tools">
-<h2>Related Tools</h2>
-<ul>
-<li><a href="image-compressor.html">Image Compressor</a></li>
-<li><a href="image-converter.html">Image Converter</a></li>
-<li><a href="image-color-picker.html">Image Color Picker</a></li>
-</ul>
-</div>
+<div class="layout">
+    
+    <div class="main-content">
+        
+        <main class="tool-workspace">
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">✂️</div>
+                <div class="upload-text">Drag & Drop an Image to Crop</div>
+                <div class="upload-subtext">Supports PNG, JPG, WebP. Your images are processed securely on your device.</div>
+                
+                <label for="imageInput" class="btn-upload">📁 Choose Image</label>
+                <input type="file" id="imageInput" accept="image/jpeg, image/png, image/webp, image/gif">
+            </div>
+
+            <div class="editor-workspace" id="editorWorkspace">
+                
+                <div class="ratio-toolbar" id="ratioToolbar">
+                    <button class="ratio-btn active" data-ratio="NaN">Free Crop</button>
+                    <button class="ratio-btn" data-ratio="1">1:1 (Square)</button>
+                    <button class="ratio-btn" data-ratio="1.7777777777777777">16:9 (YouTube)</button>
+                    <button class="ratio-btn" data-ratio="1.3333333333333333">4:3 (Standard)</button>
+                    <button class="ratio-btn" data-ratio="0.8">4:5 (Instagram)</button>
+                </div>
+
+                <div class="cropper-container-wrapper">
+                    <img id="imageToCrop" src="" alt="Workspace">
+                </div>
+
+                <div class="action-bar" id="primaryActions">
+                    <button class="btn btn-primary" onclick="executeCrop()">✂️ Crop Image</button>
+                    <button class="btn btn-secondary" onclick="resetWorkspace()">🔄 Choose New Image</button>
+                </div>
+
+                <div class="result-container" id="resultContainer">
+                    <h3>✅ Cropping Successful</h3>
+                    <img id="croppedResult" src="" alt="Cropped Image Result">
+                    <div class="action-bar" style="margin-top: 20px;">
+                        <a id="downloadBtn" href="#" class="btn btn-success" download="quicktooles_cropped.jpg">⬇️ Download Cropped Image</a>
+                        <button class="btn btn-secondary" onclick="hideResult()">🔙 Edit Crop</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-cropper">1. What is an Image Cropper?</a></li>
+                    <li><a href="#why-crop">2. Why You Need to Crop Your Photos</a></li>
+                    <li><a href="#aspect-ratios">3. The Guide to Social Media Aspect Ratios</a></li>
+                    <li><a href="#resizing-vs-cropping">4. Cropping vs. Resizing: The Difference</a></li>
+                    <li><a href="#faqs">5. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-cropper">What is an Image Cropper?</h2>
+            <p>An <strong>Image Cropper</strong> is a powerful digital tool used to cut away the outer edges of a photograph or graphic. Unlike resizing, which shrinks or enlarges the entire picture, cropping permanently removes unwanted borders, allowing you to reframe the main subject of your image.</p>
+            <p>Our free online picture cropper uses a highly responsive graphical interface. You simply drag the corners of the box to highlight exactly what you want to keep, and our algorithm perfectly slices the image without reducing its original internal quality.</p>
+
+            <h2 id="why-crop">Why You Need to Crop Your Photos</h2>
+            <p>Photography is rarely perfect on the first click. Professional photographers and digital marketers rely on cropping tools for several vital reasons:</p>
+            <ul>
+                <li><strong>Removing Distractions:</strong> Did a photobomber step into the edge of your perfect vacation picture? Cropping allows you to cut out unwanted elements and messy backgrounds seamlessly.</li>
+                <li><strong>Improving Composition:</strong> You can drastically change the artistic feel of a photo by applying the "Rule of Thirds" during cropping, placing your subject off-center to make the image more visually appealing.</li>
+                <li><strong>Focusing on the Subject:</strong> If you took a wide shot of a bird, cropping tightly around the bird turns it into a detailed macro-style photograph.</li>
+            </ul>
+
+            <h2 id="aspect-ratios">The Guide to Social Media Aspect Ratios</h2>
+            <p>If you upload a wide rectangle photo to Instagram, the app will force you to crop it awkwardly. To maintain professional branding, you should pre-crop your images using our <strong>1-Click Preset Buttons</strong> based on these standard Aspect Ratios:</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Aspect Ratio</th>
+                        <th>Format Type</th>
+                        <th>Best Used For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1:1</strong></td>
+                        <td>Perfect Square</td>
+                        <td>Instagram Feed Posts, Facebook Profile Pictures, WhatsApp DPs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4:5</strong></td>
+                        <td>Vertical Portrait</td>
+                        <td>Instagram Portrait Posts. (Takes up maximum screen real estate on mobile).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>16:9</strong></td>
+                        <td>Widescreen</td>
+                        <td>YouTube Video Thumbnails, Twitter (X) Posts, Website Hero Banners.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4:3</strong></td>
+                        <td>Standard Monitor</td>
+                        <td>Traditional digital photography, Real Estate listings, PowerPoint presentations.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="resizing-vs-cropping">Cropping vs. Resizing: The Difference</h2>
+            <p>It is easy to confuse these two terms, but they serve completely different purposes in web design:</p>
+            <ul>
+                <li><strong>Cropping (Cutting):</strong> Removes pixels from the outer edges. It changes what part of the photo is visible. If you crop a photo of a whole body, you might only be left with the face.</li>
+                <li><strong>Resizing (Scaling):</strong> Keeps the entire photo visible but alters its physical dimensions. If you resize a photo of a whole body, the whole body is still there, it is just displayed smaller. Need to resize? Use our <a href="image-resizer.html">Image Resizer Tool</a>.</li>
+            </ul>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <h4>Does cropping reduce image quality?</h4>
+                <p>No. Cropping only removes the outer, unwanted pixels. The remaining area inside your selection box retains its original, native high-resolution quality. We do not apply any lossy compression during the crop.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Are my photos safe and private?</h4>
+                <p>Absolutely. The QuickTooles Image Cropper is built on a client-side JavaScript architecture. Your photos are loaded directly into your browser's memory and are never uploaded or transmitted to our servers.</p>
+            </div>
+            <div class="faq-box">
+                <h4>How do I crop an image into a circle?</h4>
+                <p>While the final output file will always technically be a rectangle (due to how image formats work), you can achieve a perfect circle layout by clicking the <strong>"1:1 (Square)"</strong> preset button. When you upload this square image to Instagram or WhatsApp, the app will automatically mask it into a perfect circle profile picture!</p>
+            </div>
+        </article>
+
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="widget">
+            <h3>🎨 Image Utilities</h3>
+            <div class="widget-links">
+                <a href="image-resizer.html"><span class="icon">📐</span> Image Resizer</a>
+                <a href="image-compressor.html"><span class="icon">📉</span> Image Compressor</a>
+                <a href="image-color-picker.html"><span class="icon">🎯</span> Image Color Picker</a>
+                <a href="png-to-jpg.html"><span class="icon">🔄</span> PNG to JPG Tool</a>
+                <a href="base64-to-image.html"><span class="icon">🖼️</span> Base64 to Image</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro Social Tip</h3>
+            <p>If you want more engagement on Instagram, stop uploading square (1:1) photos! Instead, use our <strong>4:5 (Instagram)</strong> crop preset. Vertical photos take up 25% more screen space on mobile phones, forcing users to stop scrolling and look at your post longer.</p>
+        </div>
+
+        <div class="widget">
+            <h3>💻 Top Developer Tools</h3>
+            <div class="widget-links">
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+
+    </aside>
 
 </div>
 
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Design Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
 <script>
-let img = new Image();
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
-let startX, startY, endX, endY;
+    const imageInput = document.getElementById('imageInput');
+    const uploadArea = document.getElementById('uploadArea');
+    const editorWorkspace = document.getElementById('editorWorkspace');
+    const imageToCrop = document.getElementById('imageToCrop');
+    
+    const resultContainer = document.getElementById('resultContainer');
+    const croppedResult = document.getElementById('croppedResult');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const primaryActions = document.getElementById('primaryActions');
+    const ratioButtons = document.querySelectorAll('.ratio-btn');
 
-document.getElementById("upload").addEventListener("change", function(e){
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(event){
-        img.src = event.target.result;
+    let cropper = null;
+    let originalFileName = "image";
+    let originalFileType = "image/jpeg";
+
+    // --- Upload Handlers ---
+    imageInput.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) handleFileLoad(e.target.files[0]);
+    });
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFileLoad(e.dataTransfer.files[0]);
+    });
+
+    function handleFileLoad(file) {
+        if (!file.type.startsWith('image/')) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+
+        originalFileName = file.name.split('.')[0];
+        originalFileType = file.type;
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            imageToCrop.src = event.target.result;
+            
+            // Switch UI
+            uploadArea.style.display = 'none';
+            editorWorkspace.style.display = 'block';
+            
+            // Initialize Cropper.js
+            initCropper();
+        }
+        reader.readAsDataURL(file);
     }
-    reader.readAsDataURL(file);
-});
 
-img.onload = function(){
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img,0,0);
-}
+    // --- Cropper.js Logic ---
+    function initCropper() {
+        if (cropper) {
+            cropper.destroy();
+        }
+        cropper = new Cropper(imageToCrop, {
+            aspectRatio: NaN, // Default to free crop
+            viewMode: 1, // Restrict crop box to not exceed canvas
+            autoCropArea: 0.8,
+            responsive: true,
+            background: false
+        });
 
-canvas.addEventListener("mousedown", function(e){
-    const rect = canvas.getBoundingClientRect();
-    startX = e.clientX - rect.left;
-    startY = e.clientY - rect.top;
-});
-
-canvas.addEventListener("mouseup", function(e){
-    const rect = canvas.getBoundingClientRect();
-    endX = e.clientX - rect.left;
-    endY = e.clientY - rect.top;
-});
-
-function cropImage(){
-    let width = endX - startX;
-    let height = endY - startY;
-
-    if(width <=0 || height <=0){
-        alert("Please select a valid area to crop.");
-        return;
+        // Reset ratio buttons
+        ratioButtons.forEach(btn => btn.classList.remove('active'));
+        ratioButtons[0].classList.add('active');
     }
 
-    let cropped = ctx.getImageData(startX,startY,width,height);
-    canvas.width = width;
-    canvas.height = height;
-    ctx.putImageData(cropped,0,0);
+    // Aspect Ratio Toolbar Setup
+    ratioButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Update UI
+            ratioButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
 
-    let link = document.getElementById("download");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "cropped-image.png";
-    link.style.display = "block";
-    link.innerText = "Download Cropped Image";
-}
+            // Apply ratio to cropper
+            const ratioVal = parseFloat(this.getAttribute('data-ratio'));
+            cropper.setAspectRatio(ratioVal);
+        });
+    });
+
+    // Generate Crop
+    function executeCrop() {
+        if (!cropper) return;
+
+        // Get cropped canvas with high quality
+        const canvas = cropper.getCroppedCanvas({
+            imageSmoothingEnabled: true,
+            imageSmoothingQuality: 'high',
+        });
+
+        if (!canvas) {
+            alert("Could not crop image. Please try again.");
+            return;
+        }
+
+        // Convert to data URL
+        // We use PNG if original was PNG to keep transparency, else use high-quality JPEG
+        let exportFormat = originalFileType === 'image/png' ? 'image/png' : 'image/jpeg';
+        const croppedDataUrl = canvas.toDataURL(exportFormat, 0.95);
+
+        // Display Result UI
+        croppedResult.src = croppedDataUrl;
+        
+        // Setup Download
+        let ext = exportFormat === 'image/png' ? 'png' : 'jpg';
+        downloadBtn.download = `${originalFileName}-cropped.${ext}`;
+        downloadBtn.href = croppedDataUrl;
+
+        // Hide primary actions, show result
+        primaryActions.style.display = 'none';
+        resultContainer.style.display = 'block';
+    }
+
+    // Hide result and return to editing
+    function hideResult() {
+        resultContainer.style.display = 'none';
+        primaryActions.style.display = 'flex';
+    }
+
+    // --- Reset Workspace ---
+    function resetWorkspace() {
+        imageInput.value = "";
+        imageToCrop.src = "";
+        
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+
+        hideResult();
+        editorWorkspace.style.display = 'none';
+        uploadArea.style.display = 'flex';
+    }
 </script>
 
 </body>
