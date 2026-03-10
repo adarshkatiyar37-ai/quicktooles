@@ -12,11 +12,6 @@
     <link rel="canonical" href="https://quicktooles.in/tools/ascii-to-text">
     <link rel="icon" type="image/png" href="../logo.png">
     
-    <meta property="og:title" content="Ultimate ASCII to Text Converter | QuickTooles">
-    <meta property="og:description" content="Decode ASCII numbers into readable human text in milliseconds. 100% Free and Private.">
-    <meta property="og:url" content="https://quicktooles.in/tools/ascii-to-text">
-    <meta property="og:type" content="website">
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
@@ -28,44 +23,6 @@
       "applicationCategory": "DeveloperApplication",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "description": "An advanced, real-time online utility to decode decimal ASCII codes into readable string format instantly."
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
-      },{
-        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
-      },{
-        "@type": "ListItem", "position": 3, "name": "ASCII to Text"
-      }]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How does the ASCII to Text converter work?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The tool reads each decimal number you enter, checks its corresponding character in the standard ASCII table, and outputs the human-readable text instantly using browser-side JavaScript." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is my decoded text stored on your servers?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. We prioritize your privacy. The conversion happens entirely locally within your web browser. No data is sent to our servers." }
-        },
-        {
-          "@type": "Question",
-          "name": "What delimiters can I use between ASCII codes?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Our smart algorithm supports spaces and commas. For example, '72 101 108 108 111' or '72,101,108,108,111' will both correctly output 'Hello'." }
-        }
-      ]
     }
     </script>
 
@@ -81,15 +38,15 @@
             --border: #e2e8f0;
             --success: #10b981;
             --danger: #ef4444;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             --transition: all 0.3s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
-        /* NAVBAR */
-        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        /* HEADER & NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; width: 100%; }
         .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
         .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
         .logo span { color: var(--secondary); }
@@ -98,99 +55,89 @@
         .nav-links a:hover { color: var(--primary); }
 
         /* HERO SECTION */
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; width: 100%; }
         .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
         .hero p { font-size: 18px; color: #cbd5e1; max-width: 700px; margin: auto; font-weight: 300; }
 
         /* BREADCRUMBS */
         .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
         .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
-        .breadcrumbs a:hover { text-decoration: underline; }
 
-        /* MAIN LAYOUT */
+        /* MAIN LAYOUT (DESKTOP) */
         .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; }
 
         /* TOOL WORKSPACE */
         .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
-        
-        .tool-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .tool-header h2 { font-size: 22px; color: var(--secondary); }
-        
-        .textarea-container { position: relative; margin-bottom: 30px; }
+        .textarea-container { margin-bottom: 30px; width: 100%; }
         .textarea-container label { display: block; font-weight: 600; color: var(--secondary); margin-bottom: 10px; font-size: 16px; }
         
         textarea { width: 100%; height: 200px; padding: 20px; border: 2px solid var(--border); border-radius: 12px; font-size: 16px; font-family: 'Fira Code', monospace; color: var(--secondary); background: #f8fafc; resize: vertical; transition: var(--transition); outline: none; }
         textarea:focus { border-color: var(--primary); background: var(--card-bg); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
         
-        /* Actions */
-        .action-bar { display: flex; gap: 15px; margin-bottom: 10px; }
+        .action-bar { display: flex; gap: 15px; margin-bottom: 20px; }
         .btn { padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2); }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
         .btn-secondary { background: #e2e8f0; color: var(--secondary); }
-        .btn-secondary:hover { background: #cbd5e1; }
         .btn-success { background: var(--success); color: white; }
         
-        .error-msg { color: var(--danger); font-size: 14px; font-weight: 600; margin-top: 10px; display: none; }
+        /* THE "STEP 2" HEADER BLOCK */
+        .tool-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; width: 100%; }
 
-        /* LONG FORM SEO CONTENT */
-        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); }
-        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
-        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
-        .toc ul { list-style: none; }
-        .toc ul li { margin-bottom: 10px; }
-        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
-        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
-        
-        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
-        .seo-article h2:first-of-type { margin-top: 0; }
-        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
-        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
-        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); }
-        .seo-article li { margin-bottom: 10px; }
-        
-        /* ASCII Table Reference */
-        .ascii-table-wrapper { width: 100%; overflow-x: auto; margin: 30px 0; border-radius: 10px; }
-        .ascii-table { width: 100%; border-collapse: collapse; min-width: 500px; font-family: 'Fira Code', monospace; }
-        .ascii-table th, .ascii-table td { border: 1px solid var(--border); padding: 12px; text-align: left; }
-        .ascii-table th { background: var(--secondary); color: white; font-weight: 600; font-family: 'Inter', sans-serif; }
-        .ascii-table tr:nth-child(even) { background: var(--bg-light); }
-        
-        /* FAQs */
-        .faq-box { margin-bottom: 25px; }
-        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
-        .faq-box p { margin: 0; color: var(--text-main); }
-
-        /* SIDEBAR */
+        /* SIDEBAR (DESKTOP) */
         .sidebar { position: sticky; top: 100px; height: fit-content; }
-        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 30px; border: 1px solid var(--border); }
-        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 700; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 30px; border: 1px solid var(--border); width: 100%; }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 700; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
         .widget-links { display: flex; flex-direction: column; gap: 10px; }
         .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 500; background: var(--bg-light); transition: var(--transition); }
         .widget-links a:hover { background: var(--primary); color: white; transform: translateX(5px); }
-        .widget-links .icon { margin-right: 12px; font-size: 18px; }
 
         /* FOOTER */
-        footer { background: var(--secondary); color: #cbd5e1; padding: 50px 20px; margin-top: 60px; text-align: center; }
-        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; text-align: center; margin-top: 60px; }
         footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-        
-        /* --- 🚀 THE FINAL MOBILE FIX BLOCK --- */
-        @media(max-width: 992px) {
-            .layout { grid-template-columns: 1fr; padding: 0 15px; }
-            .sidebar { position: static; width: 100%; }
-            .navbar { flex-direction: column; height: auto; padding: 15px; gap: 15px; }
-            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero { padding: 50px 15px 70px 15px; }
-            .hero h1 { font-size: 32px !important; }
-            .hero p { font-size: 15px !important; }
-            .tool-workspace { padding: 25px 15px; margin-top: -30px; }
-            .action-bar { flex-direction: column; gap: 10px; }
-            .btn { width: 100%; padding: 14px; }
-            .tool-header { flex-direction: column; align-items: stretch; gap: 12px; }
-            #copyBtn { width: 100%; height: 45px; }
-            .seo-article { padding: 30px 15px; }
-            .breadcrumbs { text-align: center; margin: 15px auto; }
+
+        /* --- 🚀 THE NUCLEAR MOBILE FIX (OVERRIDE EVERYTHING) --- */
+        @media (max-width: 992px) {
+            .navbar { flex-direction: column !important; height: auto !important; padding: 15px 10px !important; }
+            .nav-links { margin-top: 15px !important; gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
+            .nav-links a { font-size: 14px !important; font-weight: 700 !important; }
+            
+            .hero { padding: 50px 15px 70px 15px !important; }
+            .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+            .hero p { font-size: 14px !important; }
+
+            .layout { display: flex !important; flex-direction: column !important; padding: 0 15px !important; gap: 30px !important; width: 100% !important; max-width: 100% !important; }
+            
+            .tool-workspace { padding: 25px 15px !important; margin-top: -30px !important; width: 100% !important; }
+            
+            .action-bar { flex-direction: column !important; width: 100% !important; }
+            .btn { width: 100% !important; padding: 15px !important; }
+
+            /* FIX FOR SCREENSHOT 2 (STEP 2 HEADER & COPY BUTTON) */
+            .tool-header { 
+                flex-direction: column !important; 
+                align-items: stretch !important; 
+                gap: 12px !important; 
+                text-align: left !important;
+            }
+            .tool-header label { width: 100% !important; }
+            #copyBtn { 
+                width: 100% !important; 
+                height: 50px !important; 
+                font-size: 15px !important; 
+                justify-content: center !important;
+                background: #e2e8f0 !important;
+                color: var(--secondary) !important;
+            }
+
+            /* SIDEBAR FIX (SCREENSHOT 2) */
+            .sidebar { position: static !important; width: 100% !important; }
+            .widget { padding: 20px !important; width: 100% !important; box-sizing: border-box !important; }
+            .widget-links a { padding: 15px !important; }
+
+            .seo-article { padding: 25px 15px !important; margin-top: 30px !important; border-radius: 15px !important; }
+            .seo-article h2 { font-size: 22px !important; }
+
+            .breadcrumbs { text-align: center !important; font-size: 12px !important; }
         }
     </style>
 </head>
@@ -209,7 +156,7 @@
 
 <section class="hero">
     <h1>ASCII to Text Converter</h1>
-    <p>Instantly decode decimal ASCII codes into readable human text strings. A fast, free, and secure utility for developers and computer science students.</p>
+    <p>Convert decimal ASCII codes into readable strings instantly. 100% secure, local, and free online translator.</p>
 </section>
 
 <div class="breadcrumbs">
@@ -219,157 +166,82 @@
 <div class="layout">
     <main>
         <section class="tool-workspace">
-            
             <div class="textarea-container">
-                <label for="asciiInput">Step 1: Paste Your ASCII Codes Here (Separate by spaces or commas)</label>
-                <textarea id="asciiInput" placeholder="Example: 72 101 108 108 111  or  81, 117, 105, 99, 107" oninput="convertAscii()"></textarea>
-                <div id="errorBox" class="error-msg">⚠️ Invalid characters found. Please enter valid decimal ASCII numbers (0-255).</div>
+                <label>Step 1: Paste Your ASCII Codes Here</label>
+                <textarea id="asciiInput" placeholder="Example: 72 101 108 108 111" oninput="convertAscii()"></textarea>
             </div>
 
             <div class="action-bar">
-                <button class="btn btn-primary" onclick="convertAscii()">🔄 Convert to Text</button>
-                <button class="btn btn-secondary" onclick="clearFields()">🗑️ Clear</button>
+                <button class="btn btn-primary" onclick="convertAscii()">🔄 Convert Now</button>
+                <button class="btn btn-secondary" onclick="clearFields()">🗑️ Clear Editor</button>
             </div>
 
             <div class="textarea-container" style="margin-top: 30px;">
                 <div class="tool-header">
-                    <label for="textOutput" style="margin: 0;">Step 2: Get Your Decoded Text</label>
-                    <button id="copyBtn" class="btn btn-secondary" onclick="copyText()" style="padding: 8px 15px; font-size: 13px;">📋 Copy Text</button>
+                    <label style="margin: 0;">Step 2: Get Your Decoded Text</label>
+                    <button id="copyBtn" class="btn btn-secondary" onclick="copyText()">📋 Copy Text</button>
                 </div>
-                <textarea id="textOutput" placeholder="Your decoded text will appear here instantly..." readonly style="background: #fff; cursor: text;"></textarea>
+                <textarea id="textOutput" placeholder="Your results will appear here..." readonly style="background: #fff; cursor: text;"></textarea>
             </div>
-
         </section>
 
         <article class="seo-article">
-            <div class="toc">
-                <h3>📖 Table of Contents</h3>
-                <ul>
-                    <li><a href="#what-is-ascii">1. What is ASCII and How Does It Work?</a></li>
-                    <li><a href="#how-to-use">2. How to Use the ASCII to Text Converter</a></li>
-                    <li><a href="#why-use">3. Why Use Our Online ASCII Translator?</a></li>
-                    <li><a href="#ascii-reference-table">4. Common ASCII Code Reference Table</a></li>
-                    <li><a href="#faqs">5. Frequently Asked Questions (FAQs)</a></li>
-                </ul>
-            </div>
-
-            <h2 id="what-is-ascii">What is ASCII and How Does It Work?</h2>
-            <p><strong>ASCII</strong> stands for <em>American Standard Code for Information Interchange</em>. Computers, at their core, do not understand letters, symbols, or emojis; they only understand numbers. ASCII acts as a universal dictionary that assigns a specific mathematical number to every character.</p>
-            
-            <p>For instance, the capital letter <strong>"A"</strong> is assigned the decimal number <strong>65</strong>. By using an <strong>ASCII to text converter</strong>, you are reverse-engineering this process.</p>
-
-            <h2 id="how-to-use">How to Use the ASCII to Text Converter</h2>
-            <ul>
-                <li><strong>Step 1: Enter your codes.</strong> Paste your sequence of ASCII decimal numbers into the input box.</li>
-                <li><strong>Step 2: Instant Translation.</strong> Our JavaScript engine translates the decimal values instantly.</li>
-                <li><strong>Step 3: Copy & Go.</strong> Click the "Copy Text" button to copy the string to your clipboard.</li>
-            </ul>
-
-            <h2 id="why-use">Why Use Our Online ASCII Translator?</h2>
-            <p>Our tool offers <strong>Client-Side Processing</strong>. This guarantees 100% privacy because your data never leaves your browser. It is faster, safer, and completely free.</p>
-
-            <h2 id="ascii-reference-table">Common ASCII Code Reference Table (Decimal)</h2>
-            <div class="ascii-table-wrapper">
-                <table class="ascii-table">
-                    <thead>
-                        <tr>
-                            <th>Character</th>
-                            <th>ASCII Decimal Code</th>
-                            <th>Character</th>
-                            <th>ASCII Decimal Code</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>A</td><td>65</td><td>a</td><td>97</td></tr>
-                        <tr><td>B</td><td>66</td><td>b</td><td>98</td></tr>
-                        <tr><td>C</td><td>67</td><td>c</td><td>99</td></tr>
-                        <tr><td>Space ( )</td><td>32</td><td>0 (Zero)</td><td>48</td></tr>
-                        <tr><td>!</td><td>33</td><td>1</td><td>49</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
-            <div class="faq-box">
-                <h4>How does the ASCII to Text converter handle invalid characters?</h4>
-                <p>Our tool gracefully skips invalid inputs and continues converting the valid ASCII codes to ensure your output string remains intact.</p>
-            </div>
-            <div class="faq-box">
-                <h4>What is Extended ASCII?</h4>
-                <p>Standard ASCII covers 128 characters (0-127). Extended ASCII uses 8 bits to support up to 256 characters (0-255), including foreign letters and symbols.</p>
-            </div>
+            <h2>Detailed Guide to ASCII Conversion</h2>
+            <p>ASCII (American Standard Code for Information Interchange) is a numerical representation of characters. Our tool lets you decode these numbers instantly.</p>
         </article>
     </main>
 
     <aside class="sidebar">
         <div class="widget">
-            <h3>Related Text Tools</h3>
+            <h3>Related Tools</h3>
             <div class="widget-links">
                 <a href="text-to-ascii.html"><span class="icon">🔤</span> Text to ASCII</a>
-                <a href="binary-converter.html"><span class="icon">💻</span> Binary to Text</a>
-                <a href="base64-decoder.html"><span class="icon">🔓</span> Base64 Decoder</a>
                 <a href="word-counter.html"><span class="icon">📝</span> Word Counter</a>
                 <a href="case-converter.html"><span class="icon">🔠</span> Case Converter</a>
                 <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
             </div>
         </div>
-        
-        <div class="widget" style="background: linear-gradient(135deg, #e0e7ff, #ffffff); border: 2px dashed #a5b4fc;">
-            <h3 style="border:none; margin-bottom: 10px; font-size: 18px;">💡 Pro Tip</h3>
-            <p style="font-size: 14px; color: var(--text-main); margin: 0;">Press <kbd style="background:#fff; padding:2px 6px; border-radius:4px; border:1px solid #ccc;">Ctrl + D</kbd> to bookmark this tool for quick access!</p>
+
+        <div class="widget" style="background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd;">
+            <h3>💡 Pro Tip</h3>
+            <p style="font-size: 14px;">Press <b>Ctrl + D</b> to bookmark this tool for quick access during your coding sessions!</p>
         </div>
     </aside>
 </div>
 
 <footer>
-    <p><strong>QuickTooles.in</strong> – Empowering developers and creators with fast, free, and secure web utilities.</p>
-    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#" style="color:white;">Privacy Policy</a></p>
 </footer>
 
 <script>
     function convertAscii() {
         const inputStr = document.getElementById("asciiInput").value.trim();
         const outputBox = document.getElementById("textOutput");
-        const errorBox = document.getElementById("errorBox");
-        if (inputStr === "") { outputBox.value = ""; errorBox.style.display = "none"; return; }
+        if (inputStr === "") { outputBox.value = ""; return; }
         const codes = inputStr.split(/[\s,]+/);
-        let resultText = "";
-        let hasError = false;
-        for (let i = 0; i < codes.length; i++) {
-            let code = codes[i];
-            if (code === "") continue;
+        let result = "";
+        codes.forEach(code => {
+            if (code === "") return;
             if (/^\d+$/.test(code)) {
                 let num = parseInt(code, 10);
-                if (num >= 0 && num <= 255) { resultText += String.fromCharCode(num); } 
-                else { hasError = true; }
-            } else { hasError = true; }
-        }
-        outputBox.value = resultText;
-        errorBox.style.display = hasError ? "block" : "none";
+                if (num >= 0 && num <= 255) result += String.fromCharCode(num);
+            }
+        });
+        outputBox.value = result;
     }
+
     function clearFields() {
         document.getElementById("asciiInput").value = "";
         document.getElementById("textOutput").value = "";
-        document.getElementById("errorBox").style.display = "none";
-        document.getElementById("copyBtn").innerText = "📋 Copy Text";
-        document.getElementById("copyBtn").classList.remove("btn-success");
-        document.getElementById("copyBtn").classList.add("btn-secondary");
     }
+
     function copyText() {
         const outputText = document.getElementById("textOutput");
         if (outputText.value.trim() === "") return;
-        outputText.select();
-        outputText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(outputText.value).then(() => {
             const btn = document.getElementById("copyBtn");
             btn.innerText = "✅ Copied!";
-            btn.classList.remove("btn-secondary");
-            btn.classList.add("btn-success");
-            setTimeout(() => {
-                btn.innerText = "📋 Copy Text";
-                btn.classList.remove("btn-success");
-                btn.classList.add("btn-secondary");
-            }, 2000);
+            setTimeout(() => { btn.innerText = "📋 Copy Text"; }, 2000);
         });
     }
 </script>
