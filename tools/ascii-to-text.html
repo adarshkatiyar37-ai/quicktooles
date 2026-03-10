@@ -86,7 +86,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
 
         /* NAVBAR */
         header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
@@ -124,7 +124,7 @@
         
         /* Actions */
         .action-bar { display: flex; gap: 15px; margin-bottom: 10px; }
-        .btn { padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: flex; align-items: center; gap: 8px; }
+        .btn { padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2); }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
         .btn-secondary { background: #e2e8f0; color: var(--secondary); }
@@ -150,7 +150,8 @@
         .seo-article li { margin-bottom: 10px; }
         
         /* ASCII Table Reference */
-        .ascii-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-family: 'Fira Code', monospace; }
+        .ascii-table-wrapper { width: 100%; overflow-x: auto; margin: 30px 0; border-radius: 10px; }
+        .ascii-table { width: 100%; border-collapse: collapse; min-width: 500px; font-family: 'Fira Code', monospace; }
         .ascii-table th, .ascii-table td { border: 1px solid var(--border); padding: 12px; text-align: left; }
         .ascii-table th { background: var(--secondary); color: white; font-weight: 600; font-family: 'Inter', sans-serif; }
         .ascii-table tr:nth-child(even) { background: var(--bg-light); }
@@ -174,22 +175,22 @@
         footer p { font-size: 15px; margin-bottom: 10px; }
         footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
         
+        /* --- 🚀 THE FINAL MOBILE FIX BLOCK --- */
         @media(max-width: 992px) {
-            .layout { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 34px; }
-            
-        }
-                /* --- MOBILE FIX (Phone ke liye) --- */
-        @media (max-width: 768px) {
-            .tool-workspace { padding: 20px; }
-            .sidebar { position: static; }
-            .btn { width: 100%; justify-content: center; }
-            .action-bar { flex-direction: column; }
-            textarea { height: 150px; }
-            .hero { padding: 50px 15px 60px 15px; }
-            .hero h1 { font-size: 28px; }
-            .seo-article { padding: 25px; }
-            .layout { gap: 20px; }
+            .layout { grid-template-columns: 1fr; padding: 0 15px; }
+            .sidebar { position: static; width: 100%; }
+            .navbar { flex-direction: column; height: auto; padding: 15px; gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero { padding: 50px 15px 70px 15px; }
+            .hero h1 { font-size: 32px !important; }
+            .hero p { font-size: 15px !important; }
+            .tool-workspace { padding: 25px 15px; margin-top: -30px; }
+            .action-bar { flex-direction: column; gap: 10px; }
+            .btn { width: 100%; padding: 14px; }
+            .tool-header { flex-direction: column; align-items: stretch; gap: 12px; }
+            #copyBtn { width: 100%; height: 45px; }
+            .seo-article { padding: 30px 15px; }
+            .breadcrumbs { text-align: center; margin: 15px auto; }
         }
     </style>
 </head>
@@ -253,55 +254,49 @@
             </div>
 
             <h2 id="what-is-ascii">What is ASCII and How Does It Work?</h2>
-            <p><strong>ASCII</strong> stands for <em>American Standard Code for Information Interchange</em>. Computers, at their core, do not understand letters, symbols, or emojis; they only understand numbers (specifically, binary code consisting of 0s and 1s). To solve this communication barrier, the ASCII standard was created in the 1960s.</p>
-            <p>ASCII acts as a universal dictionary that assigns a specific mathematical number to every character you see on your keyboard. For instance, the capital letter <strong>"A"</strong> is assigned the decimal number <strong>65</strong>, while the lowercase letter <strong>"a"</strong> is assigned <strong>97</strong>. By using an <strong>ASCII to text converter</strong>, you are essentially reverse-engineering this process—taking the machine numbers and translating them back into readable human strings.</p>
-            <p>The standard ASCII table contains 128 characters (numbered 0 to 127), which includes English alphabets (both uppercase and lowercase), numbers (0-9), punctuation marks, and special control characters like "carriage return" or "backspace".</p>
+            <p><strong>ASCII</strong> stands for <em>American Standard Code for Information Interchange</em>. Computers, at their core, do not understand letters, symbols, or emojis; they only understand numbers. ASCII acts as a universal dictionary that assigns a specific mathematical number to every character.</p>
+            
+            <p>For instance, the capital letter <strong>"A"</strong> is assigned the decimal number <strong>65</strong>. By using an <strong>ASCII to text converter</strong>, you are reverse-engineering this process.</p>
 
             <h2 id="how-to-use">How to Use the ASCII to Text Converter</h2>
-            <p>We have designed the QuickTooles ASCII code translator to be incredibly user-friendly and exceptionally fast. You don't need to press multiple buttons or wait for a server reload.</p>
             <ul>
-                <li><strong>Step 1: Enter your codes.</strong> Paste your sequence of ASCII decimal numbers into the top input box. Our smart algorithm automatically recognizes numbers separated by spaces (e.g., <code>81 117 105</code>) or commas (e.g., <code>81, 117, 105</code>).</li>
-                <li><strong>Step 2: Instant Translation.</strong> As you type or paste the codes, the JavaScript engine embedded in your browser instantly translates the decimal values into text in the output box below.</li>
-                <li><strong>Step 3: Copy & Go.</strong> Once the text is generated, simply click the "Copy Text" button to copy the string to your clipboard for use in your coding project or document.</li>
+                <li><strong>Step 1: Enter your codes.</strong> Paste your sequence of ASCII decimal numbers into the input box.</li>
+                <li><strong>Step 2: Instant Translation.</strong> Our JavaScript engine translates the decimal values instantly.</li>
+                <li><strong>Step 3: Copy & Go.</strong> Click the "Copy Text" button to copy the string to your clipboard.</li>
             </ul>
 
             <h2 id="why-use">Why Use Our Online ASCII Translator?</h2>
-            <p>If you are a programmer, software developer, cybersecurity analyst, or computer science student, you will frequently encounter encoded data. While you could manually look up a reference chart, doing so for long strings is tedious and prone to human error.</p>
-            <p>Our tool offers <strong>Client-Side Processing</strong>. This is a massive advantage for your digital privacy. Unlike other tools that send your data to an external server to be decoded, our converter executes the mathematical logic locally inside your browser. Your data is 100% secure and leaves no digital footprint.</p>
+            <p>Our tool offers <strong>Client-Side Processing</strong>. This guarantees 100% privacy because your data never leaves your browser. It is faster, safer, and completely free.</p>
 
             <h2 id="ascii-reference-table">Common ASCII Code Reference Table (Decimal)</h2>
-            <p>For quick reference, here are some of the most frequently translated ASCII decimal values. You can test these in the converter above!</p>
-            <table class="ascii-table">
-                <thead>
-                    <tr>
-                        <th>Character</th>
-                        <th>ASCII Decimal Code</th>
-                        <th>Character</th>
-                        <th>ASCII Decimal Code</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>A</td><td>65</td><td>a</td><td>97</td></tr>
-                    <tr><td>B</td><td>66</td><td>b</td><td>98</td></tr>
-                    <tr><td>C</td><td>67</td><td>c</td><td>99</td></tr>
-                    <tr><td>Space ( )</td><td>32</td><td>0 (Zero)</td><td>48</td></tr>
-                    <tr><td>! (Exclamation)</td><td>33</td><td>1 (One)</td><td>49</td></tr>
-                </tbody>
-            </table>
-            <p><em>Pro Tip: To spell "Hello", you would input the decimal codes: <strong>72 101 108 108 111</strong>.</em></p>
+            <div class="ascii-table-wrapper">
+                <table class="ascii-table">
+                    <thead>
+                        <tr>
+                            <th>Character</th>
+                            <th>ASCII Decimal Code</th>
+                            <th>Character</th>
+                            <th>ASCII Decimal Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>A</td><td>65</td><td>a</td><td>97</td></tr>
+                        <tr><td>B</td><td>66</td><td>b</td><td>98</td></tr>
+                        <tr><td>C</td><td>67</td><td>c</td><td>99</td></tr>
+                        <tr><td>Space ( )</td><td>32</td><td>0 (Zero)</td><td>48</td></tr>
+                        <tr><td>!</td><td>33</td><td>1</td><td>49</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
             <div class="faq-box">
                 <h4>How does the ASCII to Text converter handle invalid characters?</h4>
-                <p>If you accidentally type a letter instead of a number in the input box, our tool will gracefully skip it and continue converting the valid ASCII decimal codes. We ensure your output string remains as intact as possible.</p>
+                <p>Our tool gracefully skips invalid inputs and continues converting the valid ASCII codes to ensure your output string remains intact.</p>
             </div>
             <div class="faq-box">
                 <h4>What is Extended ASCII?</h4>
-                <p>Standard ASCII uses 7 bits and covers 128 characters (0-127). Extended ASCII uses 8 bits, expanding the limit to 256 characters (0-255). This allows computers to display special graphical symbols, foreign language letters, and math symbols. Our tool fully supports Extended ASCII up to decimal 255.</p>
-            </div>
-            <div class="faq-box">
-                <h4>Can I convert Binary or Hexadecimal to Text here?</h4>
-                <p>This specific tool is optimized for Decimal ASCII codes (base-10 numbers). If you have a sequence of 0s and 1s, you will need to use our Binary to Text converter tool instead.</p>
+                <p>Standard ASCII covers 128 characters (0-127). Extended ASCII uses 8 bits to support up to 256 characters (0-255), including foreign letters and symbols.</p>
             </div>
         </article>
     </main>
@@ -321,7 +316,7 @@
         
         <div class="widget" style="background: linear-gradient(135deg, #e0e7ff, #ffffff); border: 2px dashed #a5b4fc;">
             <h3 style="border:none; margin-bottom: 10px; font-size: 18px;">💡 Pro Tip</h3>
-            <p style="font-size: 14px; color: var(--text-main); margin: 0;">Press <kbd style="background:#fff; padding:2px 6px; border-radius:4px; border:1px solid #ccc;">Ctrl + D</kbd> to bookmark this tool. It comes in handy during coding debugging sessions!</p>
+            <p style="font-size: 14px; color: var(--text-main); margin: 0;">Press <kbd style="background:#fff; padding:2px 6px; border-radius:4px; border:1px solid #ccc;">Ctrl + D</kbd> to bookmark this tool for quick access!</p>
         </div>
     </aside>
 </div>
@@ -332,57 +327,26 @@
 </footer>
 
 <script>
-    // Robust Logic to handle ASCII conversion instantly
     function convertAscii() {
         const inputStr = document.getElementById("asciiInput").value.trim();
         const outputBox = document.getElementById("textOutput");
         const errorBox = document.getElementById("errorBox");
-        
-        // If input is empty, clear output and hide error
-        if (inputStr === "") {
-            outputBox.value = "";
-            errorBox.style.display = "none";
-            return;
-        }
-
-        // Split input by spaces, commas, or newlines
+        if (inputStr === "") { outputBox.value = ""; errorBox.style.display = "none"; return; }
         const codes = inputStr.split(/[\s,]+/);
         let resultText = "";
         let hasError = false;
-
         for (let i = 0; i < codes.length; i++) {
             let code = codes[i];
-            
-            // Ignore empty strings caused by multiple spaces/commas
             if (code === "") continue;
-
-            // Check if the input is a valid positive number
             if (/^\d+$/.test(code)) {
                 let num = parseInt(code, 10);
-                
-                // ASCII valid range (0 to 255 for extended ASCII)
-                if (num >= 0 && num <= 255) {
-                    resultText += String.fromCharCode(num);
-                } else {
-                    hasError = true; // Number out of bound
-                }
-            } else {
-                hasError = true; // Not a number
-            }
+                if (num >= 0 && num <= 255) { resultText += String.fromCharCode(num); } 
+                else { hasError = true; }
+            } else { hasError = true; }
         }
-
-        // Display results
         outputBox.value = resultText;
-
-        // Show warning if invalid data was found, but still output the valid parts
-        if (hasError) {
-            errorBox.style.display = "block";
-        } else {
-            errorBox.style.display = "none";
-        }
+        errorBox.style.display = hasError ? "block" : "none";
     }
-
-    // Clear function
     function clearFields() {
         document.getElementById("asciiInput").value = "";
         document.getElementById("textOutput").value = "";
@@ -391,30 +355,21 @@
         document.getElementById("copyBtn").classList.remove("btn-success");
         document.getElementById("copyBtn").classList.add("btn-secondary");
     }
-
-    // Copy to Clipboard function
     function copyText() {
         const outputText = document.getElementById("textOutput");
-        
         if (outputText.value.trim() === "") return;
-
         outputText.select();
-        outputText.setSelectionRange(0, 99999); // For mobile devices
-
+        outputText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(outputText.value).then(() => {
             const btn = document.getElementById("copyBtn");
             btn.innerText = "✅ Copied!";
             btn.classList.remove("btn-secondary");
             btn.classList.add("btn-success");
-            
-            // Reset button text after 2 seconds
             setTimeout(() => {
                 btn.innerText = "📋 Copy Text";
                 btn.classList.remove("btn-success");
                 btn.classList.add("btn-secondary");
             }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
         });
     }
 </script>
