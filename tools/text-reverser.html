@@ -129,120 +129,31 @@
             .sidebar { position: static; }
             .hero h1 { font-size: 34px; }
         }
-      /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
-@media (max-width: 992px) {
-    /* 1. Header ko stack karo */
-    .navbar { 
-        flex-direction: column !important; 
-        height: auto !important; 
-        padding: 15px 10px !important; 
-        text-align: center !important; 
-    }
-    .nav-links { 
-        margin-top: 15px !important; 
-        gap: 15px !important; 
-        flex-wrap: wrap !important; 
-        justify-content: center !important; 
-    }
+@media(max-width: 992px) {
 
-    /* 2. Hero Section ka text chota karo */
-    .hero { padding: 40px 15px 60px 15px !important; }
-    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
-    
-    /* 3. BREADCRUMBS FIX (Sabse Important) */
-    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
-    .breadcrumbs { 
-        text-align: center !important; 
-        margin: 10px auto !important; 
-        padding: 10px !important; 
-        position: relative !important; 
-        z-index: 10 !important; 
-        display: block !important;
-    }
-
-    /* 4. Layout ko Single Column karo */
-    .layout { 
-        display: flex !important; 
-        flex-direction: column !important; 
-        padding: 0 15px !important; 
-        gap: 25px !important; 
-        width: 100% !important; 
-    }
-
-    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
-    .tool-workspace { 
-        padding: 25px 15px !important; 
-        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
-        width: 100% !important; 
-    }
-    
-    /* 6. Action Buttons Fix */
-    .action-bar { 
-        flex-direction: column !important; 
-        width: 100% !important; 
-        gap: 10px !important; 
-    }
-    .btn { 
-        width: 100% !important; 
-        padding: 15px !important; 
-        justify-content: center !important; 
-    }
-    
-    /* 7. Copy Button Fix (Step 2 Section) */
-    .tool-header { 
-        flex-direction: column !important; 
-        align-items: stretch !important; 
-        gap: 10px !important; 
-    }
-    #copyBtn { 
-        width: 100% !important; 
-        height: 48px !important; 
-    }
-
-    /* 8. Sidebar Fix */
-    .sidebar { 
-        position: static !important; 
-        width: 100% !important; 
-    }
-    .widget { 
-        padding: 20px !important; 
-        width: 100% !important; 
-    }
+.layout{
+display:flex !important;
+flex-direction:column !important;
+width:100% !important;
+padding:0 15px !important;
 }
-@media (max-width:768px){
+
+.main-content{
+width:100% !important;
+}
 
 .tool-workspace{
-padding:20px !important;
+width:100% !important;
+padding:25px 15px !important;
 }
 
-textarea{
-height:220px !important;
-font-size:15px !important;
-padding:15px !important;
-}
-
-.action-bar{
-flex-direction:column !important;
+.sidebar{
+width:100% !important;
+position:static !important;
 }
 
 .hero h1{
-font-size:26px !important;
-}
-
-.hero p{
-font-size:15px !important;
-}
-
-.seo-article{
-padding:25px 18px !important;
-}
-
-.data-table-container{
-overflow-x:auto !important;
-}
-
-.widget{
-padding:20px !important;
+font-size:34px !important;
 }
 
 }
