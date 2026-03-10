@@ -1,228 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter – Convert PNG, JPG & WebP Online | QuickTooles</title>
+    
+    <meta name="description" content="Free online Image Converter. Instantly convert pictures between JPG, PNG, and WebP formats. 100% secure, fast, and works directly in your browser with no uploads.">
+    <meta name="keywords" content="image converter, png to jpg, webp to png, convert image format online, jpg to png converter, webp converter, online photo converter, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/image-converter">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Image Format Converter | QuickTooles">
+    <meta property="og:description" content="Convert your photos between JPG, PNG, and WebP instantly without losing quality. 100% Free and Private.">
+    <meta property="og:url" content="https://quicktooles.in/tools/image-converter">
+    <meta property="og:type" content="website">
 
-<title>Image Converter - QuickTooles</title>
-<meta name="description" content="Convert images online between PNG, JPG, and WEBP formats. Free and easy Image Converter tool.">
-<meta name="keywords" content="Image Converter, PNG to JPG, JPG to PNG, WEBP Converter, online image convert, webtools">
-<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Image Converter",
+      "operatingSystem": "Web",
+      "applicationCategory": "MultimediaApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced, real-time online utility to securely convert image file formats between JPEG, PNG, and WebP directly within the browser."
+    }
+    </script>
 
-<style>
-/* Tool Container */
-.tool-container {
-    max-width:700px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-    color:#1e293b;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Image Converter"
+      }]
+    }
+    </script>
 
-.tool-container h1 {
-    text-align:center;
-    margin-bottom:20px;
-    color:#2563eb;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my image uploaded to your servers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No! Our Image Converter processes your photos entirely on your local device using HTML5 Canvas. Your images are never uploaded to the internet, guaranteeing 100% privacy." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert a WebP file to PNG?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simply upload your WebP file, select 'PNG' from the output format dropdown menu, and click Convert. You can then download your new transparent PNG instantly." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did my PNG background turn white?",
+          "acceptedAnswer": { "@type": "Answer", "text": "If you convert a transparent PNG to a JPG, the transparent areas must be filled with a solid color because the JPG format does not support transparency. Our tool safely fills it with white to prevent your image from turning black." }
+        }
+      ]
+    }
+    </script>
 
-.tool-container p{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:16px;
-}
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-/* Inputs */
-input[type="file"],
-select {
-    margin-top:10px;
-    padding:10px;
-    border-radius:6px;
-    border:1px solid #cbd5e1;
-    width:80%;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-/* Canvas */
-canvas {
-    margin-top:20px;
-    max-width:100%;
-    border-radius:8px;
-    border:1px solid #cbd5e1;
-}
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-/* Button */
-button {
-    margin-top:20px;
-    padding:12px 20px;
-    border:none;
-    border-radius:6px;
-    background:#3b82f6;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 800px; margin: auto; font-weight: 300; }
 
-button:hover {
-    background:#2563eb;
-}
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
 
-/* Download Link */
-a#download {
-    display:block;
-    margin-top:15px;
-    color:#3b82f6;
-    font-weight:bold;
-}
+        /* MAIN LAYOUT (3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
 
-/* Blog Section */
-.blog-section{
-    margin-top:40px;
-    background:#f8fafc;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    line-height:1.7;
-    color:#1e293b;
-}
+        /* LEFT CONTENT AREA */
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
 
-.blog-section h2{
-    font-size:22px;
-    margin-bottom:12px;
-    color:#2563eb;
-}
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        /* Upload Area */
+        .upload-area { border: 2px dashed var(--primary); background: #eff6ff; border-radius: 12px; padding: 50px 20px; text-align: center; transition: var(--transition); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .upload-area.dragover { background: #e0e7ff; border-color: var(--primary-dark); }
+        
+        .upload-icon { font-size: 48px; margin-bottom: 15px; }
+        .upload-text { font-weight: 700; color: var(--primary-dark); font-size: 22px; margin-bottom: 5px; }
+        .upload-subtext { color: var(--text-light); font-size: 15px; margin-bottom: 25px; }
+        
+        /* Explicit Upload Button */
+        .btn-upload { background: var(--primary); color: white; padding: 14px 30px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); transition: var(--transition); }
+        .btn-upload:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4); }
+        .upload-area input[type="file"] { display: none; }
 
-.blog-section p{
-    margin-bottom:12px;
-}
+        /* Editor Workspace (Hidden Initially) */
+        .editor-workspace { display: none; }
+        
+        /* Format Selection Bar */
+        .controls-bar { background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; padding: 25px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; margin-bottom: 30px; }
+        
+        .control-group { display: flex; flex-direction: column; gap: 8px; }
+        .control-group label { font-weight: 700; color: var(--secondary); font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        select.format-select { padding: 16px 20px; border-radius: 8px; border: 2px solid var(--border); font-size: 16px; font-weight: 600; color: var(--secondary); outline: none; cursor: pointer; background: white; width: 100%; transition: var(--transition); }
+        select.format-select:focus { border-color: var(--primary); }
 
-/* Related Tools */
-.related-tools{
-    margin-top:30px;
-    text-align:left;
-}
+        /* Comparison Grid */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+        .preview-box { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #f1f5f9 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVQYV2N89erVfwY0ICYmRhTGwEBFMGoQo4oBBQkJiQGjo58MKBjA6GZCFyTGA2gShzC2kOAEAKuPEr9tX4ePAAAAAElFTkSuQmCC') repeat; display: flex; flex-direction: column; }
+        
+        .preview-header { background: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .preview-header h3 { font-size: 15px; color: var(--secondary); margin: 0; font-weight: 700; }
+        .badge { font-weight: 800; font-size: 14px; background: #e2e8f0; color: var(--secondary); padding: 4px 10px; border-radius: 6px; }
+        .badge.target { background: var(--primary); color: white; }
+        
+        .img-container { height: 300px; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; }
+        .img-container img { max-width: 100%; max-height: 100%; border-radius: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: contain; }
 
-.related-tools h2{
-    font-size:20px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
+        /* Loading Overlay */
+        .loading-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.85); display: none; align-items: center; justify-content: center; font-weight: 700; color: var(--primary); font-size: 18px; z-index: 10; }
 
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
+        /* Action Buttons */
+        .action-bar { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 30px; }
+        .btn { padding: 15px 30px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-success { background: var(--success); color: white; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); display: none; }
+        .btn-success:hover { background: #059669; transform: translateY(-2px); }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+        .btn-secondary:hover { background: #cbd5e1; transform: translateY(-2px); }
 
-.related-tools ul li{
-    margin-bottom:10px;
-}
+        /* Hidden Canvas */
+        #conversionCanvas { display: none; }
 
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
+        /* MONSTER SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h2:first-of-type { margin-top: 0; }
+        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); line-height: 1.6; }
+        .seo-article li { margin-bottom: 10px; }
+        
+        /* Table */
+        .data-table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 15px; }
+        .data-table th, .data-table td { border: 1px solid var(--border); padding: 15px; text-align: left; }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; }
+        .data-table tr:nth-child(even) { background: var(--bg-light); }
+        .data-table strong { color: var(--primary-dark); }
+        
+        /* FAQs */
+        .faq-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--bg-light); }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-box p { margin: 0; color: var(--text-main); line-height: 1.6; }
 
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
+        /* RIGHT SIDEBAR (STICKY & RELATED TOOLS) */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 20px; }
 
-@media(max-width:600px){
-    .tool-container{
-        margin:50px 20px;
-        padding:30px;
+        /* Pro Tip Box */
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; margin: 0; }
+
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            .controls-bar { grid-template-columns: 1fr; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .btn { width: 100%; }
+        }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
     }
 }
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-<h2 class="logo">QuickTooles</h2>
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Any-to-Any Image Converter</h1>
+    <p>Seamlessly convert your pictures between JPG, PNG, and WebP formats. Free, lightning-fast, and processes securely inside your browser.</p>
+</section>
 
-<h1>🖼 Image Converter</h1>
-
-<p>Upload an image and convert it between PNG, JPG, or WEBP formats easily.</p>
-
-<input type="file" id="upload">
-
-<br>
-
-<select id="format">
-<option value="image/png">PNG</option>
-<option value="image/jpeg">JPG</option>
-<option value="image/webp">WEBP</option>
-</select>
-
-<br>
-
-<button onclick="convertImage()">Convert Image</button>
-
-<canvas id="canvas"></canvas>
-
-<a id="download" style="display:none;">Download Converted Image</a>
-
-<!-- Blog Section -->
-<div class="blog-section">
-<h2>How to Use the Image Converter</h2>
-<p>This online tool allows you to convert images between PNG, JPG, and WEBP formats without installing any software. Simply upload your image, choose the desired format, and click Convert. Then, download the converted image instantly.</p>
-<p>This tool is perfect for designers, developers, and bloggers who need specific image formats for websites or projects.</p>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-image">Image Tools</a> › Image Converter
 </div>
 
-<div class="related-tools">
-<h2>Related Tools</h2>
-<ul>
-<li><a href="image-compressor.html">Image Compressor</a></li>
-<li><a href="image-to-base64.html">Image to Base64</a></li>
-<li><a href="image-resizer.html">Image Resizer</a></li>
-</ul>
-</div>
+<div class="layout">
+    
+    <div class="main-content">
+        
+        <main class="tool-workspace">
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">🔄</div>
+                <div class="upload-text">Drag & Drop Image Here</div>
+                <div class="upload-subtext">or click the button below to browse your files.</div>
+                
+                <label for="imageInput" class="btn-upload">📁 Choose Image</label>
+                <input type="file" id="imageInput" accept="image/jpeg, image/png, image/webp, image/gif">
+            </div>
+
+            <div class="editor-workspace" id="editorWorkspace">
+                
+                <div class="controls-bar">
+                    <div class="control-group">
+                        <label>Convert To Format:</label>
+                        <select class="format-select" id="formatSelect">
+                            <option value="image/jpeg">JPEG (.jpg) - Standard Photo</option>
+                            <option value="image/png">PNG (.png) - Preserves Transparency</option>
+                            <option value="image/webp" selected>WebP (.webp) - Best for Websites</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="convertImage()" style="height: 100%; box-shadow: none;">⚙️ Convert Now</button>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="preview-box">
+                        <div class="preview-header">
+                            <h3>Original File</h3>
+                            <span class="badge" id="origFormatBadge">IMG</span>
+                        </div>
+                        <div class="img-container">
+                            <img id="origImgPreview" src="" alt="Original Image">
+                        </div>
+                    </div>
+
+                    <div class="preview-box" style="border-color: var(--primary);">
+                        <div class="preview-header">
+                            <h3>Converted Output</h3>
+                            <span class="badge target" id="compFormatBadge">Waiting...</span>
+                        </div>
+                        <div class="img-container">
+                            <div class="loading-overlay" id="loadingOverlay">Processing...</div>
+                            <img id="compImgPreview" src="" alt="Converted Image will appear here">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-bar">
+                    <a id="downloadBtn" href="#" class="btn btn-success" download="quicktooles_converted.png">⬇️ Download Image</a>
+                    <button class="btn btn-secondary" onclick="resetWorkspace()">🔄 Choose Another File</button>
+                </div>
+            </div>
+
+            <canvas id="conversionCanvas"></canvas>
+
+        </main>
+
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-converter">1. What is an Image Format Converter?</a></li>
+                    <li><a href="#why-convert">2. Why Convert Image Formats?</a></li>
+                    <li><a href="#format-comparison">3. Format Guide: WebP vs. JPEG vs. PNG</a></li>
+                    <li><a href="#how-to-use">4. How to Convert Images Online for Free</a></li>
+                    <li><a href="#faqs">5. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-converter">What is an Image Format Converter?</h2>
+            <p>An <strong>Image Format Converter</strong> is an essential utility that alters the underlying file architecture of a picture. Computers use different mathematical algorithms (called Codecs) to display images. Some codecs are built for high-detail photography, while others are built for transparent logos.</p>
+            <p>Our online image converter acts as a universal translator. If you have an image saved in a format your system or website doesn't accept, this tool allows you to rewrite that image into a globally accepted format like JPG, PNG, or WebP seamlessly.</p>
+
+            <h2 id="why-convert">Why Convert Image Formats?</h2>
+            <p>Image conversion is required daily by digital marketers, developers, and regular users. Here are the top reasons you need an image format converter:</p>
+            <ul>
+                <li><strong>Website SEO (WebP):</strong> If you upload heavy PNGs to a WordPress or Shopify blog, your page speed will drop. Converting PNG to WebP drastically reduces file size, boosting your Google PageSpeed score.</li>
+                <li><strong>Uploading Limitations (JPG):</strong> Many government portals, university application forms, and older software platforms explicitly state: <em>"Please upload a valid .JPG or .JPEG file."</em> If you only have a PNG, you must convert it.</li>
+                <li><strong>Transparency (PNG):</strong> If a designer creates a logo and saves it as a JPEG, the background will turn white. To retain a transparent background for graphic design, it must be converted and saved as a PNG.</li>
+            </ul>
+
+            <h2 id="format-comparison">Format Guide: WebP vs. JPEG vs. PNG</h2>
+            <p>Understanding which output format to select is critical for the best result. Here is our definitive guide to digital image formats:</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Format</th>
+                        <th>Strengths</th>
+                        <th>Weaknesses</th>
+                        <th>Best Used For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>WebP</strong></td>
+                        <td>Incredibly small file sizes; Supports both transparency and animation. Built by Google for modern web.</td>
+                        <td>Older image viewer software (pre-2020) on desktop computers might not open them offline.</td>
+                        <td>Website hero banners, blog images, e-commerce product photos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JPEG / JPG</strong></td>
+                        <td>Universally accepted on 100% of platforms and devices. Excellent for complex, multi-colored photos.</td>
+                        <td><strong>Does not support transparency.</strong> Uses lossy compression (loses data every time you save it).</td>
+                        <td>Camera photography, social media uploads, government forms.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PNG</strong></td>
+                        <td><strong>Supports perfect transparency.</strong> Uses lossless compression (keeps lines crisp and sharp).</td>
+                        <td>File sizes are significantly larger than JPEG and WebP, making them bad for full-page website photos.</td>
+                        <td>Logos, UI Icons, Graphics with text, Digital art.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="how-to-use">How to Convert Images Online for Free</h2>
+            <p>Using the QuickTooles any-to-any converter is designed to be frictionless. Follow these simple steps:</p>
+            <ol>
+                <li><strong>Upload:</strong> Click the "Choose Image" button and select your file (e.g., a `.webp` file you downloaded from a website).</li>
+                <li><strong>Select Target Format:</strong> From the dropdown menu, select your desired output (e.g., JPEG or PNG).</li>
+                <li><strong>Convert:</strong> Click the "Convert Now" button. Our engine will process the pixels directly in your browser.</li>
+                <li><strong>Download:</strong> Click the green download button to instantly save your newly formatted image to your device.</li>
+            </ol>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <h4>Is my image uploaded to your servers?</h4>
+                <p>No! Our Image Converter processes your photos entirely on your local device using HTML5 Canvas technology. Your personal photos, documents, and graphics are never uploaded to the internet, guaranteeing 100% privacy.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Why did my PNG background turn white when converted to JPG?</h4>
+                <p>The JPG format mathematically does not support transparent pixels. If you convert a transparent PNG to a JPG, the empty areas must be filled with a solid color. Our tool safely fills these areas with a solid white background to prevent your image from turning black.</p>
+            </div>
+            <div class="faq-box">
+                <h4>How do I convert a WebP file to PNG?</h4>
+                <p>Websites often force you to download WebP images, which can be hard to open in Photoshop or Word. Simply upload the WebP file here, select 'PNG' from the output format dropdown, and click Convert. You can then download your new, fully-editable PNG instantly.</p>
+            </div>
+        </article>
+
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="widget">
+            <h3>🎨 Image Utilities</h3>
+            <div class="widget-links">
+                <a href="image-compressor.html"><span class="icon">📉</span> Image Compressor</a>
+                <a href="image-resizer.html"><span class="icon">📐</span> Image Resizer</a>
+                <a href="image-color-picker.html"><span class="icon">🎯</span> Image Color Picker</a>
+                <a href="png-to-jpg.html"><span class="icon">🔄</span> PNG to JPG Tool</a>
+                <a href="image-to-base64.html"><span class="icon">📦</span> Image to Base64</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro Designer Tip</h3>
+            <p>Are you a web developer? Stop using PNGs for your transparent assets! Select the <strong>WebP</strong> format from our dropdown. WebP supports full transparency just like PNG, but the file size will be nearly <strong>30% smaller</strong>, making your website load noticeably faster.</p>
+        </div>
+
+        <div class="widget">
+            <h3>💻 Top Developer Tools</h3>
+            <div class="widget-links">
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+
+    </aside>
 
 </div>
+
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Design Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
-let img = new Image();
+    const imageInput = document.getElementById('imageInput');
+    const uploadArea = document.getElementById('uploadArea');
+    const editorWorkspace = document.getElementById('editorWorkspace');
+    
+    const origImgPreview = document.getElementById('origImgPreview');
+    const compImgPreview = document.getElementById('compImgPreview');
+    const origFormatBadge = document.getElementById('origFormatBadge');
+    const compFormatBadge = document.getElementById('compFormatBadge');
+    
+    const formatSelect = document.getElementById('formatSelect');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    
+    const canvas = document.getElementById('conversionCanvas');
+    const ctx = canvas.getContext('2d');
 
-document.getElementById("upload").addEventListener("change", function(e){
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(event){
-        img.src = event.target.result;
+    let originalFile = null;
+    let imgObj = new Image();
+
+    // --- Upload Handlers ---
+    imageInput.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) handleFileLoad(e.target.files[0]);
+    });
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFileLoad(e.dataTransfer.files[0]);
+    });
+
+    function handleFileLoad(file) {
+        if (!file.type.startsWith('image/')) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+
+        originalFile = file;
+        
+        // Extract extension for UI Badge
+        let ext = file.name.split('.').pop().toUpperCase();
+        if(ext === 'JPEG') ext = 'JPG';
+        origFormatBadge.innerText = ext;
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            imgObj.onload = function() {
+                // Show original preview
+                origImgPreview.src = event.target.result;
+                
+                // Switch UI
+                uploadArea.style.display = 'none';
+                editorWorkspace.style.display = 'block';
+                
+                // Reset right panel
+                compImgPreview.src = "";
+                compFormatBadge.innerText = "Select Format";
+                downloadBtn.style.display = "none";
+            }
+            imgObj.src = event.target.result;
+        }
+        reader.readAsDataURL(file);
     }
-    reader.readAsDataURL(file);
-});
 
-function convertImage(){
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
+    // --- Conversion Logic ---
+    function convertImage() {
+        if (!imgObj.src) return;
 
-    canvas.width = img.width;
-    canvas.height = img.height;
+        // Show Loading State
+        loadingOverlay.style.display = "flex";
+        downloadBtn.style.display = "none";
 
-    ctx.drawImage(img,0,0);
+        const outputMimeType = formatSelect.value;
+        
+        // Update UI Badge based on selection
+        let outputExtLabel = 'WEBP';
+        let downloadExt = 'webp';
+        
+        if (outputMimeType === 'image/jpeg') { outputExtLabel = 'JPG'; downloadExt = 'jpg'; }
+        if (outputMimeType === 'image/png') { outputExtLabel = 'PNG'; downloadExt = 'png'; }
+        
+        compFormatBadge.innerText = outputExtLabel;
 
-    let format = document.getElementById("format").value;
-    let converted = canvas.toDataURL(format);
+        // Allow UI to paint the loading screen
+        setTimeout(() => {
+            canvas.width = imgObj.width;
+            canvas.height = imgObj.height;
+            
+            // SMART FIX: If converting to JPEG, add white background. 
+            // Otherwise, transparent PNGs turn black in Canvas to JPEG export.
+            if(outputMimeType === 'image/jpeg') {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            ctx.drawImage(imgObj, 0, 0, canvas.width, canvas.height);
 
-    let link = document.getElementById("download");
-    link.href = converted;
-    link.download = "converted-image";
-    link.style.display = "block";
-    link.innerText = "Download Converted Image";
-}
+            // Export Data
+            // We use quality 0.95 for JPG/WebP to retain high quality during simple conversion.
+            // (PNG ignores the quality parameter).
+            const convertedDataUrl = canvas.toDataURL(outputMimeType, 0.95);
+
+            // Apply to UI
+            compImgPreview.src = convertedDataUrl;
+            
+            // Setup Download
+            const originalName = originalFile.name.split('.')[0];
+            downloadBtn.download = `${originalName}-converted.${downloadExt}`;
+            downloadBtn.href = convertedDataUrl;
+            
+            loadingOverlay.style.display = "none";
+            downloadBtn.style.display = "inline-flex";
+
+        }, 100);
+    }
+
+    // --- Reset Workspace ---
+    function resetWorkspace() {
+        imageInput.value = "";
+        originalFile = null;
+        origImgPreview.src = "";
+        compImgPreview.src = "";
+        downloadBtn.style.display = "none";
+        
+        editorWorkspace.style.display = 'none';
+        uploadArea.style.display = 'flex';
+    }
 </script>
 
 </body>
