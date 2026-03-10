@@ -1,222 +1,720 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Color Picker – Extract Exact HEX & RGB from Pictures | QuickTooles</title>
+    
+    <meta name="description" content="Free online Image Color Picker. Extract exact HEX, RGB, and HSL color codes from any picture instantly. Create color palettes securely. Find exact color from picture.">
+    <meta name="keywords" content="image color picker, extract color from image, hex color picker from image, find color code from picture, photo eyedropper tool, build color palette, online color extractor, rgb color code from image, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/image-color-picker">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Image Color Picker & Eyedropper | QuickTooles">
+    <meta property="og:description" content="Upload an image and click anywhere to extract the exact color code. Build a beautiful color palette instantly. 100% Free & Private.">
+    <meta property="og:url" content="https://quicktooles.in/tools/image-color-picker">
+    <meta property="og:type" content="website">
 
-<title>Image Color Picker - QuickTooles</title>
-<meta name="description" content="Pick colors from any image using this free online Image Color Picker tool. Get HEX and RGB values easily.">
-<meta name="keywords" content="Image Color Picker, color picker online, HEX color picker, RGB color picker, webtools">
-<meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles Image Color Picker",
+      "operatingSystem": "Web",
+      "applicationCategory": "DesignApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced online utility that allows users to upload images and use a digital eyedropper to extract precise HEX, RGB, and HSL color codes from any pixel."
+    }
+    </script>
 
-<style>
-/* Tool Container */
-.tool-container {
-    max-width:700px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:40px;
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-    color:#1e293b;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "Image Color Picker"
+      }]
+    }
+    </script>
 
-.tool-container h1 {
-    text-align:center;
-    margin-bottom:20px;
-    color:#2563eb;
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I extract a color from an image?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simply upload your image using the 'Choose Image' button. Once the image appears, hover over or tap any part of the picture to instantly get its exact HEX and RGB color code." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my image uploaded to your servers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. For your privacy and security, the image is processed entirely within your web browser using HTML5 Canvas technology. We never upload, save, or see your pictures." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool work on mobile phones?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! The tool is fully responsive. You can upload a photo directly from your smartphone's camera roll and drag your finger across the image to find the exact color." }
+        }
+      ]
+    }
+    </script>
 
-.tool-container p{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:16px;
-}
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-/* File Input */
-input[type="file"]{
-    margin-top:10px;
-    padding:8px;
-    border-radius:6px;
-    border:1px solid #cbd5e1;
-    cursor:pointer;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-/* Canvas */
-canvas {
-    margin-top:20px;
-    max-width:100%;
-    border-radius:8px;
-    cursor:crosshair;
-    border:1px solid #cbd5e1;
-}
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-/* Color Box */
-.color-box {
-    margin-top:20px;
-    height:60px;
-    border-radius:8px;
-    border:2px solid #3b82f6;
-}
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 750px; margin: auto; font-weight: 300; }
 
-/* Result */
-.result{
-    margin-top:15px;
-    background:#f1f5f9;
-    padding:15px;
-    border-radius:8px;
-    font-family:monospace;
-    word-break: break-word;
-}
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
 
-/* Blog Section */
-.blog-section{
-    margin-top:40px;
-    background:#f8fafc;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.05);
-    line-height:1.7;
-    color:#1e293b;
-}
+        /* MAIN LAYOUT (RESTORED 3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
 
-.blog-section h2{
-    font-size:22px;
-    margin-bottom:12px;
-    color:#2563eb;
-}
+        /* LEFT CONTENT AREA */
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
 
-.blog-section p{
-    margin-bottom:12px;
-}
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); display: flex; flex-direction: column; }
+        
+        /* Upload Area (With Explicit Button) */
+        .upload-area { border: 2px dashed var(--primary); background: #eff6ff; border-radius: 12px; padding: 50px 20px; text-align: center; transition: var(--transition); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .upload-area.dragover { background: #e0e7ff; border-color: var(--primary-dark); }
+        
+        .upload-icon { font-size: 48px; margin-bottom: 15px; }
+        .upload-text { font-weight: 700; color: var(--primary-dark); font-size: 22px; margin-bottom: 5px; }
+        .upload-subtext { color: var(--text-light); font-size: 15px; margin-bottom: 25px; }
+        
+        .btn-upload { background: var(--primary); color: white; padding: 14px 30px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); transition: var(--transition); }
+        .btn-upload:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4); }
+        .upload-area input[type="file"] { display: none; }
 
-/* Related Tools */
-.related-tools{
-    margin-top:30px;
-    text-align:left;
-}
+        /* Canvas Container */
+        .canvas-container { position: relative; width: 100%; max-height: 600px; overflow: auto; border-radius: 12px; border: 1px solid var(--border); display: none; background: #f1f5f9 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAOklEQVQYV2N89erVfwY0ICYmRhTGwEBFMGoQo4oBBQkJiQGjo58MKBjA6GZCFyTGA2gShzC2kOAEAKuPEr9tX4ePAAAAAElFTkSuQmCC') repeat; cursor: crosshair; }
+        #imageCanvas { display: block; max-width: 100%; height: auto; margin: auto; }
+        
+        /* Image Controls (Reset Button) */
+        .image-controls { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .instruction-text { color: var(--text-main); font-weight: 600; font-size: 16px; margin-bottom: 15px; background: #eff6ff; padding: 10px; border-radius: 8px; display: inline-block; border: 1px solid #bfdbfe; }
+        .btn-reset { background: #e2e8f0; color: var(--secondary); border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-reset:hover { background: #cbd5e1; transform: translateY(-2px); }
 
-.related-tools h2{
-    font-size:20px;
-    margin-bottom:15px;
-    color:#2563eb;
-}
+        /* MONSTER SEO CONTENT (Under Tool Workspace) */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h2:first-of-type { margin-top: 0; }
+        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); line-height: 1.6; }
+        .seo-article li { margin-bottom: 10px; }
+        
+        /* FAQs */
+        .faq-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--bg-light); }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-box p { margin: 0; color: var(--text-main); line-height: 1.6; }
 
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
+        /* RIGHT SIDEBAR: RESULTS, LINKS & PRO TIPS */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        
+        /* The Live Preview & Palette Widget */
+        .results-panel { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); border-top: 5px solid var(--secondary); }
+        
+        .live-preview-section { margin-bottom: 30px; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 25px; }
+        .live-preview-section h3 { font-size: 16px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .color-display { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 15px auto; border: 4px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,0.1); background-color: #ffffff; transition: background-color 0.1s; }
+        
+        .code-box { background: var(--bg-light); border: 1px solid var(--border); border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .code-box span { font-weight: 700; color: var(--secondary); font-family: 'Fira Code', monospace; font-size: 14px;}
+        .copy-btn { background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .copy-btn:hover { background: var(--primary-dark); }
+        .copy-btn.copied { background: var(--success); }
+        
+        .palette-section h3 { font-size: 16px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .clear-btn { background: transparent; border: none; color: var(--danger); font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: underline; }
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); gap: 10px; }
+        .palette-swatch { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+        .swatch-color { width: 40px; height: 40px; border-radius: 8px; border: 2px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .swatch-color:hover { transform: scale(1.1); }
+        .swatch-text { font-size: 10px; font-family: 'Fira Code', monospace; color: var(--text-main); text-align: center; }
 
-.related-tools ul li{
-    margin-bottom:10px;
-}
+        /* Standard Widgets Restored */
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); box-shadow: 0 4px 6px rgba(0,0,0,0.05); transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 20px; }
 
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
+        /* Pro Tip Box Restored */
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; margin: 0; }
 
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            .sidebar { position: static; }
+        }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
 
-@media(max-width:600px){
-    .tool-container{
-        margin:50px 20px;
-        padding:30px;
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
     }
 }
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-<h2 class="logo">QuickTooles</h2>
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Advanced Image Color Picker</h1>
+    <p>Upload a photo and instantly extract the exact HEX, RGB, and HSL color codes. Build a professional color palette without downloading any software.</p>
+</section>
 
-<h1>🎨 Image Color Picker</h1>
-<p>Upload an image and click on it to get HEX and RGB values of any pixel.</p>
-
-<input type="file" id="upload">
-
-<canvas id="canvas"></canvas>
-
-<div class="color-box" id="colorBox"></div>
-
-<div class="result">
-<p><b>HEX:</b> <span id="hex"></span></p>
-<p><b>RGB:</b> <span id="rgb"></span></p>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-image">Image Tools</a> › Image Color Picker
 </div>
 
-<!-- Blog Section -->
-<div class="blog-section">
-<h2>How to Use the Image Color Picker</h2>
-<p>This tool allows you to extract the color information of any pixel in your image. Simply upload an image, click on the area of the image you want to pick, and the tool will display the HEX and RGB values instantly.</p>
-<p>You can use these values for web design, graphic design, or any other creative project.</p>
-<p>This is especially helpful for designers and developers to ensure color accuracy in their work.</p>
+<div class="layout">
+    
+    <div class="main-content">
+        
+        <main class="tool-workspace">
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">🎨</div>
+                <div class="upload-text">Drag & Drop an Image Here</div>
+                <div class="upload-subtext">or click the button below to browse your files.</div>
+                
+                <label for="imageInput" class="btn-upload">📁 Choose Image</label>
+                <input type="file" id="imageInput" accept="image/jpeg, image/png, image/webp, image/gif">
+            </div>
+
+            <div class="canvas-container" id="canvasContainer">
+                <canvas id="imageCanvas"></canvas>
+            </div>
+            
+            <div class="image-controls" id="imageControls">
+                <div class="instruction-text">👆 Tap/Click on the image to save the color to your palette!</div>
+                <br>
+                <button class="btn-reset" onclick="resetImage()">🔄 Choose Another Image</button>
+            </div>
+        </main>
+
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-color-picker">1. What is an Image Color Picker?</a></li>
+                    <li><a href="#how-to-use">2. How to Extract Color Codes from a Picture</a></li>
+                    <li><a href="#why-designers-need-it">3. Why Designers Need an Online Color Extractor</a></li>
+                    <li><a href="#understanding-formats">4. Understanding HEX, RGB, and HSL</a></li>
+                    <li><a href="#color-psychology">5. The Psychology of Color in Web Design</a></li>
+                    <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
+
+            <h2 id="what-is-color-picker">What is an Image Color Picker?</h2>
+            <p>An <strong>Image Color Picker</strong> (commonly known as a digital Eyedropper tool) is an essential web utility that allows you to upload a photograph or graphic and extract the precise mathematical color code from any individual pixel. Instead of guessing a color or trying to match it manually by eye, this tool gives you the exact HEX or RGB value instantly.</p>
+            <p>Whether you are a frontend developer trying to match a website's call-to-action button to a company's logo, or a digital artist building a cohesive color palette from a beautiful landscape photograph, our online color extractor makes the process completely frictionless.</p>
+
+            <h2 id="how-to-use">How to Extract Color Codes from a Picture</h2>
+            <p>We designed the QuickTooles photo eyedropper to be highly intuitive, mobile-friendly, and lightning-fast. Follow these simple steps:</p>
+            <ol>
+                <li><strong>Upload your Image:</strong> Click the large "Choose Image" button or drag and drop your image file (JPG, PNG, WebP) directly into the upload area.</li>
+                <li><strong>Hover and Preview:</strong> Move your mouse (or drag your finger on a mobile touchscreen) over the loaded image. Watch the "Selected Color" circle on the right panel update in real-time.</li>
+                <li><strong>Click to Pick:</strong> Found the perfect shade? Click or tap on that exact spot. The tool will lock in the HEX, RGB, and HSL codes, and simultaneously add that color to your "Color History" palette below.</li>
+                <li><strong>Copy the Code:</strong> Click the "Copy" button next to your desired format to paste it directly into your CSS file or design software (like Photoshop, Figma, or Canva).</li>
+            </ol>
+
+            <h2 id="why-designers-need-it">Why Designers Need an Online Color Extractor</h2>
+            <p>Color theory is the backbone of great design, and often, the best inspiration comes from real-world photography or existing artwork. By using an eyedropper tool, you can:</p>
+            <ul>
+                <li><strong>Steal like an Artist:</strong> Found a beautifully designed webpage or poster? Take a screenshot, upload it, and extract their exact color palette to study their color harmony and contrast ratios.</li>
+                <li><strong>Ensure Brand Consistency:</strong> If a client sends you a flat JPG logo without providing a formal brand guideline PDF, you can use this tool to find their exact official brand colors to use in your CSS, HTML, and marketing materials.</li>
+                <li><strong>Build Organic Mood Boards:</strong> Upload a nature photo (like a sunset, an ocean, or a forest) and click around to generate a beautiful, organic color palette history based on real-world lighting.</li>
+            </ul>
+
+            <h2 id="understanding-formats">Understanding HEX, RGB, and HSL</h2>
+            <p>Once you extract a color, our tool automatically converts it into three standard web formats. Here is what they mean:</p>
+            <ul>
+                <li><strong>HEX (#FF5733):</strong> Short for Hexadecimal. This is the absolute standard for web development (HTML/CSS). It uses a 6-character alphanumeric code to represent colors compactly.</li>
+                <li><strong>RGB (255, 87, 51):</strong> Stands for Red, Green, and Blue. Digital screens mix these three light colors (values ranging from 0 to 255) to create the millions of colors you see on your monitor.</li>
+                <li><strong>HSL (10, 100%, 60%):</strong> Stands for Hue, Saturation, and Lightness. This format is highly preferred by modern UI/UX designers because it is much easier for the human brain to read and adjust. For example, you can easily create a "dark mode" variant of a color just by lowering the Lightness percentage while keeping the Hue identical.</li>
+            </ul>
+
+            <h2 id="color-psychology">The Psychology of Color in Web Design</h2>
+            <p>When building a website, the colors you extract and choose have a profound psychological impact on your users. Different colors evoke different emotions:</p>
+            <ul>
+                <li><strong>Blue:</strong> Represents trust, security, and professionalism. (Often used by banks, tech companies, and social networks like Facebook and LinkedIn).</li>
+                <li><strong>Red:</strong> Represents urgency, excitement, and passion. (Excellent for clearance sales, error messages, or fast-food brands).</li>
+                <li><strong>Green:</strong> Represents wealth, health, and growth. (Perfect for finance apps, eco-friendly products, and "Success" notification banners).</li>
+                <li><strong>Orange/Yellow:</strong> Represents friendliness, cheerfulness, and affordability. (Great for "Add to Cart" buttons or budget-friendly e-commerce sites).</li>
+            </ul>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <h4>Is my image uploaded to your servers?</h4>
+                <p>No. Your privacy is paramount to us. The QuickTooles Image Color Picker uses HTML5 Canvas technology to process the image entirely within your local browser's memory. We never upload, see, or store your personal pictures.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Does this tool work on mobile phones?</h4>
+                <p>Yes! The tool is fully responsive and mobile-optimized. You can tap the "Choose Image" button to upload a photo directly from your smartphone's camera roll, and simply drag your finger across the image to find the exact color pixel.</p>
+            </div>
+            <div class="faq-box">
+                <h4>What image formats are supported?</h4>
+                <p>Our tool supports all major image formats that your modern web browser can read, including JPEG/JPG, PNG, WebP, and static GIF files.</p>
+            </div>
+        </article>
+
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="results-panel">
+            <div class="live-preview-section">
+                <h3>Selected Color</h3>
+                <div class="color-display" id="colorDisplay"></div>
+                
+                <div class="code-box">
+                    <span id="hexCode">#FFFFFF</span>
+                    <button class="copy-btn" onclick="copyValue('hexCode', this)">Copy</button>
+                </div>
+                <div class="code-box">
+                    <span id="rgbCode">rgb(255, 255, 255)</span>
+                    <button class="copy-btn" onclick="copyValue('rgbCode', this)">Copy</button>
+                </div>
+                <div class="code-box">
+                    <span id="hslCode">hsl(0, 0%, 100%)</span>
+                    <button class="copy-btn" onclick="copyValue('hslCode', this)">Copy</button>
+                </div>
+            </div>
+
+            <div class="palette-section">
+                <h3>Color History <button class="clear-btn" onclick="clearPalette()">Clear All</button></h3>
+                <div class="palette-grid" id="paletteGrid">
+                    <div style="font-size: 13px; color: var(--text-light); grid-column: 1/-1;">Upload an image and click on it to start building your palette.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget">
+            <h3>🎨 Image Utilities</h3>
+            <div class="widget-links">
+                <a href="image-resizer.html"><span class="icon">📐</span> Image Resizer</a>
+                <a href="image-compressor.html"><span class="icon">📉</span> Image Compressor</a>
+                <a href="image-cropper.html"><span class="icon">✂️</span> Image Cropper</a>
+                <a href="png-to-jpg.html"><span class="icon">🔄</span> PNG to JPG</a>
+                <a href="color-code-converter.html"><span class="icon">🎨</span> Color Converter</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro Design Tip</h3>
+            <p>Extracting colors from a photograph? To make sure your text is easily readable over a background color, always extract the lightest and darkest pixels from the image to check the <strong>Contrast Ratio</strong>. A high contrast ratio is essential for website accessibility (ADA compliance).</p>
+        </div>
+
+    </aside>
+
 </div>
 
-<div class="related-tools">
-<h2>Related Tools</h2>
-<ul>
-<li><a href="color-code-converter.html">Color Code Converter</a></li>
-<li><a href="image-compressor.html">Image Compressor</a></li>
-</ul>
-</div>
-
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Design Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
-const upload = document.getElementById("upload");
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+    const imageInput = document.getElementById('imageInput');
+    const uploadArea = document.getElementById('uploadArea');
+    const canvasContainer = document.getElementById('canvasContainer');
+    const imageControls = document.getElementById('imageControls');
+    const canvas = document.getElementById('imageCanvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    
+    // Results Elements
+    const colorDisplay = document.getElementById('colorDisplay');
+    const hexCode = document.getElementById('hexCode');
+    const rgbCode = document.getElementById('rgbCode');
+    const hslCode = document.getElementById('hslCode');
+    const paletteGrid = document.getElementById('paletteGrid');
 
-upload.addEventListener("change", function(e) {
-    const file = e.target.files[0];
-    const reader = new FileReader();
+    let img = new Image();
+    let hasPaletteItems = false;
 
-    reader.onload = function(event) {
-        const img = new Image();
-        img.onload = function() {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
+    // --- Handle Image Upload ---
+    imageInput.addEventListener('change', function(e) {
+        if(e.target.files && e.target.files[0]) {
+            loadImage(e.target.files[0]);
         }
-        img.src = event.target.result;
+    });
+
+    // Drag and Drop functionality
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        if(e.dataTransfer.files && e.dataTransfer.files[0]) {
+            loadImage(e.dataTransfer.files[0]);
+        }
+    });
+
+    function loadImage(file) {
+        // Validate it's an image
+        if (!file.type.startsWith('image/')) {
+            alert("Please upload a valid image file.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            img.onload = function() {
+                // Set canvas size to actual image size for accurate pixel reading
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+                
+                // Switch UI (Hide upload box, show canvas and reset button)
+                uploadArea.style.display = 'none';
+                canvasContainer.style.display = 'block';
+                imageControls.style.display = 'block';
+            }
+            img.src = event.target.result;
+        }
+        reader.readAsDataURL(file);
     }
 
-    reader.readAsDataURL(file);
-});
+    // --- RESET FUNCTION (Choose Another Image) ---
+    function resetImage() {
+        // Clear Canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Reset File Input
+        imageInput.value = "";
+        
+        // Switch UI back to upload mode
+        canvasContainer.style.display = 'none';
+        imageControls.style.display = 'none';
+        uploadArea.style.display = 'flex';
+        
+        // Reset Live Preview Defaults
+        colorDisplay.style.backgroundColor = "#ffffff";
+        hexCode.innerText = "#FFFFFF";
+        rgbCode.innerText = "rgb(255, 255, 255)";
+        hslCode.innerText = "hsl(0, 0%, 100%)";
+    }
 
-canvas.addEventListener("click", function(e) {
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const pixel = ctx.getImageData(x, y, 1, 1).data;
+    // --- Core Color Extraction Logic ---
+    function getPixelColor(e) {
+        const rect = canvas.getBoundingClientRect();
+        
+        // Account for CSS scaling of the canvas (CRITICAL for mobile)
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
 
-    const r = pixel[0];
-    const g = pixel[1];
-    const b = pixel[2];
+        let clientX, clientY;
 
-    const hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        // Check if it's a touch event or mouse event
+        if (e.touches && e.touches.length > 0) {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        }
 
-    document.getElementById("colorBox").style.background = hex;
-    document.getElementById("hex").innerText = hex;
-    document.getElementById("rgb").innerText = `rgb(${r}, ${g}, ${b})`;
-});
+        const x = (clientX - rect.left) * scaleX;
+        const y = (clientY - rect.top) * scaleY;
+
+        // Get single pixel data
+        const pixelData = ctx.getImageData(x, y, 1, 1).data;
+        const r = pixelData[0];
+        const g = pixelData[1];
+        const b = pixelData[2];
+
+        return { r, g, b };
+    }
+
+    // Mouse Events - Desktop
+    canvas.addEventListener('mousemove', function(e) {
+        const { r, g, b } = getPixelColor(e);
+        updateResultsPanel(r, g, b);
+    });
+
+    canvas.addEventListener('click', function(e) {
+        const { r, g, b } = getPixelColor(e);
+        updateResultsPanel(r, g, b);
+        addToPalette(r, g, b);
+    });
+
+    // Touch Events - Mobile
+    canvas.addEventListener('touchmove', function(e) {
+        e.preventDefault(); // Prevent scrolling while dragging on canvas
+        const { r, g, b } = getPixelColor(e);
+        updateResultsPanel(r, g, b);
+    }, { passive: false });
+
+    // Touch end (acts like a click to save)
+    canvas.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        // The last known touch position is recorded via touchmove
+        // but touchend doesn't have touches[0]. We use changedTouches.
+        if(e.changedTouches && e.changedTouches.length > 0) {
+            const touch = e.changedTouches[0];
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            const x = (touch.clientX - rect.left) * scaleX;
+            const y = (touch.clientY - rect.top) * scaleY;
+            
+            const pixelData = ctx.getImageData(x, y, 1, 1).data;
+            updateResultsPanel(pixelData[0], pixelData[1], pixelData[2]);
+            addToPalette(pixelData[0], pixelData[1], pixelData[2]);
+        }
+    }, { passive: false });
+
+    // --- Math Conversions ---
+    
+    function rgbToHex(r, g, b) {
+        return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1).toUpperCase();
+    }
+
+    function rgbToHsl(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        let max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+
+        if (max === min) {
+            h = s = 0; // achromatic
+        } else {
+            let d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+            h /= 6;
+        }
+        return {
+            h: Math.round(h * 360),
+            s: Math.round(s * 100),
+            l: Math.round(l * 100)
+        };
+    }
+
+    // --- UI Updaters ---
+
+    function updateResultsPanel(r, g, b) {
+        const hex = rgbToHex(r, g, b);
+        const hsl = rgbToHsl(r, g, b);
+        
+        colorDisplay.style.backgroundColor = hex;
+        hexCode.innerText = hex;
+        rgbCode.innerText = `rgb(${r}, ${g}, ${b})`;
+        hslCode.innerText = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+    }
+
+    function addToPalette(r, g, b) {
+        if (!hasPaletteItems) {
+            paletteGrid.innerHTML = ''; // Remove placeholder text
+            hasPaletteItems = true;
+        }
+
+        const hex = rgbToHex(r, g, b);
+        
+        // Prevent duplicate adjacent additions
+        const existing = paletteGrid.firstChild;
+        if(existing && existing.dataset && existing.dataset.hex === hex) return;
+
+        const swatch = document.createElement('div');
+        swatch.className = 'palette-swatch';
+        swatch.dataset.hex = hex;
+        swatch.title = "Click to copy HEX";
+        
+        swatch.innerHTML = `
+            <div class="swatch-color" style="background-color: ${hex}"></div>
+            <span class="swatch-text">${hex}</span>
+        `;
+
+        swatch.onclick = () => {
+            navigator.clipboard.writeText(hex);
+            const textEl = swatch.querySelector('.swatch-text');
+            
+            textEl.innerText = "Copied!";
+            textEl.style.color = "var(--success)";
+            
+            setTimeout(() => {
+                textEl.innerText = hex;
+                textEl.style.color = "var(--text-main)";
+            }, 1500);
+        };
+
+        // Add to beginning of grid
+        paletteGrid.prepend(swatch);
+    }
+
+    function clearPalette() {
+        paletteGrid.innerHTML = '<div style="font-size: 13px; color: var(--text-light); grid-column: 1/-1;">Upload an image and click on it to start building your palette.</div>';
+        hasPaletteItems = false;
+    }
+
+    // Copy Main Output
+    function copyValue(elementId, btn) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            btn.innerText = "Copied!";
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerText = "Copy";
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
 </script>
 
 </body>
