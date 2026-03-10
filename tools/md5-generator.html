@@ -1,208 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MD5 Hash Generator - QuickTooles</title>
-<meta name="description" content="Generate MD5 hash online instantly. Enter text and get its MD5 hash.">
-<meta name="keywords" content="MD5 Generator, MD5 Hash Online, QuickTooles">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD5 Hash Generator – Generate MD5 Checksum Online | QuickTooles</title>
+    
+    <meta name="description" content="Free online MD5 Generator. Instantly generate a 32-character MD5 hash from any string. Secure, private, and 100% browser-based. Check data integrity today.">
+    <meta name="keywords" content="md5 generator, md5 hash online, md5 checksum, generate md5, create md5 hash, md5 encryptor, hash string to md5, md5 calculator, quicktooles">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/md5-generator">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate MD5 Hash Generator | QuickTooles">
+    <meta property="og:description" content="Instantly create secure 128-bit MD5 hashes from any text. 100% Free and Private.">
+    <meta property="og:url" content="https://quicktooles.in/tools/md5-generator">
+    <meta property="og:type" content="website">
 
-<link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QuickTooles MD5 Generator",
+      "operatingSystem": "Web",
+      "applicationCategory": "SecurityApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "An advanced online utility to generate MD5 cryptographic hashes from any string or text input instantly."
+    }
+    </script>
 
-<style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quicktooles.in/"
+      },{
+        "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://quicktooles.in/#all-tools"
+      },{
+        "@type": "ListItem", "position": 3, "name": "MD5 Generator"
+      }]
+    }
+    </script>
 
-/* Tool Container */
-.tool-container {
-    max-width:700px;
-    margin:80px auto;
-    background:#ffffff;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    text-align:center;
-    color:#1e293b;
-}
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-/* Heading */
-.tool-container h1 {
-    margin-bottom:20px;
-    color:#3b82f6;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-/* Paragraph */
-.tool-container p{
-    margin-bottom:25px;
-    font-size:16px;
-}
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-/* Textarea */
-textarea {
-    width:100%;
-    height:150px;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:6px;
-    font-family:monospace;
-    font-size:14px;
-    margin-top:15px;
-    background:#f8fafc;
-    color:#1e293b;
-}
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 750px; margin: auto; font-weight: 300; }
 
-/* Button */
-button {
-    margin-top:15px;
-    padding:10px 25px;
-    border:none;
-    border-radius:6px;
-    background:#3b82f6;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-}
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
 
-button:hover {
-    background:#2563eb;
-}
+        /* MAIN LAYOUT */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
 
-/* Result Box */
-.result {
-    margin-top:20px;
-    background:#f1f5f9;
-    padding:15px;
-    border:1px solid #cbd5e1;
-    border-radius:6px;
-    min-height:60px;
-    text-align:left;
-    font-family:monospace;
-    word-break:break-all;
-    color:#1e293b;
-}
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
 
-/* Blog Section */
-.blog-section{
-    margin-top:30px;
-    padding:20px;
-    background:#f1f5f9;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.05);
-    text-align:left;
-    font-size:15px;
-}
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        .textarea-container { position: relative; margin-bottom: 25px; }
+        .textarea-container label { display: block; font-weight: 700; color: var(--secondary); margin-bottom: 10px; font-size: 14px; text-transform: uppercase; }
+        
+        textarea { width: 100%; height: 150px; padding: 20px; border: 2px solid var(--border); border-radius: 12px; font-size: 16px; font-family: 'Inter', sans-serif; color: var(--secondary); background: #f8fafc; resize: vertical; transition: var(--transition); outline: none; line-height: 1.5; }
+        textarea:focus { border-color: var(--primary); background: white; }
+        
+        /* Result Area */
+        .result-group { background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-top: 30px; }
+        .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .result-header h3 { font-size: 14px; font-weight: 700; color: var(--secondary); text-transform: uppercase; }
+        
+        .hash-display { background: white; border: 2px solid var(--border); border-radius: 8px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 18px; color: var(--primary-dark); word-break: break-all; min-height: 58px; display: flex; align-items: center; }
+        
+        .action-bar { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .btn { padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+        .btn-success { background: var(--success); color: white; }
 
-.blog-section h2{
-    color:#3b82f6;
-}
+        /* MONSTER SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); }
+        .seo-article li { margin-bottom: 10px; line-height: 1.6; }
 
-/* Related Tools */
-.related-tools{
-    margin-top:30px;
-    text-align:left;
-}
+        /* SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: var(--primary); color: white; transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 20px; }
 
-.related-tools h2{
-    font-size:20px;
-    margin-bottom:15px;
-    color:#3b82f6;
-}
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14px; line-height: 1.6; color: var(--text-main); }
 
-.related-tools ul{
-    list-style:none;
-    padding:0;
-}
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
 
-.related-tools ul li{
-    margin-bottom:10px;
-}
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
 
-.related-tools ul li a{
-    color:#3b82f6;
-    text-decoration:none;
-    font-weight:500;
-}
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
 
-.related-tools ul li a:hover{
-    text-decoration:underline;
-}
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
 
-@media(max-width:600px){
-    .tool-container{
-        margin:50px 20px;
-        padding:25px;
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
     }
 }
-
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-<h2 class="logo">QuickTooles</h2>
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Online MD5 Hash Generator</h1>
+    <p>Instantly generate a secure 128-bit MD5 checksum from any text string. Lightning-fast, private, and 100% secure client-side hashing for developers.</p>
+</section>
 
-<h1>🔐 MD5 Hash Generator</h1>
-
-<p>Enter text below and click <strong>Generate MD5</strong> to create its MD5 hash.</p>
-
-<textarea id="inputText" placeholder="Enter text here..."></textarea>
-
-<button onclick="generateMD5()">Generate MD5</button>
-
-<div class="result" id="result"></div>
-
-<!-- Blog Section -->
-
-<div class="blog-section">
-
-<h2>How to Use MD5 Hash Generator</h2>
-
-<p>Enter any text in the box above and click the Generate MD5 button. The tool will instantly create an MD5 hash of your text. MD5 hashes are commonly used for password encryption, file verification, and data security purposes.</p>
-
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-dev">Developer Tools</a> › MD5 Generator
 </div>
 
-<div class="related-tools">
+<div class="layout">
+    
+    <div class="main-content">
+        <main class="tool-workspace">
+            <div class="textarea-container">
+                <label for="stringInput">Enter your text / string below:</label>
+                <textarea id="stringInput" placeholder="Type or paste your data here to hash..." oninput="generateMD5()"></textarea>
+            </div>
 
-<h2>Related Tools</h2>
+            <div class="result-group">
+                <div class="result-header">
+                    <h3>Generated MD5 Hash</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-secondary" style="padding:5px 10px; font-size:12px;" onclick="toggleCase()">Toggle Case</button>
+                    </div>
+                </div>
+                <div class="hash-display" id="hashOutput">d41d8cd98f00b204e9800998ecf8427e</div>
+                
+                <div class="action-bar">
+                    <button id="copyBtn" class="btn btn-success" onclick="copyHash()">📋 Copy Hash</button>
+                    <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+                </div>
+            </div>
+        </main>
 
-<ul>
-<li><a href="json-formatter.html">JSON Formatter</a></li>
-<li><a href="js-minifier.html">JavaScript Minifier</a></li>
-<li><a href="html-minifier.html">HTML Minifier</a></li>
-<li><a href="css-minifier.html">CSS Minifier</a></li>
-</ul>
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 Table of Contents</h3>
+                <ul>
+                    <li><a href="#what-is-md5">1. What is MD5 Hashing?</a></li>
+                    <li><a href="#how-it-works">2. How the MD5 Generator Works</a></li>
+                    <li><a href="#use-cases">3. Common Use Cases for MD5 Checksums</a></li>
+                    <li><a href="#md5-vs-sha">4. MD5 vs. SHA-256: Security Comparison</a></li>
+                    <li><a href="#privacy">5. Privacy and Data Hashing</a></li>
+                    <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
 
+            <h2 id="what-is-md5">What is MD5 Hashing?</h2>
+            <p><strong>MD5 (Message-Digest Algorithm 5)</strong> is a widely used cryptographic hash function that produces a 128-bit (16-byte) hash value, typically expressed in text format as a 32-digit hexadecimal number. Developed by Ronald Rivest in 1991, it was designed to be used as a secure fingerprint for digital data.</p>
+            <p>A "hash" is a one-way process. This means you can easily turn text into an MD5 string, but it is mathematically impossible to "decrypt" an MD5 hash back into the original text. This makes it ideal for verifying that data has not been tampered with.</p>
+
+            <h2 id="how-it-works">How the MD5 Generator Works</h2>
+            <p>When you input a string into our <em>MD5 checksum tool</em>, the algorithm processes the characters through a complex series of logical operations (including padding and shifting bits). Regardless of whether you input a single letter or an entire paragraph, the output will <strong>always</strong> be a fixed 32-character string.</p>
+            <p>Our tool is deterministic: the same input will always result in the exact same MD5 hash. However, even a tiny change—like adding a single space or changing a capital letter to lowercase—will result in a completely different hash value.</p>
+
+            <h2 id="use-cases">Common Use Cases for MD5 Checksums</h2>
+            <ul>
+                <li><strong>File Integrity Verification:</strong> When downloading large software files (like Linux ISOs), developers provide an MD5 checksum. You can hash the downloaded file on your computer and compare it to the original to ensure the file wasn't corrupted during the download.</li>
+                <li><strong>Database Indexing:</strong> MD5 hashes are used to create unique keys for large amounts of data, making searches and comparisons faster.</li>
+                <li><strong>Legacy Password Hashing:</strong> In the early days of the web, MD5 was used to store passwords in databases. <em>(Note: For modern security, we recommend using SHA-256 or bcrypt instead).</em></li>
+                <li><strong>Digital Signatures:</strong> MD5 helps in identifying unique pieces of data without revealing the actual content.</li>
+            </ul>
+
+            <h2 id="md5-vs-sha">MD5 vs. SHA-256: Security Comparison</h2>
+            <p>While MD5 is incredibly fast and efficient, it is no longer considered "cryptographically secure" for high-stakes encryption. This is because of <strong>Collisions</strong>—a situation where two different inputs produce the same hash. For modern password storage and SSL certificates, developers now use **SHA-256**.</p>
+            <p>However, for integrity checking and non-sensitive data identification, MD5 remains the global standard due to its speed and small hash size.</p>
+
+            <h2 id="privacy">Privacy and Data Hashing</h2>
+            <p>At QuickTooles, we believe your data should stay yours. Our MD5 generator is built using **Client-Side JavaScript**. Unlike other websites that send your text to their servers to be hashed, our tool does everything inside your own browser. Your passwords, API keys, or private text never leave your machine.</p>
+
+            <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <h4>Is MD5 reversible?</h4>
+                <p>No. MD5 is a one-way hash function. While some "rainbow tables" (databases of pre-calculated hashes) can look up common passwords, the algorithm itself cannot be reversed through calculation.</p>
+            </div>
+            <div class="faq-box">
+                <h4>What is an MD5 collision?</h4>
+                <p>A collision occurs when two different pieces of data result in the same MD5 hash. While rare in nature, researchers have found ways to intentionally create collisions, which is why MD5 is not used for high-security applications anymore.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Can I hash files with this tool?</h4>
+                <p>Currently, this tool is optimized for text strings. For file checksums, we recommend using our upcoming "File Hash" utility which handles large binary data more efficiently.</p>
+            </div>
+        </article>
+    </div>
+
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>🔐 Security Tools</h3>
+            <div class="widget-links">
+                <a href="sha256-generator.html"><span class="icon">🛡️</span> SHA-256 Generator</a>
+                <a href="password-generator.html"><span class="icon">🔑</span> Password Generator</a>
+                <a href="base64-encoder.html"><span class="icon">🔒</span> Base64 Encoder</a>
+                <a href="url-encoder.html"><span class="icon">🔗</span> URL Encoder</a>
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Security Pro Tip</h3>
+            <p>Using MD5 for passwords? <strong>Don't!</strong> MD5 can be cracked in seconds using modern GPUs. Always use a <strong>Salt</strong> (extra random text) and a stronger algorithm like <strong>SHA-256</strong> or <strong>Bcrypt</strong> for user authentication.</p>
+        </div>
+
+        <div class="widget">
+            <h3>💻 Top Dev Tools</h3>
+            <div class="widget-links">
+                <a href="css-minifier.html"><span class="icon">✨</span> CSS Minifier</a>
+                <a href="js-minifier.html"><span class="icon">⚡</span> JS Minifier</a>
+                <a href="html-minifier.html"><span class="icon">🌐</span> HTML Minifier</a>
+            </div>
+        </div>
+    </aside>
 </div>
 
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Online Developer Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
+    // Lightweight MD5 Implementation (Standard Algorithm)
+    var md5 = function(string) {
+        function k(a, b) { a %= 4294967296; var c = a + b; return c % 4294967296; }
+        function f(a, b) { return (a << b) | (a >>> (32 - b)); }
+        function l(a, b, c, d, e, f, g) { return k(f(k(k(b, a), k(d, g)), f), e); }
+        function m(a, b, c, d, e, f, g) { return l((b & c) | (~b & d), a, b, c, d, e, g); }
+        function n(a, b, c, d, e, f, g) { return l((b & d) | (c & ~d), a, b, c, d, e, g); }
+        function o(a, b, c, d, e, f, g) { return l(b ^ c ^ d, a, b, c, d, e, g); }
+        function p(a, b, c, d, e, f, g) { return l(c ^ (b | ~d), a, b, c, d, e, g); }
+        
+        var a = [], b, c, d, e, g, h, i, j;
+        for (b = 0; b < 64; b++) a[b] = Math.floor(Math.abs(Math.sin(b + 1)) * 4294967296);
+        c = [1732584193, 4023233417, 2562383102, 271733878];
+        string = unescape(encodeURIComponent(string));
+        d = string.length; e = [0];
+        for (b = 0; b < d; b++) e[b >> 2] |= (string.charCodeAt(b) & 255) << ((b % 4) * 8);
+        e[d >> 2] |= 128 << ((d % 4) * 8);
+        g = ((d + 8) >> 6) + 1; h = g * 16;
+        for (b = d + 1; b < h * 4; b++) e[b >> 2] &= ~(255 << ((b % 4) * 8));
+        e[h - 2] = d * 8; e[h - 1] = 0;
+        for (b = 0; b < h; b += 16) {
+            i = c[0]; j = c[1]; g = c[2]; d = c[3];
+            i = m(i, j, g, d, e[b + 0], 7, a[0]); d = m(d, i, j, g, e[b + 1], 12, a[1]); g = m(g, d, i, j, e[b + 2], 17, a[2]); j = m(j, g, d, i, e[b + 3], 22, a[3]);
+            i = m(i, j, g, d, e[b + 4], 7, a[4]); d = m(d, i, j, g, e[b + 5], 12, a[5]); g = m(g, d, i, j, e[b + 6], 17, a[6]); j = m(j, g, d, i, e[b + 7], 22, a[7]);
+            i = m(i, j, g, d, e[b + 8], 7, a[8]); d = m(d, i, j, g, e[b + 9], 12, a[9]); g = m(g, d, i, j, e[b + 10], 17, a[10]); j = m(j, g, d, i, e[b + 11], 22, a[11]);
+            i = m(i, j, g, d, e[b + 12], 7, a[12]); d = m(d, i, j, g, e[b + 13], 12, a[13]); g = m(g, d, i, j, e[b + 14], 17, a[14]); j = m(j, g, d, i, e[b + 15], 22, a[15]);
+            i = n(i, j, g, d, e[b + 1], 5, a[16]); d = n(d, i, j, g, e[b + 6], 9, a[17]); g = n(g, d, i, j, e[b + 11], 14, a[18]); j = n(j, g, d, i, e[b + 0], 20, a[19]);
+            i = n(i, j, g, d, e[b + 5], 5, a[20]); d = n(d, i, j, g, e[b + 10], 9, a[21]); g = n(g, d, i, j, e[b + 15], 14, a[22]); j = n(j, g, d, i, e[b + 4], 20, a[23]);
+            i = n(i, j, g, d, e[b + 9], 5, a[24]); d = n(d, i, j, g, e[b + 14], 9, a[25]); g = n(g, d, i, j, e[b + 3], 14, a[26]); j = n(j, g, d, i, e[b + 8], 20, a[27]);
+            i = n(i, j, g, d, e[b + 13], 5, a[28]); d = n(d, i, j, g, e[b + 2], 9, a[29]); g = n(g, d, i, j, e[b + 7], 14, a[30]); j = n(j, g, d, i, e[b + 12], 20, a[31]);
+            i = o(i, j, g, d, e[b + 5], 4, a[32]); d = o(d, i, j, g, e[b + 8], 11, a[33]); g = o(g, d, i, j, e[b + 11], 16, a[34]); j = o(j, g, d, i, e[b + 14], 23, a[35]);
+            i = o(i, j, g, d, e[b + 1], 4, a[36]); d = o(d, i, j, g, e[b + 4], 11, a[37]); g = o(g, d, i, j, e[b + 7], 16, a[38]); j = o(j, g, d, i, e[b + 10], 23, a[39]);
+            i = o(i, j, g, d, e[b + 13], 4, a[40]); d = o(d, i, j, g, e[b + 0], 11, a[41]); g = o(g, d, i, j, e[b + 3], 16, a[42]); j = o(j, g, d, i, e[b + 6], 23, a[43]);
+            i = o(i, j, g, d, e[b + 9], 4, a[44]); d = o(d, i, j, g, e[b + 12], 11, a[45]); g = o(g, d, i, j, e[b + 15], 16, a[46]); j = o(j, g, d, i, e[b + 2], 23, a[47]);
+            i = p(i, j, g, d, e[b + 0], 6, a[48]); d = p(d, i, j, g, e[b + 7], 10, a[49]); g = p(g, d, i, j, e[b + 14], 15, a[50]); j = p(j, g, d, i, e[b + 5], 21, a[51]);
+            i = p(i, j, g, d, e[b + 12], 6, a[52]); d = p(d, i, j, g, e[b + 3], 10, a[53]); g = p(g, d, i, j, e[b + 10], 15, a[54]); j = p(j, g, d, i, e[b + 1], 21, a[55]);
+            i = p(i, j, g, d, e[b + 8], 6, a[56]); d = p(d, i, j, g, e[b + 15], 10, a[57]); g = p(g, d, i, j, e[b + 6], 15, a[58]); j = p(j, g, d, i, e[b + 13], 21, a[59]);
+            i = p(i, j, g, d, e[b + 4], 6, a[60]); d = p(d, i, j, g, e[b + 11], 10, a[61]); g = p(g, d, i, j, e[b + 2], 15, a[62]); j = p(j, g, d, i, e[b + 9], 21, a[63]);
+            c[0] = k(c[0], i); c[1] = k(c[1], j); c[2] = k(c[2], g); c[3] = k(c[3], d);
+        }
+        var res = "";
+        for (b = 0; b < 4; b++) for (var x = 0; x < 4; x++) res += ((c[b] >> (x * 8)) & 255).toString(16).padStart(2, '0');
+        return res;
+    };
 
-function generateMD5(){
+    let isUppercase = false;
 
-let text=document.getElementById("inputText").value;
+    function generateMD5() {
+        const input = document.getElementById('stringInput').value;
+        let hash = md5(input);
+        if (isUppercase) hash = hash.toUpperCase();
+        document.getElementById('hashOutput').innerText = hash;
+    }
 
-if(!text.trim()){
-document.getElementById("result").innerText="Please enter some text!";
-return;
-}
+    function toggleCase() {
+        isUppercase = !isUppercase;
+        generateMD5();
+    }
 
-let hash=md5(text);
+    function copyHash() {
+        const hash = document.getElementById('hashOutput').innerText;
+        navigator.clipboard.writeText(hash).then(() => {
+            const btn = document.getElementById('copyBtn');
+            btn.innerText = "✅ Copied!";
+            setTimeout(() => btn.innerText = "📋 Copy Hash", 2000);
+        });
+    }
 
-document.getElementById("result").innerText=hash;
-
-}
-
+    function clearAll() {
+        document.getElementById('stringInput').value = "";
+        generateMD5();
+    }
 </script>
 
 </body>
