@@ -213,6 +213,57 @@
         width: 100% !important; 
     }
 }
+        /* ===== MOBILE TOOL FIX (ADD THIS AT END OF STYLE) ===== */
+
+@media (max-width:768px){
+
+/* Tool box padding reduce */
+.tool-workspace{
+padding:20px !important;
+}
+
+/* textarea mobile fix */
+textarea{
+height:220px !important;
+font-size:15px !important;
+padding:15px !important;
+}
+
+/* buttons mobile full width */
+.action-grid{
+grid-template-columns:1fr !important;
+}
+
+/* stats cards mobile */
+.stats-grid{
+grid-template-columns:1fr 1fr !important;
+}
+
+/* hero text fix */
+.hero h1{
+font-size:26px !important;
+}
+
+.hero p{
+font-size:15px !important;
+}
+
+/* article padding reduce */
+.seo-article{
+padding:25px 18px !important;
+}
+
+/* table scroll fix */
+.data-table-container{
+overflow-x:auto !important;
+}
+
+/* sidebar spacing */
+.widget{
+padding:20px !important;
+}
+
+}
     </style>
 </head>
 <body>
