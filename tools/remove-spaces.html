@@ -32,29 +32,6 @@
     </script>
 
     <style>
-        *,
-*::before,
-*::after{
-box-sizing:border-box;
-}
-
-body{
-overflow-x:hidden;
-}
-
-img{
-max-width:100%;
-height:auto;
-}
-
-table{
-max-width:100%;
-}
-
-.tool-workspace{
-max-width:100%;
-overflow:hidden;
-}
         :root {
             --primary: #4f46e5;
             --primary-dark: #3730a3;
@@ -232,6 +209,57 @@ grid-template-columns:1fr !important;
         padding: 20px !important; 
         width: 100% !important; 
     }
+}
+        /* ===== MOBILE TOOL FIX (ADD THIS AT END OF STYLE) ===== */
+
+@media (max-width:768px){
+
+/* Tool box padding reduce */
+.tool-workspace{
+padding:20px !important;
+}
+
+/* textarea mobile fix */
+textarea{
+height:220px !important;
+font-size:15px !important;
+padding:15px !important;
+}
+
+/* buttons mobile full width */
+.action-grid{
+grid-template-columns:1fr !important;
+}
+
+/* stats cards mobile */
+.stats-grid{
+grid-template-columns:1fr 1fr !important;
+}
+
+/* hero text fix */
+.hero h1{
+font-size:26px !important;
+}
+
+.hero p{
+font-size:15px !important;
+}
+
+/* article padding reduce */
+.seo-article{
+padding:25px 18px !important;
+}
+
+/* table scroll fix */
+.data-table-container{
+overflow-x:auto !important;
+}
+
+/* sidebar spacing */
+.widget{
+padding:20px !important;
+}
+
 }
     </style>
 </head>
