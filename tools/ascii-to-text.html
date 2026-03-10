@@ -178,6 +178,85 @@
             .layout { grid-template-columns: 1fr; }
             .hero h1 { font-size: 34px; }
         }
+        /* --- UNIVERSAL MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+    /* 1. Header ko adjust karo taaki links collapse na hon */
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+    }
+    .nav-links {
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero {
+        padding: 40px 15px 60px 15px;
+    }
+    .hero h1 {
+        font-size: 28px !important;
+    }
+    .hero p {
+        font-size: 14px !important;
+    }
+
+    /* 3. Layout ko Single Column karo (Squeezing khatam) */
+    .layout {
+        grid-template-columns: 1fr !important;
+        padding: 0 15px;
+        gap: 30px;
+    }
+
+    /* 4. Tool Workspace aur SEO box ki padding kam karo */
+    .tool-workspace, .seo-article {
+        padding: 20px !important;
+        border-radius: 15px;
+    }
+
+    /* 5. Buttons ko touch-friendly banao */
+    .action-bar {
+        display: flex;
+        flex-direction: column; /* Buttons ek ke niche ek aayenge */
+        gap: 10px;
+    }
+    .btn, .btn-success, .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 14px !important;
+        font-size: 15px !important;
+    }
+
+    /* 6. Sidebar Widgets ko Full Width karo */
+    .sidebar {
+        position: static !important;
+        width: 100%;
+    }
+    .widget {
+        padding: 20px !important;
+    }
+
+    /* 7. Tables ko scrollable banao (Nahi toh page width bigad jayegi) */
+    .data-table-container {
+        overflow-x: auto;
+        display: block;
+    }
+    .data-table {
+        min-width: 500px; /* Table ko chota hone se rokega, scroll dega */
+    }
+}
+
+/* Extra small devices (iPhone SE etc) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+    .category-title {
+        font-size: 18px;
+    }
+}
     </style>
 </head>
 <body>
