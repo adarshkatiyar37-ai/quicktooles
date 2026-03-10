@@ -45,6 +45,30 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my text saved on your servers during encoding?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Our Base64 Encoder operates 100% on the client-side using JavaScript. Your text is encoded directly in your browser, ensuring maximum privacy and security." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool support emojis and foreign languages?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes! Our encoder uses advanced UTF-8 safe processing, allowing you to seamlessly encode emojis, symbols, and international alphabets into Base64." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Base64 to securely encrypt a password?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Base64 is an encoding scheme, not an encryption algorithm. Anyone with a decoder can read the text. For passwords, always use strong hashing algorithms like bcrypt or SHA-256." }
+        }
+      ]
+    }
+    </script>
+
     <style>
         :root {
             --primary: #4f46e5;
@@ -61,7 +85,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
         /* NAVBAR */
         header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
@@ -80,68 +104,154 @@
         /* BREADCRUMBS */
         .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
         .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
 
         /* MAIN LAYOUT */
         .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; }
 
         /* TOOL WORKSPACE */
         .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
         .tool-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .tool-header h2 { font-size: 22px; color: var(--secondary); margin: 0; }
+        
         .textarea-container { position: relative; margin-bottom: 30px; }
         .textarea-container label { display: block; font-weight: 600; color: var(--secondary); margin-bottom: 10px; font-size: 16px; }
         
         textarea { width: 100%; height: 200px; padding: 20px; border: 2px solid var(--border); border-radius: 12px; font-size: 16px; font-family: 'Fira Code', monospace; color: var(--secondary); background: #f8fafc; resize: vertical; transition: var(--transition); outline: none; }
         textarea:focus { border-color: var(--primary); background: var(--card-bg); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
         
+        /* Actions */
         .action-bar { display: flex; gap: 15px; margin-bottom: 10px; flex-wrap: wrap; }
         .btn { padding: 12px 25px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: var(--transition); display: flex; align-items: center; gap: 8px; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
         .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+        .btn-secondary:hover { background: #cbd5e1; }
+        .btn-success { background: var(--success); color: white; }
 
-        /* SEO CONTENT */
+        /* LONG FORM SEO CONTENT */
         .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); }
         .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
         .toc h3 { font-size: 18px; color: var(--secondary); margin-bottom: 15px; }
         .toc ul { list-style: none; }
         .toc ul li { margin-bottom: 10px; }
         .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .toc ul li a:hover { text-decoration: underline; color: var(--primary-dark); }
+        
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 40px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h2:first-of-type { margin-top: 0; }
+        .seo-article h3 { font-size: 22px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; color: var(--text-main); margin-bottom: 20px; line-height: 1.8; }
+        .seo-article ul { margin-bottom: 20px; padding-left: 20px; color: var(--text-main); }
+        .seo-article li { margin-bottom: 10px; }
+        
+        /* FAQs */
+        .faq-box { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--bg-light); }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 { font-size: 18px; color: var(--primary-dark); margin-bottom: 8px; font-weight: 700; }
+        .faq-box p { margin: 0; color: var(--text-main); line-height: 1.6; }
 
         /* SIDEBAR */
         .sidebar { position: sticky; top: 100px; height: fit-content; }
         .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); margin-bottom: 30px; border: 1px solid var(--border); }
-        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 700; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget h3 { font-size: 20px; color: var(--secondary); margin-bottom: 20px; font-weight: 700; }
         .widget-links { display: flex; flex-direction: column; gap: 10px; }
         .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 500; background: var(--bg-light); transition: var(--transition); }
         .widget-links a:hover { background: var(--primary); color: white; transform: translateX(5px); }
+        .widget-links .icon { margin-right: 12px; font-size: 18px; }
 
         /* FOOTER */
         footer { background: var(--secondary); color: #cbd5e1; padding: 50px 20px; margin-top: 60px; text-align: center; }
-
-        /* --- 🚀 THE MOBILE FIX BLOCK (CONTENT SAFE) --- */
-        @media (max-width: 992px) {
-            .navbar { flex-direction: column !important; height: auto !important; padding: 15px 10px !important; text-align: center; }
-            .nav-links { margin-top: 15px !important; gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
-            .hero { padding: 40px 15px 60px 15px !important; }
-            .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
-            
-            /* BREADCRUMBS FIX: Ensuring they don't get cut by negative margins */
-            .breadcrumbs { text-align: center !important; padding: 10px !important; margin: 10px auto !important; position: relative !important; z-index: 10 !important; }
-
-            .layout { display: flex !important; flex-direction: column !important; padding: 0 15px !important; gap: 30px !important; width: 100% !important; }
-            .tool-workspace { padding: 25px 15px !important; margin-top: 0 !important; width: 100% !important; }
-            
-            .action-bar { flex-direction: column !important; width: 100% !important; gap: 10px !important; }
-            .btn { width: 100% !important; padding: 15px !important; justify-content: center !important; }
-            
-            /* Step 2 Header Fix (Fixes Copy Button Squeezing) */
-            .tool-header { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; text-align: left !important; }
-            #copyBtn { width: 100% !important; height: 50px !important; font-size: 15px !important; justify-content: center !important; }
-
-            .sidebar { position: static !important; width: 100% !important; }
-            .widget { padding: 20px !important; width: 100% !important; box-sizing: border-box !important; }
-            .seo-article { padding: 25px 15px !important; }
+        footer p { font-size: 15px; margin-bottom: 10px; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 34px; }
+            .tool-workspace { padding: 25px; }
+            .seo-article { padding: 25px; }
         }
+        /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
+    }
+}
     </style>
 </head>
 <body>
@@ -169,6 +279,7 @@
 <div class="layout">
     <main>
         <section class="tool-workspace">
+            
             <div class="textarea-container">
                 <label for="textInput">Step 1: Type or Paste Your Plain Text Here</label>
                 <textarea id="textInput" placeholder="Type your text here... (e.g., Hello World! 😊)" oninput="encodeBase64()"></textarea>
@@ -186,6 +297,7 @@
                 </div>
                 <textarea id="b64Output" placeholder="Your Base64 encoded string will appear here instantly..." readonly style="background: #fff; cursor: text;"></textarea>
             </div>
+
         </section>
 
         <article class="seo-article">
@@ -201,53 +313,64 @@
             </div>
 
             <h2 id="what-is-base64">What is Base64 Encoding?</h2>
-            <p><strong>Base64 encoding</strong> is a standardized procedure that transforms complex data into a safe, universally readable string of text. The "64" refers to the specific characters: A-Z, a-z, 0-9, (+), and (/).</p>
-            
-            <p>In the early days of computing, sending data acrossNetworks was risky. Base64 ensures data travels safely without losing structure.</p>
+            <p><strong>Base64 encoding</strong> is a standardized procedure that transforms complex data—like plain text, binary code, or even images—into a safe, universally readable string of text. The "64" in Base64 refers to the 64 specific ASCII characters used to represent the data: the letters A-Z, a-z, the numbers 0-9, the plus sign (+), and the forward slash (/).</p>
+            <p>In the early days of computing, sending data across different networks was risky because legacy systems often misinterpreted special characters or binary data, causing files to corrupt. By <em>encoding</em> data into a strict set of 64 basic characters, developers ensured that data could travel safely across the internet, databases, and email servers without losing its original structure.</p>
 
             <h2 id="how-to-use">How to Use the Base64 Encoder Tool</h2>
+            <p>We built the QuickTooles Base64 Encoder to be the fastest and most reliable tool on the web. It requires no server uploads and happens entirely on your screen.</p>
             <ul>
-                <li><strong>Step 1: Input your Text.</strong> Type or paste any text into the top box. It is UTF-8 safe for emojis.</li>
-                <li><strong>Step 2: Instant Encoding.</strong> The JavaScript engine translates text instantly.</li>
-                <li><strong>Step 3: Copy to Clipboard.</strong> Copy the string, ready for your code.</li>
+                <li><strong>Step 1: Input your Text.</strong> Type or paste any text into the top box. Unlike basic encoders, our tool is UTF-8 safe. You can confidently paste emojis (🚀🔥), special characters (!@#), or foreign languages (e.g., Hindi, Japanese).</li>
+                <li><strong>Step 2: Instant Encoding.</strong> As you type, the JavaScript engine built into your browser instantly translates your text into a Base64 string in the bottom box.</li>
+                <li><strong>Step 3: Copy to Clipboard.</strong> Click the "Copy Base64" button to copy the encoded string, which usually ends with an "=" (padding), ready to be pasted into your code or application.</li>
             </ul>
 
             <h2 id="why-use">Why Do Developers Use Base64 Encoding?</h2>
+            <p>If you are wondering why converting readable text into an unreadable string is useful, here are the most common real-world applications of an online Base64 encoder:</p>
             <ul>
-                <li><strong>Safe Data Transfer:</strong> XML, JSON, or APIs use it to avoid syntax errors.</li>
-                <li><strong>Data URIs:</strong> Embedding small images into HTML/CSS files.</li>
-                <li><strong>Email Attachments:</strong> Sending files over MIME protocols.</li>
+                <li><strong>Safe Data Transfer:</strong> When transferring data over XML, JSON, or APIs, special characters can break the syntax. Encoding the payload into Base64 ensures the data is transmitted cleanly as a single text string.</li>
+                <li><strong>Data URIs (Embedding Images):</strong> Web developers often encode small images or icons into Base64 and embed them directly into HTML or CSS files. This reduces the number of HTTP requests, making the webpage load faster.</li>
+                <li><strong>Email Attachments:</strong> Have you ever wondered how a PDF or an image is sent in a text-based email? The email client encodes the file into Base64 (using MIME) so it can be transported safely as text.</li>
+                <li><strong>Basic Authentication:</strong> When sending HTTP Basic Authentication headers, the username and password must be combined and encoded into Base64 before being sent to the server.</li>
             </ul>
 
-            <h2 id="encoding-vs-encryption">Base64 Encoding vs. Encryption</h2>
-            <p><strong>Encoding (Base64):</strong> Used for data usability, not security. Anyone with a decoder can read it.</p>
-            <p><strong>Encryption (AES/RSA):</strong> Scrambles data with a secret key for security.</p>
+            <h2 id="encoding-vs-encryption">Base64 Encoding vs. Encryption: The Big Difference</h2>
+            <p>A very common, yet dangerous, misconception in web development is confusing <em>encoding</em> with <em>encryption</em>. Here is why you must know the difference:</p>
+            <p><strong>Encoding (Base64):</strong> The purpose of encoding is to ensure data usability, not data security. It simply translates data into a different format so computers can process it safely. It uses no secret keys. <strong>Anyone with a Base64 decoder can instantly read your encoded string.</strong></p>
+            <p><strong>Encryption (AES/RSA):</strong> The purpose of encryption is to hide data from unauthorized people. It scrambles the data using complex mathematics and a secret "key." Without the specific key, the data cannot be read.</p>
+            <p><em>Golden Rule: Never use a Base64 encoder to "hide" or "secure" passwords, credit card numbers, or sensitive user data. Always use strong cryptographic hashing (like SHA-256) or encryption.</em></p>
 
             <h2 id="faqs">Frequently Asked Questions (FAQs)</h2>
-            <div class="faq-box" style="margin-bottom: 20px;">
-                <h4>Is my text saved on your servers?</h4>
-                <p>No. Our Base64 Encoder operates 100% on the client-side using JavaScript.</p>
+            <div class="faq-box">
+                <h4>Is my text saved on your servers during encoding?</h4>
+                <p>Absolutely not. The QuickTooles Base64 Encoder operates 100% on the client-side using JavaScript. Your text is encoded directly in your computer's memory, ensuring your privacy remains strictly protected.</p>
             </div>
             <div class="faq-box">
-                <h4>Does it support emojis?</h4>
-                <p>Yes! Our encoder uses UTF-8 safe processing for international alphabets and symbols.</p>
+                <h4>Does this tool support emojis and foreign languages?</h4>
+                <p>Yes! Standard encoders often break when faced with non-ASCII characters. Our encoder uses an advanced UTF-8 safe processing engine, allowing you to seamlessly encode emojis, symbols, and international alphabets without errors.</p>
+            </div>
+            <div class="faq-box">
+                <h4>Can I use Base64 to securely encrypt a password?</h4>
+                <p>No. As mentioned above, Base64 provides zero security. It is merely a translation of text. To secure a password, you must use secure hashing algorithms such as bcrypt, Argon2, or SHA-256.</p>
             </div>
         </article>
     </main>
 
     <aside class="sidebar">
         <div class="widget">
-            <h3>Related Tools</h3>
+            <h3>Related Developer Tools</h3>
             <div class="widget-links">
                 <a href="base64-decoder.html"><span class="icon">🔓</span> Base64 Decoder</a>
                 <a href="url-encoder.html"><span class="icon">🔗</span> URL Encoder</a>
+                <a href="url-decoder.html"><span class="icon">🔓</span> URL Decoder</a>
                 <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+                <a href="sha-generator.html"><span class="icon">🛡️</span> SHA Generator</a>
+                <a href="text-to-ascii.html"><span class="icon">🔤</span> Text to ASCII</a>
             </div>
         </div>
         
         <div class="widget" style="background: linear-gradient(135deg, #e0e7ff, #ffffff); border: 2px dashed #a5b4fc;">
-            <h3>💡 Pro Tip</h3>
-            <p style="font-size: 14px; color: var(--text-main); margin: 0;">Use Base64 to encode JSON payloads for APIs to avoid syntax breakage across firewalls.</p>
+            <h3 style="border:none; margin-bottom: 10px; font-size: 18px;">💡 Pro Tip</h3>
+            <p style="font-size: 14px; color: var(--text-main); margin: 0;">If you're working with APIs, use Base64 to encode your JSON payloads to ensure they pass through firewalls and routers without syntax errors.</p>
         </div>
     </aside>
 </div>
@@ -258,40 +381,60 @@
 </footer>
 
 <script>
+    // Advanced UTF-8 Safe Base64 Encoding Logic
     function encodeBase64() {
         const inputStr = document.getElementById("textInput").value;
         const outputBox = document.getElementById("b64Output");
-        if (inputStr.trim() === "") { outputBox.value = ""; return; }
+        
+        // If input is empty, clear output
+        if (inputStr.trim() === "") {
+            outputBox.value = "";
+            return;
+        }
+
         try {
+            // Standard btoa() breaks on Emojis/UTF-8. 
+            // This is the industry-standard way to safely encode UTF-8 strings into Base64 in the browser.
             const encodedData = window.btoa(unescape(encodeURIComponent(inputStr)));
             outputBox.value = encodedData;
         } catch (e) {
             outputBox.value = "Error: Could not encode the text.";
+            console.error(e);
         }
     }
+
+    // Clear function
     function clearFields() {
         document.getElementById("textInput").value = "";
         document.getElementById("b64Output").value = "";
-        const btn = document.getElementById("copyBtn");
-        btn.innerText = "📋 Copy Base64";
-        btn.classList.remove("btn-success");
-        btn.classList.add("btn-secondary");
+        document.getElementById("copyBtn").innerText = "📋 Copy Base64";
+        document.getElementById("copyBtn").classList.remove("btn-success");
+        document.getElementById("copyBtn").classList.add("btn-secondary");
     }
+
+    // Copy to Clipboard function
     function copyText() {
         const outputText = document.getElementById("b64Output");
+        
         if (outputText.value.trim() === "") return;
+
         outputText.select();
-        outputText.setSelectionRange(0, 99999);
+        outputText.setSelectionRange(0, 99999); // For mobile devices
+
         navigator.clipboard.writeText(outputText.value).then(() => {
             const btn = document.getElementById("copyBtn");
             btn.innerText = "✅ Copied!";
             btn.classList.remove("btn-secondary");
             btn.classList.add("btn-success");
+            
+            // Reset button text after 2 seconds
             setTimeout(() => {
                 btn.innerText = "📋 Copy Base64";
                 btn.classList.remove("btn-success");
                 btn.classList.add("btn-secondary");
             }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
         });
     }
 </script>
