@@ -1,199 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word to PDF Converter – Convert DOCX to PDF Online Free | QuickTooles</title>
+    
+    <meta name="description" content="Free online Word to PDF Converter. Convert DOCX files to high-quality PDF instantly in your browser. 100% private, no file limits, and no registration required. The most secure way to handle your professional documents.">
+    <meta name="keywords" content="word to pdf, convert docx to pdf, word file to pdf converter, online document converter, free docx to pdf, secure pdf maker, quicktooles, professional word converter, resume to pdf online">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://quicktooles.in/tools/word-to-pdf">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <meta property="og:title" content="Ultimate Word to PDF Converter & Document Architect | QuickTooles">
+    <meta property="og:description" content="Convert your Word files to PDF with pixel-perfect accuracy. 100% private browser-based conversion.">
+    <meta property="og:url" content="https://quicktooles.in/tools/word-to-pdf">
+    <meta property="og:type" content="website">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-<title>Word to PDF Converter - QuickTooles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<meta name="description" content="Convert Word text to PDF instantly using the QuickTooles Word to PDF Converter.">
-<meta name="keywords" content="Word to PDF, Convert Word to PDF, Online PDF Converter, QuickTooles">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
 
-<link rel="stylesheet" href="../style.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
 
-<style>
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: white; text-align: center; padding: 70px 20px 90px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 800px; margin: auto; font-weight: 300; }
 
-.tool-container{
-max-width:700px;
-margin:80px auto;
-background:#ffffff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-text-align:center;
-color:#1e293b;
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+        /* MAIN LAYOUT (3fr 1fr GRID) */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; align-items: start; }
+        .main-content { display: flex; flex-direction: column; gap: 40px; }
+
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        .upload-area { border: 2px dashed var(--primary); background: #eff6ff; border-radius: 15px; padding: 60px 20px; text-align: center; cursor: pointer; transition: var(--transition); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .upload-area:hover { background: #e0e7ff; }
+        .upload-icon { font-size: 50px; margin-bottom: 15px; opacity: 0.8; }
+        .upload-text { font-weight: 700; color: var(--primary-dark); font-size: 20px; }
+        .upload-subtext { color: var(--text-light); font-size: 14px; margin-top: 5px; }
+        
+        #fileInput { display: none; }
+
+        /* File Card UI */
+        .file-list { margin-top: 30px; display: none; }
+        .file-card { background: white; border: 1px solid var(--border); padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .file-info { flex: 1; }
+        .file-name { font-weight: 700; color: var(--secondary); font-size: 15px; word-break: break-all; }
+        .file-size { font-size: 12px; color: var(--text-light); font-weight: 500; }
+        .status-badge { background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+
+        .loading-bar { display: none; margin-top: 20px; width: 100%; height: 6px; background: #e2e8f0; border-radius: 10px; overflow: hidden; }
+        .progress { width: 0%; height: 100%; background: var(--primary); transition: width 0.3s; }
+
+        #previewArea { display: none; visibility: hidden; position: absolute; left: -9999px; }
+
+        .action-bar { display: none; gap: 15px; margin-top: 30px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 16px 35px; border-radius: 12px; font-weight: 800; font-size: 16px; cursor: pointer; border: none; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; }
+        .btn-success { background: var(--success); color: white; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+        .btn-success:hover { transform: translateY(-2px); }
+        .btn-secondary { background: #e2e8f0; color: var(--secondary); }
+
+        /* MONSTER SEO CONTENT (2500+ WORDS) */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .toc { background: var(--bg-light); padding: 25px; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--border); }
+        .toc h3 { font-size: 20px; margin-bottom: 15px; }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 10px; }
+        .toc ul li a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        
+        .seo-article h2 { font-size: 30px; color: var(--secondary); margin: 45px 0 20px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article h3 { font-size: 22px; color: var(--primary-dark); margin: 30px 0 15px 0; font-weight: 700; }
+        .seo-article p { font-size: 16px; margin-bottom: 22px; line-height: 1.9; color: var(--text-main); }
+        
+        .data-table-container { overflow-x: auto; margin: 30px 0; }
+        .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .data-table th, .data-table td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border); }
+        .data-table th { background: var(--secondary); color: white; font-weight: 600; text-transform: uppercase; font-size: 13px; }
+
+        /* RIGHT SIDEBAR */
+        .sidebar { display: flex; flex-direction: column; gap: 30px; position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .widget h3 { font-size: 19px; color: var(--secondary); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .widget-links { display: flex; flex-direction: column; gap: 10px; }
+        .widget-links a { display: flex; align-items: center; padding: 12px 15px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); transition: var(--transition); border: 1px solid transparent; }
+        .widget-links a:hover { background: white; color: var(--primary); border-color: var(--primary); transform: translateX(5px); }
+
+        .pro-tip-box { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); border: 2px dashed #93c5fd; padding: 25px; border-radius: 20px; }
+        .pro-tip-box h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 800; }
+        .pro-tip-box p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; }
+
+        /* FOOTER */
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        @media(max-width: 992px) {
+            .layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .hero h1 { font-size: 34px; }
+        }
+      /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES --- */
+@media (max-width: 992px) {
+    /* 1. Header ko stack karo */
+    .navbar { 
+        flex-direction: column !important; 
+        height: auto !important; 
+        padding: 15px 10px !important; 
+        text-align: center !important; 
+    }
+    .nav-links { 
+        margin-top: 15px !important; 
+        gap: 15px !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+    }
+
+    /* 2. Hero Section ka text chota karo */
+    .hero { padding: 40px 15px 60px 15px !important; }
+    .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+    
+    /* 3. BREADCRUMBS FIX (Sabse Important) */
+    /* Margin-top ko 0 ya positive rakho taaki niche wala card ise na kaate */
+    .breadcrumbs { 
+        text-align: center !important; 
+        margin: 10px auto !important; 
+        padding: 10px !important; 
+        position: relative !important; 
+        z-index: 10 !important; 
+        display: block !important;
+    }
+
+    /* 4. Layout ko Single Column karo */
+    .layout { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        padding: 0 15px !important; 
+        gap: 25px !important; 
+        width: 100% !important; 
+    }
+
+    /* 5. Tool Card Fix (Negative margin hatao mobile par) */
+    .tool-workspace { 
+        padding: 25px 15px !important; 
+        margin-top: 0 !important; /* Ye breadcrumbs ko katne se rokega */
+        width: 100% !important; 
+    }
+    
+    /* 6. Action Buttons Fix */
+    .action-bar { 
+        flex-direction: column !important; 
+        width: 100% !important; 
+        gap: 10px !important; 
+    }
+    .btn { 
+        width: 100% !important; 
+        padding: 15px !important; 
+        justify-content: center !important; 
+    }
+    
+    /* 7. Copy Button Fix (Step 2 Section) */
+    .tool-header { 
+        flex-direction: column !important; 
+        align-items: stretch !important; 
+        gap: 10px !important; 
+    }
+    #copyBtn { 
+        width: 100% !important; 
+        height: 48px !important; 
+    }
+
+    /* 8. Sidebar Fix */
+    .sidebar { 
+        position: static !important; 
+        width: 100% !important; 
+    }
+    .widget { 
+        padding: 20px !important; 
+        width: 100% !important; 
+    }
 }
-
-.tool-container h1{
-margin-bottom:20px;
-color:#3b82f6;
-}
-
-textarea{
-width:100%;
-height:200px;
-padding:12px;
-border:1px solid #cbd5e1;
-border-radius:6px;
-margin-top:10px;
-resize:none;
-background:#f8fafc;
-}
-
-button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-background:#3b82f6;
-color:white;
-cursor:pointer;
-font-size:15px;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-/* Blog */
-
-.blog-section{
-margin-top:30px;
-padding:20px;
-background:#f1f5f9;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-text-align:left;
-}
-
-.blog-section h2{
-color:#3b82f6;
-}
-
-/* Related Tools */
-
-.related-tools{
-margin-top:30px;
-text-align:left;
-}
-
-.related-tools h2{
-color:#3b82f6;
-margin-bottom:10px;
-}
-
-.related-tools ul{
-list-style:none;
-padding:0;
-}
-
-.related-tools ul li{
-margin-bottom:8px;
-}
-
-.related-tools ul li a{
-color:#3b82f6;
-text-decoration:none;
-}
-
-.related-tools ul li a:hover{
-text-decoration:underline;
-}
-
-@media(max-width:600px){
-.tool-container{
-margin:50px 20px;
-padding:25px;
-}
-}
-
-</style>
-
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-
-<h2 class="logo">QuickTooles</h2>
-
-<nav>
-<a href="../index.html">Home</a>
-<a href="../index.html">All Tools</a>
-</nav>
-
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#seo-section">About</a>
+        </nav>
+    </div>
 </header>
 
-<div class="tool-container">
+<section class="hero">
+    <h1>Professional Word to PDF Converter</h1>
+    <p>Convert your DOCX documents to high-quality PDF files instantly. Advanced browser-side conversion ensures your data remains 100% private and secure. No limits, no strings attached.</p>
+</section>
 
-<h1>📄 Word to PDF Converter</h1>
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-docs">Document Tools</a> › Word to PDF
+</div>
 
-<p>Convert your Word text content into a downloadable PDF instantly.</p>
+<div class="layout">
+    
+    <div class="main-content">
+        <main class="tool-workspace">
+            <div class="upload-area" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📄</div>
+                <div class="upload-text">Click or Drag & Drop Word File</div>
+                <div class="upload-subtext">Supports .docx files up to 25MB</div>
+                <input type="file" id="fileInput" accept=".docx" onchange="handleFile(event)">
+            </div>
 
-<textarea id="text" placeholder="Paste your Word content here"></textarea>
+            <div class="loading-bar" id="loadBar">
+                <div class="progress" id="progressBar"></div>
+            </div>
 
-<button onclick="convertWordToPDF()">Convert to PDF</button>
+            <div class="file-list" id="fileList">
+                <div class="file-card">
+                    <div class="file-info">
+                        <div class="file-name" id="displayFileName">document.docx</div>
+                        <div class="file-size" id="displayFileSize">0 KB</div>
+                    </div>
+                    <div class="status-badge">Ready to Convert</div>
+                </div>
+            </div>
 
-<!-- Blog -->
+            <div id="previewArea"></div>
 
-<div class="blog-section">
+            <div class="action-bar" id="actionBar">
+                <button class="btn btn-success" onclick="downloadPDF()">⬇️ Download PDF Now</button>
+                <button class="btn btn-secondary" onclick="location.reload()">🔄 Choose Another File</button>
+            </div>
+        </main>
 
-<h2>What is Word to PDF Conversion?</h2>
+        <article class="seo-article" id="seo-section">
+            <div class="toc">
+                <h3>📖 The Master Guide to DOCX to PDF Conversion</h3>
+                <ul>
+                    <li><a href="#what-is-word-pdf">1. What is a Word to PDF Converter?</a></li>
+                    <li><a href="#technical-process">2. The Technical Science of Document Parsing</a></li>
+                    <li><a href="#feature-table">3. Technical Comparison: DOCX vs. PDF</a></li>
+                    <li><a href="#why-pdf">4. 5 Reasons Why Businesses Prefer PDF Over Word</a></li>
+                    <li><a href="#privacy">5. Privacy and Security in Online Conversion</a></li>
+                    <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+                </ul>
+            </div>
 
-<p>Word to PDF conversion allows you to transform text or Word document content into a PDF file. PDFs are widely used because they preserve formatting and are easy to share.</p>
+            <h2 id="what-is-word-pdf">1. What is a Word to PDF Converter?</h2>
+            <p>A <strong>Word to PDF Converter</strong> is a specialized document architect designed to translate the complex XML-based structure of a Microsoft Word file (.docx) into the <strong>Portable Document Format (PDF)</strong>. Originally created by Adobe in 1993, PDF has become the global standard for sharing documents because it preserves fonts, images, and layouts across every device.</p>
+            <p>Our <em>online docx to pdf maker</em> uses advanced client-side processing, meaning the conversion happens directly in your browser. This technology allows you to maintain professional standards without relying on expensive desktop software or insecure cloud uploads.</p>
 
-<p>The QuickTooles Word to PDF tool helps you quickly convert your text into a downloadable PDF document.</p>
+            <h2 id="technical-process">2. The Technical Science of Document Parsing</h2>
+            <p>When you upload a Word file to QuickTooles, our engine performs three distinct operations:</p>
+            <ul>
+                <li><strong>Deconstruction:</strong> The .docx file is actually a zipped archive of XML files. We extract the text, formatting rules, and embedded images.</li>
+                <li><strong>HTML Mapping:</strong> We use the <em>Mammoth.js</em> algorithm to map Word styles (like Heading 1, Bold, or Tables) into clean HTML5 elements.</li>
+                <li><strong>PDF Synthesis:</strong> The HTML is then rendered onto a virtual canvas and encapsulated into an ISO-standard PDF using <em>jsPDF</em> and <em>html2pdf</em> logic.</li>
+            </ul>
+
+            <h2 id="feature-table">3. Technical Comparison: DOCX vs. PDF</h2>
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Microsoft Word (.docx)</th>
+                            <th>Adobe PDF (.pdf)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Primary Usage</strong></td><td>Creation & Editing</td><td>Final Distribution & Printing</td></tr>
+                        <tr><td><strong>Layout Stability</strong></td><td>Variable (Depends on Software)</td><td>Fixed (Identical Everywhere)</td></tr>
+                        <tr><td><strong>Metadata</strong></td><td>Extensive (Change history)</td><td>Clean (Optimized for Web)</td></tr>
+                        <tr><td><strong>Compatibility</strong></td><td>Requires Office/Compatible Apps</td><td>Universal Support (Mobile & PC)</td></tr>
+                        <tr><td><strong>Security</strong></td><td>Passwords are easily bypassed</td><td>Military-grade Encryption support</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="why-pdf">4. 5 Reasons Why Businesses Prefer PDF Over Word</h2>
+            <ol>
+                <li><strong>Branding Integrity:</strong> A PDF ensures your resume or proposal looks exactly the way you intended, with no broken fonts.</li>
+                <li><strong>Reduced File Size:</strong> PDFs often use advanced compression algorithms for images, making them easier to send via email.</li>
+                <li><strong>Legally Binding:</strong> Most digital signature platforms (like DocuSign) exclusively use PDF because the content is harder to tamper with.</li>
+                <li><strong>Search Engine Optimization:</strong> Google indexes PDF content differently. A well-structured PDF can rank for highly technical keywords.</li>
+                <li><strong>Long-Term Archiving:</strong> PDF/A is the ISO standard for long-term preservation of electronic documents.</li>
+            </ol>
+
+            <h2 id="privacy">5. Privacy and Security in Online Conversion</h2>
+            <p>In 2026, data privacy is non-negotiable. Most "free" converters upload your sensitive contracts or resumes to their servers, where they might be stored or analyzed. QuickTooles is different. By utilizing <strong>JavaScript-based local processing</strong>, your document never leaves your RAM. The moment you close the tab, every trace of your document is wiped from your memory. This is the gold standard of <em>secure docx conversion</em>.</p>
+
+            <h2 id="faqs">6. Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-box">
+                <p><strong>Q: Will my images and tables stay in place?</strong><br>A: Yes. Our engine is optimized to preserve standard formatting, including bold text, lists, tables, and embedded JPEG/PNG images.</p>
+                <br>
+                <p><strong>Q: Can I convert old .doc files?</strong><br>A: Currently, we support the modern .docx format. If you have an old .doc file, we recommend saving it as .docx in Word before uploading for the best results.</p>
+                <br>
+                <p><strong>Q: Is there a file size limit?</strong><br>A: For optimal browser performance, we recommend files under 25MB. Larger files might cause the browser to slow down during the rendering phase.</p>
+            </div>
+        </article>
+    </div>
+
+    <aside class="sidebar">
+        
+        <div class="widget">
+            <h3>📂 Document Utilities</h3>
+            <div class="widget-links">
+                <a href="image-to-pdf.html"><span class="icon">🖼️</span> Image to PDF</a>
+                <a href="word-counter.html"><span class="icon">📝</span> Word Counter</a>
+                <a href="case-converter.html"><span class="icon">🔠</span> Case Converter</a>
+                <a href="remove-spaces.html"><span class="icon">✂️</span> Remove Spaces</a>
+                <a href="lorem-generator.html"><span class="icon">📄</span> Lorem Ipsum</a>
+            </div>
+        </div>
+
+        <div class="pro-tip-box">
+            <h3>💡 Pro Document Tip</h3>
+            <p>Before converting your Word file, ensure you have removed all <strong>"Tracked Changes"</strong> and comments. PDFs will often render these as part of the final document, which might look unprofessional to a client or recruiter!</p>
+        </div>
+
+        <div class="widget">
+            <h3>🛠️ Technical Tools</h3>
+            <div class="widget-links">
+                <a href="json-formatter.html"><span class="icon">{"}</span> JSON Formatter</a>
+                <a href="js-minifier.html"><span class="icon">⚡</span> JS Minifier</a>
+                <a href="sha256-generator.html"><span class="icon">🛡️</span> SHA-256 Gen</a>
+                <a href="qr-generator.html"><span class="icon">📱</span> QR Code Gen</a>
+            </div>
+        </div>
+
+    </aside>
 
 </div>
 
-<!-- Related Tools -->
-
-<div class="related-tools">
-
-<h2>Related Tools</h2>
-
-<ul>
-
-<li><a href="pdf-to-word.html">PDF to Word</a></li>
-
-<li><a href="text-to-pdf.html">Text to PDF</a></li>
-
-<li><a href="word-counter.html">Word Counter</a></li>
-
-</ul>
-
-</div>
-
-</div>
+<footer>
+    <p><strong>QuickTooles.in</strong> – Fast, Free, and Secure Professional Online Utilities.</p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
 
 <script>
+    function handleFile(event) {
+        const file = event.target.files[0];
+        if (!file) return;
 
-function convertWordToPDF(){
+        const dropZone = document.getElementById('dropZone');
+        const loadBar = document.getElementById('loadBar');
+        const progressBar = document.getElementById('progressBar');
+        const fileList = document.getElementById('fileList');
+        const actionBar = document.getElementById('actionBar');
 
-let content=document.getElementById("text").value;
+        // Update UI
+        dropZone.style.display = "none";
+        loadBar.style.display = "block";
+        progressBar.style.width = "40%";
 
-if(!content){
+        document.getElementById('displayFileName').innerText = file.name;
+        document.getElementById('displayFileSize').innerText = (file.size / 1024).toFixed(2) + " KB";
 
-alert("Enter text first!");
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const arrayBuffer = e.target.result;
+            progressBar.style.width = "70%";
 
-return;
+            mammoth.convertToHtml({arrayBuffer: arrayBuffer})
+                .then(function(result) {
+                    document.getElementById('previewArea').innerHTML = result.value;
+                    progressBar.style.width = "100%";
+                    setTimeout(() => {
+                        loadBar.style.display = "none";
+                        fileList.style.display = "block";
+                        actionBar.style.display = "flex";
+                    }, 500);
+                })
+                .catch(function(err) {
+                    alert("Error parsing Word file: " + err);
+                    location.reload();
+                });
+        };
+        reader.readAsArrayBuffer(file);
+    }
 
-}
+    function downloadPDF() {
+        const element = document.getElementById('previewArea');
+        const fileName = document.getElementById('displayFileName').innerText.replace(".docx", ".pdf");
+        
+        const opt = {
+            margin:       [0.75, 0.75],
+            filename:     fileName,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
 
-let element=document.createElement('div');
-
-element.innerText=content;
-
-html2pdf().from(element).save('document.pdf');
-
-}
-
+        html2pdf().set(opt).from(element).save();
+    }
 </script>
 
 </body>
-
 </html>
