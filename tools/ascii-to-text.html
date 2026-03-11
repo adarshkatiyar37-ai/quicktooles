@@ -476,11 +476,6 @@
             } else { hasError = true; }
         }
         outputBox.value = resultText;
-        
-const resultElement = document.getElementById("textOutput"); 
-
-
-resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         if (hasError) { errorBox.style.display = "block"; } else { errorBox.style.display = "none"; }
     }
     function clearFields() {
