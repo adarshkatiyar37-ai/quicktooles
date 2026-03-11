@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary & Overtime Calculator – Professional Net Pay Estimator | QuickTooles</title>
+    
+    <meta name="description" content="Free online Salary Calculator with Overtime and PF. Calculate your monthly take-home pay, leave deductions, and overtime earnings instantly. 100% secure and private.">
+    <meta name="keywords" content="salary calculator, overtime calculator, monthly salary planner, net pay calculator, pf deduction calculator, quicktooles, leave deduction calculator">
+    <meta name="author" content="QuickTooles">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://quicktooles.in/tools/salary-calculator">
+    <link rel="icon" type="image/png" href="../logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Salary & OT Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0" },
+      "description": "Calculate monthly take-home salary including overtime pay, leave deductions, and PF contributions."
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How is the per-day salary calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It is calculated by dividing the base monthly salary by the total number of days in the selected month." }
+      },{
+        "@type": "Question",
+        "name": "Is my data stored during calculation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, all calculations are performed locally in your browser for 100% privacy." }
+      }]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+
+        /* NAVBAR */
+        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; }
+
+        /* HERO SECTION */
+        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 60px 20px 80px 20px; }
+        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 750px; margin: auto; font-weight: 300; }
+
+        /* BREADCRUMBS */
+        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+        /* MAIN LAYOUT */
+        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; }
+
+        /* TOOL WORKSPACE */
+        .tool-workspace { background: var(--card-bg); padding: 35px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
+        
+        .input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
+        .input-group { display: flex; flex-direction: column; gap: 5px; }
+        .input-group label { font-weight: 700; color: var(--secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        input, select { padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 15px; outline: none; transition: var(--transition); background: #f8fafc; width: 100%; color: var(--secondary); }
+        input:focus, select:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.05); }
+
+        .btn-calc { background: var(--primary); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: 800; cursor: pointer; transition: var(--transition); width: 100%; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-calc:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        /* RESULT BOX - Integrated No Scroll */
+        .result-container { margin-top: 25px; display: none; background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px dashed var(--primary); }
+        .res-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px; }
+        .res-row.final { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--border); font-weight: 800; font-size: 20px; color: var(--success); }
+        .neg { color: var(--danger); font-weight: 600; }
+
+        /* SEO CONTENT */
+        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); }
+        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
+        .seo-article p { font-size: 16px; margin-bottom: 20px; }
+        .seo-article ul { padding-left: 20px; margin-bottom: 20px; }
+        .seo-article li { margin-bottom: 10px; }
+
+        /* SIDEBAR */
+        .sidebar { position: sticky; top: 100px; height: fit-content; }
+        .widget { background: var(--card-bg); padding: 25px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 30px; }
+        .widget h3 { font-size: 18px; font-weight: 800; color: var(--secondary); margin-bottom: 15px; }
+        .widget-links a { display: block; padding: 12px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); margin-bottom: 10px; transition: var(--transition); }
+        .widget-links a:hover { background: var(--primary); color: white; transform: translateX(5px); }
+
+        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; text-align: center; }
+
+        /* --- 🚀 THE NUCLEAR MOBILE FIX BLOCK --- */
+        @media (max-width: 992px) {
+            .navbar { flex-direction: column !important; height: auto !important; padding: 15px 10px !important; }
+            .nav-links { margin-top: 15px !important; gap: 15px !important; flex-wrap: wrap !important; justify-content: center !important; }
+            .hero { padding: 40px 15px 60px 15px !important; }
+            .hero h1 { font-size: 28px !important; line-height: 1.2 !important; }
+            /* Breadcrumbs fix to prevent cutting */
+            .breadcrumbs { text-align: center !important; margin: 10px auto !important; position: relative !important; z-index: 10 !important; }
+            .layout { display: flex !important; flex-direction: column !important; padding: 0 15px !important; gap: 30px !important; }
+            .tool-workspace { padding: 25px 15px !important; margin-top: 0 !important; }
+            .input-grid { grid-template-columns: 1fr !important; }
+            .sidebar { position: static !important; width: 100% !important; }
+            .widget { padding: 20px !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
+        <nav class="nav-links">
+            <a href="https://quicktooles.in/">Home</a>
+            <a href="https://quicktooles.in/#all-tools">All Tools</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Salary & Overtime Calculator</h1>
+    <p>Professional net pay estimator including leave deductions, OT earnings, and PF contributions.</p>
+</section>
+
+<div class="breadcrumbs">
+    <a href="https://quicktooles.in/">Home</a> › <a href="#">Finance Tools</a> › Salary Calculator
+</div>
+
+<div class="layout">
+    <main>
+        <section class="tool-workspace">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>Base Salary (₹)</label>
+                    <input type="number" id="baseSalary" placeholder="e.g. 35000">
+                </div>
+                <div class="input-group">
+                    <label>Month</label>
+                    <select id="monthSelect">
+                        <option value="31">January (31 Days)</option>
+                        <option value="28">February (28/29 Days)</option>
+                        <option value="31">March (31 Days)</option>
+                        <option value="30">April (30 Days)</option>
+                        <option value="31">May (31 Days)</option>
+                        <option value="30">June (30 Days)</option>
+                        <option value="31">July (31 Days)</option>
+                        <option value="31">August (31 Days)</option>
+                        <option value="30">September (30 Days)</option>
+                        <option value="31">October (31 Days)</option>
+                        <option value="30">November (30 Days)</option>
+                        <option value="31">December (31 Days)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Total Leaves (Days)</label>
+                    <input type="number" id="leaves" value="0">
+                </div>
+                <div class="input-group">
+                    <label>PF Deduction (%)</label>
+                    <input type="number" id="pfPercent" value="12">
+                </div>
+                <div class="input-group">
+                    <label>OT Done (Hours)</label>
+                    <input type="number" id="otHours" value="0">
+                </div>
+                <div class="input-group">
+                    <label>OT Rate (₹/Hr)</label>
+                    <input type="number" id="otRate" value="250">
+                </div>
+            </div>
+
+            <button class="btn-calc" onclick="calculateSalary()">💸 Calculate Net Pay</button>
+
+            <div class="result-container" id="resBox">
+                <div class="res-row"><span>Monthly Gross Pay:</span><span id="resGross">₹0</span></div>
+                <div class="res-row"><span>Per Day Salary:</span><span id="resPerDay">₹0</span></div>
+                <div class="res-row neg"><span>Leave Deduction:</span><span id="resLeaveDec">- ₹0</span></div>
+                <div class="res-row" style="color:var(--primary); font-weight:600;"><span>Overtime Pay:</span><span id="resOTPay">+ ₹0</span></div>
+                <div class="res-row neg"><span>PF Contribution (<span id="pfLab">12</span>%):</span><span id="resPF">- ₹0</span></div>
+                <div class="res-row final"><span>Take-Home Pay:</span><span id="resNet">₹0</span></div>
+            </div>
+        </section>
+
+       <article class="seo-article">
+    <div class="toc">
+        <h3>📖 Table of Contents</h3>
+        <ul>
+            <li><a href="#master-guide">1. The Master Guide to Salary & Overtime Calculation</a></li>
+            <li><a href="#how-it-works">2. How the QuickTooles Salary Calculator Works</a></li>
+            <li><a href="#gross-vs-net">3. Gross Salary vs. Net Pay: The Ultimate Comparison</a></li>
+            <li><a href="#leave-deduction">4. Understanding Leave Deduction (LWP) Logic</a></li>
+            <li><a href="#overtime-deep-dive">5. Overtime (OT) Pay: Legal Standards & Rates</a></li>
+            <li><a href="#pf-breakdown">6. Provident Fund (PF) Deduction & Benefits</a></li>
+            <li><a href="#tax-planning">7. Tax Planning and Salary Structure Optimization</a></li>
+            <li><a href="#data-tables">8. Reference Tables (Days, Months, and Rates)</a></li>
+            <li><a href="#expert-faqs">9. Expert Frequently Asked Questions (FAQs)</a></li>
+        </ul>
+    </div>
+
+    <h2 id="master-guide">1. The Master Guide to Salary & Overtime Calculation</h2>
+    <p>In today's fast-paced corporate and industrial world, your paycheck is more than just a number—it's a complex result of hours worked, commitments kept, and statutory saving contributions. For many, the "Gross Salary" offered during the interview process remains a theoretical figure. The real excitement happens when the "Net Take-Home Pay" is calculated at the end of the month.</p>
+    <p>The <strong>QuickTooles Salary & Overtime Calculator</strong> is built to empower employees, freelancers, and payroll managers with a transparent, accurate, and lightning-fast way to decode salary slips. Whether you're working in a 9-to-5 corporate job, a factory with high overtime hours, or as a contractor, understanding how your leaves and extra hours affect your bank balance is crucial for financial health.</p>
+
+    <h2 id="how-it-works">2. How the QuickTooles Salary Calculator Works</h2>
+    <p>Our tool follows a high-precision algorithm used by professional HR payroll software. Here is the step-by-step breakdown of how the data you input is processed:</p>
+    <ul>
+        <li><strong>Base Salary Input:</strong> This is your fixed monthly compensation before any additions or subtractions.</li>
+        <li><strong>Month Selection:</strong> Unlike generic calculators, we ask you to select the specific month. This is because a day's worth of salary in February (28 days) is worth more than a day's salary in March (31 days).</li>
+        <li><strong>Leave Logic:</strong> We calculate your <em>Per Day Rate</em> and multiply it by the number of unpaid leaves taken.</li>
+        <li><strong>Overtime Engine:</strong> Your total overtime hours are multiplied by your hourly rate and added to your earnings.</li>
+        <li><strong>PF Integration:</strong> A percentage (standard 12%) is deducted from your base salary to show your long-term savings.</li>
+    </ul>
+
+    <h2 id="gross-vs-net">3. Gross Salary vs. Net Pay: The Ultimate Comparison</h2>
+    <p>It is vital to distinguish between what you "earn" and what you "receive." Gross salary is the total cost to the company (CTC) minus some employer-side benefits. Net pay is what remains after the government and your company take their mandated shares.</p>
+
+    <h3 style="margin-top:20px;">Table 1: Comparison of Salary Components</h3>
+    <table class="case-table" style="width:100%; border-collapse: collapse; margin: 20px 0;">
+        <thead>
+            <tr style="background:var(--secondary); color:white;">
+                <th style="padding:12px; border:1px solid var(--border);">Component</th>
+                <th style="padding:12px; border:1px solid var(--border);">Type</th>
+                <th style="padding:12px; border:1px solid var(--border);">Impact on Net Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Basic Salary</td><td>Fixed</td><td>The core of your paycheck.</td></tr>
+            <tr><td>Overtime Pay</td><td>Variable</td><td>Increases your take-home amount.</td></tr>
+            <tr><td>Leave Deduction</td><td>Variable</td><td>Decreases your take-home amount.</td></tr>
+            <tr><td>PF Deduction</td><td>Statutory</td><td>Mandatory savings for retirement.</td></tr>
+            <tr><td>Bonus/Incentives</td><td>Variable</td><td>Extra earnings based on performance.</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="leave-deduction">4. Understanding Leave Deduction (LWP) Logic</h2>
+    <p>Leave Without Pay (LWP) or unpaid leaves can significantly dent your monthly budget. The calculation isn't just about "missing a day." It's about how much that day was worth. If you take a leave in a month with many holidays, the impact on your productivity is higher, and thus the deduction is calculated based on the total calendar days.</p>
+    <blockquote><strong>Pro Tip:</strong> Always check if your company follows the "Sandwich Rule," where if you take a leave on a Friday and the following Monday, the weekend (Saturday and Sunday) might also be counted as unpaid leave.</blockquote>
+
+    <h2 id="overtime-deep-dive">5. Overtime (OT) Pay: Legal Standards & Rates</h2>
+    <p>Overtime is often the primary source of extra income for many workers. In many labor jurisdictions, companies are required to pay "Double OT" (2x the hourly rate) for working on Sundays or public holidays. Regular overtime is usually 1.5x the normal rate. Our tool allows you to input your <strong>actual hourly rate</strong> so you can get an exact figure regardless of your company's multiplier policy.</p>
+
+    <h3 style="margin-top:20px;">Table 2: Common Overtime Multipliers</h3>
+    <table class="case-table" style="width:100%; border-collapse: collapse; margin: 20px 0;">
+        <thead>
+            <tr style="background:var(--secondary); color:white;">
+                <th style="padding:12px; border:1px solid var(--border);">Scenario</th>
+                <th style="padding:12px; border:1px solid var(--border);">Typical Multiplier</th>
+                <th style="padding:12px; border:1px solid var(--border);">Rate Calculation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Weekday Overtime</td><td>1.5x</td><td>Hourly Rate x 1.5</td></tr>
+            <tr><td>Weekend Overtime</td><td>2.0x</td><td>Hourly Rate x 2.0</td></tr>
+            <tr><td>Public Holiday</td><td>2.0x - 2.5x</td><td>Premium Pay</td></tr>
+            <tr><td>Night Shift Premium</td><td>Fixed Bonus</td><td>Added per shift</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="pf-breakdown">6. Provident Fund (PF) Deduction & Benefits</h2>
+    <p>The Provident Fund (PF) is your forced savings account. While it might feel painful to see ₹2,000 to ₹5,000 missing from your paycheck every month, it is one of the best debt-free investment vehicles. In India, the interest rate for EPF is typically around 8.1% to 8.5%, which is higher than most fixed deposits.</p>
+    <p>Our calculator uses the percentage method (default 12%) to show you how much is being deducted. Remember, your employer usually matches this contribution, meaning your actual savings are double what you see in the deduction column!</p>
+
+    <h2 id="tax-planning">7. Tax Planning and Salary Structure</h2>
+    <p>Knowing your net pay is the first step toward tax planning. If your net take-home pay is high, you might fall into a higher tax bracket. By analyzing your PF and other deductions, you can decide whether to invest more in 80C instruments to reduce your taxable income. Our tool gives you the "Net Pay" which you can then use to plan your monthly SIPs (Systematic Investment Plans) and emergency funds.</p>
+
+    <h2 id="data-tables">8. Reference Tables (Days & Months)</h2>
+    <p>Below is a reference table showing how the number of days in a month affects your <strong>Daily Wage</strong> if your salary is ₹30,000:</p>
+
+    <table class="case-table" style="width:100%; border-collapse: collapse; margin: 20px 0;">
+        <thead>
+            <tr style="background:var(--secondary); color:white;">
+                <th>Days in Month</th>
+                <th>Daily Wage (₹)</th>
+                <th>Loss per 1 Day Leave</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>28 Days (Feb)</td><td>₹1,071.42</td><td>₹1,071.42</td></tr>
+            <tr><td>30 Days (Apr/Jun)</td><td>₹1,000.00</td><td>₹1,000.00</td></tr>
+            <tr><td>31 Days (Jan/Mar)</td><td>₹967.74</td><td>₹967.74</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="expert-faqs">9. Expert Frequently Asked Questions (FAQs)</h2>
+    <div class="faq-box">
+        <h4>1. Does the calculator handle Leap Years?</h4>
+        <p>Yes. If you select February, we recommend checking if the current year is a leap year. If it is, manually adjusting the "Leaves" or considering the per-day rate based on 29 days is standard practice.</p>
+    </div>
+    <div class="faq-box">
+        <h4>2. Why is my calculated Net Pay slightly different from my payslip?</h4>
+        <p>Payslips often include "Professional Tax" (usually ₹200) and "TDS" (Tax Deducted at Source). Since these vary by state and income slab, our tool focuses on the core operational variables: OT, Leaves, and PF.</p>
+    </div>
+    <div class="faq-box">
+        <h4>3. Is the Overtime rate calculated on Basic or Gross?</h4>
+        <p>Legally, in many places, OT is calculated on the Gross Salary. However, many private contracts specify a fixed rate per hour. Our tool gives you the flexibility to enter that specific rate.</p>
+    </div>
+    <div class="faq-box">
+        <h4>4. Can I use this for hourly-wage jobs?</h4>
+        <p>Absolutely. If you work on an hourly basis, you can treat your "Base Salary" as your expected monthly average and use the OT section to balance out the extra hours worked.</p>
+    </div>
+    <div class="faq-box">
+        <h4>5. Is my financial data private?</h4>
+        <p>At QuickTooles, privacy is our priority. No data entered in this calculator is sent to our servers. All calculations happen within your browser's local memory and are destroyed once the tab is closed.</p>
+    </div>
+    <div class="faq-box">
+        <h4>6. What is the maximum PF percentage allowed?</h4>
+        <p>While 12% is the standard, many employees opt for VPF (Voluntary Provident Fund) where they can contribute up to 100% of their Basic salary. You can change the PF % in our tool to reflect your VPF choices.</p>
+    </div>
+    <div class="faq-box">
+        <h4>7. How do I calculate "Pro-Rata" salary?</h4>
+        <p>If you joined a company in the middle of the month, you can use the "Leaves" field to input the days you were not employed. This will give you the correct pro-rata payout amount.</p>
+    </div>
+
+    <p style="margin-top:40px; font-size: 14px; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 20px;">
+        <strong>Disclaimer:</strong> This tool is an estimator. QuickTooles is not responsible for any legal or payroll disputes. Please consult your HR department or a certified accountant for official financial advice.
+    </p>
+</article>
+    </main>
+
+    <aside class="sidebar">
+        <div class="widget">
+            <h3>Popular Tools</h3>
+            <div class="widget-links">
+                <a href="advance-salary-calculator.html">💰 Advance Salary</a>
+                <a href="emi-calculator.html">🏦 EMI Calculator</a>
+                <a href="gst-calculator.html">🧾 GST Calculator</a>
+            </div>
+        </div>
+        <div class="widget" style="background: #eff6ff; border: 2px dashed #3b82f6;">
+            <h3>💡 Pro Tip</h3>
+            <p style="font-size: 14px; color: var(--text-main);">In a leap year, February has 29 days. Adjust your calculation accordingly if you're checking for February 2024 or 2028!</p>
+        </div>
+    </aside>
+</div>
+
+<footer>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#" style="color:white;">Privacy Policy</a></p>
+</footer>
+
+<script>
+    function calculateSalary() {
+        const base = parseFloat(document.getElementById('baseSalary').value) || 0;
+        const days = parseInt(document.getElementById('monthSelect').value);
+        const leaves = parseFloat(document.getElementById('leaves').value) || 0;
+        const pf = parseFloat(document.getElementById('pfPercent').value) || 0;
+        const otHours = parseFloat(document.getElementById('otHours').value) || 0;
+        const otRate = parseFloat(document.getElementById('otRate').value) || 0;
+
+        if (base <= 0) { alert("Please enter a valid base salary."); return; }
+
+        const perDay = base / days;
+        const leaveDec = perDay * leaves;
+        const otPay = otHours * otRate;
+        const pfDec = (base * pf) / 100;
+        const netPay = (base - leaveDec + otPay) - pfDec;
+
+        document.getElementById('resGross').innerText = "₹" + base.toLocaleString('en-IN');
+        document.getElementById('resPerDay').innerText = "₹" + perDay.toFixed(2);
+        document.getElementById('resLeaveDec').innerText = "- ₹" + leaveDec.toLocaleString('en-IN', {maximumFractionDigits: 2});
+        document.getElementById('resOTPay').innerText = "+ ₹" + otPay.toLocaleString('en-IN');
+        document.getElementById('resPF').innerText = "- ₹" + pfDec.toLocaleString('en-IN', {maximumFractionDigits: 2});
+        document.getElementById('pfLab').innerText = pf;
+        document.getElementById('resNet').innerText = "₹" + Math.max(0, netPay).toLocaleString('en-IN', {maximumFractionDigits: 0});
+
+        // 1. Result box show karo
+        const resBox = document.getElementById('resBox');
+        resBox.style.display = "block";
+
+        // 🔥 2. MAGIC SCROLL: Screen automatic Result box par chali jayegi
+        resBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+</script>
+
+</body>
+</html>
