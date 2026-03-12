@@ -351,8 +351,22 @@ max-width:100%;
                     <input type="number" id="otHours" value="0">
                 </div>
                 <div class="input-group">
-                    <label>OT Rate (₹/Hr)</label>
-                    <input type="number" id="otRate" placeholder="Optional (auto if blank)">
+                  <label>OT Multiplier (Optional)</label>
+
+<input 
+type="number" 
+step="0.1"
+id="otMultiplier" 
+placeholder="e.g. 2"
+list="otOptions">
+
+<datalist id="otOptions">
+<option value="1">
+<option value="1.5">
+<option value="2">
+<option value="2.5">
+<option value="3">
+</datalist>
                 </div>
             </div>
 
@@ -536,14 +550,18 @@ max-width:100%;
         const leaves = parseFloat(document.getElementById('leaves').value) || 0;
         const pf = parseFloat(document.getElementById('pfPercent').value) || 0;
        const otHours = parseFloat(document.getElementById('otHours').value) || 0;
-let otRate = parseFloat(document.getElementById('otRate').value);
+let multiplier = parseFloat(document.getElementById("otMultiplier").value);
 
-// agar user OT rate nahi deta to auto calculate hoga
-if (!otRate || otRate <= 0) {
-    otRate = (base / days) / 8;
+// agar user kuch fill nahi kare
+if(!multiplier || multiplier <= 0){
+    multiplier = 1;
 }
 
-const otPay = otHours * otRate;
+// per hour salary
+const perHour = (base / days) / 8;
+
+// overtime pay
+const otPay = otHours * perHour * multiplier;
 
         if (base <= 0) { alert("Please enter a valid base salary."); return; }
 
