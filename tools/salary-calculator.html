@@ -267,6 +267,29 @@
     }
 
 }
+        /* MOBILE OVERFLOW FIX */
+
+html,body{
+max-width:100%;
+overflow-x:hidden;
+}
+
+@media (max-width:768px){
+
+.input-grid{
+grid-template-columns:1fr !important;
+}
+
+.case-table{
+display:block;
+overflow-x:auto;
+}
+
+input,select{
+max-width:100%;
+}
+
+}
     </style>
 </head>
 <body>
