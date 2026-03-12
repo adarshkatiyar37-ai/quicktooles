@@ -192,7 +192,7 @@
                 </div>
                 <div class="input-group">
                     <label>OT Rate (₹/Hr)</label>
-                    <input type="number" id="otRate" value="250">
+                    <input type="number" id="otRate" placeholder="Optional (auto if blank)">
                 </div>
             </div>
 
@@ -370,8 +370,15 @@
         const days = parseInt(document.getElementById('monthSelect').value);
         const leaves = parseFloat(document.getElementById('leaves').value) || 0;
         const pf = parseFloat(document.getElementById('pfPercent').value) || 0;
-        const otHours = parseFloat(document.getElementById('otHours').value) || 0;
-        const otRate = parseFloat(document.getElementById('otRate').value) || 0;
+       const otHours = parseFloat(document.getElementById('otHours').value) || 0;
+let otRate = parseFloat(document.getElementById('otRate').value);
+
+// agar user OT rate nahi deta to auto calculate hoga
+if (!otRate || otRate <= 0) {
+    otRate = (base / days) / 8;
+}
+
+const otPay = otHours * otRate;
 
         if (base <= 0) { alert("Please enter a valid base salary."); return; }
 
