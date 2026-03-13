@@ -3,73 +3,81 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://www.quicktooles.in/</loc>
+<loc>https://quicktooles.in/</loc>
+<lastmod>2026-03-13</lastmod>
+<changefreq>daily</changefreq>
 <priority>1.0</priority>
 </url>
 
 <!-- TEXT TOOLS -->
-<url><loc>https://www.quicktooles.in/tools/word-counter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/character-counter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/case-converter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/remove-spaces.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/text-sorter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/text-reverser.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/duplicate-line-remover.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/random-text.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/lorem-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/ascii-to-text.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/text-to-ascii.html</loc></url>
+
+<url><loc>https://quicktooles.in/tools/word-counter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/character-counter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/case-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/remove-spaces.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/text-sorter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/text-reverser.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/duplicate-line-remover.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/random-text.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/lorem-generator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/ascii-to-text.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/text-to-ascii.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
 <!-- IMAGE & PDF -->
-<url><loc>https://www.quicktooles.in/tools/image-resizer.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-compressor.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/png-to-jpg.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/jpg-to-png.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-to-base64.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/base64-to-image.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-rotator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-cropper.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-color-picker.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-converter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/image-to-pdf.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/word-to-pdf.html</loc></url>
 
-<!-- DEVELOPER TOOLS -->
-<url><loc>https://www.quicktooles.in/tools/json-formatter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/html-minifier.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/css-minifier.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/js-minifier.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/url-encoder.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/url-decoder.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/base64-encoder.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/base64-decoder.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/regex-tester.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/color-code-converter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/meta-tag-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/robots-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/sitemap-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/binary-converter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/number-base-converter.html</loc></url>
+<url><loc>https://quicktooles.in/tools/image-resizer.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-compressor.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/png-to-jpg.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/jpg-to-png.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-to-base64.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/base64-to-image.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-rotator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-cropper.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-color-picker.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/image-to-pdf.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/word-to-pdf.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+<!-- DEVELOPER -->
+
+<url><loc>https://quicktooles.in/tools/json-formatter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/html-minifier.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/css-minifier.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/js-minifier.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/url-encoder.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/url-decoder.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/base64-encoder.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/base64-decoder.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/regex-tester.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/color-code-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/meta-tag-generator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/robots-generator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/sitemap-generator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/binary-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/number-base-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
 <!-- SECURITY -->
-<url><loc>https://www.quicktooles.in/tools/password-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/password-checker.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/qr-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/uuid-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/random-number.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/random-color-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/md5-generator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/sha-generator.html</loc></url>
+
+<url><loc>https://quicktooles.in/tools/password-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/password-checker.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/qr-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/uuid-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/random-number.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/random-color-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/md5-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://quicktooles.in/tools/sha-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
 <!-- CALCULATORS -->
-<url><loc>https://www.quicktooles.in/tools/age-calculator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/percentage-calculator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/emi-calculator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/time-converter.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/unit-converter.html</loc></url>
+
+<url><loc>https://quicktooles.in/tools/age-calculator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/percentage-calculator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/emi-calculator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/time-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/unit-converter.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
 <!-- FINANCE -->
-<url><loc>https://www.quicktooles.in/tools/salary-calculator.html</loc></url>
-<url><loc>https://www.quicktooles.in/tools/gst-calculator.html</loc></url>
+
+<url><loc>https://quicktooles.in/tools/salary-calculator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://quicktooles.in/tools/gst-calculator.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
 </urlset>
