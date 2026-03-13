@@ -521,7 +521,7 @@
         // --- Minification Logic ---
         
         // 1. Remove HTML Comments (safely)
-        htmlStr = htmlStr.replace(//g, '');
+        htmlStr = htmlStr.replace(/<!--[\s\S]*?-->/g, '');
         
         // 2. Remove newlines, carriage returns, and tabs
         htmlStr = htmlStr.replace(/[\r\n\t]+/g, ' ');
