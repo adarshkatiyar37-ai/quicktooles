@@ -457,46 +457,69 @@
 </footer>
 
 <script>
-    function generateRobots() {
-        const ua = document.getElementById('useragent').value;
-        const delay = document.getElementById('crawlDelay').value;
-        const sitemap = document.getElementById('sitemap').value.trim();
-        const dis1 = document.getElementById('disallow1').value.trim();
-        const dis2 = document.getElementById('disallow2').value.trim();
-        
-        let output = `User-agent: ${ua}\n`;
-        
-        if (dis1) output += `Disallow: ${dis1.startsWith('/') ? '' : '/'}${dis1}\n`;
-        if (dis2) output += `Disallow: ${dis2.startsWith('/') ? '' : '/'}${dis2}\n`;
-        if (!dis1 && !dis2) output += `Disallow: \n`;
-        
-        if (delay) output += `Crawl-delay: ${delay}\n`;
-        if (sitemap) output += `\nSitemap: ${sitemap}\n`;
-        
-        document.getElementById('robotsResult').value = output;
+function generateRobots() {
+
+    const ua = document.getElementById("useragent").value || "*";
+    const sitemap = document.getElementById("sitemap").value.trim();
+    const delay = document.getElementById("crawlDelay").value;
+    
+    const disallows = [
+        document.getElementById("disallow1").value.trim(),
+        document.getElementById("disallow2").value.trim()
+    ];
+
+    let output = `User-agent: ${ua}\n`;
+
+    let hasDisallow = false;
+
+    disallows.forEach(path => {
+        if(path){
+            hasDisallow = true;
+            output += `Disallow: ${path.startsWith("/") ? path : "/" + path}\n`;
+        }
+    });
+
+    if(!hasDisallow){
+        output += `Allow: /\n`;
     }
 
-    function copyCode() {
-        const out = document.getElementById('robotsResult');
-        if(!out.value) return;
-        out.select();
-        navigator.clipboard.writeText(out.value).then(() => {
-            const btn = document.getElementById('copyBtn');
-            btn.innerText = "✅ Copied!";
-            setTimeout(() => btn.innerText = "📋 Copy Robots.txt", 2000);
-        });
+    if(delay){
+        output += `Crawl-delay: ${delay}\n`;
     }
 
-    function resetForm() {
-        document.querySelectorAll('input, select').forEach(el => {
-            if(el.tagName === 'SELECT') el.selectedIndex = 0;
-            else el.value = '';
-        });
-        generateRobots();
+    if(sitemap){
+        output += `\nSitemap: ${sitemap}\n`;
     }
 
-    // Initialize
-    window.onload = generateRobots;
+    document.getElementById("robotsResult").value = output;
+}
+
+function copyCode(){
+
+    const out = document.getElementById("robotsResult");
+
+    if(!out.value) return;
+
+    navigator.clipboard.writeText(out.value).then(()=>{
+        const btn = document.getElementById("copyBtn");
+        btn.innerText = "✅ Copied!";
+        setTimeout(()=>{
+            btn.innerText="📋 Copy Robots.txt";
+        },2000);
+    });
+}
+
+function resetForm(){
+
+    document.querySelectorAll("input, select").forEach(el=>{
+        if(el.tagName === "SELECT") el.selectedIndex = 0;
+        else el.value = "";
+    });
+
+    generateRobots();
+}
+
+window.onload = generateRobots;
 </script>
 
 </body>
