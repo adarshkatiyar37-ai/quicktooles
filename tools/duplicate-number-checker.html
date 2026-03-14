@@ -399,6 +399,12 @@ document.getElementById("statUnique").innerText=unique.length;
 
 document.getElementById("statDuplicate").innerText=duplicates.length;
 
+/* AUTO SCROLL */
+
+document.getElementById("uniqueOutput").scrollIntoView({
+behavior:"smooth"
+});
+
 }
 
 function clearFields(){
