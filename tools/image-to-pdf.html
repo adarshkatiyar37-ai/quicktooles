@@ -207,6 +207,59 @@
         width: 100% !important; 
     }
 }
+        /* 🔥 GLOBAL OVERFLOW FIX */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* TOOL BOX FIX */
+.tool-workspace {
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* UPLOAD AREA FIX */
+.upload-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 30px 15px !important;
+}
+
+/* FILE CARD FIX */
+.file-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+/* TEXT BREAK FIX */
+.file-name {
+    word-break: break-word !important;
+}
+
+/* BUTTON OVERFLOW FIX */
+.btn-select,
+.btn-convert,
+.btn-secondary {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* PREVENT ANY ELEMENT FROM BREAKING */
+img, canvas {
+    max-width: 100% !important;
+    height: auto !important;
+}
+        @media (max-width: 992px) {
+    .upload-area {
+        padding: 25px 12px !important;
+    }
+}
     </style>
 </head>
 <body>
