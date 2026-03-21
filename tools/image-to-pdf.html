@@ -122,10 +122,11 @@
 
         footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; margin-top: 60px; text-align: center; }
 
-   /* --- UNIVERSAL MOBILE FIX FOR QUICKTOOLES (FINAL FIX) --- */
+/* --- FINAL UNIVERSAL MOBILE FIX (NO BREAK, NO CUT, PERFECT UI) --- */
+
 @media (max-width: 992px) {
 
-    /* 🔥 GLOBAL FIX (MOST IMPORTANT) */
+    /* 🔥 GLOBAL FIX */
     * {
         box-sizing: border-box;
     }
@@ -134,7 +135,7 @@
         overflow-x: hidden !important;
     }
 
-    /* 1. Header */
+    /* 1. HEADER */
     .navbar { 
         flex-direction: column !important; 
         height: auto !important; 
@@ -145,57 +146,68 @@
 
     .nav-links { 
         margin-top: 15px !important; 
-        gap: 15px !important; 
+        gap: 12px !important; 
         flex-wrap: wrap !important; 
         justify-content: center !important; 
     }
 
-    /* 2. Hero */
+    .nav-links a{
+        font-size:14px !important;
+    }
+
+    /* 2. HERO */
     .hero { 
         padding: 40px 15px 60px 15px !important; 
         width: 100% !important;
     }
 
     .hero h1 { 
-        font-size: 28px !important; 
-        line-height: 1.2 !important; 
+        font-size: 26px !important; 
+        line-height: 1.3 !important;
     }
 
-    /* 3. Breadcrumbs */
+    .hero p{
+        font-size:15px !important;
+    }
+
+    /* 3. BREADCRUMBS */
     .breadcrumbs { 
         text-align: center !important; 
         margin: 10px auto !important; 
         padding: 10px !important; 
-        position: relative !important; 
-        z-index: 10 !important; 
-        display: block !important;
+        font-size:13px !important;
         width: 100% !important;
     }
 
-    /* 4. Layout */
+    /* 4. LAYOUT */
     .layout { 
         display: flex !important; 
         flex-direction: column !important; 
-        padding: 0 12px !important;  
+        padding: 0 12px !important; 
         gap: 20px !important; 
         width: 100% !important; 
     }
 
-    /* 5. Tool Workspace */
+    .main-content{
+        width:100% !important;
+    }
+
+    /* 5. TOOL WORKSPACE */
     .tool-workspace { 
-        padding: 20px 12px !important;  /* 👈 fix */
+        padding: 20px 12px !important; 
         margin-top: 0 !important; 
         width: 100% !important; 
         max-width: 100% !important;
-        overflow: hidden !important;   /* 👈 MOST IMPORTANT */
     }
 
-    /* 🔥 UPLOAD AREA MAIN FIX */
+    /* 🔥 UPLOAD BOX PERFECT FIX */
     .upload-area {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 25px 12px !important;   /* 👈 reduced */
-        margin: 0 auto !important;
+        padding: 25px 12px !important;
+        margin: 0 auto 20px auto !important;
+        height: auto !important;
+        min-height: auto !important;
     }
 
     .upload-text {
@@ -209,11 +221,12 @@
         padding: 0 5px !important;
     }
 
-    /* 6. Buttons */
+    /* 6. BUTTONS */
     .action-bar { 
         flex-direction: column !important; 
         width: 100% !important; 
         gap: 10px !important; 
+        margin-top: 15px !important;
     }
 
     .btn,
@@ -223,10 +236,11 @@
         width: 100% !important; 
         max-width: 100% !important;
         padding: 14px !important; 
+        font-size:14px !important;
         justify-content: center !important; 
     }
 
-    /* 7. File Card Fix */
+    /* 7. FILE CARD */
     .file-card {
         flex-direction: column !important;
         align-items: flex-start !important;
@@ -238,7 +252,31 @@
         word-break: break-word !important;
     }
 
-    /* 8. Sidebar */
+    /* 8. SEO ARTICLE */
+    .seo-article{
+        padding:25px 15px !important;
+    }
+
+    .seo-article h2{
+        font-size:22px !important;
+    }
+
+    .seo-article p{
+        font-size:14px !important;
+    }
+
+    /* TABLE FIX */
+    .data-table-container{
+        overflow-x:auto !important;
+    }
+
+    .data-table th,
+    .data-table td{
+        font-size:13px !important;
+        padding:12px !important;
+    }
+
+    /* 9. SIDEBAR */
     .sidebar { 
         position: static !important; 
         width: 100% !important; 
@@ -249,13 +287,12 @@
         width: 100% !important; 
     }
 
-  
+    /* 🔥 IMAGE OVERFLOW FIX */
     img, canvas {
         max-width: 100% !important;
         height: auto !important;
     }
 }
-   
     </style>
 </head>
 <body>
