@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word to PDF Converter – Convert DOCX to PDF Online | QuickTooles</title>
-    
-    <meta name="description" content="Free online Word to PDF Converter. Convert DOCX files to professional PDF documents instantly with our secure, browser-based tool. 100% private, no server uploads, and high-quality formatting preservation.">
-    <meta name="keywords" content="word to pdf, convert docx to pdf, word file to pdf converter, online document converter, free docx to pdf, secure pdf maker, quicktooles, word to pdf converter button, high speed pdf conversion, resume to pdf">
+  <title>Image to PDF Converter – Convert JPG, PNG to PDF Online | QuickTooles</title>
+
+    <meta name="description" content="Free Image to PDF Converter. Convert JPG, PNG images into professional PDF documents instantly with secure browser-based processing.">
+    <meta name="keywords" content="image to pdf, jpg to pdf, png to pdf, convert images to pdf, online pdf converter, quicktooles">
     <meta name="author" content="QuickTooles">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://quicktooles.in/tools/word-to-pdf">
@@ -17,8 +17,7 @@
     <meta property="og:url" content="https://quicktooles.in/tools/word-to-pdf">
     <meta property="og:type" content="website">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
@@ -224,8 +223,8 @@
 </header>
 
 <section class="hero">
-    <h1>Professional Word to PDF Converter</h1>
-    <p>The fastest and most secure way to convert DOCX files into professional PDF documents. Optimized for resumes, contracts, and legal reports. 100% private conversion.</p>
+   <h1>Image to PDF Converter</h1>
+<p>The fastest and most secure way to convert JPG & PNG images into PDF documents. Perfect for documents, notes and scans.</p>
 </section>
 
 <div class="breadcrumbs">
@@ -237,19 +236,21 @@
     <div class="main-content">
         <main class="tool-workspace">
             <div class="upload-area" id="dropZone" onclick="document.getElementById('fileInput').click()">
-                <div class="upload-icon">📄</div>
-                <div class="upload-text">Drag & Drop Word File Here</div>
-                <div class="upload-subtext">or simply use the button below to browse your computer</div>
+                <div class="upload-icon">🖼️</div>
+
+                <div class="upload-text">Drag & Drop Images Here</div>
+
+                <div class="upload-subtext">Upload JPG, PNG images to convert into PDF</div>
                 
-                <button class="btn-select">📁 Select Word File</button>
-                <input type="file" id="fileInput" accept=".docx" onchange="handleFile(event)">
+                <button class="btn-select">📁 Select Image </button>
+               <input type="file" id="fileInput" accept="image/*" multiple onchange="handleImages(event)">
             </div>
 
             <div class="file-list" id="fileList">
                 <div class="file-card">
                     <div class="file-icon">📑</div>
                     <div class="file-info">
-                        <div class="file-name" id="displayFileName">document.docx</div>
+                       <div class="file-name" id="displayFileName">Images Selected</div>
                         <div class="file-size" id="displayFileSize">0 KB</div>
                     </div>
                     <div class="status-badge">Ready for Conversion</div>
@@ -265,57 +266,140 @@
         </main>
 
         <article class="seo-article" id="seo-section">
-            <div class="toc">
-                <h3>📖 Comprehensive Document Guide</h3>
-                <ul>
-                    <li><a href="#what-is-word-pdf">1. What is a Word to PDF Converter?</a></li>
-                    <li><a href="#benefits">2. Why Use PDF for Professional Documents?</a></li>
-                    <li><a href="#comparison">3. Technical Comparison Table: DOCX vs. PDF</a></li>
-                    <li><a href="#privacy">4. Secure Client-Side File Processing</a></li>
-                    <li><a href="#faqs">5. Frequently Asked Questions (FAQs)</a></li>
-                </ul>
-            </div>
 
-            <h2 id="what-is-word-pdf">1. What is a Word to PDF Converter?</h2>
-            <p>A <strong>Word to PDF Converter</strong> is an essential utility for modern digital workflows. It translates the XML-based structure of Microsoft Word documents into the globally recognized **Portable Document Format (PDF)**. This conversion ensures that every font, image, and layout element remains locked in place, providing a consistent experience for every reader.</p>
-            
-            <h2 id="benefits">2. Why Use PDF for Professional Documents?</h2>
-            <p>Whether you are sending a resume to a recruiter or an invoice to a client, PDF is the industry standard for three reasons:</p>
-            <ul>
-                <li><strong>Fixed Formatting:</strong> Unlike Word files, PDFs do not change their layout depending on the version of the software being used.</li>
-                <li><strong>Security:</strong> PDFs support encryption and are much harder to edit accidentally.</li>
-                <li><strong>Universal Accessibility:</strong> Every device on the planet can open a PDF file without needing MS Office installed.</li>
-            </ul>
+    <div class="toc">
+        <h3>📖 Complete Guide</h3>
+        <ul>
+            <li><a href="#what-is">1. What is Image to PDF Converter?</a></li>
+            <li><a href="#why-use">2. Why Convert Images to PDF?</a></li>
+            <li><a href="#features">3. Key Features</a></li>
+            <li><a href="#comparison">4. Image vs PDF Comparison</a></li>
+            <li><a href="#how-to">5. How to Convert</a></li>
+            <li><a href="#benefits">6. Benefits</a></li>
+            <li><a href="#use-cases">7. Use Cases</a></li>
+            <li><a href="#privacy">8. Security & Privacy</a></li>
+            <li><a href="#faqs">9. FAQs</a></li>
+        </ul>
+    </div>
 
-            <h2 id="comparison">3. Technical Comparison Table: DOCX vs. PDF</h2>
-            <div class="data-table-container">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Word (.docx)</th>
-                            <th>PDF (.pdf)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Primary Goal</td><td>Creation & Editing</td><td>Final Sharing</td></tr>
-                        <tr><td>Layout Lock</td><td>No</td><td>Yes (Absolute)</td></tr>
-                        <tr><td>Mobile Support</td><td>Third-party apps</td><td>Native Support</td></tr>
-                        <tr><td>SEO Value</td><td>Medium</td><td>High (Indexable)</td></tr>
-                    </tbody>
-                </table>
-            </div>
+    <h2 id="what-is">1. What is an Image to PDF Converter?</h2>
+    <p>An <strong>Image to PDF Converter</strong> is an online tool that allows you to convert image files like JPG, PNG, and JPEG into a single PDF document. It helps combine multiple images into one structured file that is easy to share, store, and print.</p>
 
-            <h2 id="privacy">4. Secure Client-Side File Processing</h2>
-            <p>QuickTooles uses <strong>client-side JavaScript technology</strong>. When you use our <em>word to pdf converter button</em>, the conversion happens in your computer's RAM. We never upload your sensitive contracts or resumes to any external server. This is the most secure way to handle private documents online in 2026.</p>
+    <p>PDF (Portable Document Format) is the most widely used file format because it preserves layout, quality, and formatting across all devices.</p>
 
-            <h2 id="faqs">5. Frequently Asked Questions (FAQs)</h2>
-            <div class="faq-box">
-                <p><strong>Q: Will my images remain high quality?</strong><br>A: Yes! Our engine extracts images at their original resolution and embeds them directly into the PDF container.</p>
-                <br>
-                <p><strong>Q: Can I convert files bigger than 10MB?</strong><br>A: Yes, our tool is optimized to handle large documents efficiently, though it depends on your device's memory.</p>
-            </div>
-        </article>
+    <h2 id="why-use">2. Why Convert Images to PDF?</h2>
+    <p>There are many reasons why users convert images into PDF format:</p>
+    <ul>
+        <li><strong>Better Organization:</strong> Combine multiple images into one file</li>
+        <li><strong>Professional Format:</strong> PDF looks more official</li>
+        <li><strong>Easy Sharing:</strong> Send one file instead of many</li>
+        <li><strong>Universal Access:</strong> Works on all devices</li>
+        <li><strong>Print Friendly:</strong> Perfect for documents</li>
+    </ul>
+
+    <h2 id="features">3. Key Features of Our Tool</h2>
+    <p>Our Image to PDF tool is designed for speed, privacy, and ease of use:</p>
+    <ul>
+        <li>🚀 Instant conversion in seconds</li>
+        <li>🔒 100% secure (no file upload)</li>
+        <li>📁 Multiple images supported</li>
+        <li>🎯 High-quality output</li>
+        <li>⚡ Fast and lightweight</li>
+    </ul>
+
+    <h2 id="comparison">4. Image vs PDF – Detailed Comparison</h2>
+
+    <div class="data-table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Image (JPG/PNG)</th>
+                    <th>PDF</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>File Format</td><td>Separate files</td><td>Single document</td></tr>
+                <tr><td>Sharing</td><td>Difficult</td><td>Easy</td></tr>
+                <tr><td>Layout</td><td>Flexible</td><td>Fixed</td></tr>
+                <tr><td>Printing</td><td>Not optimized</td><td>Optimized</td></tr>
+                <tr><td>Professional Use</td><td>Low</td><td>High</td></tr>
+                <tr><td>Security</td><td>Basic</td><td>Advanced</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="how-to">5. How to Convert Images to PDF</h2>
+    <p>Follow these simple steps:</p>
+    <ol>
+        <li>Click on <strong>Select Images</strong></li>
+        <li>Upload JPG or PNG files</li>
+        <li>Click on <strong>Convert to PDF</strong></li>
+        <li>Download your PDF instantly</li>
+    </ol>
+
+    <h2 id="benefits">6. Benefits for Students & Professionals</h2>
+
+    <p><strong>For Students:</strong></p>
+    <ul>
+        <li>Convert notes into PDF</li>
+        <li>Submit assignments easily</li>
+        <li>Organize study material</li>
+    </ul>
+
+    <p><strong>For Professionals:</strong></p>
+    <ul>
+        <li>Create reports from images</li>
+        <li>Convert scanned documents</li>
+        <li>Share files professionally</li>
+    </ul>
+
+    <h2 id="use-cases">7. Real-Life Use Cases</h2>
+    <ul>
+        <li>📸 Mobile scan → PDF</li>
+        <li>🧾 Bills → single PDF</li>
+        <li>📝 Notes → share easily</li>
+        <li>📊 Reports from screenshots</li>
+    </ul>
+
+    <h2 id="privacy">8. Security & Privacy</h2>
+    <p>Your data is completely safe:</p>
+    <ul>
+        <li>❌ No file upload</li>
+        <li>❌ No server storage</li>
+        <li>✔️ Works in browser only</li>
+    </ul>
+
+    <p>This makes it ideal for sensitive files like bank statements, personal documents, and legal papers.</p>
+
+    <h2 id="faqs">9. Frequently Asked Questions (FAQs)</h2>
+
+    <div class="faq-box">
+        <p><strong>Q: Can I convert multiple images into one PDF?</strong><br>
+        A: Yes, you can merge multiple images into a single PDF file.</p>
+
+        <br>
+
+        <p><strong>Q: Is this tool free?</strong><br>
+        A: Yes, it is 100% free.</p>
+
+        <br>
+
+        <p><strong>Q: Will image quality reduce?</strong><br>
+        A: No, original quality is maintained.</p>
+
+        <br>
+
+        <p><strong>Q: Is it secure?</strong><br>
+        A: Yes, files never leave your device.</p>
+
+        <br>
+
+        <p><strong>Q: Which formats are supported?</strong><br>
+        A: JPG, JPEG, PNG and more.</p>
+    </div>
+
+</article>
     </div>
 
     <aside class="sidebar">
@@ -353,59 +437,59 @@
 </footer>
 
 <script>
-    function handleFile(event) {
-        const file = event.target.files[0];
-        if (!file) return;
+    let selectedFiles = [];
 
-        const dropZone = document.getElementById('dropZone');
-        const fileList = document.getElementById('fileList');
-        const actionBar = document.getElementById('actionBar');
+function handleImages(event) {
+    selectedFiles = event.target.files;
+    if (!selectedFiles.length) return;
 
-        // Update UI logic
-        dropZone.style.display = "none";
-        fileList.style.display = "block";
-        actionBar.style.display = "flex";
+    const dropZone = document.getElementById('dropZone');
+    const fileList = document.getElementById('fileList');
+    const actionBar = document.getElementById('actionBar');
 
-        document.getElementById('displayFileName').innerText = file.name;
-        document.getElementById('displayFileSize').innerText = (file.size / 1024).toFixed(2) + " KB";
+    dropZone.style.display = "none";
+    fileList.style.display = "block";
+    actionBar.style.display = "flex";
 
-        // Convert Word to HTML for the PDF engine
+    document.getElementById('displayFileName').innerText = selectedFiles.length + " Images Selected";
+    document.getElementById('displayFileSize').innerText = "";
+}
+
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
         const reader = new FileReader();
-        reader.onload = function(e) {
-            const arrayBuffer = e.target.result;
-            mammoth.convertToHtml({arrayBuffer: arrayBuffer})
-                .then(function(result) {
-                    document.getElementById('previewArea').innerHTML = result.value;
-                })
-                .catch(function(err) {
-                    alert("Error: Only .docx files are supported. Please try again.");
-                    resetTool();
-                });
-        };
-        reader.readAsArrayBuffer(file);
+
+        await new Promise((resolve) => {
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+
+                img.onload = function() {
+                    const width = pdf.internal.pageSize.getWidth();
+                    const height = (img.height * width) / img.width;
+
+                    if (i !== 0) pdf.addPage();
+                    pdf.addImage(img, 'JPEG', 0, 0, width, height);
+                    resolve();
+                };
+            };
+            reader.readAsDataURL(file);
+        });
     }
 
-    function downloadPDF() {
-        const element = document.getElementById('previewArea');
-        const fileName = document.getElementById('displayFileName').innerText.replace(".docx", ".pdf");
-        
-        const opt = {
-            margin:       [0.75, 0.75],
-            filename:     fileName,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-        };
+    pdf.save("images.pdf");
+}
 
-        html2pdf().set(opt).from(element).save();
-    }
-
-    function resetTool() {
-        document.getElementById('fileInput').value = "";
-        document.getElementById('dropZone').style.display = "flex";
-        document.getElementById('fileList').style.display = "none";
-        document.getElementById('actionBar').style.display = "none";
-    }
+function resetTool() {
+    document.getElementById('fileInput').value = "";
+    document.getElementById('dropZone').style.display = "flex";
+    document.getElementById('fileList').style.display = "none";
+    document.getElementById('actionBar').style.display = "none";
+}
 </script>
 
 </body>
