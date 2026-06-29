@@ -616,6 +616,33 @@ accept="application/pdf">
 
 </div>
 
+ <div style="margin-top:25px">
+
+<label>
+Select Target PDF Size
+</label>
+
+
+<select id="targetSize" 
+style="width:100%;padding:15px;border-radius:10px;border:2px solid #ddd;margin-top:10px;font-size:16px;">
+
+
+<option value="100">100 KB</option>
+
+<option value="200">200 KB</option>
+
+<option value="500">500 KB</option>
+
+<option value="1024">1 MB</option>
+
+<option value="2048">2 MB</option>
+
+
+</select>
+
+
+</div>
+
 
 
 <button class="btn" onclick="compressPDF()">
@@ -921,66 +948,35 @@ provides fast and free online utility tools.
 async function compressPDF(){
 
 
-let fileInput = document.getElementById("pdfFile");
+let fileInput=document.getElementById("pdfFile");
+
+let targetKB=document.getElementById("targetSize").value;
 
 
-let resultBox = document.getElementById("resultBox");
+if(fileInput.files.length==0){
 
-
-let downloadLink = document.getElementById("downloadLink");
-
-
-
-if(fileInput.files.length === 0){
-
-
-alert("Please select PDF file");
-
+alert("Please select PDF");
 
 return;
-
 
 }
 
 
 
-let file = fileInput.files[0];
+let file=fileInput.files[0];
+
+
+let bytes=await file.arrayBuffer();
+
+
+let pdfDoc=await PDFLib.PDFDocument.load(bytes);
 
 
 
-if(file.type !== "application/pdf"){
+let quality=0.5;
 
 
-alert("Only PDF files allowed");
-
-
-return;
-
-
-}
-
-
-
-let oldSize = file.size;
-
-
-
-document.querySelector(".btn").innerHTML="Compressing...";
-
-
-
-try{
-
-
-let bytes = await file.arrayBuffer();
-
-
-
-let pdfDoc = await PDFLib.PDFDocument.load(bytes);
-
-
-
-let compressedBytes = await pdfDoc.save({
+let compressed=await pdfDoc.save({
 
 useObjectStreams:true
 
@@ -988,112 +984,78 @@ useObjectStreams:true
 
 
 
-
-let blob = new Blob(
-
-[compressedBytes],
-
+let blob=new Blob([compressed],
 {
-
 type:"application/pdf"
+});
+
+
+
+let sizeKB=blob.size/1024;
+
+
+
+// agar size target se bada hai to repeat compression
+
+while(sizeKB > targetKB && quality > 0.1){
+
+
+quality -=0.1;
+
+
+compressed=await pdfDoc.save({
+
+useObjectStreams:true,
+
+addDefaultPage:false
+
+});
+
+
+blob=new Blob([compressed],
+{
+type:"application/pdf"
+});
+
+
+sizeKB=blob.size/1024;
+
 
 }
 
-);
 
 
 
-
-let url = URL.createObjectURL(blob);
-
+let url=URL.createObjectURL(blob);
 
 
 
-downloadLink.href = url;
-
-downloadLink.download = "compressed-pdf.pdf";
-
-
-
-
-let newSize = blob.size;
-
-
-
-let oldKB = (oldSize/1024).toFixed(2);
-
-let newKB = (newSize/1024).toFixed(2);
-
-
-
+let resultBox=document.getElementById("resultBox");
 
 
 resultBox.style.display="block";
 
 
+resultBox.innerHTML=`
 
-resultBox.innerHTML = `
-
-
-<h3>PDF Compressed Successfully ✅</h3>
-
+<h3>PDF Ready ✅</h3>
 
 <p>
-
-Original Size:
-
-<b>${oldKB} KB</b>
-
+Final Size:
+<b>${sizeKB.toFixed(2)} KB</b>
 </p>
 
 
-<p>
-
-Compressed Size:
-
-<b>${newKB} KB</b>
-
-</p>
-
-
-<a 
-
+<a class="download-btn"
 href="${url}"
+download="compressed.pdf">
 
-download="compressed-pdf.pdf"
-
-class="download-btn">
-
-Download Compressed PDF
+Download PDF
 
 </a>
 
 
 `;
-
-
-
-document.querySelector(".btn").innerHTML="Compress PDF";
-
-
-
-}
-
-catch(error){
-
-
-console.log(error);
-
-
-alert("Something went wrong while compressing PDF");
-
-
-document.querySelector(".btn").innerHTML="Compress PDF";
-
-
-}
-
-
 
 }
 
