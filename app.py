@@ -1,12 +1,12 @@
 import os
 import fitz  # PyMuPDF
-from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify
+from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify, after_this_request
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 THUMBNAIL_FOLDER = 'static/thumbnails'
 
-# Folders banana ensure karein
+# Folders build check
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(THUMBNAIL_FOLDER, exist_ok=True)
 
@@ -14,7 +14,7 @@ CURRENT_PDF = os.path.join(UPLOAD_FOLDER, "input.pdf")
 PROCESSED_PDF = os.path.join(UPLOAD_FOLDER, "processed.pdf")
 
 def generate_thumbnails(pdf_path):
-    # Purane thumbnails saaf karein taaki nayi file ke hi dikhein
+    # Purane static cache ko delete karein
     for f in os.listdir(THUMBNAIL_FOLDER):
         if f.endswith('.png'):
             try:
@@ -25,7 +25,7 @@ def generate_thumbnails(pdf_path):
     doc = fitz.open(pdf_path)
     page_data = []
     
-    # 800 pages ke liye safety ke liye initial workspace me 50 pages load karte hain
+    # Render workspace control max pages limit to 50
     max_pages = min(len(doc), 50) 
     for page_num in range(max_pages):
         page = doc[page_num]
@@ -53,12 +53,12 @@ def run_auto_clean(input_path, output_path):
         has_text = page.get_text().strip()
         has_images = len(page.get_images()) > 0
         
-        # 1. Blank page delete logic
+        # 1. Blank page detection
         if not has_text and not has_images:
             deleted_blanks += 1
             continue
             
-        # 2. Auto rotation logic
+        # 2. Alignment configuration check
         try:
             osd = page.get_text("osd")
             rotation_needed = osd.get("rotate", 0)
@@ -72,7 +72,17 @@ def run_auto_clean(input_path, output_path):
             
         new_doc.insert_pdf(doc, from_page=page_num, to_page=page_num)
         
-    new_doc.save(output_path)
+    # Safeguard: Empty doc check
+    if len(new_doc) == 0 and len(doc) > 0:
+        new_doc.insert_pdf(doc, from_page=0, to_page=0)
+
+    # Output file cleaning rewrite
+    if os.path.exists(output_path):
+        try: os.remove(output_path)
+        except Exception: pass
+
+    # Garbage compression prevents blank page generation
+    new_doc.save(output_path, garbage=3, deflate=True)
     new_doc.close()
     doc.close()
     return deleted_blanks, rotated_count
@@ -80,28 +90,33 @@ def run_auto_clean(input_path, output_path):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # SAFEGUARD: index.html ke file name ('pdf_file') ko extract karein
-        file = request.files.get('pdf_file')
-        
+        # Werkzeug chunk-parser errors prevention check
+        try:
+            file = request.files.get('pdf_file')
+        except Exception as e:
+            print(f"File payload stream error: {e}")
+            return redirect(url_for('index'))
+            
         if not file or file.filename == '': 
             return redirect(url_for('index'))
         
-        # index.html ke hidden 'mode' parameter ko strictly map karein
         mode = request.form.get('mode', 'auto') 
         
         if file and file.filename.endswith('.pdf'):
+            if os.path.exists(CURRENT_PDF):
+                try: os.remove(CURRENT_PDF)
+                except Exception: pass
             file.save(CURRENT_PDF)
             
             if mode == 'auto':
-                # Automated cleaner mode
                 blanks, rotated = run_auto_clean(CURRENT_PDF, PROCESSED_PDF)
                 return render_template('index.html', download=True, blanks=blanks, rotated=rotated)
             
             elif mode == 'manual':
-                # Redirect user directly to the workspace
                 doc = fitz.open(CURRENT_PDF)
                 if os.path.exists(PROCESSED_PDF):
-                    os.remove(PROCESSED_PDF)
+                    try: os.remove(PROCESSED_PDF)
+                    except Exception: pass
                 doc.save(PROCESSED_PDF)
                 doc.close()
                 return redirect(url_for('manual_editor'))
@@ -126,12 +141,13 @@ def delete_page():
         if i != page_idx:
             new_doc.insert_pdf(doc, from_page=i, to_page=i)
             
-    new_doc.save(temp_path)
+    new_doc.save(temp_path, garbage=3, deflate=True)
     new_doc.close()
     doc.close()
     
     if os.path.exists(PROCESSED_PDF):
-        os.remove(PROCESSED_PDF)
+        try: os.remove(PROCESSED_PDF)
+        except Exception: pass
     os.rename(temp_path, PROCESSED_PDF)
     
     return jsonify({'status': 'success'})
@@ -147,18 +163,26 @@ def rotate_page():
     page = doc[page_idx]
     page.set_rotation((page.rotation + 90) % 360)
     
-    doc.save(temp_path)
+    doc.save(temp_path, garbage=3, deflate=True)
     doc.close()
     
     if os.path.exists(PROCESSED_PDF):
-        os.remove(PROCESSED_PDF)
+        try: os.remove(PROCESSED_PDF)
+        except Exception: pass
     os.rename(temp_path, PROCESSED_PDF)
     
     return jsonify({'status': 'success'})
 
+@app.route('/manual_done')
+def manual_done():
+    return render_template('index.html', download=True, blanks=0, rotated=0)
+
 @app.route('/download')
 def download():
-    return send_file(PROCESSED_PDF, as_attachment=True, download_name="Cleaned_Document.pdf")
+    # Secure download: Returns uncorrupted PDF streams
+    if os.path.exists(PROCESSED_PDF):
+        return send_file(PROCESSED_PDF, as_attachment=True, download_name="Cleaned_Document.pdf")
+    return "Error: File compilation pipeline broken.", 500
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
