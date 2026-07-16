@@ -1,6 +1,6 @@
 import os
 import fitz  # PyMuPDF
-from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify
+from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify, after_this_request
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -25,11 +25,10 @@ def generate_thumbnails(pdf_path):
     doc = fitz.open(pdf_path)
     page_data = []
     
-    # 800 pages ke liye initial workspace me safety ke liye pehle 100 pages load karte hain
-    max_pages = min(len(doc), 100) 
+    # Speed ke liye workspace me initial stage me max 50 pages show karenge
+    max_pages = min(len(doc), 50) 
     for page_num in range(max_pages):
         page = doc[page_num]
-        # Low resolution tak ki loading super-fast ho
         pix = page.get_pixmap(matrix=fitz.Matrix(0.2, 0.2))
         image_name = f"page_{page_num}.png"
         pix.save(os.path.join(THUMBNAIL_FOLDER, image_name))
@@ -81,11 +80,14 @@ def run_auto_clean(input_path, output_path):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        if 'pdf_file' not in request.files: return redirect(request.url)
-        file = request.files['pdf_file']
-        if file.filename == '': return redirect(request.url)
+        # SAFEGUARD: Kisi bhi input field name (pdf_file, file, pdf) ko dynamic check karna
+        file = request.files.get('pdf_file') or request.files.get('file') or request.files.get('pdf')
         
-        mode = request.form.get('mode') 
+        if not file or file.filename == '': 
+            print("ERROR: No file received in the request files payload!")
+            return redirect(request.url)
+        
+        mode = request.form.get('mode', 'auto') 
         
         if file and file.filename.endswith('.pdf'):
             file.save(CURRENT_PDF)
@@ -119,7 +121,6 @@ def delete_page():
     doc = fitz.open(PROCESSED_PDF)
     temp_path = os.path.join(UPLOAD_FOLDER, "temp_processed.pdf")
     
-    # Naye document me delete kiye gaye page ke alawa baaki sab daalna
     new_doc = fitz.open()
     for i in range(len(doc)):
         if i != page_idx:
@@ -129,7 +130,6 @@ def delete_page():
     new_doc.close()
     doc.close()
     
-    # Mac/Windows file replace permission fix
     if os.path.exists(PROCESSED_PDF):
         os.remove(PROCESSED_PDF)
     os.rename(temp_path, PROCESSED_PDF)
@@ -144,7 +144,6 @@ def rotate_page():
     doc = fitz.open(PROCESSED_PDF)
     temp_path = os.path.join(UPLOAD_FOLDER, "temp_processed.pdf")
     
-    # Page ko 90 degree clockwise ghumana
     page = doc[page_idx]
     page.set_rotation((page.rotation + 90) % 360)
     
@@ -157,10 +156,28 @@ def rotate_page():
     
     return jsonify({'status': 'success'})
 
+@app.route('/manual_done')
+def manual_done():
+    # FIXED: Direct handle routing to let users download the manually curated PDF
+    return render_template('index.html', download=True, blanks=0, rotated=0)
+
 @app.route('/download')
 def download():
-    return send_file(PROCESSED_PDF, as_attachment=True, download_name="Final_Document.pdf")
+    # Auto-clean active: Download ke baad, uploads aur static cache completely empty kar do
+    @after_this_request
+    def remove_file(response):
+        try:
+            if os.path.exists(CURRENT_PDF): os.remove(CURRENT_PDF)
+            if os.path.exists(PROCESSED_PDF): os.remove(PROCESSED_PDF)
+            for f in os.listdir(THUMBNAIL_FOLDER):
+                os.remove(os.path.join(THUMBNAIL_FOLDER, f))
+        except Exception as e:
+            print(f"Error during post-download cache wipe: {e}")
+        return response
+
+    return send_file(PROCESSED_PDF, as_attachment=True, download_name="Cleaned_Document.pdf")
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    # Dynamic port configuration for production environments like Render
+    port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
