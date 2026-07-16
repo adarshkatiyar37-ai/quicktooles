@@ -1,6 +1,6 @@
 import os
 import fitz  # PyMuPDF
-from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify, after_this_request
+from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -25,7 +25,7 @@ def generate_thumbnails(pdf_path):
     doc = fitz.open(pdf_path)
     page_data = []
     
-    # Speed safety limits (Max 50 page visual check)
+    # 800 pages ke liye safety ke liye initial workspace me 50 pages load karte hain
     max_pages = min(len(doc), 50) 
     for page_num in range(max_pages):
         page = doc[page_num]
@@ -80,15 +80,13 @@ def run_auto_clean(input_path, output_path):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Dynamic variable mapping checks
-        file = request.files.get('pdf_file') or request.files.get('file') or request.files.get('pdf')
+        # Safely fetch input variable key variations
+        file = request.files.get('pdf_file') or request.files.get('file')
         
-        if not file or file.filename == '':
-            print("ERROR: No file payload detected in keys.")
+        if not file or file.filename == '': 
             return redirect(request.url)
         
-        # SAFEGUARD: Agar template se 'mode' empty (null) aaye toh use fallback parameters dekar 400 bad request crash se bachaayein!
-        mode = request.form.get('mode') or 'auto'
+        mode = request.form.get('mode', 'auto') 
         
         if file and file.filename.endswith('.pdf'):
             file.save(CURRENT_PDF)
@@ -155,23 +153,8 @@ def rotate_page():
     
     return jsonify({'status': 'success'})
 
-@app.route('/manual_done')
-def manual_done():
-    return render_template('index.html', download=True, blanks=0, rotated=0)
-
 @app.route('/download')
 def download():
-    @after_this_request
-    def remove_file(response):
-        try:
-            if os.path.exists(CURRENT_PDF): os.remove(CURRENT_PDF)
-            if os.path.exists(PROCESSED_PDF): os.remove(PROCESSED_PDF)
-            for f in os.listdir(THUMBNAIL_FOLDER):
-                os.remove(os.path.join(THUMBNAIL_FOLDER, f))
-        except Exception as e:
-            print(f"Error post download task: {e}")
-        return response
-
     return send_file(PROCESSED_PDF, as_attachment=True, download_name="Cleaned_Document.pdf")
 
 if __name__ == '__main__':
