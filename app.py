@@ -80,22 +80,25 @@ def run_auto_clean(input_path, output_path):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Safely fetch input variable key variations
-        file = request.files.get('pdf_file') or request.files.get('file')
+        # SAFEGUARD: index.html ke file name ('pdf_file') ko extract karein
+        file = request.files.get('pdf_file')
         
         if not file or file.filename == '': 
-            return redirect(request.url)
+            return redirect(url_for('index'))
         
+        # index.html ke hidden 'mode' parameter ko strictly map karein
         mode = request.form.get('mode', 'auto') 
         
         if file and file.filename.endswith('.pdf'):
             file.save(CURRENT_PDF)
             
             if mode == 'auto':
+                # Automated cleaner mode
                 blanks, rotated = run_auto_clean(CURRENT_PDF, PROCESSED_PDF)
                 return render_template('index.html', download=True, blanks=blanks, rotated=rotated)
             
             elif mode == 'manual':
+                # Redirect user directly to the workspace
                 doc = fitz.open(CURRENT_PDF)
                 if os.path.exists(PROCESSED_PDF):
                     os.remove(PROCESSED_PDF)
