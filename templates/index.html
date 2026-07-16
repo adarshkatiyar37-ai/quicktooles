@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Processing Console</title>
-    <!-- Premium Font Stack -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,52 +14,61 @@
             --text-dark: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --bg-light: #ffffff;
+            --card-bg: #ffffff;
         }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--bg-light); 
+            /* Pure transparent background taaki website ka blue gradient piche dikhe */
+            background: transparent; 
             margin: 0; 
-            padding: 16px; 
+            padding: 12px; 
             display: flex; 
             justify-content: center; 
             align-items: center;
-            min-height: 85vh;
+            min-height: 95vh;
             color: var(--text-dark);
             box-sizing: border-box;
         }
 
+        /* Highly-Polished Light Dashboard Card (No Transparent Text) */
         .container { 
             width: 100%; 
-            max-width: 460px; 
+            max-width: 420px; 
             text-align: center; 
-            padding: 10px;
+            padding: 35px 25px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+            box-sizing: border-box;
         }
 
         .container h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             margin: 0 0 8px 0;
             letter-spacing: -0.5px;
+            color: var(--text-dark);
         }
 
-        .container p {
-            font-size: 0.95rem;
+        .container p.description {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin: 0 0 30px 0;
+            margin: 0 0 25px 0;
             font-weight: 500;
+            line-height: 1.4;
         }
 
-        /* Premium Minimal Dropzone */
+        /* Drag & Drop Styling */
         .upload-box { 
             border: 2px dashed #cbd5e1; 
-            padding: 45px 20px; 
+            padding: 35px 20px; 
             cursor: pointer; 
-            margin-bottom: 24px; 
+            margin-bottom: 20px; 
             background: #f8fafc; 
-            border-radius: 16px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 14px;
+            transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -73,23 +81,22 @@
         }
 
         .upload-icon {
-            font-size: 1.8rem;
-            color: var(--primary-blue);
+            font-size: 2rem;
         }
 
         #label {
             color: var(--text-dark);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .upload-sublabel {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             font-weight: 500;
         }
 
-        /* Action Controls */
+        /* Action Buttons Grid */
         .btn-group { 
             display: flex; 
             gap: 12px; 
@@ -97,19 +104,19 @@
 
         .btn { 
             color: white; 
-            padding: 14px 20px; 
+            padding: 12px 18px; 
             border: none; 
-            border-radius: 12px; 
+            border-radius: 10px; 
             cursor: pointer; 
             flex: 1; 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             font-weight: 700; 
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         .btn-auto { 
             background: var(--primary-blue); 
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
         }
 
         .btn-auto:hover { 
@@ -132,36 +139,37 @@
         .btn-download { 
             background: var(--success-green); 
             width: 100%; 
-            font-size: 1rem; 
-            padding: 14px; 
+            font-size: 0.95rem; 
+            padding: 12px; 
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
 
         .btn-download:hover { 
             background: var(--hover-green); 
         }
 
-        /* Stats Diagnostics Panel */
+        /* Processed Stats Panel */
         .stats { 
             background: #f0fdf4; 
-            padding: 24px; 
-            border-radius: 16px; 
+            padding: 20px; 
+            border-radius: 14px; 
             text-align: left; 
-            margin-bottom: 24px; 
+            margin-bottom: 20px; 
             border: 1px solid #bbf7d0; 
         }
 
         .stats strong { 
             color: #166534; 
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
 
         .stats p { 
-            margin: 6px 0; 
+            margin: 4px 0; 
             color: #1e293b; 
-            font-size: 0.95rem; 
+            font-size: 0.85rem; 
             font-weight: 600;
         }
 
@@ -169,9 +177,8 @@
             display: inline-block;
             color: var(--primary-blue); 
             text-decoration: none; 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
             font-weight: 700;
-            transition: color 0.2s ease;
         }
 
         .reset-link:hover {
@@ -182,29 +189,26 @@
 <body>
 <div class="container">
     
-    <h2>Document Processor</h2>
-    <p>Upload your PDF document to initiate structural cleaning options.</p>
+    <h2>PDF Cleaner</h2>
+    <p class="description">Upload your PDF document to initiate cleaning options.</p>
     
     {% if not download %}
     <form action="/" method="POST" enctype="multipart/form-data" id="pdfForm">
-        <!-- Interactive Dropzone Area -->
         <div class="upload-box" onclick="document.getElementById('pdf_file').click()">
             <div class="upload-icon">📥</div>
             <span id="label">Choose PDF Document</span>
             <span class="upload-sublabel" id="sublabel">Click to browse your directory</span>
-            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required onchange="document.getElementById('label').innerText=this.files[0].name; document.getElementById('sublabel').innerText='File selected successfully';" style="display: none;">
+            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required onchange="document.getElementById('label').innerText=this.files[0].name; document.getElementById('sublabel').innerText='File loaded';" style="display: none;">
         </div>
         
         <input type="hidden" name="mode" id="selectedMode" value="auto">
         
-        <!-- Execution Control Hub -->
         <div class="btn-group">
-            <button type="submit" class="btn btn-auto" onclick="document.getElementById('selectedMode').value='auto'">Automatic</button>
-            <button type="submit" class="btn btn-manual" onclick="document.getElementById('selectedMode').value='manual'">Manual</button>
+            <button type="submit" class="btn btn-auto" onclick="document.getElementById('selectedMode').value='auto'">Automated Run</button>
+            <button type="submit" class="btn btn-manual" onclick="document.getElementById('selectedMode').value='manual'">Manual Studio</button>
         </div>
     </form>
     {% else %}
-    <!-- Diagnostic Metrics Display -->
     <div class="stats">
         <strong>Optimization Suite Complete</strong>
         <p>• Blank pages cleanly omitted: {{ blanks }}</p>
