@@ -25,7 +25,7 @@ def generate_thumbnails(pdf_path):
     doc = fitz.open(pdf_path)
     page_data = []
     
-    # Speed ke liye workspace me initial stage me max 50 pages show karenge
+    # Speed safety limits (Max 50 page visual check)
     max_pages = min(len(doc), 50) 
     for page_num in range(max_pages):
         page = doc[page_num]
@@ -80,25 +80,24 @@ def run_auto_clean(input_path, output_path):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # SAFEGUARD: Kisi bhi input field name (pdf_file, file, pdf) ko dynamic check karna
+        # Dynamic variable mapping checks
         file = request.files.get('pdf_file') or request.files.get('file') or request.files.get('pdf')
         
-        if not file or file.filename == '': 
-            print("ERROR: No file received in the request files payload!")
+        if not file or file.filename == '':
+            print("ERROR: No file payload detected in keys.")
             return redirect(request.url)
         
-        mode = request.form.get('mode', 'auto') 
+        # SAFEGUARD: Agar template se 'mode' empty (null) aaye toh use fallback parameters dekar 400 bad request crash se bachaayein!
+        mode = request.form.get('mode') or 'auto'
         
         if file and file.filename.endswith('.pdf'):
             file.save(CURRENT_PDF)
             
             if mode == 'auto':
-                # OPTION 1: Poora Kaam Automatic
                 blanks, rotated = run_auto_clean(CURRENT_PDF, PROCESSED_PDF)
                 return render_template('index.html', download=True, blanks=blanks, rotated=rotated)
             
             elif mode == 'manual':
-                # OPTION 2: Poora Kaam Manually
                 doc = fitz.open(CURRENT_PDF)
                 if os.path.exists(PROCESSED_PDF):
                     os.remove(PROCESSED_PDF)
@@ -158,12 +157,10 @@ def rotate_page():
 
 @app.route('/manual_done')
 def manual_done():
-    # FIXED: Direct handle routing to let users download the manually curated PDF
     return render_template('index.html', download=True, blanks=0, rotated=0)
 
 @app.route('/download')
 def download():
-    # Auto-clean active: Download ke baad, uploads aur static cache completely empty kar do
     @after_this_request
     def remove_file(response):
         try:
@@ -172,12 +169,11 @@ def download():
             for f in os.listdir(THUMBNAIL_FOLDER):
                 os.remove(os.path.join(THUMBNAIL_FOLDER, f))
         except Exception as e:
-            print(f"Error during post-download cache wipe: {e}")
+            print(f"Error post download task: {e}")
         return response
 
     return send_file(PROCESSED_PDF, as_attachment=True, download_name="Cleaned_Document.pdf")
 
 if __name__ == '__main__':
-    # Dynamic port configuration for production environments like Render
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
