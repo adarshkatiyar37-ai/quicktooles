@@ -3,219 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Processing Console</title>
-    <!-- Premium Font Stack -->
+    <title>Interactive PDF Workspace</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #2563eb;
             --hover-blue: #1d4ed8;
-            --success-green: #10b981;
-            --hover-green: #059669;
+            --danger-red: #ef4444;
+            --hover-red: #dc2626;
             --text-dark: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --bg-light: #ffffff;
+            --bg-body: #ffffff;
         }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--bg-light); 
+            background: var(--bg-body); 
             margin: 0; 
-            padding: 16px; 
+            padding: 20px; 
+            color: var(--text-dark);
+        }
+
+        /* Top Action Header */
+        .header { 
             display: flex; 
-            justify-content: center; 
-            align-items: center;
-            min-height: 85vh;
-            color: var(--text-dark);
-            box-sizing: border-box;
+            justify-content: space-between; 
+            align-items: center; 
+            background: #ffffff; 
+            padding: 16px 24px; 
+            border-radius: 14px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 25px; 
+            border: 1px solid var(--border-color);
         }
 
-        .container { 
-            width: 100%; 
-            max-width: 460px; 
-            text-align: center; 
-            padding: 10px;
+        .header-info h2 { 
+            font-size: 1.2rem; 
+            font-weight: 800; 
+            color: var(--text-dark); 
+            margin: 0 0 2px 0; 
         }
 
-        .container h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.5px;
-        }
-
-        .container p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin: 0 0 30px 0;
-            font-weight: 500;
-        }
-
-        /* Premium Minimal Dropzone */
-        .upload-box { 
-            border: 2px dashed #cbd5e1; 
-            padding: 45px 20px; 
-            cursor: pointer; 
-            margin-bottom: 24px; 
-            background: #f8fafc; 
-            border-radius: 16px;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .upload-box:hover {
-            border-color: var(--primary-blue);
-            background: #eff6ff;
-        }
-
-        .upload-icon {
-            font-size: 1.8rem;
-            color: var(--primary-blue);
-        }
-
-        #label {
-            color: var(--text-dark);
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .upload-sublabel {
+        .header-info p {
             font-size: 0.8rem;
             color: var(--text-muted);
+            margin: 0;
             font-weight: 500;
         }
 
-        /* Action Controls */
-        .btn-group { 
-            display: flex; 
-            gap: 12px; 
+        /* Page Card Grid */
+        .grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px; 
+            justify-content: center; 
         }
 
-        .btn { 
-            color: white; 
-            padding: 14px 20px; 
-            border: none; 
-            border-radius: 12px; 
-            cursor: pointer; 
-            flex: 1; 
-            font-size: 0.95rem; 
-            font-weight: 700; 
+        .page-card { 
+            background: #ffffff; 
+            padding: 14px; 
+            border-radius: 14px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); 
+            text-align: center; 
+            border: 1px solid var(--border-color);
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .btn-auto { 
+        .page-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.05);
+        }
+
+        .page-num {
+            margin: 0 0 10px 0; 
+            font-weight: 700; 
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+            margin-bottom: 12px;
+        }
+
+        .page-card img { 
+            max-width: 90%; 
+            max-height: 90%; 
+            object-fit: contain; 
+            transition: transform 0.2s ease;
+        }
+
+        /* Action Buttons inside cards */
+        .btn-action-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .btn-action { 
+            padding: 8px 6px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            cursor: pointer; 
+            border: none; 
+            border-radius: 8px; 
+            color: white; 
+            transition: all 0.2s ease;
+        }
+
+        .btn-rotate { 
             background: var(--primary-blue); 
         }
 
-        .btn-auto:hover { 
+        .btn-rotate:hover { 
             background: var(--hover-blue); 
-            transform: translateY(-1px);
         }
 
-        .btn-manual { 
-            background: #ffffff; 
-            color: var(--text-dark); 
-            border: 1px solid var(--border-color); 
+        .btn-delete { 
+            background: var(--danger-red); 
         }
 
-        .btn-manual:hover { 
-            background: #f8fafc; 
-            border-color: #cbd5e1;
-            transform: translateY(-1px);
+        .btn-delete:hover { 
+            background: var(--hover-red); 
         }
 
         .btn-download { 
-            background: var(--success-green); 
-            width: 100%; 
-            font-size: 1rem; 
-            padding: 14px; 
-        }
-
-        .btn-download:hover { 
-            background: var(--hover-green); 
-        }
-
-        /* Stats Diagnostics Panel */
-        .stats { 
-            background: #f0fdf4; 
-            padding: 24px; 
-            border-radius: 16px; 
-            text-align: left; 
-            margin-bottom: 24px; 
-            border: 1px solid #bbf7d0; 
-        }
-
-        .stats strong { 
-            color: #166534; 
-            font-size: 1.1rem; 
-            display: block;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .stats p { 
-            margin: 6px 0; 
-            color: #1e293b; 
-            font-size: 0.95rem; 
-            font-weight: 600;
-        }
-
-        .reset-link {
-            display: inline-block;
-            color: var(--primary-blue); 
+            background: #10b981; 
+            padding: 12px 20px; 
+            font-size: 0.85rem; 
+            font-weight: 700; 
             text-decoration: none; 
-            font-size: 0.9rem; 
-            font-weight: 700;
-            transition: color 0.2s ease;
+            color: white; 
+            border-radius: 10px; 
+            transition: all 0.2s ease;
         }
 
-        .reset-link:hover {
-            color: var(--hover-blue);
+        .btn-download:hover {
+            background: #059669;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 12px;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    
-    <h2>Document Processor</h2>
-    <p>Upload your PDF document to initiate structural cleaning options.</p>
-    
-    {% if not download %}
-    <form action="/" method="POST" enctype="multipart/form-data" id="pdfForm">
-        <!-- Interactive Dropzone Area -->
-        <div class="upload-box" onclick="document.getElementById('pdf_file').click()">
-            <div class="upload-icon">📥</div>
-            <span id="label">Choose PDF Document</span>
-            <span class="upload-sublabel" id="sublabel">Click to browse your directory</span>
-            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required onchange="document.getElementById('label').innerText=this.files[0].name; document.getElementById('sublabel').innerText='File selected successfully';" style="display: none;">
-        </div>
-        
-        <input type="hidden" name="mode" id="selectedMode" value="auto">
-        
-        <!-- Execution Control Hub -->
-        <div class="btn-group">
-            <button type="submit" class="btn btn-auto" onclick="document.getElementById('selectedMode').value='auto'">Automated Run</button>
-            <button type="submit" class="btn btn-manual" onclick="document.getElementById('selectedMode').value='manual'">Manual Studio</button>
-        </div>
-    </form>
-    {% else %}
-    <!-- Diagnostic Metrics Display -->
-    <div class="stats">
-        <strong>Optimization Suite Complete</strong>
-        <p>• Blank pages cleanly omitted: {{ blanks }}</p>
-        <p>• Alignment variables corrected: {{ rotated }}</p>
-    </div>
-    
-    <a href="/download"><button class="btn btn-download">Download Processed PDF</button></a>
-    <br><br>
-    <a href="/" class="reset-link">Process another document</a>
-    {% endif %}
 
+<div class="header">
+    <div class="header-info">
+        <h2>Manual Page Studio</h2>
+        <p>Rotate or delete pages individually below</p>
+    </div>
+    <a href="/download" class="btn-download">Download PDF ⬇</a>
 </div>
+
+<div class="grid">
+    {% for page in pages %}
+    <div class="page-card" id="card-{{ page.index }}">
+        <p class="page-num">Page {{ page.display_num }}</p>
+        <div class="img-container">
+            <img src="/static/thumbnails/{{ page.image }}" id="img-{{ page.index }}" style="transform: rotate({{ page.rotation }}deg);">
+        </div>
+        <div class="btn-action-group">
+            <button class="btn-action btn-rotate" onclick="rotatePage({{ page.index }})">Rotate 🔄</button>
+            <button class="btn-action btn-delete" onclick="deletePage({{ page.index }})">Delete 🗑</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function deletePage(index) {
+    if(confirm("Are you sure you want to delete Page " + (index + 1) + "?")) {
+        fetch('/delete_page', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({index: index})
+        }).then(res => res.json()).then(data => {
+            if(data.status === 'success') {
+                document.getElementById('card-' + index).style.display = 'none';
+            }
+        });
+    }
+}
+
+function rotatePage(index) {
+    fetch('/rotate_page', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({index: index})
+    }).then(res => res.json()).then(data => {
+        if(data.status === 'success') {
+            const img = document.getElementById('img-' + index);
+            let currentRotation = img.style.transform.replace(/[^0-9]/g, '');
+            currentRotation = currentRotation ? parseInt(currentRotation) : 0;
+            let newRotation = (currentRotation + 90) % 360;
+            img.style.transform = `rotate(${newRotation}deg)`;
+        }
+    });
+}
+</script>
 </body>
 </html>
