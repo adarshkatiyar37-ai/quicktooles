@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart PDF Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; display: flex; justify-content: center; padding-top: 80px; }
+        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 450px; text-align: center; }
+        .upload-box { border: 2px dashed #4A90E2; padding: 35px; cursor: pointer; margin-bottom: 25px; background: #fafafa; border-radius: 6px; }
+        .btn-group { display: flex; gap: 15px; }
+        .btn { color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; flex: 1; font-size: 15px; font-weight: bold; }
+        .btn-auto { background: #28a745; }
+        .btn-manual { background: #ffc107; color: #333; }
+        .btn-download { background: #007bff; width: 100%; font-size: 16px; padding: 12px; }
+        .stats { background: #eef7ee; padding: 15px; border-radius: 4px; text-align: left; margin-bottom: 20px; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Smart PDF Processor</h2>
+    <p style="color: #666;">Apni PDF file choose karein aur niche diye gaye options me se ek select karein:</p>
+    
+    {% if not download %}
+    <form action="/" method="POST" enctype="multipart/form-data" id="pdfForm">
+        <div class="upload-box" onclick="document.getElementById('pdf_file').click()">
+            <span id="label" style="color: #4A90E2; font-weight: bold;">Click to Upload PDF</span>
+            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required onchange="document.getElementById('label').innerText=this.files[0].name" style="display: none;">
+        </div>
+        
+        <input type="hidden" name="mode" id="selectedMode" value="auto">
+        
+        <div class="btn-group">
+            <button type="submit" class="btn btn-auto" onclick="document.getElementById('selectedMode').value='auto'">Option 1: Automatic ⚡</button>
+            <button type="submit" class="btn btn-manual" onclick="document.getElementById('selectedMode').value='manual'">Option 2: Manual 🛠️</button>
+        </div>
+    </form>
+    {% else %}
+    <div class="stats">
+        <strong>Automatic Processing Successful!</strong>
+        <p>✓ Khali (Blank) Pages Deleted: {{ blanks }}</p>
+        <p>✓ Tedhe (Rotated) Pages Seedhe Kiye: {{ rotated }}</p>
+    </div>
+    <a href="/download"><button class="btn btn-download">Download Cleaned PDF ⬇</button></a>
+    <br><br><a href="/" style="color: #4A90E2; text-decoration: none;">Upload Another File</a>
+    {% endif %}
+</div>
+</body>
+</html>

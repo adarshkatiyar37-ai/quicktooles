@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual PDF Editor</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .page-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; width: 160px; }
+        .page-card img { width: 100%; height: 180px; object-fit: contain; border: 1px solid #ddd; margin-bottom: 10px; background: white; }
+        .btn-action { padding: 6px 10px; margin: 2px; font-size: 12px; cursor: pointer; border: none; border-radius: 4px; color: white; }
+        .btn-rotate { background: #f39c12; }
+        .btn-delete { background: #e74c3c; }
+        .btn-download { background: #2ecc71; padding: 12px 25px; font-size: 16px; font-weight: bold; text-decoration: none; color: white; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2>Manual Page Workspace (Bache Hue Pages)</h2>
+    <a href="/download" class="btn-download">Download Final PDF ⬇</a>
+</div>
+
+<div class="grid">
+    {% for page in pages %}
+    <div class="page-card" id="card-{{ page.index }}">
+        <p style="margin: 0 0 5px 0; font-weight: bold; color: #555;">Page {{ page.display_num }}</p>
+        <img src="/static/thumbnails/{{ page.image }}" id="img-{{ page.index }}" style="transform: rotate({{ page.rotation }}deg);">
+        <div>
+            <button class="btn-action btn-rotate" onclick="rotatePage({{ page.index }})">🔄 Rotate</button>
+            <button class="btn-action btn-delete" onclick="deletePage({{ page.index }})">🗑 Delete</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function deletePage(index) {
+    if(confirm("Kya aap is page ko delete karna chahte hain?")) {
+        fetch('/delete_page', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({index: index})
+        }).then(res => res.json()).then(data => {
+            if(data.status === 'success') {
+                // Page ko screen se gayab kar do bina reload kiye
+                document.getElementById('card-' + index).style.display = 'none';
+            }
+        });
+    }
+}
+
+function rotatePage(index) {
+    fetch('/rotate_page', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({index: index})
+    }).then(res => res.json()).then(data => {
+        if(data.status === 'success') {
+            // Screen par image ko turant 90 deg ghuma do
+            const img = document.getElementById('img-' + index);
+            let currentRotation = img.style.transform.replace(/[^0-9]/g, '');
+            currentRotation = currentRotation ? parseInt(currentRotation) : 0;
+            let newRotation = (currentRotation + 90) % 360;
+            img.style.transform = `rotate(${newRotation}deg)`;
+        }
+    });
+}
+</script>
+</body>
+</html>
