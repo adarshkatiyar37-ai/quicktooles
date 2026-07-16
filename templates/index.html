@@ -14,38 +14,32 @@
             --text-dark: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --card-bg: #ffffff;
         }
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            /* Pure transparent background taaki website ka blue gradient piche dikhe */
-            background: transparent; 
+            background: #ffffff; /* Pure white back-layer matching iframe boundary */
             margin: 0; 
-            padding: 12px; 
+            padding: 24px; 
             display: flex; 
             justify-content: center; 
             align-items: center;
-            min-height: 95vh;
+            min-height: 100vh;
             color: var(--text-dark);
             box-sizing: border-box;
         }
 
-        /* Highly-Polished Light Dashboard Card (No Transparent Text) */
+        /* Seamless layout that spans across the entire outer iframe canvas */
         .container { 
             width: 100%; 
-            max-width: 420px; 
+            max-width: 440px; 
             text-align: center; 
-            padding: 35px 25px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+            padding: 10px;
             box-sizing: border-box;
         }
 
         .container h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
             margin: 0 0 8px 0;
             letter-spacing: -0.5px;
@@ -53,21 +47,21 @@
         }
 
         .container p.description {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
             margin: 0 0 25px 0;
             font-weight: 500;
             line-height: 1.4;
         }
 
-        /* Drag & Drop Styling */
+        /* Clean Upload Dropzone */
         .upload-box { 
             border: 2px dashed #cbd5e1; 
-            padding: 35px 20px; 
+            padding: 40px 20px; 
             cursor: pointer; 
-            margin-bottom: 20px; 
+            margin-bottom: 24px; 
             background: #f8fafc; 
-            border-radius: 14px;
+            border-radius: 16px;
             transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
@@ -87,16 +81,16 @@
         #label {
             color: var(--text-dark);
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .upload-sublabel {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
             font-weight: 500;
         }
 
-        /* Action Buttons Grid */
+        /* Responsive Controls */
         .btn-group { 
             display: flex; 
             gap: 12px; 
@@ -104,12 +98,12 @@
 
         .btn { 
             color: white; 
-            padding: 12px 18px; 
+            padding: 14px 20px; 
             border: none; 
-            border-radius: 10px; 
+            border-radius: 12px; 
             cursor: pointer; 
             flex: 1; 
-            font-size: 0.9rem; 
+            font-size: 0.95rem; 
             font-weight: 700; 
             transition: all 0.2s ease;
         }
@@ -121,7 +115,6 @@
 
         .btn-auto:hover { 
             background: var(--hover-blue); 
-            transform: translateY(-1px);
         }
 
         .btn-manual { 
@@ -133,14 +126,13 @@
         .btn-manual:hover { 
             background: #f8fafc; 
             border-color: #cbd5e1;
-            transform: translateY(-1px);
         }
 
         .btn-download { 
             background: var(--success-green); 
             width: 100%; 
-            font-size: 0.95rem; 
-            padding: 12px; 
+            font-size: 1rem; 
+            padding: 14px; 
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
 
@@ -148,28 +140,28 @@
             background: var(--hover-green); 
         }
 
-        /* Processed Stats Panel */
+        /* Success Diagnosis Panel */
         .stats { 
             background: #f0fdf4; 
-            padding: 20px; 
-            border-radius: 14px; 
+            padding: 24px; 
+            border-radius: 16px; 
             text-align: left; 
-            margin-bottom: 20px; 
+            margin-bottom: 24px; 
             border: 1px solid #bbf7d0; 
         }
 
         .stats strong { 
             color: #166534; 
-            font-size: 1rem; 
+            font-size: 1.1rem; 
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
         .stats p { 
-            margin: 4px 0; 
+            margin: 6px 0; 
             color: #1e293b; 
-            font-size: 0.85rem; 
+            font-size: 0.95rem; 
             font-weight: 600;
         }
 
@@ -177,7 +169,7 @@
             display: inline-block;
             color: var(--primary-blue); 
             text-decoration: none; 
-            font-size: 0.85rem; 
+            font-size: 0.9rem; 
             font-weight: 700;
         }
 
@@ -198,7 +190,7 @@
             <div class="upload-icon">📥</div>
             <span id="label">Choose PDF Document</span>
             <span class="upload-sublabel" id="sublabel">Click to browse your directory</span>
-            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required onchange="document.getElementById('label').innerText=this.files[0].name; document.getElementById('sublabel').innerText='File loaded';" style="display: none;">
+            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required onchange="document.getElementById('label').innerText=this.files[0].name; document.getElementById('sublabel').innerText='File selected';" style="display: none;">
         </div>
         
         <input type="hidden" name="mode" id="selectedMode" value="auto">
