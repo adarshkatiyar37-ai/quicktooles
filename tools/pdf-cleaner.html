@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart PDF Cleaner & Editor | Remove Blank Pages Online - QuickTooles</title>
+    <title>PDF Cleaner & Editor | Remove Blank Pages Online - QuickTooles</title>
     <meta name="description" content="Free online PDF tool to automatically delete blank pages and auto-rotate upside-down pages. Edit your PDF files manually in a high-speed secure workspace.">
     <link rel="stylesheet" href="../style.css"> 
     <link rel="stylesheet" href="../global.css"> 
-    <!-- Google Fonts for Ultra-Premium Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -92,55 +91,61 @@
             line-height: 1.6;
         }
 
-        /* Premium Iframe Glass Card */
+        /* =========================================
+           OPTIMIZED CANVAS CARD (CORRECTED WIDTH & HEIGHT)
+           =========================================
+        */
         .canvas-card {
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: #ffffff; /* Smooth clean base to frame the inner console */
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--card-border);
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 80px;
-            backdrop-filter: blur(20px);
+            
+            /* FIXED: Sizing customized so that it snugly holds the white tool */
+            max-width: 460px; 
+            height: 520px; 
+            margin: 0 auto 80px auto; 
         }
 
         .canvas-card:hover {
-            border-color: rgba(59, 130, 246, 0.4);
             box-shadow: 0 30px 70px var(--accent-glow);
         }
 
         .canvas-top-bar {
-            background: rgba(255, 255, 255, 0.02);
-            height: 56px;
+            background: #f8fafc;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 24px;
-            border-bottom: 1px solid var(--card-border);
+            padding: 0 20px;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .workspace-name {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: var(--text-dim);
+            color: #64748b;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
         .engine-indicator {
             font-family: monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            color: #60a5fa;
-            background: rgba(59, 130, 246, 0.15);
-            padding: 4px 14px;
+            color: var(--primary-blue);
+            background: #eff6ff;
+            padding: 4px 12px;
             border-radius: 100px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: 1px solid #dbeafe;
         }
 
         .tool-iframe {
             width: 100%;
-            height: 800px;
+            /* FIXED: Takes exactly the remaining container space tightly */
+            height: calc(100% - 48px); 
             border: none;
             display: block;
             background: #ffffff;
@@ -279,10 +284,13 @@
 
         /* Mobile Optimization */
         @media (max-width: 768px) {
-            .tool-header h1 { font-size: 2.4rem; }
-            .tool-iframe { height: 650px; }
+            .tool-header h1 { font-size: 2.2rem; }
             .tool-container { padding: 40px 16px; }
             .seo-section h2 { font-size: 1.8rem; }
+            .canvas-card {
+                max-width: 100%;
+                height: 500px;
+            }
         }
     </style>
 </head>
@@ -290,7 +298,6 @@
 
     <div class="tool-container">
         
-        <!-- Premium Header Setup -->
         <div class="tool-header">
             <div class="status-badge">
                 <span class="status-dot"></span> SECURE DISKLESS PROCESSING ACTIVE
@@ -299,7 +306,6 @@
             <p>Completely optimize large PDF documents in seconds. Strip empty blank pages automatically, align incorrect orientations, or manually manage pages inside a high-speed workspace.</p>
         </div>
         
-        <!-- Main Application Workspace -->
         <div class="canvas-card">
             <div class="canvas-top-bar">
                 <div class="workspace-name">Isolated File Terminal</div>
@@ -308,11 +314,9 @@
             <iframe src="https://quicktooles.onrender.com" class="tool-iframe" title="PDF Production Frame"></iframe>
         </div>
 
-        <!-- High-Quality SEO Architecture -->
         <div class="seo-section">
             <h2>Fully Optimized Document Management</h2>
             
-            <!-- Features Grid -->
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">01 //</div>
@@ -331,7 +335,6 @@
                 </div>
             </div>
 
-            <!-- How It Works Layout -->
             <div class="how-it-works">
                 <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; text-align: center; margin: 0;">How it Works</h3>
                 <div class="steps-container">
@@ -353,7 +356,6 @@
                 </div>
             </div>
 
-            <!-- FAQ Components -->
             <h2 style="margin-top: 60px;">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <div class="faq-item">
