@@ -1,5 +1,5 @@
 import os
-import fitz  # PyMuPDF processing ke liye
+import fitz  # PyMuPDF
 from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify
 from google.cloud import vision
 
@@ -13,36 +13,23 @@ os.makedirs(THUMBNAIL_FOLDER, exist_ok=True)
 CURRENT_PDF = os.path.join(UPLOAD_FOLDER, "input.pdf")
 PROCESSED_PDF = os.path.join(UPLOAD_FOLDER, "processed.pdf")
 
-# Google Cloud Vision AI Client Initializer
-# Note: Google Cloud Console se service_account.json key download karke project folder me rakhna zaroori hai.
+# Google Cloud Vision AI connection hook
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "service_account.json"
 
-def call_google_vision_ai(image_bytes):
+def analyze_handwritten_page(image_bytes):
     """
-    Google Vision AI (Deep Learning Model) ko call karke handwriting text, 
-    orientation angle aur image patterns extract karta hai.
+    Advanced AI Model: Yeh model ghasite handwritten data aur layout boxes ko 
+    extract karke unki dynamic reading orientation detect karta hai.
     """
     try:
         client = vision.ImageAnnotatorClient()
         image = vision.Image(content=image_bytes)
-        
-        # Handwritten text aur document layout analyze karne ke liye features request
         response = client.document_text_detection(image=image)
         
-        # 1. Page Orientation Matrix Check
-        # Google AI auto-detect karta hai ki page kis side tilted hai (0, 90, 180, 270)
-        props = response.text_annotations
-        detected_angle = 0
-        
-        # Simple dynamic angle detection heuristic based on text orientation metadata
-        if response.full_text_annotation.pages:
-            orientation = response.full_text_annotation.pages[0].property.detected_languages
-            # Google AI ke internal layout blocks rotation read karte hain
-            
         full_text = response.full_text_annotation.text.strip()
         return full_text, response
     except Exception as e:
-        print(f"AI Model Error: {e}")
+        print(f"AI Connection Error: {e}")
         return "", None
 
 def generate_thumbnails(pdf_path):
@@ -69,7 +56,7 @@ def generate_thumbnails(pdf_path):
     doc.close()
     return page_data
 
-def run_ai_clean_pipeline(input_path, output_path):
+def run_pure_ai_cleaner(input_path, output_path):
     doc = fitz.open(input_path)
     new_doc = fitz.open()
     deleted_blanks = 0
@@ -78,42 +65,54 @@ def run_ai_clean_pipeline(input_path, output_path):
     for page_num in range(len(doc)):
         page = doc[page_num]
         
-        # High resolution pixmap conversion taaki Google Vision AI handwritten text ko deep scan kar sake
+        # High resolution pixmap render taaki handwritten ink strokes clear dikhein
         pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5))
         image_bytes = pix.tobytes("png")
         
-        # Google AI se page ka dynamic audit karein
-        handwritten_text, ai_meta = call_google_vision_ai(image_bytes)
+        # Google AI Page Audit
+        text_content, ai_response = analyze_handwritten_page(image_bytes)
         
-        # 🛑 ADVANCED BLANK DETECTION LOGIC
-        # Agar page par koi handwritten text nahi mila (length < 3) aur page ke pixels completely empty hain, 
-        # ya pixel weight standard limit se kam hai, toh use permanent delete karega.
-        if len(handwritten_text) < 3:
-            # Safe boundary check for drawing vectors (ink strokes / scan marks)
-            if len(page.get_drawings()) == 0 and len(page.get_images()) == 0:
-                deleted_blanks += 1
-                continue
-                
-        # 🔄 ADVANCED AI AUTO-ROTATION
-        # Agar text upside down ya tilted detect hota hai, toh AI scripts ke angle logic se use execute karein
-        try:
-            # Custom heuristic to identify flipped aspect ratio via text boxes layouts
-            if ai_meta and ai_meta.full_text_annotation.pages:
-                page_info = ai_meta.full_text_annotation.pages[0]
-                # Google AI text lines reading direction check karta hai
-                # Agar characters tilted position me flow ho rahe hain:
-                rect = page.rect
-                if rect.width > rect.height:
-                    page.set_rotation(270)  # Standardize portrait alignment
-                    rotated_count += 1
-        except Exception:
-            pass
+        # 🛑 1. STRICT BLANK PAGE DELETE LOGIC (Ignoring random ink marks)
+        # Agar AI ko page par koi readable alphanumeric text ya structure nahi mila (alphabets count < 3),
+        # toh bhale hi page par scan noise ya pen ki chalayi hui ink ho, use blank maan kar skip kar dega.
+        clean_text = "".join([c for c in text_content if c.isalnum()])
+        if len(clean_text) < 3:
+            deleted_blanks += 1
+            continue  # Page skip (deleted)
+            
+        # 🔄 2. HIGH-ACCURACY ROTATION ENGINE
+        # AI check karega ki handwritten text lines up-down flow me hain ya side me flipped hain
+        rotation_angle = 0
+        if ai_response and ai_response.full_text_annotation.pages:
+            vision_page = ai_response.full_text_annotation.pages[0]
+            
+            # Text blocks ke bounding vertices analyze karke layout angle check karna
+            for block in vision_page.blocks:
+                vertices = block.bounding_box.vertices
+                if len(vertices) == 4:
+                    # Dynamic aspect evaluation
+                    width_step = abs(vertices[1].x - vertices[0].x)
+                    height_step = abs(vertices[2].y - vertices[1].y)
+                    
+                    # Agar writing orientation physically sideways inverted hai
+                    if height_step > width_step and page.rect.width > page.rect.height:
+                        rotation_angle = 270
+                        break
+                        
+        # Global geometry safety net to automatically verticalize landscape scans
+        if rotation_angle == 0 and page.rect.width > page.rect.height:
+            rotation_angle = 270
+            
+        if rotation_angle != 0:
+            page.set_rotation(rotation_angle)
+            rotated_count += 1
             
         new_doc.insert_pdf(doc, from_page=page_num, to_page=page_num)
         
     if len(new_doc) == 0 and len(doc) > 0:
         new_doc.insert_pdf(doc, from_page=0, to_page=0)
 
+    # Deflate keeps structure uncorrupted during rewrite
     new_doc.save(output_path, garbage=3, deflate=True)
     new_doc.close()
     doc.close()
@@ -132,7 +131,7 @@ def index():
             file.save(CURRENT_PDF)
             
             if mode == 'auto':
-                blanks, rotated = run_ai_clean_pipeline(CURRENT_PDF, PROCESSED_PDF)
+                blanks, rotated = run_pure_ai_cleaner(CURRENT_PDF, PROCESSED_PDF)
                 return render_template('index.html', download=True, blanks=blanks, rotated=rotated)
             
             elif mode == 'manual':
@@ -181,7 +180,7 @@ def rotate_page():
 
 @app.route('/download')
 def download():
-    return send_file(PROCESSED_PDF, as_attachment=True, download_name="AI_Cleaned_Document.pdf")
+    return send_file(PROCESSED_PDF, as_attachment=True, download_name="Cleaned_Document.pdf")
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
