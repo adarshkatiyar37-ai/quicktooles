@@ -1,4 +1,5 @@
 import os
+import json
 import fitz  # PyMuPDF
 from flask import Flask, render_template, request, send_file, redirect, url_for, jsonify
 from google.cloud import vision
@@ -13,12 +14,18 @@ os.makedirs(THUMBNAIL_FOLDER, exist_ok=True)
 CURRENT_PDF = os.path.join(UPLOAD_FOLDER, "input.pdf")
 PROCESSED_PDF = os.path.join(UPLOAD_FOLDER, "processed.pdf")
 
-# Google Cloud Vision key initialization check
+# FINAL CREDENTIAL LOADER
 KEY_PATH = "service_account.json"
-if os.path.exists(KEY_PATH):
+creds_json = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+
+if creds_json:
+    with open(KEY_PATH, "w") as f:
+        f.write(creds_json)
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_PATH
+elif os.path.exists(KEY_PATH):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_PATH
 else:
-    print("WARNING: service_account.json missing. Running in basic layout fallback mode.")
+    print("WARNING: No Google Cloud credentials found. Falling back to layout mode.")
 
 def analyze_handwritten_page(image_bytes):
     if not os.path.exists(KEY_PATH):
@@ -68,31 +75,26 @@ def run_pure_ai_cleaner(input_path, output_path):
     rotated_count = 0
     total_pages = len(doc)
     
-    # ⚡ CRASH FIX: Is loop mechanism se page deletion par array index mismatch nahi hoga
     for page_num in range(total_pages):
         page = doc[page_num]
-        
-        # High resolution render for OCR stability
         pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5))
         image_bytes = pix.tobytes("png")
         
         text_content, ai_response = analyze_handwritten_page(image_bytes)
         clean_text = "".join([c for c in text_content if c.isalnum()])
         
-        # 🛑 FINAL BLANK DETECTION (Keeps ink marks safe only if meaningful text exists)
+        # BLANK DETECTION
         if os.path.exists(KEY_PATH) and len(clean_text) < 3:
             deleted_blanks += 1
             continue  
         elif not os.path.exists(KEY_PATH):
-            # Layout metrics algorithm fallback if key is not active
             if len(page.get_text().strip()) == 0 and len(page.get_drawings()) == 0 and len(page.get_images()) == 0:
                 deleted_blanks += 1
                 continue
             
-        # 🔄 FINAL ORIENTATION ENGINE
+        # ORIENTATION ENGINE
         rotation_angle = 0
         rotation_forced = False
-        
         if ai_response and ai_response.full_text_annotation.pages:
             vision_page = ai_response.full_text_annotation.pages[0]
             for block in vision_page.blocks:
@@ -100,23 +102,18 @@ def run_pure_ai_cleaner(input_path, output_path):
                 if len(vertices) == 4:
                     width_step = abs(vertices[1].x - vertices[0].x)
                     height_step = abs(vertices[2].y - vertices[1].y)
-                    
                     if height_step > width_step and page.rect.width > page.rect.height:
                         rotation_angle = 270
                         rotation_forced = True
                         break
-                        
         if not rotation_forced and page.rect.width > page.rect.height:
             rotation_angle = 270
             
-        # Isolated compilation window to prevent binary object stream breakdown
         temp_doc = fitz.open()
         temp_doc.insert_pdf(doc, from_page=page_num, to_page=page_num)
-        
         if rotation_angle != 0:
             temp_doc[0].set_rotation(rotation_angle)
             rotated_count += 1
-            
         new_doc.insert_pdf(temp_doc, from_page=0, to_page=0)
         temp_doc.close()
         
@@ -138,26 +135,21 @@ def index():
         if 'pdf_file' not in request.files: return redirect(request.url)
         file = request.files['pdf_file']
         if file.filename == '': return redirect(request.url)
-        
         mode = request.form.get('mode') 
-        
         if file and file.filename.endswith('.pdf'):
             if os.path.exists(CURRENT_PDF):
                 try: os.remove(CURRENT_PDF)
                 except Exception: pass
             file.save(CURRENT_PDF)
-            
             if mode == 'auto':
                 blanks, rotated = run_pure_ai_cleaner(CURRENT_PDF, PROCESSED_PDF)
                 return render_template('index.html', download=True, blanks=blanks, rotated=rotated)
-            
             elif mode == 'manual':
                 doc = fitz.open(CURRENT_PDF)
                 if os.path.exists(PROCESSED_PDF): os.remove(PROCESSED_PDF)
                 doc.save(PROCESSED_PDF)
                 doc.close()
                 return redirect(url_for('manual_editor'))
-                
     return render_template('index.html', download=False)
 
 @app.route('/editor')
