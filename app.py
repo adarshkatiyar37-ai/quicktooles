@@ -13,19 +13,20 @@ os.makedirs(THUMBNAIL_FOLDER, exist_ok=True)
 CURRENT_PDF = os.path.join(UPLOAD_FOLDER, "input.pdf")
 PROCESSED_PDF = os.path.join(UPLOAD_FOLDER, "processed.pdf")
 
-# Google Cloud Vision AI connection hook
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "service_account.json"
+# Google Cloud Vision key initialization check
+KEY_PATH = "service_account.json"
+if os.path.exists(KEY_PATH):
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_PATH
+else:
+    print("WARNING: service_account.json missing. Running in basic layout fallback mode.")
 
 def analyze_handwritten_page(image_bytes):
-    """
-    Advanced AI Model: Yeh model ghasite handwritten data aur layout boxes ko 
-    extract karke unki dynamic reading orientation detect karta hai.
-    """
+    if not os.path.exists(KEY_PATH):
+        return "", None
     try:
         client = vision.ImageAnnotatorClient()
         image = vision.Image(content=image_bytes)
         response = client.document_text_detection(image=image)
-        
         full_text = response.full_text_annotation.text.strip()
         return full_text, response
     except Exception as e:
@@ -38,81 +39,94 @@ def generate_thumbnails(pdf_path):
             try: os.remove(os.path.join(THUMBNAIL_FOLDER, f))
             except Exception: pass
             
-    doc = fitz.open(pdf_path)
-    page_data = []
-    max_pages = min(len(doc), 40) 
-    for page_num in range(max_pages):
-        page = doc[page_num]
-        pix = page.get_pixmap(matrix=fitz.Matrix(0.1, 0.1))
-        image_name = f"page_{page_num}.png"
-        pix.save(os.path.join(THUMBNAIL_FOLDER, image_name))
-        
-        page_data.append({
-            'index': page_num,
-            'display_num': page_num + 1,
-            'image': image_name,
-            'rotation': page.rotation
-        })
-    doc.close()
-    return page_data
+    try:
+        doc = fitz.open(pdf_path)
+        page_data = []
+        max_pages = min(len(doc), 40) 
+        for page_num in range(max_pages):
+            page = doc[page_num]
+            pix = page.get_pixmap(matrix=fitz.Matrix(0.1, 0.1))
+            image_name = f"page_{page_num}.png"
+            pix.save(os.path.join(THUMBNAIL_FOLDER, image_name))
+            
+            page_data.append({
+                'index': page_num,
+                'display_num': page_num + 1,
+                'image': image_name,
+                'rotation': page.rotation
+            })
+        doc.close()
+        return page_data
+    except Exception as e:
+        print(f"Thumbnail generation error: {e}")
+        return []
 
 def run_pure_ai_cleaner(input_path, output_path):
     doc = fitz.open(input_path)
     new_doc = fitz.open()
     deleted_blanks = 0
     rotated_count = 0
+    total_pages = len(doc)
     
-    for page_num in range(len(doc)):
+    # ⚡ CRASH FIX: Is loop mechanism se page deletion par array index mismatch nahi hoga
+    for page_num in range(total_pages):
         page = doc[page_num]
         
-        # High resolution pixmap render taaki handwritten ink strokes clear dikhein
+        # High resolution render for OCR stability
         pix = page.get_pixmap(matrix=fitz.Matrix(1.5, 1.5))
         image_bytes = pix.tobytes("png")
         
-        # Google AI Page Audit
         text_content, ai_response = analyze_handwritten_page(image_bytes)
-        
-        # 🛑 1. STRICT BLANK PAGE DELETE LOGIC (Ignoring random ink marks)
-        # Agar AI ko page par koi readable alphanumeric text ya structure nahi mila (alphabets count < 3),
-        # toh bhale hi page par scan noise ya pen ki chalayi hui ink ho, use blank maan kar skip kar dega.
         clean_text = "".join([c for c in text_content if c.isalnum()])
-        if len(clean_text) < 3:
+        
+        # 🛑 FINAL BLANK DETECTION (Keeps ink marks safe only if meaningful text exists)
+        if os.path.exists(KEY_PATH) and len(clean_text) < 3:
             deleted_blanks += 1
-            continue  # Page skip (deleted)
+            continue  
+        elif not os.path.exists(KEY_PATH):
+            # Layout metrics algorithm fallback if key is not active
+            if len(page.get_text().strip()) == 0 and len(page.get_drawings()) == 0 and len(page.get_images()) == 0:
+                deleted_blanks += 1
+                continue
             
-        # 🔄 2. HIGH-ACCURACY ROTATION ENGINE
-        # AI check karega ki handwritten text lines up-down flow me hain ya side me flipped hain
+        # 🔄 FINAL ORIENTATION ENGINE
         rotation_angle = 0
+        rotation_forced = False
+        
         if ai_response and ai_response.full_text_annotation.pages:
             vision_page = ai_response.full_text_annotation.pages[0]
-            
-            # Text blocks ke bounding vertices analyze karke layout angle check karna
             for block in vision_page.blocks:
                 vertices = block.bounding_box.vertices
                 if len(vertices) == 4:
-                    # Dynamic aspect evaluation
                     width_step = abs(vertices[1].x - vertices[0].x)
                     height_step = abs(vertices[2].y - vertices[1].y)
                     
-                    # Agar writing orientation physically sideways inverted hai
                     if height_step > width_step and page.rect.width > page.rect.height:
                         rotation_angle = 270
+                        rotation_forced = True
                         break
                         
-        # Global geometry safety net to automatically verticalize landscape scans
-        if rotation_angle == 0 and page.rect.width > page.rect.height:
+        if not rotation_forced and page.rect.width > page.rect.height:
             rotation_angle = 270
             
+        # Isolated compilation window to prevent binary object stream breakdown
+        temp_doc = fitz.open()
+        temp_doc.insert_pdf(doc, from_page=page_num, to_page=page_num)
+        
         if rotation_angle != 0:
-            page.set_rotation(rotation_angle)
+            temp_doc[0].set_rotation(rotation_angle)
             rotated_count += 1
             
-        new_doc.insert_pdf(doc, from_page=page_num, to_page=page_num)
+        new_doc.insert_pdf(temp_doc, from_page=0, to_page=0)
+        temp_doc.close()
         
     if len(new_doc) == 0 and len(doc) > 0:
         new_doc.insert_pdf(doc, from_page=0, to_page=0)
 
-    # Deflate keeps structure uncorrupted during rewrite
+    if os.path.exists(output_path):
+        try: os.remove(output_path)
+        except Exception: pass
+        
     new_doc.save(output_path, garbage=3, deflate=True)
     new_doc.close()
     doc.close()
@@ -128,6 +142,9 @@ def index():
         mode = request.form.get('mode') 
         
         if file and file.filename.endswith('.pdf'):
+            if os.path.exists(CURRENT_PDF):
+                try: os.remove(CURRENT_PDF)
+                except Exception: pass
             file.save(CURRENT_PDF)
             
             if mode == 'auto':
