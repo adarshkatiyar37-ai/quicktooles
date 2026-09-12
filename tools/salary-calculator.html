@@ -755,12 +755,25 @@
             document.getElementById('resPF').innerText = "- ₹" + pfDec.toLocaleString('en-IN', {maximumFractionDigits: 2});
         }
 
-        document.getElementById('pfLab').innerText = pf;
+       document.getElementById('pfLab').innerText = pf;
         document.getElementById('resNet').innerText = "₹" + Math.max(0, Math.round(netPay)).toLocaleString('en-IN');
 
+        // 1. Mobile keyboard close karein
+        if (document.activeElement) {
+            document.activeElement.blur();
+        }
+
+        // 2. Result box show karein
         const resBox = document.getElementById('resBox');
         resBox.style.display = "block";
+
+        // 3. Smooth scroll with timeout fix
+        setTimeout(() => {
+            resBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
     }
+        
+    
 </script>
 
 </body>
