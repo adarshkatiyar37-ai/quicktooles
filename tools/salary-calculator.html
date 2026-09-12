@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Salary & Overtime Calculator – Professional Net Pay Estimator | QuickTooles</title>
     
     <meta name="description" content="Free online Salary Calculator with Overtime, PF, and Working Hours Mode. Calculate your monthly take-home pay, leave deductions, and overtime earnings instantly. 100% secure and private.">
@@ -46,50 +46,34 @@
 
     <style>
         :root {
-            --ds-bg: #fbfcfe;
+            --ds-bg: #f8fafc;
             --ds-surface: #ffffff;
             --ds-blue: #4d6bfe;
             --ds-blue-deep: #1e3a8a;
             --ds-cyan: #00d2ff;
             --ds-text: #0f172a;
             --ds-muted: #64748b;
-            --ds-border: rgba(226, 232, 240, 0.85);
-            --ds-border-hover: rgba(77, 107, 254, 0.4);
+            --ds-border: #e2e8f0;
+            --ds-border-hover: #93c5fd;
             --ds-radius-card: 16px;
             --ds-radius-pill: 9999px;
             --ds-success: #10b981;
             --ds-danger: #ef4444;
-            --ds-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
-            --ds-shadow-hover: 0 16px 32px -4px rgba(77, 107, 254, 0.08);
+            --ds-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
             --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        html, body { width: 100%; overflow-x: hidden; }
 
         body {
             background-color: var(--ds-bg);
             color: var(--ds-text);
             font-family: var(--font-sans);
-            line-height: 1.65;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            width: 100%;
-        }
-
-        .ambient-glow {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 1200px;
-            height: 500px;
-            background: radial-gradient(circle at 50% 10%, rgba(77, 107, 254, 0.06) 0%, rgba(0, 210, 255, 0.03) 45%, transparent 75%);
-            z-index: 0;
-            pointer-events: none;
         }
 
         /* HEADER */
@@ -97,46 +81,42 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--ds-border);
             width: 100%;
         }
         .navbar {
-            max-width: 1240px;
-            height: 70px;
+            max-width: 1200px;
+            height: 64px;
             margin: auto;
-            padding: 0 24px;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 800;
-            letter-spacing: -0.5px;
             color: var(--ds-text);
         }
         .logo-glyph {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #4d6bfe 0%, #00d2ff 100%);
-            border-radius: 9px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #4d6bfe, #00d2ff);
+            border-radius: 8px;
             display: grid;
             place-items: center;
             color: #ffffff;
-            font-size: 15px;
-            box-shadow: 0 4px 12px rgba(77, 107, 254, 0.28);
+            font-size: 14px;
         }
         .logo span { color: var(--ds-blue); }
-        
-        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links { display: flex; align-items: center; gap: 16px; }
         .nav-links a {
             text-decoration: none;
             font-size: 14px;
@@ -144,123 +124,97 @@
             color: var(--ds-muted);
             transition: var(--transition);
         }
-        .nav-links a:hover { color: var(--ds-blue); }
         .nav-btn {
             background: var(--ds-text) !important;
             color: #ffffff !important;
-            padding: 8px 18px;
+            padding: 7px 16px;
             border-radius: var(--ds-radius-pill);
-            font-size: 13.5px !important;
-        }
-        .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--ds-text);
-            padding: 4px;
+            font-size: 13px !important;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
-            position: relative;
-            z-index: 2;
             text-align: center;
-            padding: 70px 20px 40px 20px;
+            padding: 40px 16px 25px;
+            max-width: 800px;
+            margin: auto;
         }
         .hero-pill {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
+            gap: 6px;
+            padding: 4px 12px;
             background: #ffffff;
             border: 1px solid var(--ds-border);
             border-radius: var(--ds-radius-pill);
-            box-shadow: var(--ds-shadow);
-            font-size: 12.5px;
+            font-size: 11.5px;
             font-weight: 600;
             color: var(--ds-text);
-            margin-bottom: 18px;
+            margin-bottom: 12px;
         }
         .dot-live {
-            width: 7px;
-            height: 7px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: #10b981;
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16);
         }
         .hero h1 {
-            font-size: clamp(26px, 5vw, 50px);
+            font-size: clamp(24px, 5.5vw, 42px);
             font-weight: 800;
+            letter-spacing: -0.8px;
             line-height: 1.2;
-            letter-spacing: -1px;
-            color: var(--ds-text);
-            margin-bottom: 14px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            word-break: break-word;
+            margin-bottom: 10px;
         }
         .hero h1 span {
-            background: linear-gradient(120deg, #4d6bfe 10%, #00d2ff 90%);
+            background: linear-gradient(120deg, #4d6bfe, #00d2ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .hero p {
+            font-size: 14.5px;
             color: var(--ds-muted);
-            max-width: 700px;
-            margin: auto;
-            font-size: clamp(14px, 2.8vw, 16.5px);
-            line-height: 1.6;
+            line-height: 1.55;
         }
 
         /* BREADCRUMBS */
         .breadcrumbs {
-            max-width: 1240px;
-            margin: 5px auto 20px auto;
-            padding: 0 24px;
+            max-width: 1200px;
+            margin: 0 auto 15px;
+            padding: 0 16px;
+            font-size: 12.5px;
             color: var(--ds-muted);
-            font-size: 13px;
-            position: relative;
-            z-index: 2;
-            word-break: break-word;
         }
-        .breadcrumbs a {
-            color: var(--ds-text);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .breadcrumbs a:hover { color: var(--ds-blue); }
+        .breadcrumbs a { color: var(--ds-text); text-decoration: none; font-weight: 600; }
 
-        /* MAIN LAYOUT */
+        /* LAYOUT */
         .layout {
-            max-width: 1240px;
-            margin: 0 auto 60px auto;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 16px;
             display: grid;
             grid-template-columns: 3fr 1.1fr;
-            gap: 32px;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
+            gap: 24px;
+            width: 100%;
         }
 
         /* TOOL WORKSPACE */
         .tool-workspace {
             background: var(--ds-surface);
-            padding: 35px 30px;
+            padding: 24px 20px;
             border-radius: var(--ds-radius-card);
-            box-shadow: var(--ds-shadow);
             border: 1px solid var(--ds-border);
+            box-shadow: var(--ds-shadow);
+            width: 100%;
         }
 
-        /* MODERN SEGMENTED PILL SWITCH (NO CONFLICT) */
+        /* MODE TOGGLE (FIXED FOR MOBILE) */
         .mode-container {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            width: 100%;
         }
         .mode-label-title {
-            font-size: 12.5px;
+            font-size: 11.5px;
             font-weight: 700;
             color: var(--ds-muted);
             text-transform: uppercase;
@@ -269,19 +223,20 @@
             display: block;
         }
         .mode-switch-segmented {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             background: #f1f5f9;
-            padding: 5px;
+            padding: 4px;
             border-radius: 12px;
             border: 1px solid var(--ds-border);
+            width: 100%;
             gap: 4px;
         }
         .mode-switch-segmented button {
+            flex: 1;
             background: transparent;
             border: none;
-            padding: 10px 14px;
-            font-size: 14px;
+            padding: 10px 8px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--ds-muted);
             border-radius: 9px;
@@ -291,93 +246,86 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            width: 100%;
+            white-space: nowrap;
         }
         .mode-switch-segmented button.active {
             background: #ffffff;
             color: var(--ds-text);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
             font-weight: 700;
         }
 
+        /* INPUT GRIDS */
         .input-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 22px;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 20px;
+            width: 100%;
         }
         .input-group {
             display: flex;
             flex-direction: column;
             gap: 6px;
+            width: 100%;
         }
         .input-group label {
+            font-size: 12px;
             font-weight: 700;
             color: var(--ds-text);
-            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
         }
-        
         input, select {
-            padding: 13px 16px;
+            width: 100%;
+            padding: 12px 14px;
             border: 1.5px solid var(--ds-border);
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 14.5px;
+            color: var(--ds-text);
+            background: #ffffff;
             outline: none;
             transition: var(--transition);
-            background: #ffffff;
-            width: 100%;
-            color: var(--ds-text);
             font-family: var(--font-sans);
             -webkit-appearance: none;
         }
         input:focus, select:focus {
             border-color: var(--ds-blue);
-            box-shadow: 0 0 0 4px rgba(77, 107, 254, 0.1);
+            box-shadow: 0 0 0 3px rgba(77, 107, 254, 0.12);
         }
 
         .btn-calc {
+            width: 100%;
             background: var(--ds-blue);
             color: #ffffff;
             border: none;
-            padding: 16px 24px;
+            padding: 14px;
             border-radius: var(--ds-radius-pill);
-            cursor: pointer;
-            font-size: 15.5px;
+            font-size: 15px;
             font-weight: 700;
-            width: 100%;
+            cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 4px 14px rgba(77, 107, 254, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            box-shadow: 0 4px 12px rgba(77, 107, 254, 0.25);
         }
         .btn-calc:hover {
             background: #3b5df5;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(77, 107, 254, 0.35);
+            transform: translateY(-1.5px);
         }
 
         /* RESULT BOX */
         .result-container {
-            margin-top: 25px;
+            margin-top: 22px;
             display: none;
             background: #f8fafc;
-            padding: 24px;
-            border-radius: 14px;
+            padding: 18px 16px;
+            border-radius: 12px;
             border: 1.5px dashed var(--ds-border-hover);
-            animation: fadeIn 0.4s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
         .res-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14.5px;
-            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 13.5px;
         }
         .res-row span:last-child {
             font-family: var(--font-mono);
@@ -385,218 +333,107 @@
         }
         .res-row.highlight {
             background: rgba(77, 107, 254, 0.08);
-            padding: 8px 12px;
+            padding: 8px 10px;
             border-radius: 8px;
             font-weight: 700;
             color: var(--ds-blue);
         }
         .res-row.final {
-            margin-top: 15px;
-            padding-top: 14px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1.5px solid var(--ds-border);
             font-weight: 800;
-            font-size: 19px;
+            font-size: 17px;
             color: var(--ds-success);
         }
         .neg { color: var(--ds-danger); }
 
-        /* SEO ARTICLE & TABLES */
+        /* SEO ARTICLE */
         .seo-article {
             background: var(--ds-surface);
-            padding: 38px 32px;
+            padding: 30px 22px;
             border-radius: var(--ds-radius-card);
-            box-shadow: var(--ds-shadow);
-            margin-top: 35px;
             border: 1px solid var(--ds-border);
+            margin-top: 24px;
         }
         .toc {
             background: #f8fafc;
-            padding: 22px 20px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 10px;
             border: 1px solid var(--ds-border);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
-        .toc h3 {
-            font-size: 17px;
-            color: var(--ds-text);
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
+        .toc h3 { font-size: 15px; margin-bottom: 8px; }
         .toc ul { list-style: none; }
-        .toc ul li { margin-bottom: 8px; font-size: 14px; }
-        .toc ul li a {
-            color: var(--ds-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .toc ul li a:hover { color: #3b5df5; padding-left: 4px; }
-
+        .toc li { margin-bottom: 6px; font-size: 13px; }
+        .toc a { color: var(--ds-blue); text-decoration: none; font-weight: 600; }
         .seo-article h2 {
-            font-size: clamp(20px, 3.5vw, 23px);
-            color: var(--ds-text);
-            margin: 32px 0 14px 0;
-            font-weight: 800;
-            letter-spacing: -0.4px;
-            line-height: 1.3;
+            font-size: 19px;
+            margin: 25px 0 10px;
             border-bottom: 1px solid var(--ds-border);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
-        .seo-article h3 {
-            font-size: 17.5px;
-            color: var(--ds-text);
-            margin: 22px 0 10px 0;
-            font-weight: 700;
-        }
-        .seo-article p {
-            font-size: 15px;
-            color: var(--ds-muted);
-            margin-bottom: 16px;
-            line-height: 1.7;
-        }
-        .seo-article ul { padding-left: 20px; margin-bottom: 20px; color: var(--ds-muted); }
-        .seo-article li { margin-bottom: 8px; font-size: 14.5px; }
-        .seo-article blockquote {
-            background: #f8fafc;
-            border-left: 4px solid var(--ds-blue);
-            padding: 14px 18px;
-            margin: 16px 0;
-            border-radius: 0 10px 10px 0;
-            color: var(--ds-text);
-            font-size: 14.5px;
-        }
+        .seo-article h3 { font-size: 16px; margin: 18px 0 8px; }
+        .seo-article p, .seo-article li { font-size: 14px; color: var(--ds-muted); line-height: 1.65; }
+        .seo-article ul { padding-left: 18px; margin-bottom: 15px; }
 
         .data-table-container {
             width: 100%;
             overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 12px;
+            margin: 16px 0;
+            border-radius: 10px;
             border: 1px solid var(--ds-border);
         }
-        .case-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            text-align: left;
-        }
-        .case-table th {
-            background: #f1f5f9;
-            color: var(--ds-text);
-            padding: 12px 16px;
-            font-weight: 700;
-            border-bottom: 1px solid var(--ds-border);
-        }
-        .case-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--ds-border);
-            color: var(--ds-muted);
-        }
-        .case-table tr:last-child td { border-bottom: none; }
+        .case-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+        .case-table th { background: #f1f5f9; padding: 10px 12px; font-weight: 700; border-bottom: 1px solid var(--ds-border); }
+        .case-table td { padding: 10px 12px; border-bottom: 1px solid var(--ds-border); color: var(--ds-muted); }
 
-        .faq-box {
-            border-bottom: 1px solid var(--ds-border);
-            padding: 16px 0;
-        }
-        .faq-box:last-child { border-bottom: none; }
-        .faq-box h4 {
-            font-size: 15.5px;
-            font-weight: 700;
-            color: var(--ds-text);
-            margin-bottom: 6px;
-        }
-        .faq-box p { font-size: 14.5px; color: var(--ds-muted); margin: 0; }
+        .faq-box { padding: 14px 0; border-bottom: 1px solid var(--ds-border); }
+        .faq-box h4 { font-size: 14.5px; margin-bottom: 4px; }
+        .faq-box p { font-size: 13.5px; margin: 0; }
 
         /* SIDEBAR */
-        .sidebar { position: sticky; top: 90px; height: fit-content; }
+        .sidebar { height: fit-content; }
         .widget {
             background: var(--ds-surface);
-            padding: 24px;
+            padding: 20px;
             border-radius: var(--ds-radius-card);
-            box-shadow: var(--ds-shadow);
-            margin-bottom: 20px;
             border: 1px solid var(--ds-border);
+            margin-bottom: 16px;
         }
-        .widget h3 {
-            margin-bottom: 14px;
-            color: var(--ds-text);
-            font-size: 17px;
-            font-weight: 700;
-            border-bottom: 1px solid var(--ds-border);
-            padding-bottom: 10px;
-        }
+        .widget h3 { font-size: 15px; margin-bottom: 10px; border-bottom: 1px solid var(--ds-border); padding-bottom: 6px; }
         .widget-links a {
-            display: flex;
-            align-items: center;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-            border-radius: 10px;
+            display: block;
+            padding: 9px 12px;
+            margin-bottom: 6px;
+            border-radius: 8px;
             text-decoration: none;
             color: var(--ds-text);
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 600;
             background: #f8fafc;
             border: 1px solid var(--ds-border);
-            transition: var(--transition);
-        }
-        .widget-links a:hover {
-            background: #eff6ff;
-            border-color: var(--ds-border-hover);
-            color: var(--ds-blue);
-            transform: translateX(3px);
         }
 
-        /* FOOTER */
         footer {
             background: #0b111e;
             color: #94a3b8;
-            padding: 50px 20px 25px 20px;
-            font-size: 13.5px;
-            margin-top: 60px;
-            border-top: 1px solid #1e293b;
+            padding: 35px 20px;
+            font-size: 13px;
             text-align: center;
-        }
-        footer a { color: #cbd5e1; text-decoration: none; }
-
-        /* MOBILE RESPONSIVENESS */
-        @media (max-width: 900px) {
-            .layout { grid-template-columns: 1fr; gap: 25px; padding: 0 16px; }
-            .hero { padding: 50px 16px 30px; }
-            .tool-workspace { padding: 24px 18px; }
-            .seo-article { padding: 25px 18px; }
-            .breadcrumbs { padding: 0 16px; }
+            border-top: 1px solid #1e293b;
         }
 
-        @media (max-width: 768px) {
-            .input-grid { grid-template-columns: 1fr !important; }
-            .mobile-menu-btn { display: block; }
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px 24px;
-                gap: 15px;
-                border-bottom: 1px solid var(--ds-border);
-                display: none;
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            }
-            .nav-links.active { display: flex; }
-            .nav-links a { width: 100%; padding: 6px 0; }
-        }
-
-        @media (max-width: 480px) {
-            .mode-switch-segmented button { font-size: 12.5px; padding: 8px 6px; }
+        /* MOBILE OVERRIDES (STRICT) */
+        @media (max-width: 860px) {
+            .layout { grid-template-columns: 1fr; gap: 20px; }
+            .input-grid { grid-template-columns: 1fr; }
+            .mode-switch-segmented button { font-size: 12.5px; padding: 8px 4px; }
+            .navbar { padding: 0 16px; }
         }
     </style>
 </head>
 <body>
-
-<div class="ambient-glow"></div>
 
 <header>
     <div class="navbar">
@@ -604,11 +441,9 @@
             <div class="logo-glyph">⚡</div>
             <div>Quick<span>Tooles</span></div>
         </a>
-        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
-        <nav class="nav-links" id="mobileNav">
+        <nav class="nav-links">
             <a href="https://quicktooles.in/">Home</a>
-            <a href="https://quicktooles.in/#all-tools">All Tools</a>
-            <a href="https://quicktooles.in/#contact-section" class="nav-btn">Contact</a>
+            <a href="https://quicktooles.in/#all-tools">Tools</a>
         </nav>
     </div>
 </header>
@@ -626,10 +461,10 @@
 </div>
 
 <div class="layout">
-    <main class="main-content">
+    <main>
         <section class="tool-workspace">
 
-            <!-- MODERN SEGMENTED MODE SWITCH -->
+            <!-- MODE TOGGLE BUTTONS -->
             <div class="mode-container">
                 <span class="mode-label-title">Calculation Mode</span>
                 <div class="mode-switch-segmented">
@@ -662,13 +497,13 @@
                     </select>
                 </div>
 
-                <!-- STANDARD MODE FIELD -->
+                <!-- STANDARD MODE FIELD (DEFAULT ACTIVE) -->
                 <div class="input-group" id="leavesGroup">
                     <label>Total Leaves (Days)</label>
                     <input type="number" id="leaves" value="0">
                 </div>
 
-                <!-- WORKING HOURS MODE FIELDS -->
+                <!-- WORKING HOURS FIELDS (HIDDEN BY DEFAULT IN STANDARD MODE) -->
                 <div class="input-group" id="shiftHoursGroup" style="display: none;">
                     <label>Shift Timing (Daily Hours)</label>
                     <input type="number" id="shiftHours" value="10" placeholder="e.g. 8, 10">
@@ -684,7 +519,7 @@
                 </div>
 
                 <div class="input-group" id="actualHoursGroup" style="display: none;">
-                    <label>Actual Worked Hours (In Month)</label>
+                    <label>Actual Worked Hours</label>
                     <input type="number" id="actualWorkedHours" placeholder="e.g. 220">
                 </div>
 
@@ -700,24 +535,17 @@
 
                 <div class="input-group">
                     <label>OT Multiplier</label>
-                    <input type="number" step="0.1" id="otMultiplier" placeholder="e.g. 1, 1.5, 2" list="otOptions">
-                    <datalist id="otOptions">
-                        <option value="1">
-                        <option value="1.5">
-                        <option value="2">
-                        <option value="2.5">
-                        <option value="3">
-                    </datalist>
+                    <input type="number" step="0.1" id="otMultiplier" placeholder="e.g. 1, 1.5, 2">
                 </div>
             </div>
 
             <button class="btn-calc" onclick="calculateSalary()">💸 Calculate Net Pay</button>
 
+            <!-- INTEGRATED RESULT BOX -->
             <div class="result-container" id="resBox">
                 <div class="res-row"><span>Monthly Gross Pay:</span><span id="resGross">₹0</span></div>
                 <div class="res-row"><span>Per Day Salary:</span><span id="resPerDay">₹0</span></div>
                 
-                <!-- WORKING HOURS SPECIFIC ROWS -->
                 <div class="res-row" id="resRowPerHour" style="display: none;"><span>Hourly Rate:</span><span id="resPerHour">₹0/hr</span></div>
                 <div class="res-row" id="resRowWorked" style="display: none;"><span>Worked Hours:</span><span id="resWorkedHrs">0 hrs</span></div>
                 <div class="res-row" id="resRowSunday" style="display: none;"><span>Sunday Paid Hours Added:</span><span id="resSundayHrs">+0 hrs</span></div>
@@ -731,6 +559,7 @@
             </div>
         </section>
 
+        <!-- SEO ARTICLE -->
         <article class="seo-article">
             <div class="toc">
                 <h3>📖 Table of Contents</h3>
@@ -738,33 +567,23 @@
                     <li><a href="#master-guide">1. The Master Guide to Salary & Overtime Calculation</a></li>
                     <li><a href="#how-it-works">2. How the QuickTooles Salary Calculator Works</a></li>
                     <li><a href="#gross-vs-net">3. Gross Salary vs. Net Pay: The Ultimate Comparison</a></li>
-                    <li><a href="#leave-deduction">4. Understanding Leave Deduction (LWP) Logic</a></li>
-                    <li><a href="#overtime-deep-dive">5. Overtime (OT) Pay: Legal Standards & Rates</a></li>
-                    <li><a href="#pf-breakdown">6. Provident Fund (PF) Deduction & Benefits</a></li>
-                    <li><a href="#tax-planning">7. Tax Planning and Salary Structure Optimization</a></li>
-                    <li><a href="#data-tables">8. Reference Tables (Days, Months, and Rates)</a></li>
-                    <li><a href="#expert-faqs">9. Expert Frequently Asked Questions (FAQs)</a></li>
+                    <li><a href="#data-tables">4. Reference Tables (Days & Months)</a></li>
+                    <li><a href="#expert-faqs">5. Frequently Asked Questions</a></li>
                 </ul>
             </div>
 
             <h2 id="master-guide">1. The Master Guide to Salary & Overtime Calculation</h2>
-            <p>In today's fast-paced corporate and industrial world, your paycheck is more than just a number—it's a complex result of hours worked, commitments kept, and statutory saving contributions. For many, the "Gross Salary" offered during the interview process remains a theoretical figure. The real excitement happens when the "Net Take-Home Pay" is calculated at the end of the month.</p>
-            <p>The <strong>QuickTooles Salary & Overtime Calculator</strong> is built to empower employees, freelancers, and payroll managers with a transparent, accurate, and lightning-fast way to decode salary slips. Whether you're working in a 9-to-5 corporate job, a factory with high overtime hours, or as a contractor, understanding how your leaves and extra hours affect your bank balance is crucial for financial health.</p>
+            <p>In today's fast-paced corporate and industrial world, your paycheck is more than just a number—it's a complex result of hours worked, commitments kept, and statutory saving contributions.</p>
+            <p>The <strong>QuickTooles Salary & Overtime Calculator</strong> empowers employees, freelancers, and payroll managers with a transparent, accurate, and lightning-fast way to decode salary slips.</p>
 
             <h2 id="how-it-works">2. How the QuickTooles Salary Calculator Works</h2>
-            <p>Our tool follows a high-precision algorithm used by professional HR payroll software. Here is the step-by-step breakdown of how the data you input is processed:</p>
             <ul>
-                <li><strong>Base Salary Input:</strong> This is your fixed monthly compensation before any additions or subtractions.</li>
-                <li><strong>Month Selection:</strong> Select the specific month to auto-derive per-day rates accurately.</li>
-                <li><strong>Calculation Mode:</strong> Switch easily between standard daily leave deduction mode and actual working hours mode.</li>
+                <li><strong>Base Salary Input:</strong> Your fixed monthly compensation before any additions or subtractions.</li>
+                <li><strong>Calculation Mode:</strong> Switch smoothly between standard daily leave deduction mode and actual working hours mode.</li>
                 <li><strong>Overtime Engine:</strong> Your total overtime hours are multiplied by your hourly rate and added to your earnings.</li>
-                <li><strong>PF Integration:</strong> A percentage (standard 12%) is deducted from your base salary to show your long-term savings.</li>
             </ul>
 
             <h2 id="gross-vs-net">3. Gross Salary vs. Net Pay: The Ultimate Comparison</h2>
-            <p>It is vital to distinguish between what you "earn" and what you "receive." Gross salary is the total cost to the company (CTC) minus some employer-side benefits. Net pay is what remains after the government and your company take their mandated shares.</p>
-
-            <h3 style="margin-top:20px;">Table 1: Comparison of Salary Components</h3>
             <div class="data-table-container">
                 <table class="case-table">
                     <thead>
@@ -779,53 +598,17 @@
                         <tr><td>Overtime Pay</td><td>Variable</td><td>Increases your take-home amount.</td></tr>
                         <tr><td>Leave Deduction</td><td>Variable</td><td>Decreases your take-home amount.</td></tr>
                         <tr><td>PF Deduction</td><td>Statutory</td><td>Mandatory savings for retirement.</td></tr>
-                        <tr><td>Bonus/Incentives</td><td>Variable</td><td>Extra earnings based on performance.</td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <h2 id="leave-deduction">4. Understanding Leave Deduction (LWP) Logic</h2>
-            <p>Leave Without Pay (LWP) or unpaid leaves can significantly dent your monthly budget. The calculation isn't just about "missing a day." It's about how much that day was worth. If you take a leave in a month with many holidays, the impact on your productivity is higher, and thus the deduction is calculated based on the total calendar days.</p>
-            <blockquote><strong>Pro Tip:</strong> Always check if your company follows the "Sandwich Rule," where if you take a leave on a Friday and the following Monday, the weekend (Saturday and Sunday) might also be counted as unpaid leave.</blockquote>
-
-            <h2 id="overtime-deep-dive">5. Overtime (OT) Pay: Legal Standards & Rates</h2>
-            <p>Overtime is often the primary source of extra income for many workers. In many labor jurisdictions, companies are required to pay "Double OT" (2x the hourly rate) for working on Sundays or public holidays. Regular overtime is usually 1.5x the normal rate. Our tool allows you to input your <strong>actual hourly rate</strong> so you can get an exact figure regardless of your company's multiplier policy.</p>
-
-            <h3 style="margin-top:20px;">Table 2: Common Overtime Multipliers</h3>
-            <div class="data-table-container">
-                <table class="case-table">
-                    <thead>
-                        <tr>
-                            <th>Scenario</th>
-                            <th>Typical Multiplier</th>
-                            <th>Rate Calculation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Weekday Overtime</td><td>1.5x</td><td>Hourly Rate x 1.5</td></tr>
-                        <tr><td>Weekend Overtime</td><td>2.0x</td><td>Hourly Rate x 2.0</td></tr>
-                        <tr><td>Public Holiday</td><td>2.0x - 2.5x</td><td>Premium Pay</td></tr>
-                        <tr><td>Night Shift Premium</td><td>Fixed Bonus</td><td>Added per shift</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 id="pf-breakdown">6. Provident Fund (PF) Deduction & Benefits</h2>
-            <p>The Provident Fund (PF) is your forced savings account. While it might feel painful to see ₹2,000 to ₹5,000 missing from your paycheck every month, it is one of the best debt-free investment vehicles. In India, the interest rate for EPF is typically around 8.1% to 8.5%, which is higher than most fixed deposits.</p>
-            <p>Our calculator uses the percentage method (default 12%) to show you how much is being deducted. Remember, your employer usually matches this contribution, meaning your actual savings are double what you see in the deduction column!</p>
-
-            <h2 id="tax-planning">7. Tax Planning and Salary Structure</h2>
-            <p>Knowing your net pay is the first step toward tax planning. If your net take-home pay is high, you might fall into a higher tax bracket. By analyzing your PF and other deductions, you can decide whether to invest more in 80C instruments to reduce your taxable income. Our tool gives you the "Net Pay" which you can then use to plan your monthly SIPs (Systematic Investment Plans) and emergency funds.</p>
-
-            <h2 id="data-tables">8. Reference Tables (Days & Months)</h2>
-            <p>Below is a reference table showing how the number of days in a month affects your <strong>Daily Wage</strong> if your salary is ₹30,000:</p>
-
+            <h2 id="data-tables">4. Reference Tables (Days & Months)</h2>
             <div class="data-table-container">
                 <table class="case-table">
                     <thead>
                         <tr>
                             <th>Days in Month</th>
-                            <th>Daily Wage (₹)</th>
+                            <th>Daily Wage (₹30,000 Base)</th>
                             <th>Loss per 1 Day Leave</th>
                         </tr>
                     </thead>
@@ -837,39 +620,15 @@
                 </table>
             </div>
 
-            <h2 id="expert-faqs">9. Expert Frequently Asked Questions (FAQs)</h2>
+            <h2 id="expert-faqs">5. Frequently Asked Questions</h2>
             <div class="faq-box">
-                <h4>1. Does the calculator handle Leap Years?</h4>
-                <p>Yes. If you select February, we recommend checking if the current year is a leap year. If it is, manually adjusting the "Leaves" or considering the per-day rate based on 29 days is standard practice.</p>
+                <h4>1. How is the per-day salary calculated?</h4>
+                <p>It is calculated by dividing the base monthly salary by the total number of days in the selected month.</p>
             </div>
             <div class="faq-box">
-                <h4>2. Why is my calculated Net Pay slightly different from my payslip?</h4>
-                <p>Payslips often include "Professional Tax" (usually ₹200) and "TDS" (Tax Deducted at Source). Since these vary by state and income slab, our tool focuses on the core operational variables: OT, Leaves, and PF.</p>
+                <h4>2. Is my financial data stored?</h4>
+                <p>No, all calculations happen inside your browser locally without sending data to any external server.</p>
             </div>
-            <div class="faq-box">
-                <h4>3. Is the Overtime rate calculated on Basic or Gross?</h4>
-                <p>Legally, in many places, OT is calculated on the Gross Salary. However, many private contracts specify a fixed rate per hour. Our tool gives you the flexibility to enter that specific rate.</p>
-            </div>
-            <div class="faq-box">
-                <h4>4. Can I use this for hourly-wage jobs?</h4>
-                <p>Absolutely. You can switch to 'Working Hours Mode' to enter your exact completed hours and get an exact payout estimate with Sunday paid hours included.</p>
-            </div>
-            <div class="faq-box">
-                <h4>5. Is my financial data private?</h4>
-                <p>At QuickTooles, privacy is our priority. No data entered in this calculator is sent to our servers. All calculations happen within your browser's local memory and are destroyed once the tab is closed.</p>
-            </div>
-            <div class="faq-box">
-                <h4>6. What is the maximum PF percentage allowed?</h4>
-                <p>While 12% is the standard, many employees opt for VPF (Voluntary Provident Fund) where they can contribute up to 100% of their Basic salary. You can change the PF % in our tool to reflect your VPF choices.</p>
-            </div>
-            <div class="faq-box">
-                <h4>7. How do I calculate "Pro-Rata" salary?</h4>
-                <p>If you joined a company in the middle of the month, you can use the "Leaves" field to input the days you were not employed. This will give you the correct pro-rata payout amount.</p>
-            </div>
-
-            <p style="margin-top:30px; font-size: 13.5px; color: var(--ds-muted); font-style: italic; border-top: 1px solid var(--ds-border); padding-top: 16px;">
-                <strong>Disclaimer:</strong> This tool is an estimator. QuickTooles is not responsible for any legal or payroll disputes. Please consult your HR department or a certified accountant for official financial advice.
-            </p>
         </article>
     </main>
 
@@ -877,39 +636,29 @@
         <div class="widget">
             <h3>Popular Tools</h3>
             <div class="widget-links">
-                <a href="advance-salary-calculator.html">💰 Advance Salary</a>
                 <a href="emi-calculator.html">🏦 EMI Calculator</a>
                 <a href="gst-calculator.html">🧾 GST Calculator</a>
                 <a href="percentage-calculator.html">📊 Percentage Tool</a>
                 <a href="age-calculator.html">🎂 Age Calculator</a>
                 <a href="unit-converter.html">📏 Unit Converter</a>
-                <a href="sha-generator.html">🛡️ SHA Generator</a>
-                <a href="sitemap-generator.html">🗺️ Sitemap Generator</a>
             </div>
-        </div>
-        <div class="widget" style="background: #f8fafc; border: 1.5px dashed var(--ds-border);">
-            <h3 style="border:none; padding:0; font-size: 16px;">💡 Pro Tip</h3>
-            <p style="font-size: 13.5px; color: var(--ds-muted); margin-top: 8px;">Use 'Working Hours Mode' if you work on dynamic daily shift timings (e.g. 10 hours) and want Sundays auto-credited as paid hours!</p>
         </div>
     </aside>
 </div>
 
 <footer>
-    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#" style="color:#94a3b8; text-decoration:none;">Privacy Policy</a></p>
 </footer>
 
 <script>
     let currentMode = 'standard';
 
-    function toggleMobileNav() {
-        const nav = document.getElementById("mobileNav");
-        nav.classList.toggle("active");
-    }
-
+    // Strict Mode Switch Function
     function switchMode(mode) {
         currentMode = mode;
         const btnStandard = document.getElementById('btnStandard');
         const btnHours = document.getElementById('btnHours');
+        
         const leavesGroup = document.getElementById('leavesGroup');
         const shiftHoursGroup = document.getElementById('shiftHoursGroup');
         const sundaysGroup = document.getElementById('sundaysGroup');
@@ -919,6 +668,7 @@
             btnStandard.classList.add('active');
             btnHours.classList.remove('active');
 
+            // Standard: Show leaves, hide hour-specific fields
             leavesGroup.style.display = 'flex';
             shiftHoursGroup.style.display = 'none';
             sundaysGroup.style.display = 'none';
@@ -927,6 +677,7 @@
             btnHours.classList.add('active');
             btnStandard.classList.remove('active');
 
+            // Hours Mode: Hide leaves, show hour fields
             leavesGroup.style.display = 'none';
             shiftHoursGroup.style.display = 'flex';
             sundaysGroup.style.display = 'flex';
@@ -1009,7 +760,6 @@
 
         const resBox = document.getElementById('resBox');
         resBox.style.display = "block";
-        resBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 </script>
 
