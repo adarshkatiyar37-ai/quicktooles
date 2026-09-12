@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickTooles — 50+ Free Online Tools for Developers & Creators</title>
-    
-    <meta name="description" content="Access 51+ free online tools instantly. Word counter, JSON formatter, image resizer, exact age calculator, password generator, HTML minifier, and more. No installation required.">
+    <title>QuickTooles — 56 Free Browser Tools for Developers & Creators</title>
+
+    <meta name="description" content="56 free tools that run entirely in your browser. JSON formatter, image resizer, password generator, EMI calculator, GST calculator and more. No installs, no sign-up.">
     <meta name="keywords" content="free online tools, developer tools, image converter, text formatters, online calculators, JSON formatter, word counter, quicktooles, pdf converter, seo tools">
     <meta name="author" content="Adarsh Kumar Katiyar">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="icon" type="image/png" href="logo.png">
-    
-    <meta property="og:title" content="QuickTooles - All In One Free Online Tools">
-    <meta property="og:description" content="Fast & simple tools for developers and creators. No installation required. Always free.">
+
+    <meta property="og:title" content="QuickTooles — 56 Free Browser Tools for Developers & Creators">
+    <meta property="og:description" content="Format, convert, generate and calculate — 56 tools that run entirely in your browser. Free, no installs.">
     <meta property="og:url" content="https://quicktooles.in/">
     <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Schema.org SEO Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -43,17 +42,17 @@
         {
           "@type": "Question",
           "name": "Are the tools on QuickTooles really free?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes! All 51+ tools on our platform are 100% free to use with no hidden charges, no subscriptions, and no limits." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. All 56 tools are free to use, with no hidden charges, no subscriptions and no daily limits." }
         },
         {
           "@type": "Question",
-          "name": "Do I need to download any software?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. QuickTooles is completely cloud-based. Every tool runs entirely within your web browser." }
+          "name": "Do I need to install anything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. QuickTooles runs entirely in your browser tab — there is nothing to download and nothing to install." }
         },
         {
           "@type": "Question",
-          "name": "Is my data safe when using text or image tools?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Most of our tools use client-side processing (JavaScript), meaning your text, images, and data never leave your browser." }
+          "name": "Is my data safe when I use these tools?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most tools process everything locally with JavaScript, so your text, images and files never leave your device." }
         }
       ]
     }
@@ -61,630 +60,584 @@
 
     <style>
         :root {
-            --ds-bg: #fbfcfe;
-            --ds-surface: #ffffff;
-            --ds-blue: #4d6bfe;
-            --ds-blue-deep: #1e3a8a;
-            --ds-cyan: #00d2ff;
-            --ds-text: #0f172a;
-            --ds-muted: #64748b;
-            --ds-border: rgba(226, 232, 240, 0.85);
-            --ds-border-hover: rgba(77, 107, 254, 0.4);
-            --ds-radius-card: 14px;
-            --ds-radius-pill: 9999px;
-            --ds-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
-            --ds-shadow-hover: 0 16px 32px -4px rgba(77, 107, 254, 0.08);
-            --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg: #f5f6fa;
+            --surface: #ffffff;
+            --ink: #12141c;
+            --muted: #636b7a;
+            --faint: #98a0ae;
+            --border: #e3e6ee;
+            --primary: #2451ff;
+            --primary-ink: #12141c;
+            --primary-tint: rgba(36, 81, 255, 0.08);
+            --signal: #ff7a3d;
+            --signal-tint: rgba(255, 122, 61, 0.1);
+            --radius-s: 8px;
+            --radius-m: 12px;
+            --radius-l: 20px;
+            --ease: cubic-bezier(.16,1,.3,1);
+            --shadow-card: 0 1px 2px rgba(18,20,28,.04);
+            --shadow-hover: 0 18px 34px -14px rgba(18,20,28,.16);
+
+            /* category accents */
+            --c-text: #2451ff;
+            --c-image: #d6821a;
+            --c-dev: #6528d9;
+            --c-security: #d6335c;
+            --c-calc: #0f9d6e;
+            --c-finance: #0b8f9e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--ds-bg);
-            color: var(--ds-text);
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            line-height: 1.65;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Pure DeepSeek Harmonic Ribbon Canvas */
-        #deepseek-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.85;
+        h1, h2, h3, .display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: -0.01em;
         }
 
-        /* Ambient Glow Backdrop */
-        .ambient-layer {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 1200px;
-            height: 550px;
-            background: radial-gradient(circle at 50% 10%, rgba(77, 107, 254, 0.07) 0%, rgba(0, 210, 255, 0.04) 40%, transparent 75%);
-            z-index: 0;
-            pointer-events: none;
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        a { color: inherit; }
+
+        ::selection { background: var(--primary); color: #fff; }
+
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
         }
 
-        /* Top Progress Indicator */
+        /* ---------- Ambient backdrop ---------- */
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            background-image:
+                radial-gradient(circle, rgba(18,20,28,.05) 1px, transparent 1px);
+            background-size: 26px 26px;
+            background-position: -13px -13px;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 55%, transparent 92%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 55%, transparent 92%);
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: .5;
+            will-change: transform;
+        }
+        .blob-a {
+            width: 480px; height: 480px;
+            top: -160px; left: 6%;
+            background: radial-gradient(circle, rgba(36,81,255,.30), transparent 70%);
+            animation: drift-a 22s var(--ease) infinite alternate;
+        }
+        .blob-b {
+            width: 420px; height: 420px;
+            top: 60px; right: 4%;
+            background: radial-gradient(circle, rgba(255,122,61,.22), transparent 70%);
+            animation: drift-b 26s var(--ease) infinite alternate;
+        }
+        @keyframes drift-a {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(40px, 60px) scale(1.08); }
+        }
+        @keyframes drift-b {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(-50px, 40px) scale(1.1); }
+        }
+
+        /* Mouse-reactive particle network */
+        #particles {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.4) 60%, transparent 96%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.4) 60%, transparent 96%);
+        }
+
+        /* Flashlight that reveals the grid brighter around the cursor */
+        .grid-spotlight {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background-image: radial-gradient(circle, rgba(36,81,255,.55) 1px, transparent 1px);
+            background-size: 26px 26px; background-position: -13px -13px;
+            -webkit-mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 20%), black 0%, transparent 72%);
+            mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 20%), black 0%, transparent 72%);
+            opacity: 0;
+            transition: opacity .4s var(--ease);
+        }
+        .grid-spotlight.on { opacity: 1; }
+
+        /* Soft cursor glow that trails the pointer everywhere */
+        .cursor-glow {
+            position: fixed; inset: 0; z-index: 1; pointer-events: none;
+            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 20%), rgba(36,81,255,.10), transparent 65%);
+            opacity: 0;
+            transition: opacity .4s var(--ease);
+        }
+        .cursor-glow.on { opacity: 1; }
+
+        /* Custom cursor (fine-pointer devices only) */
+        .cursor-dot, .cursor-ring {
+            position: fixed; top: 0; left: 0; pointer-events: none; z-index: 2000;
+            border-radius: 50%; transform: translate(-50%, -50%); display: none;
+        }
+        html.has-cursor .cursor-dot, html.has-cursor .cursor-ring { display: block; }
+        html.has-cursor, html.has-cursor a, html.has-cursor button, html.has-cursor input { cursor: none; }
+        .cursor-dot { width: 6px; height: 6px; background: var(--ink); }
+        .cursor-ring {
+            width: 34px; height: 34px; border: 1.5px solid rgba(18,20,28,.3);
+            transition: width .22s var(--ease), height .22s var(--ease), border-color .22s var(--ease), background .22s var(--ease);
+        }
+        .cursor-ring.hovering { width: 56px; height: 56px; border-color: var(--primary); background: rgba(36,81,255,.08); }
+
+        /* Grain texture for a tactile, non-templated finish */
+        .grain {
+            position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: .035;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        }
+
         #read-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #4d6bfe, #00d2ff);
-            z-index: 1001;
-            width: 0%;
+            position: fixed; top: 0; left: 0; height: 2px;
+            background: var(--primary);
+            z-index: 1001; width: 0%;
+            transition: width .1s linear;
         }
 
-        /* NAVBAR */
+        /* ---------- Header ---------- */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--ds-border);
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(245, 246, 250, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
         }
         .navbar {
-            max-width: 1300px;
-            height: 70px;
-            margin: auto;
-            padding: 0 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 1280px; height: 68px; margin: auto; padding: 0 28px;
+            display: flex; align-items: center; justify-content: space-between;
         }
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            font-size: 21px;
-            font-weight: 800;
-            letter-spacing: -0.6px;
-            color: var(--ds-text);
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; font-family: 'Space Grotesk', sans-serif;
+            font-size: 19px; font-weight: 700; color: var(--ink);
         }
-        .logo-symbol {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #4d6bfe 0%, #00d2ff 100%);
-            border-radius: 9px;
-            display: grid;
-            place-items: center;
-            color: #ffffff;
-            font-size: 15px;
-            box-shadow: 0 4px 12px rgba(77, 107, 254, 0.28);
-        }
-        .logo span { color: var(--ds-blue); }
-        .version-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--ds-blue);
-            background: rgba(77, 107, 254, 0.08);
-            border: 1px solid rgba(77, 107, 254, 0.2);
-            padding: 2px 7px;
-            border-radius: var(--ds-radius-pill);
-        }
-
-        .nav-links { display: flex; align-items: center; gap: 28px; }
-        .nav-links a {
-            text-decoration: none;
-            font-size: 14.5px;
-            font-weight: 600;
-            color: var(--ds-muted);
-            transition: var(--transition);
-        }
-        .nav-links a:hover { color: var(--ds-blue); }
-        .nav-btn {
-            background: var(--ds-text) !important;
-            color: #ffffff !important;
-            padding: 8px 18px;
-            border-radius: var(--ds-radius-pill);
-            font-size: 13.5px !important;
-            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.1);
-        }
-        .nav-btn:hover { background: #1e293b !important; transform: translateY(-1px); }
-        .mobile-btn { display: none; background: none; border: none; font-size: 26px; cursor: pointer; color: var(--ds-text); }
-
-        /* HERO SECTION */
-        .hero {
+        .logo-mark {
+            width: 30px; height: 30px; border-radius: 8px;
+            background: var(--ink);
+            display: grid; place-items: center;
             position: relative;
-            z-index: 2;
-            max-width: 920px;
-            margin: auto;
-            text-align: center;
-            padding: 95px 24px 60px 24px;
         }
-        .hero-pill {
-            display: inline-flex;
+        .logo-mark::before {
+            content: "";
+            width: 10px; height: 10px; border-radius: 2px;
+            background: var(--signal);
+        }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a {
+            text-decoration: none; font-size: 14px; font-weight: 500;
+            color: var(--muted); transition: color .18s var(--ease);
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-btn {
+            background: var(--ink) !important; color: #fff !important;
+            padding: 9px 18px; border-radius: var(--radius-s);
+            font-weight: 600 !important;
+        }
+        .nav-btn:hover { background: var(--primary) !important; }
+        .mobile-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--ink); }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative; z-index: 2;
+            max-width: 1280px; margin: auto;
+            padding: 76px 28px 40px;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 56px;
             align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: #ffffff;
-            border: 1px solid var(--ds-border);
-            border-radius: var(--ds-radius-pill);
-            box-shadow: var(--ds-shadow);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--ds-text);
-            margin-bottom: 24px;
         }
-        .live-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #10b981;
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16);
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; font-weight: 600; color: var(--muted);
+            margin-bottom: 20px;
+        }
+        .pulse-dot {
+            width: 7px; height: 7px; border-radius: 50%; background: #10b981;
+            box-shadow: 0 0 0 4px rgba(16,185,129,.15);
         }
         .hero h1 {
-            font-size: clamp(42px, 6.5vw, 68px);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -2px;
+            font-size: clamp(36px, 4.2vw, 54px);
+            font-weight: 700; line-height: 1.08;
             margin-bottom: 20px;
-            color: var(--ds-text);
+            max-width: 13ch;
         }
-        .hero h1 .gradient-txt {
-            background: linear-gradient(120deg, #4d6bfe 10%, #00d2ff 90%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hero p {
-            font-size: clamp(16px, 2.5vw, 19px);
-            color: var(--ds-muted);
-            max-width: 660px;
-            margin: auto;
-            font-weight: 400;
-            line-height: 1.65;
+        .hero p.lede {
+            font-size: 17px; color: var(--muted); max-width: 46ch;
+            margin-bottom: 30px;
         }
 
-        /* DEEPSEEK SEARCH CAPSULE */
-        .search-container {
-            max-width: 680px;
-            margin: 38px auto 0;
-            position: relative;
-        }
         .search-capsule {
-            display: flex;
-            align-items: center;
-            background: #ffffff;
-            border: 1.5px solid var(--ds-border);
-            border-radius: 20px;
-            padding: 6px 14px 6px 20px;
-            box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05);
-            transition: var(--transition);
+            display: flex; align-items: center;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 4px 8px 4px 18px;
+            box-shadow: var(--shadow-card);
+            transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
         }
         .search-capsule:focus-within {
-            border-color: var(--ds-blue);
-            box-shadow: 0 16px 35px -6px rgba(77, 107, 254, 0.16), 0 0 0 4px rgba(77, 107, 254, 0.08);
-            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-tint);
         }
         .search-capsule input {
-            flex: 1;
-            height: 52px;
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 15.5px;
-            color: var(--ds-text);
+            flex: 1; height: 50px; border: none; outline: none;
+            background: transparent; font-size: 15px; color: var(--ink);
+            font-family: inherit;
         }
-        .search-icon {
-            font-size: 19px;
-            color: var(--ds-muted);
-            margin-right: 12px;
+        .search-capsule input::placeholder { color: var(--faint); }
+        .search-icon { font-size: 17px; color: var(--faint); margin-right: 10px; }
+        .key-shortcut {
+            font-size: 11px; color: var(--muted);
+            background: var(--bg); padding: 4px 8px; border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .category-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .filter-chip {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 7px 15px; border-radius: 999px; font-size: 13px; font-weight: 500;
+            color: var(--muted); cursor: pointer; transition: all .18s var(--ease);
+        }
+        .filter-chip:hover { border-color: var(--primary); color: var(--ink); }
+        .filter-chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+        .hero-stats { display: flex; gap: 28px; margin-top: 34px; }
+        .stat b {
+            display: block; font-family: 'Space Grotesk', sans-serif;
+            font-size: 26px; font-weight: 700;
+        }
+        .stat span { font-size: 12.5px; color: var(--muted); }
+
+        /* ---------- Hero visual ---------- */
+        .hero { perspective: 1200px; position: relative; }
+        .hero-numeral {
+            position: absolute; top: -40px; left: -10px;
+            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+            font-size: clamp(140px, 16vw, 260px); line-height: 1;
+            color: rgba(18,20,28,.045);
+            pointer-events: none; z-index: 0; user-select: none;
+        }
+        .hero > *:not(.hero-numeral) { position: relative; z-index: 1; }
+        .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(22px); animation: word-in .6s var(--ease) forwards; }
+        @keyframes word-in { to { opacity: 1; transform: none; } }
+
+        /* Physics toybox — the hero's one bold, playable moment */
+        .toybox-wrap { position: relative; }
+        .toybox {
+            position: relative; height: 420px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-l);
+            box-shadow: 0 30px 60px -24px rgba(18,20,28,.18);
+            overflow: hidden;
+            background-image: radial-gradient(circle, rgba(18,20,28,.06) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+        .toybox::after {
+            content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 46px;
+            background: linear-gradient(180deg, transparent, rgba(18,20,28,.05));
             pointer-events: none;
         }
-        .key-shortcut {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11.5px;
-            color: var(--ds-muted);
-            background: #f1f5f9;
-            padding: 4px 8px;
-            border-radius: 6px;
-            border: 1px solid var(--ds-border);
+        .toybox-hint { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+        .chip {
+            position: absolute; top: 0; left: 0;
+            display: flex; align-items: center; gap: 7px;
+            padding: 0 14px 0 8px; height: 44px; border-radius: 999px;
+            background: var(--surface); border: 1.5px solid var(--border);
+            box-shadow: 0 6px 16px -6px rgba(18,20,28,.2);
+            font-size: 12.5px; font-weight: 600; color: var(--ink);
+            cursor: grab; user-select: none; touch-action: none;
+            will-change: transform;
         }
+        .chip:active, .chip.dragging { cursor: grabbing; box-shadow: 0 16px 30px -8px rgba(18,20,28,.32); z-index: 5; }
+        .chip .chip-icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; flex-shrink: 0; }
+        .chip.settled { animation: chip-land .35s var(--ease); }
+        @keyframes chip-land { 0% { transform: scale(1) translateY(var(--ty,0)); } 40% { transform: scale(1.12) translateY(var(--ty,0)); } 100% { transform: scale(1) translateY(var(--ty,0)); } }
 
-        /* CATEGORY FILTER CHIPS */
-        .category-pills {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+        /* Marquee band */
+        .marquee-band {
+            position: relative; z-index: 2; background: var(--ink);
+            overflow: hidden; padding: 15px 0; margin-top: 8px;
         }
-        .filter-chip {
-            background: #ffffff;
-            border: 1px solid var(--ds-border);
-            padding: 7px 16px;
-            border-radius: var(--ds-radius-pill);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--ds-muted);
-            cursor: pointer;
-            transition: var(--transition);
+        .marquee-track {
+            display: flex; align-items: center; gap: 18px; width: max-content;
+            animation: marquee 30s linear infinite;
         }
-        .filter-chip:hover, .filter-chip.active {
-            background: var(--ds-text);
-            color: #ffffff;
-            border-color: var(--ds-text);
-            transform: translateY(-1px);
+        .marquee-track span {
+            color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+            font-size: 15px; white-space: nowrap;
         }
+        .marquee-track .dot { color: var(--signal); }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* MAIN TOOLS CONTAINER */
-        .container {
-            max-width: 1300px;
-            margin: 40px auto 90px;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
-        }
-        .category-wrapper {
-            margin-bottom: 50px;
-            scroll-margin-top: 90px;
-        }
+        /* ---------- Main grid ---------- */
+        .container { max-width: 1280px; margin: 30px auto 90px; padding: 0 28px; position: relative; z-index: 2; }
+        .category-wrapper { margin-bottom: 44px; scroll-margin-top: 90px; }
         .category-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 14px;
-            border-bottom: 1px solid var(--ds-border);
-            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 12px;
+            padding-bottom: 13px; border-bottom: 1px solid var(--border); margin-bottom: 18px;
         }
-        .category-title {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.4px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .category-count {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11.5px;
-            font-weight: 600;
-            color: var(--ds-blue);
-            background: rgba(77, 107, 254, 0.08);
-            padding: 3px 9px;
-            border-radius: var(--ds-radius-pill);
-        }
+        .cat-dot { width: 9px; height: 9px; border-radius: 50%; }
+        .category-title { font-size: 18px; font-weight: 600; }
+        .category-count { font-size: 12.5px; color: var(--muted); margin-left: auto; }
 
-        /* TOOLS GRID & CARDS */
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 12px;
-        }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
         .tool-card {
-            background: #ffffff;
-            border: 1px solid var(--ds-border);
-            border-radius: var(--ds-radius-card);
-            transition: var(--transition);
-            box-shadow: var(--ds-shadow);
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-m);
+            position: relative; overflow: hidden;
+            transition: transform .18s var(--ease), box-shadow .18s var(--ease), border-color .18s var(--ease);
         }
+        .tool-card::before {
+            content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: var(--accent, var(--primary));
+            transform: scaleY(0); transform-origin: bottom;
+            transition: transform .22s var(--ease);
+        }
+        .tool-card:hover::before { transform: scaleY(1); }
+        .tool-card:hover { transform: translateY(-3px) rotate(-0.5deg); box-shadow: var(--shadow-hover); border-color: transparent; }
+        .tool-card:nth-child(even):hover { transform: translateY(-3px) rotate(0.5deg); }
         .tool-card a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 18px;
-            text-decoration: none;
-            color: var(--ds-text);
-            font-size: 14.5px;
-            font-weight: 600;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 17px; text-decoration: none; color: var(--ink);
+            font-size: 14px; font-weight: 500;
         }
         .card-main { display: flex; align-items: center; gap: 12px; }
         .card-icon {
-            width: 36px;
-            height: 36px;
-            background: #f8fafc;
-            border: 1px solid var(--ds-border);
-            border-radius: 9px;
-            display: grid;
-            place-items: center;
-            font-size: 17px;
-            flex-shrink: 0;
-            transition: var(--transition);
+            width: 34px; height: 34px; border-radius: 9px;
+            background: var(--accent-tint, var(--primary-tint));
+            display: grid; place-items: center; font-size: 16px; flex-shrink: 0;
+            transition: transform .22s var(--ease);
         }
-        .card-arrow {
-            color: var(--ds-muted);
-            font-size: 13px;
-            opacity: 0;
-            transform: translateX(-5px);
-            transition: var(--transition);
-        }
-
-        .tool-card:hover {
-            border-color: var(--ds-border-hover);
-            box-shadow: var(--ds-shadow-hover);
-            transform: translateY(-2.5px);
-        }
-        .tool-card:hover .card-icon {
-            background: rgba(77, 107, 254, 0.08);
-            border-color: rgba(77, 107, 254, 0.25);
-            transform: scale(1.05);
-        }
-        .tool-card:hover .card-arrow {
-            opacity: 1;
-            transform: translateX(0);
-            color: var(--ds-blue);
-        }
+        .tool-card:hover .card-icon { transform: scale(1.1) rotate(-6deg); }
+        .card-arrow { color: var(--faint); font-size: 13px; opacity: 0; transform: translateX(-4px); transition: all .18s var(--ease); }
+        .tool-card:hover .card-arrow { opacity: 1; transform: none; color: var(--accent, var(--primary)); }
 
         .no-results {
-            display: none;
-            text-align: center;
-            padding: 60px 20px;
-            background: #ffffff;
-            border: 1px dashed var(--ds-border);
-            border-radius: 18px;
-            color: var(--ds-muted);
-            font-size: 16px;
-            font-weight: 600;
+            display: none; text-align: center; padding: 60px 20px;
+            background: var(--surface); border: 1px dashed var(--border);
+            border-radius: var(--radius-l); color: var(--muted); font-size: 15px; font-weight: 500;
         }
 
-        /* SEO & EDITORIAL ARTICLE */
-        .seo-content-section {
-            max-width: 1300px;
-            margin: 70px auto 90px;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
+        /* ---------- About / SEO section ---------- */
+        .about-section { max-width: 1280px; margin: 60px auto 90px; padding: 0 28px; position: relative; z-index: 2; }
+        .about-box {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-l); padding: 52px 46px;
         }
-        .seo-box {
-            background: #ffffff;
-            border: 1px solid var(--ds-border);
-            border-radius: 20px;
-            padding: 50px 42px;
-            box-shadow: var(--ds-shadow);
-        }
-        .seo-box h2 {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 18px;
-            color: var(--ds-text);
-        }
-        .seo-box p {
-            font-size: 16px;
-            color: var(--ds-muted);
-            line-height: 1.75;
-            margin-bottom: 20px;
-        }
-        .seo-box h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin: 36px 0 16px 0;
-            letter-spacing: -0.3px;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        .feature-item {
-            background: #f8fafc;
-            padding: 28px;
-            border-radius: 14px;
-            border: 1px solid var(--ds-border);
-            transition: var(--transition);
-        }
-        .feature-item:hover { transform: translateY(-3px); box-shadow: var(--ds-shadow); }
-        .feature-item .icon { font-size: 32px; margin-bottom: 12px; }
-        .feature-item h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-        .feature-item p { font-size: 14px; color: var(--ds-muted); line-height: 1.6; margin: 0; }
+        .about-box h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; max-width: 22ch; }
+        .about-box > p { font-size: 15.5px; color: var(--muted); max-width: 62ch; margin-bottom: 30px; }
 
-        /* FAQ CONTAINER */
-        .faq-container {
-            margin-top: 40px;
-            border-top: 1px solid var(--ds-border);
-            padding-top: 34px;
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 8px 0 44px; }
+        .feature-item { border: 1px solid var(--border); border-radius: var(--radius-m); padding: 24px; }
+        .feature-item .icon {
+            width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center;
+            font-size: 18px; margin-bottom: 14px;
         }
-        .faq-item {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--ds-border);
-        }
+        .feature-item h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 6px; }
+        .feature-item p { font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.6; }
+
+        .faq-container { border-top: 1px solid var(--border); padding-top: 28px; }
+        .faq-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
         .faq-item:last-child { border-bottom: none; }
-        .faq-item h4 {
-            font-size: 16.5px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--ds-blue);
-        }
-        .faq-item p { font-size: 15px; color: var(--ds-muted); margin: 0; }
+        .faq-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+        .faq-item p { font-size: 14px; color: var(--muted); margin: 0; }
 
-        /* FOOTER */
+        /* ---------- Footer ---------- */
         footer {
-            background: #0b111e;
-            color: #94a3b8;
-            padding: 70px 24px 34px 24px;
-            border-top: 1px solid #1e293b;
-            position: relative;
-            z-index: 2;
+            background: var(--surface); border-top: 1px solid var(--border);
+            padding: 60px 28px 30px; position: relative; z-index: 2;
         }
         .footer-container {
-            max-width: 1300px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.3fr;
-            gap: 50px;
-            border-bottom: 1px solid #1e293b;
-            padding-bottom: 45px;
-            margin-bottom: 28px;
+            max-width: 1280px; margin: auto;
+            display: grid; grid-template-columns: 2fr 1fr 1.3fr; gap: 46px;
+            border-bottom: 1px solid var(--border); padding-bottom: 40px; margin-bottom: 24px;
         }
-        .footer-col h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 16px;
-        }
-        .footer-col p { font-size: 14px; line-height: 1.7; max-width: 420px; }
+        .footer-col h3 { font-size: 16px; font-weight: 600; margin-bottom: 14px; }
+        .footer-col p { font-size: 13.5px; line-height: 1.7; color: var(--muted); max-width: 400px; }
         .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 14px;
-            transition: var(--transition);
-            display: inline-block;
-        }
-        .footer-links a:hover { color: #38bdf8; transform: translateX(3px); }
+        .footer-links li { margin-bottom: 9px; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13.5px; transition: color .18s var(--ease); }
+        .footer-links a:hover { color: var(--primary); }
 
-        .contact-box {
-            background: #131c2e;
-            padding: 24px;
-            border-radius: 14px;
-            border: 1px solid #1e293b;
-        }
+        .contact-box { background: var(--bg); padding: 20px; border-radius: var(--radius-m); border: 1px solid var(--border); }
+        .contact-box p.name { font-size: 13.5px; margin-bottom: 4px; font-weight: 600; color: var(--ink); }
         .contact-box a {
-            display: block;
-            background: var(--ds-blue);
-            color: #ffffff;
-            text-align: center;
-            padding: 11px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            margin-top: 12px;
-            transition: var(--transition);
+            display: block; text-align: center; padding: 10px; border-radius: var(--radius-s);
+            text-decoration: none; font-weight: 600; font-size: 13.5px; margin-top: 10px;
+            transition: transform .18s var(--ease);
         }
-        .contact-box a:hover { background: #3b5df5; transform: translateY(-2px); }
-        .contact-box .linkedin { background: #0284c7; }
-        .contact-box .linkedin:hover { background: #0369a1; }
+        .contact-box a.mail { background: var(--primary); color: #fff; }
+        .contact-box a.li { background: var(--ink); color: #fff; }
+        .contact-box a:hover { transform: translateY(-2px); }
 
         .copyright {
-            max-width: 1300px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            color: #64748b;
+            max-width: 1280px; margin: auto; display: flex; justify-content: space-between;
+            align-items: center; font-size: 12.5px; color: var(--faint);
         }
 
         #backTop {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--ds-border);
-            border-radius: 50%;
-            background: #ffffff;
-            color: var(--ds-text);
-            cursor: pointer;
-            z-index: 100;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            display: grid;
-            place-items: center;
-            font-size: 14px;
+            position: fixed; right: 22px; bottom: 22px; width: 42px; height: 42px;
+            border: 1px solid var(--border); border-radius: 50%; background: var(--surface);
+            color: var(--ink); cursor: pointer; z-index: 100;
+            opacity: 0; transform: translateY(10px); transition: all .22s var(--ease);
+            box-shadow: 0 6px 18px rgba(18,20,28,.1);
+            display: grid; place-items: center; font-size: 14px;
         }
         #backTop.show { opacity: 1; transform: none; }
 
-        /* SCROLL REVEAL CLASS */
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(22px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        @media (max-width: 980px) {
+            .hero { grid-template-columns: 1fr; padding-top: 44px; }
+            .hero h1 { max-width: none; }
         }
-        .reveal-item.visible {
-            opacity: 1;
-            transform: none;
-        }
-
         @media (max-width: 860px) {
             .mobile-btn { display: block; }
             .nav-links {
-                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
-                background: #ffffff; flex-direction: column; align-items: flex-start;
-                padding: 30px 24px; gap: 20px; transition: 0.35s ease; border-top: 1px solid var(--ds-border);
+                position: fixed; top: 68px; left: -100%; width: 100%; height: calc(100vh - 68px);
+                background: var(--surface); flex-direction: column; align-items: flex-start;
+                padding: 28px 24px; gap: 20px; transition: left .3s var(--ease); border-top: 1px solid var(--border);
             }
             .nav-links.active { left: 0; }
-            .hero { padding: 75px 20px 45px; }
-            .seo-box { padding: 30px 22px; }
-            .footer-container { grid-template-columns: 1fr; gap: 35px; }
+            .about-box { padding: 30px 22px; }
+            .footer-container { grid-template-columns: 1fr; gap: 32px; }
             .copyright { flex-direction: column; gap: 10px; text-align: center; }
             .tools-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-wrap: wrap; row-gap: 16px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+            .marquee-track { animation: none !important; }
         }
     </style>
 </head>
 <body>
 
 <div id="read-progress"></div>
-<div class="ambient-layer"></div>
-<canvas id="deepseek-canvas"></canvas>
+<div class="backdrop"><div class="blob blob-a"></div><div class="blob blob-b"></div></div>
+<canvas id="particles"></canvas>
+<div class="grid-spotlight" id="gridSpotlight"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <header>
     <div class="navbar">
         <a href="index.html" class="logo">
-            <div class="logo-symbol">⚡</div>
-            <div>Quick<span>Tooles</span></div>
-
+            <span class="logo-mark"></span>
+            QuickTooles
         </a>
         <button class="mobile-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
         <nav class="nav-links" id="menu">
             <a href="index.html">Home</a>
-            <a href="#cat-dev">Developers</a>
-            <a href="#cat-image">Media Suite</a>
-            <a href="#seo-section">Architecture</a>
+            <a href="#cat-text">Text</a>
+            <a href="#cat-image">Media &amp; PDF</a>
+            <a href="#cat-dev">Developer</a>
+            <a href="#about-section">About</a>
             <a href="#contact-section" class="nav-btn">Contact</a>
         </nav>
     </div>
 </header>
 
 <section class="hero">
-    <div class="hero-pill">
-        <span class="live-dot"></span> 51+ Cloudless In-Memory Utilities
-    </div>
-    <h1>Everyday Digital Work.<br><span class="gradient-txt">Instant. Pure. Unrestricted.</span></h1>
-    <p>Perform format conversions, regex evaluation, image compression, and cryptographic calculations natively in your browser with zero latency.</p>
-    
-    <div class="search-container">
+    <span class="hero-numeral" aria-hidden="true">56</span>
+    <div>
+        <div class="hero-eyebrow"><span class="pulse-dot"></span> 56 tools, all running locally in your tab</div>
+        <h1><span class="word" style="animation-delay:.02s">Every</span> <span class="word" style="animation-delay:.08s">tool</span> <span class="word" style="animation-delay:.14s">you</span> <span class="word" style="animation-delay:.2s">reach</span> <span class="word" style="animation-delay:.26s">for,</span> <span class="word" style="animation-delay:.32s">in</span> <span class="word" style="animation-delay:.38s">one</span> <span class="word" style="animation-delay:.44s">place.</span></h1>
+        <p class="lede">Format JSON, resize images, generate passwords, calculate EMI and 52 more everyday utilities — free, instant, and processed right in your browser.</p>
+
         <div class="search-capsule">
             <span class="search-icon">⚲</span>
-            <input type="text" id="toolSearch" placeholder="Search utilities (e.g. JSON Formatter, Base64, Image Resizer)..." autocomplete="off">
-            <span class="key-shortcut">⌘K</span>
+            <input type="text" id="toolSearch" placeholder="Search 56 tools — try “json” or “resize”" autocomplete="off">
+            <span class="key-shortcut mono">⌘K</span>
         </div>
-        
+
         <div class="category-pills">
             <button class="filter-chip active" onclick="filterByGroup('all')">All</button>
             <button class="filter-chip" onclick="filterByGroup('cat-text')">Text</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-image')">Media & PDF</button>
+            <button class="filter-chip" onclick="filterByGroup('cat-image')">Media &amp; PDF</button>
             <button class="filter-chip" onclick="filterByGroup('cat-dev')">Developer</button>
             <button class="filter-chip" onclick="filterByGroup('cat-security')">Security</button>
             <button class="filter-chip" onclick="filterByGroup('cat-calc')">Calculators</button>
+            <button class="filter-chip" onclick="filterByGroup('cat-finance')">Finance</button>
         </div>
+
+        <div class="hero-stats">
+            <div class="stat"><b class="mono" data-count="56">0</b><span>Tools</span></div>
+            <div class="stat"><b class="mono" data-count="6">0</b><span>Categories</span></div>
+            <div class="stat"><b class="mono" data-count="0">0</b><span>₹ cost, ever</span></div>
+            <div class="stat"><b class="mono" data-count="0">0</b><span>Sign-ups required</span></div>
+        </div>
+    </div>
+
+    <div class="toybox-wrap">
+        <div class="toybox" id="toybox" aria-hidden="true">
+            <!-- chips injected by JS -->
+        </div>
+        <p class="toybox-hint">🖱️ Drag, flick, or just watch them settle — that's 16 of the 56 tools.</p>
+    </div>
+</section>
+
+<section class="marquee-band" aria-hidden="true">
+    <div class="marquee-track">
+        <span>JSON Formatter</span><span class="dot">•</span>
+        <span>Image Resizer</span><span class="dot">•</span>
+        <span>Password Generator</span><span class="dot">•</span>
+        <span>EMI Calculator</span><span class="dot">•</span>
+        <span>QR Generator</span><span class="dot">•</span>
+        <span>PDF Compressor</span><span class="dot">•</span>
+        <span>Regex Tester</span><span class="dot">•</span>
+        <span>Color Converter</span><span class="dot">•</span>
+        <span>UUID Generator</span><span class="dot">•</span>
+        <span>GST Calculator</span><span class="dot">•</span>
+        <span>JSON Formatter</span><span class="dot">•</span>
+        <span>Image Resizer</span><span class="dot">•</span>
+        <span>Password Generator</span><span class="dot">•</span>
+        <span>EMI Calculator</span><span class="dot">•</span>
+        <span>QR Generator</span><span class="dot">•</span>
+        <span>PDF Compressor</span><span class="dot">•</span>
+        <span>Regex Tester</span><span class="dot">•</span>
+        <span>Color Converter</span><span class="dot">•</span>
+        <span>UUID Generator</span><span class="dot">•</span>
+        <span>GST Calculator</span><span class="dot">•</span>
     </div>
 </section>
 
 <main class="container" id="all-tools">
 
     <div id="noResultsMsg" class="no-results">
-        😞 Oops! No tools found matching your search. Please try a different keyword.
+        No tools matched that search. Try a different keyword.
     </div>
 
     <!-- TEXT TOOLS -->
-    <section class="category-wrapper reveal-item" id="cat-text">
+    <section class="category-wrapper" id="cat-text">
         <div class="category-header">
-            <h2 class="category-title">📝 Text & Content Tools</h2>
-            <span class="category-count">12 TOOLS</span>
+            <span class="cat-dot" style="background:var(--c-text)"></span>
+            <h2 class="category-title">Text &amp; content tools</h2>
+            <span class="category-count mono">12 tools</span>
         </div>
-        <div class="tools-grid">
+        <div class="tools-grid" style="--accent:var(--c-text); --accent-tint:rgba(36,81,255,.1)">
             <div class="tool-card"><a href="tools/word-counter.html"><div class="card-main"><span class="card-icon">📝</span> Word Counter</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/character-counter.html"><div class="card-main"><span class="card-icon">🔤</span> Character Counter</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/case-converter.html"><div class="card-main"><span class="card-icon">🔠</span> Case Converter</div><span class="card-arrow">↗</span></a></div>
@@ -701,12 +654,13 @@
     </section>
 
     <!-- IMAGE & PDF TOOLS -->
-    <section class="category-wrapper reveal-item" id="cat-image">
+    <section class="category-wrapper" id="cat-image">
         <div class="category-header">
-            <h2 class="category-title">🖼️ Image & PDF Utilities</h2>
-            <span class="category-count">14 TOOLS</span>
+            <span class="cat-dot" style="background:var(--c-image)"></span>
+            <h2 class="category-title">Image &amp; PDF utilities</h2>
+            <span class="category-count mono">14 tools</span>
         </div>
-        <div class="tools-grid">
+        <div class="tools-grid" style="--accent:var(--c-image); --accent-tint:rgba(214,130,26,.1)">
             <div class="tool-card"><a href="tools/image-resizer.html"><div class="card-main"><span class="card-icon">🖼️</span> Image Resizer</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/image-compressor.html"><div class="card-main"><span class="card-icon">📉</span> Image Compressor</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/png-to-jpg.html"><div class="card-main"><span class="card-icon">🔄</span> PNG to JPG</div><span class="card-arrow">↗</span></a></div>
@@ -720,17 +674,18 @@
             <div class="tool-card"><a href="tools/image-to-pdf.html"><div class="card-main"><span class="card-icon">📑</span> Image to PDF</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/word-to-pdf.html"><div class="card-main"><span class="card-icon">📄</span> Word to PDF</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/pdf-compressor.html"><div class="card-main"><span class="card-icon">📄</span> PDF Compressor</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/pdf-cleaner.html"><div class="card-main"><span class="card-icon">🧹</span> PDF Cleaner & Editor</div><span class="card-arrow">↗</span></a></div>
+            <div class="tool-card"><a href="tools/pdf-cleaner.html"><div class="card-main"><span class="card-icon">🧹</span> PDF Cleaner &amp; Editor</div><span class="card-arrow">↗</span></a></div>
         </div>
     </section>
 
     <!-- DEVELOPER TOOLS -->
-    <section class="category-wrapper reveal-item" id="cat-dev">
+    <section class="category-wrapper" id="cat-dev">
         <div class="category-header">
-            <h2 class="category-title">💻 Developer & Web Tools</h2>
-            <span class="category-count">15 TOOLS</span>
+            <span class="cat-dot" style="background:var(--c-dev)"></span>
+            <h2 class="category-title">Developer &amp; web tools</h2>
+            <span class="category-count mono">15 tools</span>
         </div>
-        <div class="tools-grid">
+        <div class="tools-grid" style="--accent:var(--c-dev); --accent-tint:rgba(101,40,217,.1)">
             <div class="tool-card"><a href="tools/json-formatter.html"><div class="card-main"><span class="card-icon">{"}</span> JSON Formatter</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/html-minifier.html"><div class="card-main"><span class="card-icon">🌐</span> HTML Minifier</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/css-minifier.html"><div class="card-main"><span class="card-icon">🎨</span> CSS Minifier</div><span class="card-arrow">↗</span></a></div>
@@ -750,12 +705,13 @@
     </section>
 
     <!-- SECURITY & GENERATORS -->
-    <section class="category-wrapper reveal-item" id="cat-security">
+    <section class="category-wrapper" id="cat-security">
         <div class="category-header">
-            <h2 class="category-title">🔐 Security & Random Generators</h2>
-            <span class="category-count">8 TOOLS</span>
+            <span class="cat-dot" style="background:var(--c-security)"></span>
+            <h2 class="category-title">Security &amp; random generators</h2>
+            <span class="category-count mono">8 tools</span>
         </div>
-        <div class="tools-grid">
+        <div class="tools-grid" style="--accent:var(--c-security); --accent-tint:rgba(214,51,92,.1)">
             <div class="tool-card"><a href="tools/password-generator.html"><div class="card-main"><span class="card-icon">🔑</span> Password Generator</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/password-checker.html"><div class="card-main"><span class="card-icon">🔐</span> Password Checker</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/qr-generator.html"><div class="card-main"><span class="card-icon">📷</span> QR Generator</div><span class="card-arrow">↗</span></a></div>
@@ -768,12 +724,13 @@
     </section>
 
     <!-- CALCULATORS -->
-    <section class="category-wrapper reveal-item" id="cat-calc">
+    <section class="category-wrapper" id="cat-calc">
         <div class="category-header">
-            <h2 class="category-title">🔢 Calculators & Measurements</h2>
-            <span class="category-count">5 TOOLS</span>
+            <span class="cat-dot" style="background:var(--c-calc)"></span>
+            <h2 class="category-title">Calculators &amp; measurements</h2>
+            <span class="category-count mono">5 tools</span>
         </div>
-        <div class="tools-grid">
+        <div class="tools-grid" style="--accent:var(--c-calc); --accent-tint:rgba(15,157,110,.1)">
             <div class="tool-card"><a href="tools/age-calculator.html"><div class="card-main"><span class="card-icon">🎂</span> Age Calculator</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/percentage-calculator.html"><div class="card-main"><span class="card-icon">📊</span> Percentage Calculator</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/emi-calculator.html"><div class="card-main"><span class="card-icon">💰</span> EMI Calculator</div><span class="card-arrow">↗</span></a></div>
@@ -783,12 +740,13 @@
     </section>
 
     <!-- FINANCE -->
-    <section class="category-wrapper reveal-item" id="cat-finance">
+    <section class="category-wrapper" id="cat-finance">
         <div class="category-header">
-            <h2 class="category-title">💰 Finance Calculators</h2>
-            <span class="category-count">2 TOOLS</span>
+            <span class="cat-dot" style="background:var(--c-finance)"></span>
+            <h2 class="category-title">Finance calculators</h2>
+            <span class="category-count mono">2 tools</span>
         </div>
-        <div class="tools-grid">
+        <div class="tools-grid" style="--accent:var(--c-finance); --accent-tint:rgba(11,143,158,.1)">
             <div class="tool-card"><a href="tools/salary-calculator.html"><div class="card-main"><span class="card-icon">🧮</span> Salary Calculator</div><span class="card-arrow">↗</span></a></div>
             <div class="tool-card"><a href="tools/gst-calculator.html"><div class="card-main"><span class="card-icon">🧾</span> GST Calculator</div><span class="card-arrow">↗</span></a></div>
         </div>
@@ -796,188 +754,98 @@
 
 </main>
 
-<!-- RESTORED SEO CONTENT -->
-<section class="seo-content-section reveal-item" id="seo-section">
-    <article class="seo-box">
-        <h2>The Ultimate Hub for Free Online Developer and Creator Tools</h2>
-        <p>Welcome to <strong>QuickTooles</strong>, your one-stop digital workspace designed to make your daily tasks faster, easier, and completely hassle-free. Whether you are a software developer looking to format a messy JSON file, a student needing an accurate word count for an essay, or a digital marketer resizing images for social media, we have a tool specifically built for you.</p>
-        <p>Fast & Simple Tools for Developers and Creators</p>
+<section class="about-section" id="about-section">
+    <article class="about-box">
+        <h2>A workbench of small tools, not another app to manage</h2>
+        <p><strong>QuickTooles</strong> is a set of 56 focused utilities for the tasks that come up every day — formatting a messy JSON file, checking a word count, resizing an image, or working out an EMI. Open the one you need, use it, close the tab. Nothing to configure first.</p>
 
-        <h3>Why Choose QuickTooles?</h3>
+        <h3 style="font-size:19px;font-weight:600;margin-bottom:16px;">Why people keep this tab open</h3>
         <div class="features-grid">
             <div class="feature-item">
-                <div class="icon">🚀</div>
-                <h4>Lightning Fast Execution</h4>
-                <p>No waiting in server queues. Our tools utilize client-side processing (JavaScript) to deliver instant results directly on your screen.</p>
+                <div class="icon" style="background:var(--primary-tint);">🚀</div>
+                <h4>Runs the moment you open it</h4>
+                <p>Every tool works client-side in JavaScript, so there's no server round-trip and no loading screen between you and the result.</p>
             </div>
             <div class="feature-item">
-                <div class="icon">🔒</div>
-                <h4>Strict Data Privacy</h4>
-                <p>Your security is our priority. Since most calculations and formatting happen locally in your browser, your sensitive data and files never touch our servers.</p>
+                <div class="icon" style="background:var(--signal-tint);">🔒</div>
+                <h4>Your files stay on your device</h4>
+                <p>Text, images and documents are processed locally in your browser. Nothing is uploaded to a server unless the tool tells you otherwise.</p>
             </div>
             <div class="feature-item">
-                <div class="icon">💸</div>
-                <h4>100% Free Forever</h4>
-                <p>Say goodbye to paywalls and premium limits. Every single tool on our platform is completely free to use, as many times as you want.</p>
+                <div class="icon" style="background:rgba(15,157,110,.12);">💸</div>
+                <h4>Free, with no catch</h4>
+                <p>No sign-up, no trial period, no usage cap. Every tool stays free the next time you need it too.</p>
             </div>
         </div>
 
         <div class="faq-container">
-            <h3>Frequently Asked Questions</h3>
+            <h3 style="font-size:19px;font-weight:600;margin-bottom:4px;">Questions people ask</h3>
             <div class="faq-item">
                 <h4>Are the tools on QuickTooles really free?</h4>
-                <p>Yes! All 51+ tools on our platform—including image converters, code minifiers, and calculators—are 100% free to use with no hidden charges or subscriptions.</p>
+                <p>Yes. All 56 tools — image converters, code minifiers, calculators and the rest — are free with no hidden charges or subscriptions.</p>
             </div>
             <div class="faq-item">
-                <h4>Do I need to download any software?</h4>
-                <p>No. QuickTooles is a completely cloud-based web application. Every tool runs directly inside your web browser on any device (mobile, tablet, or desktop).</p>
+                <h4>Do I need to install anything?</h4>
+                <p>No. QuickTooles runs entirely in your browser on any device — phone, tablet or desktop. There's nothing to download.</p>
             </div>
             <div class="faq-item">
-                <h4>Is my data safe when using text or image tools?</h4>
-                <p>Absolutely. We respect your privacy. The vast majority of our tools process your text, images, and sensitive data locally on your device. We do not store or track your input data.</p>
+                <h4>Is my data safe when I use the text or image tools?</h4>
+                <p>Yes. Most tools process your text, images and data locally on your device — we don't store or track your input.</p>
             </div>
         </div>
     </article>
 </section>
 
-<!-- FOOTER -->
-<footer id="contact-section" class="reveal-item">
+<footer id="contact-section">
     <div class="footer-container">
         <div class="footer-col">
             <h3>QuickTooles</h3>
-            <p>Our mission is to provide simple, powerful, and secure web tools that help developers, students, and content creators complete their daily digital tasks effortlessly.</p>
+            <p>Simple, focused web tools for developers, students and creators to get everyday digital tasks done without friction.</p>
         </div>
-        
+
         <div class="footer-col">
-            <h3 style="font-size: 17px;">Important Links</h3>
+            <h3 style="font-size:15px;">Browse</h3>
             <ul class="footer-links">
-                <li><a href="#cat-text">→ Text Formatting Tools</a></li>
-                <li><a href="#cat-image">→ Image Utilities</a></li>
-                <li><a href="#cat-dev">→ Developer Toolkit</a></li>
-                <li><a href="#">→ Privacy Policy</a></li>
+                <li><a href="#cat-text">Text &amp; content tools</a></li>
+                <li><a href="#cat-image">Image &amp; PDF utilities</a></li>
+                <li><a href="#cat-dev">Developer tools</a></li>
+                <li><a href="#">Privacy policy</a></li>
             </ul>
         </div>
 
         <div class="footer-col">
-            <h3 style="font-size: 17px;">Get In Touch</h3>
-            <p>Have a suggestion, found a bug, or want a new tool added? Reach out directly!</p>
+            <h3 style="font-size:15px;">Get in touch</h3>
+            <p>Found a bug or want a new tool added? Reach out directly.</p>
             <div class="contact-box">
-                <p style="font-size: 14px; margin-bottom: 5px; font-weight: 600; color: #ffffff;">Adarsh Kumar Katiyar</p>
-                <a href="mailto:adarshkatiyar37@gmail.com" target="_blank">✉️ Email Adarsh</a>
-                <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank" class="linkedin">💼 Connect on LinkedIn</a>
+                <p class="name">Adarsh Kumar Katiyar</p>
+                <a href="mailto:adarshkatiyar37@gmail.com" target="_blank" class="mail">Email Adarsh</a>
+                <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank" class="li">Connect on LinkedIn</a>
             </div>
         </div>
     </div>
-    
+
     <div class="copyright">
-        <p>© 2026 QuickTooles. Designed & Developed with passion. All Rights Reserved.</p>
+        <p>© 2026 QuickTooles. Built by Adarsh Kumar Katiyar.</p>
+        <p>All 56 tools, always free.</p>
     </div>
 </footer>
 
 <button id="backTop" aria-label="Back to top">↑</button>
 
-<!-- DEEPSEEK FLUID HARMONIC SINE-WAVE ENGINE (CANVAS 2D) -->
 <script>
-    const canvas = document.getElementById('deepseek-canvas');
-    const ctx = canvas.getContext('2d');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    // Responsive sizing
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
-
-    // DeepSeek Ribbon Configurations
-    const waves = [
-        { y: 0.38, length: 0.0018, amplitude: 65, speed: 0.012, color: 'rgba(77, 107, 254, 0.22)', width: 1.8 },
-        { y: 0.42, length: 0.0022, amplitude: 85, speed: 0.009, color: 'rgba(0, 210, 255, 0.28)', width: 2.2 },
-        { y: 0.46, length: 0.0014, amplitude: 50, speed: 0.015, color: 'rgba(77, 107, 254, 0.16)', width: 1.5 },
-        { y: 0.50, length: 0.0026, amplitude: 95, speed: 0.008, color: 'rgba(30, 58, 138, 0.14)', width: 1.6 }
-    ];
-
-    let mouse = { x: width / 2, y: height / 2, targetY: height / 2 };
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.targetY = e.clientY;
-    });
-
-    let step = 0;
-
-    function drawDeepSeekWave() {
-        ctx.clearRect(0, 0, width, height);
-
-        // Subtle mouse smoothing
-        mouse.y += (mouse.targetY - mouse.y) * 0.04;
-        const mouseOffset = (mouse.y / height - 0.5) * 60;
-
-        step += 1;
-
-        waves.forEach((wave, idx) => {
-            ctx.beginPath();
-            ctx.lineWidth = wave.width;
-            ctx.strokeStyle = wave.color;
-
-            const baseHeight = height * wave.y + mouseOffset * (idx % 2 === 0 ? 1 : -1);
-
-            for (let x = 0; x < width; x += 4) {
-                // Harmonic sine distortion
-                const distToMouse = Math.abs(x - mouse.x);
-                const mouseInfluence = Math.max(0, 1 - distToMouse / 400) * 35;
-
-                const y = baseHeight + 
-                          Math.sin(x * wave.length + step * wave.speed) * wave.amplitude +
-                          Math.cos(x * 0.0008 + step * 0.006) * 20 +
-                          Math.sin((x + step) * 0.002) * mouseInfluence;
-
-                if (x === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
-            }
-            ctx.stroke();
-        });
-
-        requestAnimationFrame(drawDeepSeekWave);
-    }
-    drawDeepSeekWave();
-</script>
-
-<!-- SCROLL OBSERVER & SEARCH FUNCTIONALITY -->
-<script>
-    // 1. Natural Intersection Observer (DeepSeek Scroll Fade-In)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
-
-    // 2. Reading Progress Indicator & Back to top
+    /* ---------- Scroll progress + back to top ---------- */
     const readProgress = document.getElementById('read-progress');
     const backTop = document.getElementById('backTop');
-
     window.addEventListener('scroll', () => {
         const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (window.scrollY / totalHeight) * 100;
-        readProgress.style.width = `${progress}%`;
-
-        if (window.scrollY > 500) {
-            backTop.classList.add('show');
-        } else {
-            backTop.classList.remove('show');
-        }
+        readProgress.style.width = `${(window.scrollY / totalHeight) * 100}%`;
+        backTop.classList.toggle('show', window.scrollY > 500);
     });
+    backTop.onclick = () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
 
-    backTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // 3. Search Filter Logic
+    /* ---------- Search + filter ---------- */
     const searchInput = document.getElementById("toolSearch");
     const categories = document.querySelectorAll(".category-wrapper");
     const noResultsMsg = document.getElementById("noResultsMsg");
@@ -985,48 +853,32 @@
     function executeSearch() {
         const query = searchInput.value.toLowerCase().trim();
         let totalMatches = 0;
-
         categories.forEach(category => {
             const cards = category.querySelectorAll(".tool-card");
             let matched = 0;
-
             cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                if (text.includes(query)) {
-                    card.style.display = "block";
-                    matched++;
-                    totalMatches++;
-                } else {
-                    card.style.display = "none";
-                }
+                const hit = card.innerText.toLowerCase().includes(query);
+                card.style.display = hit ? "block" : "none";
+                if (hit) { matched++; totalMatches++; }
             });
-
-            category.style.display = (matched === 0) ? "none" : "block";
+            category.style.display = matched === 0 ? "none" : "block";
         });
-
-        noResultsMsg.style.display = (totalMatches === 0) ? "block" : "none";
+        noResultsMsg.style.display = totalMatches === 0 ? "block" : "none";
     }
-
     searchInput.addEventListener("input", executeSearch);
 
-    // 4. Category Filter Tabs
-    window.filterByGroup = function(groupId) {
+    window.filterByGroup = function (groupId) {
         document.querySelectorAll(".filter-chip").forEach(btn => btn.classList.remove("active"));
         event.target.classList.add("active");
-
         if (groupId === "all") {
             categories.forEach(cat => cat.style.display = "block");
             searchInput.value = "";
             executeSearch();
             return;
         }
-
-        categories.forEach(cat => {
-            cat.style.display = (cat.id === groupId) ? "block" : "none";
-        });
+        categories.forEach(cat => cat.style.display = (cat.id === groupId) ? "block" : "none");
     };
 
-    // 5. Shortcut: Cmd/Ctrl + K Focus
     window.addEventListener("keydown", (e) => {
         if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
             e.preventDefault();
@@ -1034,10 +886,330 @@
         }
     });
 
-    // 6. Mobile Menu Toggle
-    function toggleMenu() {
-        document.getElementById("menu").classList.toggle("active");
+    function toggleMenu() { document.getElementById("menu").classList.toggle("active"); }
+
+    /* ---------- Custom cursor (desktop / fine pointer only) ---------- */
+    (function () {
+        const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (!fine) return;
+        document.documentElement.classList.add('has-cursor');
+        const dot = document.getElementById('cursorDot');
+        const ring = document.getElementById('cursorRing');
+        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+        let rx = mx, ry = my;
+
+        window.addEventListener('mousemove', (e) => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+        }, { passive: true });
+
+        function loop() {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+            requestAnimationFrame(loop);
+        }
+        loop();
+
+        document.querySelectorAll('a, button, input, .tool-card, .filter-chip').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+        });
+    })();
+
+    /* ---------- Mouse parallax on ambient blobs ---------- */
+    if (!reduceMotion) {
+        const blobA = document.querySelector('.blob-a');
+        const blobB = document.querySelector('.blob-b');
+        window.addEventListener('mousemove', (e) => {
+            const dx = (e.clientX / window.innerWidth - 0.5) * 24;
+            const dy = (e.clientY / window.innerHeight - 0.5) * 24;
+            blobA.style.transform = `translate(${dx}px, ${dy}px)`;
+            blobB.style.transform = `translate(${-dx}px, ${-dy}px)`;
+        });
     }
+
+    /* ---------- Cursor glow + grid spotlight that follow the pointer ---------- */
+    (function () {
+        const spotlight = document.getElementById('gridSpotlight');
+        const glow = document.getElementById('cursorGlow');
+        let on = false;
+        window.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+            document.documentElement.style.setProperty('--my', e.clientY + 'px');
+            if (!on) { spotlight.classList.add('on'); glow.classList.add('on'); on = true; }
+        }, { passive: true });
+        window.addEventListener('mouseleave', () => {
+            spotlight.classList.remove('on'); glow.classList.remove('on'); on = false;
+        });
+    })();
+
+    /* ---------- Mouse-reactive particle network background ---------- */
+    (function () {
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let w, h, particles = [];
+        const mouse = { x: -9999, y: -9999, active: false };
+
+        function sizeCanvas() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = Math.min(window.innerHeight * 1.15, document.querySelector('.hero').offsetHeight + 260);
+            canvas.style.height = h + 'px';
+        }
+
+        function makeParticles() {
+            const density = w < 640 ? 16000 : 9000;
+            const count = Math.min(90, Math.round((w * h) / density));
+            particles = Array.from({ length: count }, (_, i) => ({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                vx: (Math.random() - 0.5) * 0.25,
+                vy: (Math.random() - 0.5) * 0.25,
+                r: Math.random() * 1.6 + 1,
+                accent: i % 11 === 0
+            }));
+        }
+
+        function step() {
+            ctx.clearRect(0, 0, w, h);
+
+            particles.forEach(p => {
+                // gentle drift
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // mouse repulsion field
+                if (mouse.active) {
+                    const dx = p.x - mouse.x, dy = p.y - mouse.y;
+                    const dist = Math.hypot(dx, dy);
+                    const radius = 150;
+                    if (dist < radius && dist > 0.01) {
+                        const force = (1 - dist / radius) * 1.1;
+                        p.x += (dx / dist) * force;
+                        p.y += (dy / dist) * force;
+                    }
+                }
+
+                if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+                if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+            });
+
+            // connecting lines
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const a = particles[i], b = particles[j];
+                    const dx = a.x - b.x, dy = a.y - b.y;
+                    const dist = Math.hypot(dx, dy);
+                    if (dist < 130) {
+                        ctx.strokeStyle = `rgba(36,81,255,${0.14 * (1 - dist / 130)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // dots
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.accent ? 'rgba(255,122,61,.55)' : 'rgba(36,81,255,.35)';
+                ctx.fill();
+            });
+
+            if (!reduceMotion) requestAnimationFrame(step);
+        }
+
+        sizeCanvas();
+        makeParticles();
+
+        window.addEventListener('resize', () => { sizeCanvas(); makeParticles(); });
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+        }, { passive: true });
+        window.addEventListener('mouseleave', () => { mouse.active = false; });
+
+        if (reduceMotion) {
+            step(); // draw one static frame, no loop
+        } else {
+            requestAnimationFrame(step);
+        }
+    })();
+
+    /* ---------- Hero stat count-up (single orchestrated moment) ---------- */
+    document.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.dataset.count, 10);
+        if (reduceMotion || target === 0) { el.textContent = target; return; }
+        let cur = 0;
+        const step = Math.max(1, Math.round(target / 30));
+        const tick = () => {
+            cur = Math.min(target, cur + step);
+            el.textContent = cur;
+            if (cur < target) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    });
+
+    /* ---------- Physics toybox: the hero's playable centerpiece ---------- */
+    (function () {
+        const box = document.getElementById('toybox');
+        if (!box) return;
+
+        const tools = [
+            { icon: '🧩', label: 'JSON', color: '#2451ff' },
+            { icon: '🔑', label: 'Password', color: '#d6335c' },
+            { icon: '🎨', label: 'Color', color: '#6528d9' },
+            { icon: '📄', label: 'PDF', color: '#d6821a' },
+            { icon: '🔒', label: 'Base64', color: '#2451ff' },
+            { icon: '📝', label: 'Words', color: '#0f9d6e' },
+            { icon: '🖼️', label: 'Image', color: '#d6821a' },
+            { icon: '💰', label: 'EMI', color: '#0b8f9e' },
+            { icon: '🧮', label: 'GST', color: '#0b8f9e' },
+            { icon: '⚡', label: 'Minify', color: '#6528d9' },
+            { icon: '🎲', label: 'Random', color: '#0f9d6e' },
+            { icon: '🧪', label: 'Regex', color: '#6528d9' },
+            { icon: '🆔', label: 'UUID', color: '#d6335c' },
+            { icon: '📷', label: 'QR', color: '#d6335c' },
+            { icon: '🔗', label: 'URL', color: '#2451ff' },
+            { icon: '📏', label: 'Unit', color: '#0f9d6e' }
+        ];
+
+        let bw = box.clientWidth, bh = box.clientHeight;
+        const chips = tools.map((t, i) => {
+            const el = document.createElement('div');
+            el.className = 'chip';
+            el.innerHTML = `<span class="chip-icon" style="background:${t.color}1a">${t.icon}</span>${t.label}`;
+            box.appendChild(el);
+            const r = el.offsetWidth / 2 || 60;
+            return {
+                el, r,
+                x: 24 + Math.random() * Math.max(10, bw - 140),
+                y: -80 - i * 46,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: 0,
+                dragging: false
+            };
+        });
+
+        function place() {
+            chips.forEach(c => {
+                c.el.style.transform = `translate(${c.x}px, ${c.y}px)`;
+            });
+        }
+
+        if (reduceMotion) {
+            // Static, tidy arrangement — no autoplay motion.
+            let cx = 16, cy = 16, rowH = 0;
+            chips.forEach(c => {
+                const w = c.el.offsetWidth, h = c.el.offsetHeight;
+                if (cx + w > bw - 16) { cx = 16; cy += rowH + 10; rowH = 0; }
+                c.x = cx; c.y = cy;
+                cx += w + 10; rowH = Math.max(rowH, h);
+            });
+            place();
+            return;
+        }
+
+        const GRAVITY = 0.42, REST = 0.48, FRICTION = 0.985, AIR = 0.996;
+        let mouse = { x: -9999, y: -9999, active: false };
+
+        box.addEventListener('mousemove', (e) => {
+            const r = box.getBoundingClientRect();
+            mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
+        });
+        box.addEventListener('mouseleave', () => { mouse.active = false; });
+
+        let dragChip = null, dragOffX = 0, dragOffY = 0, lastX = 0, lastY = 0, lastVX = 0, lastVY = 0;
+
+        chips.forEach(c => {
+            c.el.addEventListener('pointerdown', (e) => {
+                c.el.setPointerCapture(e.pointerId);
+                const r = box.getBoundingClientRect();
+                dragChip = c; c.dragging = true;
+                dragOffX = (e.clientX - r.left) - c.x;
+                dragOffY = (e.clientY - r.top) - c.y;
+                lastX = c.x; lastY = c.y;
+            });
+            c.el.addEventListener('pointermove', (e) => {
+                if (dragChip !== c) return;
+                const r = box.getBoundingClientRect();
+                const nx = (e.clientX - r.left) - dragOffX;
+                const ny = (e.clientY - r.top) - dragOffY;
+                lastVX = nx - c.x; lastVY = ny - c.y;
+                c.x = nx; c.y = ny;
+            });
+            const release = () => {
+                if (dragChip === c) {
+                    c.dragging = false;
+                    c.vx = Math.max(-18, Math.min(18, lastVX));
+                    c.vy = Math.max(-18, Math.min(18, lastVY));
+                    dragChip = null;
+                }
+            };
+            c.el.addEventListener('pointerup', release);
+            c.el.addEventListener('pointercancel', release);
+        });
+
+        window.addEventListener('resize', () => { bw = box.clientWidth; bh = box.clientHeight; });
+
+        function step() {
+            bw = box.clientWidth; bh = box.clientHeight;
+
+            chips.forEach(c => {
+                if (c.dragging) return;
+                c.vy += GRAVITY;
+                c.vx *= AIR; c.vy *= AIR;
+                c.x += c.vx; c.y += c.vy;
+
+                if (mouse.active) {
+                    const cx = c.x + c.r, cy = c.y + c.r;
+                    const dx = cx - mouse.x, dy = cy - mouse.y;
+                    const dist = Math.hypot(dx, dy);
+                    const radius = 90;
+                    if (dist < radius && dist > 0.01) {
+                        const force = (1 - dist / radius) * 2.2;
+                        c.vx += (dx / dist) * force;
+                        c.vy += (dy / dist) * force;
+                    }
+                }
+
+                const maxX = bw - c.r * 2, floorY = bh - c.r * 2;
+                if (c.x < 0) { c.x = 0; c.vx = -c.vx * REST; }
+                if (c.x > maxX) { c.x = maxX; c.vx = -c.vx * REST; }
+                if (c.y > floorY) {
+                    c.y = floorY; c.vy = -c.vy * REST; c.vx *= FRICTION;
+                    if (Math.abs(c.vy) < 0.6) c.vy = 0;
+                }
+                if (c.y < -3000) { c.y = -3000; c.vy = 0; }
+            });
+
+            // chip-to-chip collision (simple separation, few items so O(n^2) is cheap)
+            for (let i = 0; i < chips.length; i++) {
+                for (let j = i + 1; j < chips.length; j++) {
+                    const a = chips[i], b = chips[j];
+                    const ax = a.x + a.r, ay = a.y + a.r, bx = b.x + b.r, by = b.y + b.r;
+                    const dx = bx - ax, dy = by - ay;
+                    const dist = Math.hypot(dx, dy) || 0.01;
+                    const minDist = a.r + b.r;
+                    if (dist < minDist) {
+                        const overlap = (minDist - dist) / 2;
+                        const nx = dx / dist, ny = dy / dist;
+                        if (!a.dragging) { a.x -= nx * overlap; a.y -= ny * overlap; }
+                        if (!b.dragging) { b.x += nx * overlap; b.y += ny * overlap; }
+                        const avx = a.vx, avy = a.vy;
+                        if (!a.dragging) { a.vx = b.vx * 0.4; a.vy = b.vy * 0.4; }
+                        if (!b.dragging) { b.vx = avx * 0.4; b.vy = avy * 0.4; }
+                    }
+                }
+            }
+
+            place();
+            requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    })();
 </script>
 
 </body>
