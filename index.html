@@ -1,1215 +1,3999 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickTooles — 56 Free Browser Tools for Developers & Creators</title>
+  <meta charset="UTF-8">
 
-    <meta name="description" content="56 free tools that run entirely in your browser. JSON formatter, image resizer, password generator, EMI calculator, GST calculator and more. No installs, no sign-up.">
-    <meta name="keywords" content="free online tools, developer tools, image converter, text formatters, online calculators, JSON formatter, word counter, quicktooles, pdf converter, seo tools">
-    <meta name="author" content="Adarsh Kumar Katiyar">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <link rel="icon" type="image/png" href="logo.png">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta property="og:title" content="QuickTooles — 56 Free Browser Tools for Developers & Creators">
-    <meta property="og:description" content="Format, convert, generate and calculate — 56 tools that run entirely in your browser. Free, no installs.">
-    <meta property="og:url" content="https://quicktooles.in/">
-    <meta property="og:type" content="website">
+  <meta
+    name="description"
+    content="QuickTooles — 56 fast, free browser tools for developers, creators and everyday work."
+  >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta
+    name="keywords"
+    content="online tools, developer tools, JSON formatter, image tools, PDF tools, calculators, security tools"
+  >
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "QuickTooles",
-      "url": "https://quicktooles.in/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://quicktooles.in/?search={search_term_string}",
-        "query-input": "required name=search_term_string"
+  <meta name="author" content="Adarsh Kumar Katiyar">
+
+  <meta
+    name="theme-color"
+    content="#f7f9fc"
+    id="themeColor"
+  >
+
+  <meta
+    property="og:title"
+    content="QuickTooles — 56 Free Browser Tools"
+  >
+
+  <meta
+    property="og:description"
+    content="Fast browser-based tools for developers, creators and everyday work."
+  >
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <title>QuickTooles — 56 Free Browser Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       QUICKTOOLES V2
+       ========================================================= */
+
+    :root {
+      --bg: #f6f8fc;
+      --bg-soft: #eef2f8;
+      --surface: rgba(255,255,255,.78);
+      --surface-solid: #ffffff;
+      --text: #101828;
+      --text-soft: #667085;
+      --text-muted: #98a2b3;
+
+      --line: rgba(16,24,40,.09);
+      --line-strong: rgba(16,24,40,.15);
+
+      --primary: #2451ff;
+      --primary-dark: #1736c7;
+      --primary-soft: rgba(36,81,255,.09);
+
+      --orange: #ff7a3d;
+      --green: #12b76a;
+      --red: #f04438;
+      --purple: #7f56d9;
+
+      --shadow-sm:
+        0 2px 8px rgba(16,24,40,.04);
+
+      --shadow-md:
+        0 14px 40px rgba(16,24,40,.08);
+
+      --shadow-lg:
+        0 28px 80px rgba(16,24,40,.12);
+
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --radius-xl: 34px;
+
+      --header-height: 76px;
+
+      --font-display: "Space Grotesk", sans-serif;
+      --font-body: "Inter", sans-serif;
+      --font-code: "JetBrains Mono", monospace;
+    }
+
+    /* DARK MODE */
+
+    html[data-theme="dark"] {
+      --bg: #080b12;
+      --bg-soft: #0d111b;
+
+      --surface: rgba(17,23,36,.82);
+      --surface-solid: #111724;
+
+      --text: #f4f7fb;
+      --text-soft: #a8b0bf;
+      --text-muted: #70798a;
+
+      --line: rgba(255,255,255,.08);
+      --line-strong: rgba(255,255,255,.15);
+
+      --primary: #6682ff;
+      --primary-dark: #8ca0ff;
+      --primary-soft: rgba(102,130,255,.13);
+
+      --shadow-sm:
+        0 2px 12px rgba(0,0,0,.18);
+
+      --shadow-md:
+        0 18px 50px rgba(0,0,0,.28);
+
+      --shadow-lg:
+        0 30px 90px rgba(0,0,0,.38);
+    }
+
+    /* RESET */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      transition:
+        background .3s ease,
+        color .3s ease;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* =========================================================
+       CREATIVE ANIMATED BACKGROUND
+       ========================================================= */
+
+    .bg-mesh-container {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -6;
+    }
+
+    .ambient-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      mix-blend-mode: normal;
+      opacity: 0.45;
+      will-change: transform;
+    }
+
+    html[data-theme="dark"] .ambient-glow {
+      opacity: 0.28;
+    }
+
+    .glow-1 {
+      top: -10%;
+      left: -10%;
+      width: 65vw;
+      height: 65vw;
+      background: radial-gradient(circle, rgba(36,81,255,0.45) 0%, rgba(127,86,217,0.15) 60%, transparent 80%);
+      animation: meshFloat1 24s ease-in-out infinite alternate;
+    }
+
+    .glow-2 {
+      bottom: -15%;
+      right: -10%;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(255,122,61,0.35) 0%, rgba(247,144,9,0.1) 60%, transparent 80%);
+      animation: meshFloat2 28s ease-in-out infinite alternate;
+    }
+
+    .glow-3 {
+      top: 40%;
+      left: 30%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(18,183,106,0.2) 0%, rgba(36,81,255,0.1) 60%, transparent 80%);
+      animation: meshFloat3 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes meshFloat1 {
+      0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+      50% { transform: translate3d(8vw, 10vh, 0) scale(1.15) rotate(45deg); }
+      100% { transform: translate3d(-6vw, 18vh, 0) scale(0.95) rotate(90deg); }
+    }
+
+    @keyframes meshFloat2 {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-10vw, -12vh, 0) scale(1.18); }
+      100% { transform: translate3d(6vw, -8vh, 0) scale(0.92); }
+    }
+
+    @keyframes meshFloat3 {
+      0% { transform: translate3d(0, 0, 0) scale(0.9); }
+      50% { transform: translate3d(-8vw, 8vh, 0) scale(1.2); }
+      100% { transform: translate3d(12vw, -10vh, 0) scale(1); }
+    }
+
+    .dot-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -5;
+      opacity: .45;
+      background-image:
+        radial-gradient(
+          rgba(100,110,130,.18) 1.2px,
+          transparent 1.2px
+        );
+      background-size: 26px 26px;
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 85%
+        );
+    }
+
+    #particleCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: .45;
+      z-index: -3;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: .035;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .header {
+      position: sticky;
+      top: 0;
+      height: var(--header-height);
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        color-mix(
+          in srgb,
+          var(--bg) 72%,
+          transparent
+        );
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .header-inner {
+      width: min(1240px, calc(100% - 36px));
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -.04em;
+    }
+
+    .brand-mark {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      color: white;
+      border-radius: 11px;
+      background:
+        linear-gradient(
+          135deg,
+          #2451ff,
+          #7f56d9
+        );
+      box-shadow:
+        0 8px 22px rgba(36,81,255,.25);
+      transform: rotate(-4deg);
+    }
+
+    .brand-mark svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav a {
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 600;
+      transition:
+        background .2s ease,
+        color .2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+      background: var(--primary-soft);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--text-soft);
+      background: var(--surface);
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+    }
+
+    .icon-btn:hover {
+      color: var(--text);
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+    }
+
+    .icon-btn svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .mobile-toggle {
+      display: none;
+    }
+
+    /* =========================================================
+       PROGRESS
+       ========================================================= */
+
+    #scrollProgress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 3px;
+      z-index: 200;
+      background:
+        linear-gradient(
+          90deg,
+          var(--primary),
+          #7f56d9,
+          var(--orange)
+        );
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 92px 0 70px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-soft);
+      background: var(--surface);
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(18,183,106,.12);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(.7);
+        opacity: .5;
       }
     }
-    </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Are the tools on QuickTooles really free?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. All 56 tools are free to use, with no hidden charges, no subscriptions and no daily limits." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to install anything?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. QuickTooles runs entirely in your browser tab — there is nothing to download and nothing to install." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is my data safe when I use these tools?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most tools process everything locally with JavaScript, so your text, images and files never leave your device." }
-        }
-      ]
+    .hero h1 {
+      max-width: 900px;
+      margin: 24px auto 18px;
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: .94;
+      letter-spacing: -.065em;
+      font-weight: 700;
     }
-    </script>
 
-    <style>
-        :root {
-            --bg: #f5f6fa;
-            --surface: #ffffff;
-            --ink: #12141c;
-            --muted: #636b7a;
-            --faint: #98a0ae;
-            --border: #e3e6ee;
-            --primary: #2451ff;
-            --primary-ink: #12141c;
-            --primary-tint: rgba(36, 81, 255, 0.08);
-            --signal: #ff7a3d;
-            --signal-tint: rgba(255, 122, 61, 0.1);
-            --radius-s: 8px;
-            --radius-m: 12px;
-            --radius-l: 20px;
-            --ease: cubic-bezier(.16,1,.3,1);
-            --shadow-card: 0 1px 2px rgba(18,20,28,.04);
-            --shadow-hover: 0 18px 34px -14px rgba(18,20,28,.16);
+    .hero h1 span {
+      display: inline;
+      background:
+        linear-gradient(
+          110deg,
+          var(--primary),
+          #7f56d9 55%,
+          var(--orange)
+        );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-            /* category accents */
-            --c-text: #2451ff;
-            --c-image: #d6821a;
-            --c-dev: #6528d9;
-            --c-security: #d6335c;
-            --c-calc: #0f9d6e;
-            --c-finance: #0b8f9e;
-        }
+    .hero-description {
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--text-soft);
+      font-size: 17px;
+      line-height: 1.75;
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+    /* =========================================================
+       SEARCH
+       ========================================================= */
 
-        body {
-            background: var(--bg);
-            color: var(--ink);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+    .search-shell {
+      width: min(760px, 100%);
+      margin: 35px auto 0;
+      position: relative;
+    }
 
-        h1, h2, h3, .display {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
-            letter-spacing: -0.01em;
-        }
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 64px;
+      padding: 0 14px 0 20px;
+      border: 1px solid var(--line-strong);
+      border-radius: 18px;
+      background:
+        color-mix(
+          in srgb,
+          var(--surface-solid) 90%,
+          transparent
+        );
+      box-shadow: 0 20px 50px rgba(16,24,40,.08);
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
+    }
 
-        .mono { font-family: 'JetBrains Mono', monospace; }
+    html[data-theme="dark"] .search-box {
+      box-shadow: 0 20px 55px rgba(0,0,0,.28);
+    }
 
-        a { color: inherit; }
+    .search-box:focus-within {
+      border-color:
+        color-mix(
+          in srgb,
+          var(--primary) 55%,
+          var(--line-strong)
+        );
+      box-shadow:
+        0 0 0 5px var(--primary-soft),
+        0 22px 60px rgba(36,81,255,.12);
+      transform: translateY(-2px);
+    }
 
-        ::selection { background: var(--primary); color: #fff; }
+    .search-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--text-muted);
+      flex: 0 0 auto;
+    }
 
-        :focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 3px;
-            border-radius: 4px;
-        }
+    #toolSearch {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      padding: 0 14px;
+      color: var(--text);
+      background: transparent;
+      font-size: 16px;
+    }
 
-        /* ---------- Ambient backdrop ---------- */
-        .backdrop {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            background-image:
-                radial-gradient(circle, rgba(18,20,28,.05) 1px, transparent 1px);
-            background-size: 26px 26px;
-            background-position: -13px -13px;
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 55%, transparent 92%);
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,.9) 0%, rgba(0,0,0,.35) 55%, transparent 92%);
-        }
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
-            opacity: .5;
-            will-change: transform;
-        }
-        .blob-a {
-            width: 480px; height: 480px;
-            top: -160px; left: 6%;
-            background: radial-gradient(circle, rgba(36,81,255,.30), transparent 70%);
-            animation: drift-a 22s var(--ease) infinite alternate;
-        }
-        .blob-b {
-            width: 420px; height: 420px;
-            top: 60px; right: 4%;
-            background: radial-gradient(circle, rgba(255,122,61,.22), transparent 70%);
-            animation: drift-b 26s var(--ease) infinite alternate;
-        }
-        @keyframes drift-a {
-            0% { transform: translate(0,0) scale(1); }
-            100% { transform: translate(40px, 60px) scale(1.08); }
-        }
-        @keyframes drift-b {
-            0% { transform: translate(0,0) scale(1); }
-            100% { transform: translate(-50px, 40px) scale(1.1); }
-        }
+    #toolSearch::placeholder {
+      color: var(--text-muted);
+    }
 
-        /* Mouse-reactive particle network */
-        #particles {
-            position: fixed; inset: 0; z-index: 1; pointer-events: none;
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.4) 60%, transparent 96%);
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,.95) 0%, rgba(0,0,0,.4) 60%, transparent 96%);
-        }
+    .shortcut {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text-muted);
+      background: var(--bg-soft);
+      font-family: var(--font-code);
+      font-size: 10px;
+      white-space: nowrap;
+    }
 
-        /* Flashlight that reveals the grid brighter around the cursor */
-        .grid-spotlight {
-            position: fixed; inset: 0; z-index: 1; pointer-events: none;
-            background-image: radial-gradient(circle, rgba(36,81,255,.55) 1px, transparent 1px);
-            background-size: 26px 26px; background-position: -13px -13px;
-            -webkit-mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 20%), black 0%, transparent 72%);
-            mask-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 20%), black 0%, transparent 72%);
-            opacity: 0;
-            transition: opacity .4s var(--ease);
-        }
-        .grid-spotlight.on { opacity: 1; }
+    .search-meta {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
 
-        /* Soft cursor glow that trails the pointer everywhere */
-        .cursor-glow {
-            position: fixed; inset: 0; z-index: 1; pointer-events: none;
-            background: radial-gradient(480px circle at var(--mx, 50%) var(--my, 20%), rgba(36,81,255,.10), transparent 65%);
-            opacity: 0;
-            transition: opacity .4s var(--ease);
-        }
-        .cursor-glow.on { opacity: 1; }
+    .search-meta strong {
+      color: var(--text);
+    }
 
-        /* Custom cursor (fine-pointer devices only) */
-        .cursor-dot, .cursor-ring {
-            position: fixed; top: 0; left: 0; pointer-events: none; z-index: 2000;
-            border-radius: 50%; transform: translate(-50%, -50%); display: none;
-        }
-        html.has-cursor .cursor-dot, html.has-cursor .cursor-ring { display: block; }
-        html.has-cursor, html.has-cursor a, html.has-cursor button, html.has-cursor input { cursor: none; }
-        .cursor-dot { width: 6px; height: 6px; background: var(--ink); }
-        .cursor-ring {
-            width: 34px; height: 34px; border: 1.5px solid rgba(18,20,28,.3);
-            transition: width .22s var(--ease), height .22s var(--ease), border-color .22s var(--ease), background .22s var(--ease);
-        }
-        .cursor-ring.hovering { width: 56px; height: 56px; border-color: var(--primary); background: rgba(36,81,255,.08); }
+    /* =========================================================
+       CATEGORY FILTER
+       ========================================================= */
 
-        /* Grain texture for a tactile, non-templated finish */
-        .grain {
-            position: fixed; inset: 0; z-index: 3; pointer-events: none; opacity: .035;
-            mix-blend-mode: multiply;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-        }
+    .filter-row {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
 
-        #read-progress {
-            position: fixed; top: 0; left: 0; height: 2px;
-            background: var(--primary);
-            z-index: 1001; width: 0%;
-            transition: width .1s linear;
-        }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-soft);
+      background: var(--surface);
+      font-size: 12px;
+      font-weight: 600;
+      transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+    }
 
-        /* ---------- Header ---------- */
-        header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(245, 246, 250, 0.78);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-        }
-        .navbar {
-            max-width: 1280px; height: 68px; margin: auto; padding: 0 28px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .logo {
-            display: flex; align-items: center; gap: 10px;
-            text-decoration: none; font-family: 'Space Grotesk', sans-serif;
-            font-size: 19px; font-weight: 700; color: var(--ink);
-        }
-        .logo-mark {
-            width: 30px; height: 30px; border-radius: 8px;
-            background: var(--ink);
-            display: grid; place-items: center;
-            position: relative;
-        }
-        .logo-mark::before {
-            content: "";
-            width: 10px; height: 10px; border-radius: 2px;
-            background: var(--signal);
-        }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a {
-            text-decoration: none; font-size: 14px; font-weight: 500;
-            color: var(--muted); transition: color .18s var(--ease);
-        }
-        .nav-links a:hover { color: var(--ink); }
-        .nav-btn {
-            background: var(--ink) !important; color: #fff !important;
-            padding: 9px 18px; border-radius: var(--radius-s);
-            font-weight: 600 !important;
-        }
-        .nav-btn:hover { background: var(--primary) !important; }
-        .mobile-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--ink); }
+    .filter-btn:hover {
+      color: var(--text);
+      transform: translateY(-2px);
+    }
 
-        /* ---------- Hero ---------- */
-        .hero {
-            position: relative; z-index: 2;
-            max-width: 1280px; margin: auto;
-            padding: 76px 28px 40px;
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 56px;
-            align-items: center;
-        }
-        .hero-eyebrow {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 13px; font-weight: 600; color: var(--muted);
-            margin-bottom: 20px;
-        }
-        .pulse-dot {
-            width: 7px; height: 7px; border-radius: 50%; background: #10b981;
-            box-shadow: 0 0 0 4px rgba(16,185,129,.15);
-        }
-        .hero h1 {
-            font-size: clamp(36px, 4.2vw, 54px);
-            font-weight: 700; line-height: 1.08;
-            margin-bottom: 20px;
-            max-width: 13ch;
-        }
-        .hero p.lede {
-            font-size: 17px; color: var(--muted); max-width: 46ch;
-            margin-bottom: 30px;
-        }
+    .filter-btn.active {
+      color: white;
+      background: var(--text);
+      border-color: var(--text);
+    }
 
-        .search-capsule {
-            display: flex; align-items: center;
-            background: var(--surface);
-            border: 1.5px solid var(--border);
-            border-radius: 14px;
-            padding: 4px 8px 4px 18px;
-            box-shadow: var(--shadow-card);
-            transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
-        }
-        .search-capsule:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-tint);
-        }
-        .search-capsule input {
-            flex: 1; height: 50px; border: none; outline: none;
-            background: transparent; font-size: 15px; color: var(--ink);
-            font-family: inherit;
-        }
-        .search-capsule input::placeholder { color: var(--faint); }
-        .search-icon { font-size: 17px; color: var(--faint); margin-right: 10px; }
-        .key-shortcut {
-            font-size: 11px; color: var(--muted);
-            background: var(--bg); padding: 4px 8px; border-radius: 6px;
-            border: 1px solid var(--border);
-        }
+    html[data-theme="dark"] .filter-btn.active {
+      color: #0b0e15;
+      background: white;
+      border-color: white;
+    }
 
-        .category-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-        .filter-chip {
-            background: var(--surface); border: 1px solid var(--border);
-            padding: 7px 15px; border-radius: 999px; font-size: 13px; font-weight: 500;
-            color: var(--muted); cursor: pointer; transition: all .18s var(--ease);
-        }
-        .filter-chip:hover { border-color: var(--primary); color: var(--ink); }
-        .filter-chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .filter-count {
+      opacity: .6;
+      font-family: var(--font-code);
+      font-size: 10px;
+    }
 
-        .hero-stats { display: flex; gap: 28px; margin-top: 34px; }
-        .stat b {
-            display: block; font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px; font-weight: 700;
-        }
-        .stat span { font-size: 12.5px; color: var(--muted); }
+    /* =========================================================
+       STATS
+       ========================================================= */
 
-        /* ---------- Hero visual ---------- */
-        .hero { perspective: 1200px; position: relative; }
-        .hero-numeral {
-            position: absolute; top: -40px; left: -10px;
-            font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-            font-size: clamp(140px, 16vw, 260px); line-height: 1;
-            color: rgba(18,20,28,.045);
-            pointer-events: none; z-index: 0; user-select: none;
-        }
-        .hero > *:not(.hero-numeral) { position: relative; z-index: 1; }
-        .hero h1 .word { display: inline-block; opacity: 0; transform: translateY(22px); animation: word-in .6s var(--ease) forwards; }
-        @keyframes word-in { to { opacity: 1; transform: none; } }
+    .stats {
+      width: min(800px, 100%);
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
 
-        /* Physics toybox — the hero's one bold, playable moment */
-        .toybox-wrap { position: relative; }
-        .toybox {
-            position: relative; height: 420px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-l);
-            box-shadow: 0 30px 60px -24px rgba(18,20,28,.18);
-            overflow: hidden;
-            background-image: radial-gradient(circle, rgba(18,20,28,.06) 1px, transparent 1px);
-            background-size: 22px 22px;
-        }
-        .toybox::after {
-            content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 46px;
-            background: linear-gradient(180deg, transparent, rgba(18,20,28,.05));
-            pointer-events: none;
-        }
-        .toybox-hint { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 12px; }
-        .chip {
-            position: absolute; top: 0; left: 0;
-            display: flex; align-items: center; gap: 7px;
-            padding: 0 14px 0 8px; height: 44px; border-radius: 999px;
-            background: var(--surface); border: 1.5px solid var(--border);
-            box-shadow: 0 6px 16px -6px rgba(18,20,28,.2);
-            font-size: 12.5px; font-weight: 600; color: var(--ink);
-            cursor: grab; user-select: none; touch-action: none;
-            will-change: transform;
-        }
-        .chip:active, .chip.dragging { cursor: grabbing; box-shadow: 0 16px 30px -8px rgba(18,20,28,.32); z-index: 5; }
-        .chip .chip-icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; flex-shrink: 0; }
-        .chip.settled { animation: chip-land .35s var(--ease); }
-        @keyframes chip-land { 0% { transform: scale(1) translateY(var(--ty,0)); } 40% { transform: scale(1.12) translateY(var(--ty,0)); } 100% { transform: scale(1) translateY(var(--ty,0)); } }
+    .stat {
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      border-right: 1px solid var(--line);
+    }
 
-        /* Marquee band */
-        .marquee-band {
-            position: relative; z-index: 2; background: var(--ink);
-            overflow: hidden; padding: 15px 0; margin-top: 8px;
-        }
-        .marquee-track {
-            display: flex; align-items: center; gap: 18px; width: max-content;
-            animation: marquee 30s linear infinite;
-        }
-        .marquee-track span {
-            color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 600;
-            font-size: 15px; white-space: nowrap;
-        }
-        .marquee-track .dot { color: var(--signal); }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .stat:last-child {
+      border-right: 0;
+    }
 
-        /* ---------- Main grid ---------- */
-        .container { max-width: 1280px; margin: 30px auto 90px; padding: 0 28px; position: relative; z-index: 2; }
-        .category-wrapper { margin-bottom: 44px; scroll-margin-top: 90px; }
-        .category-header {
-            display: flex; align-items: center; gap: 12px;
-            padding-bottom: 13px; border-bottom: 1px solid var(--border); margin-bottom: 18px;
-        }
-        .cat-dot { width: 9px; height: 9px; border-radius: 50%; }
-        .category-title { font-size: 18px; font-weight: 600; }
-        .category-count { font-size: 12.5px; color: var(--muted); margin-left: auto; }
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+    }
 
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
-        .tool-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-m);
-            position: relative; overflow: hidden;
-            transition: transform .18s var(--ease), box-shadow .18s var(--ease), border-color .18s var(--ease);
-        }
-        .tool-card::before {
-            content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-            background: var(--accent, var(--primary));
-            transform: scaleY(0); transform-origin: bottom;
-            transition: transform .22s var(--ease);
-        }
-        .tool-card:hover::before { transform: scaleY(1); }
-        .tool-card:hover { transform: translateY(-3px) rotate(-0.5deg); box-shadow: var(--shadow-hover); border-color: transparent; }
-        .tool-card:nth-child(even):hover { transform: translateY(-3px) rotate(0.5deg); }
-        .tool-card a {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 17px; text-decoration: none; color: var(--ink);
-            font-size: 14px; font-weight: 500;
-        }
-        .card-main { display: flex; align-items: center; gap: 12px; }
-        .card-icon {
-            width: 34px; height: 34px; border-radius: 9px;
-            background: var(--accent-tint, var(--primary-tint));
-            display: grid; place-items: center; font-size: 16px; flex-shrink: 0;
-            transition: transform .22s var(--ease);
-        }
-        .tool-card:hover .card-icon { transform: scale(1.1) rotate(-6deg); }
-        .card-arrow { color: var(--faint); font-size: 13px; opacity: 0; transform: translateX(-4px); transition: all .18s var(--ease); }
-        .tool-card:hover .card-arrow { opacity: 1; transform: none; color: var(--accent, var(--primary)); }
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
 
-        .no-results {
-            display: none; text-align: center; padding: 60px 20px;
-            background: var(--surface); border: 1px dashed var(--border);
-            border-radius: var(--radius-l); color: var(--muted); font-size: 15px; font-weight: 500;
-        }
+    /* =========================================================
+       CREATIVE INTERACTIVE TOOLBOX
+       ========================================================= */
 
-        /* ---------- About / SEO section ---------- */
-        .about-section { max-width: 1280px; margin: 60px auto 90px; padding: 0 28px; position: relative; z-index: 2; }
-        .about-box {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius-l); padding: 52px 46px;
-        }
-        .about-box h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; max-width: 22ch; }
-        .about-box > p { font-size: 15.5px; color: var(--muted); max-width: 62ch; margin-bottom: 30px; }
+    .toybox {
+      width: min(1000px, 100%);
+      min-height: 175px;
+      margin: 55px auto 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(36,81,255,.09), transparent 70%),
+        color-mix(in srgb, var(--surface) 60%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md);
+      user-select: none;
+      touch-action: none;
+      cursor: default;
+    }
 
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 8px 0 44px; }
-        .feature-item { border: 1px solid var(--border); border-radius: var(--radius-m); padding: 24px; }
-        .feature-item .icon {
-            width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center;
-            font-size: 18px; margin-bottom: 14px;
-        }
-        .feature-item h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 6px; }
-        .feature-item p { font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.6; }
+    html[data-theme="dark"] .toybox {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(102,130,255,.12), transparent 70%),
+        color-mix(in srgb, var(--surface) 50%, transparent);
+    }
 
-        .faq-container { border-top: 1px solid var(--border); padding-top: 28px; }
-        .faq-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
-        .faq-item:last-child { border-bottom: none; }
-        .faq-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-        .faq-item p { font-size: 14px; color: var(--muted); margin: 0; }
+    .toybox-label {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      z-index: 3;
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      pointer-events: none;
+    }
 
-        /* ---------- Footer ---------- */
-        footer {
-            background: var(--surface); border-top: 1px solid var(--border);
-            padding: 60px 28px 30px; position: relative; z-index: 2;
-        }
-        .footer-container {
-            max-width: 1280px; margin: auto;
-            display: grid; grid-template-columns: 2fr 1fr 1.3fr; gap: 46px;
-            border-bottom: 1px solid var(--border); padding-bottom: 40px; margin-bottom: 24px;
-        }
-        .footer-col h3 { font-size: 16px; font-weight: 600; margin-bottom: 14px; }
-        .footer-col p { font-size: 13.5px; line-height: 1.7; color: var(--muted); max-width: 400px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 9px; }
-        .footer-links a { color: var(--muted); text-decoration: none; font-size: 13.5px; transition: color .18s var(--ease); }
-        .footer-links a:hover { color: var(--primary); }
+    .toybox-label::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+    }
 
-        .contact-box { background: var(--bg); padding: 20px; border-radius: var(--radius-m); border: 1px solid var(--border); }
-        .contact-box p.name { font-size: 13.5px; margin-bottom: 4px; font-weight: 600; color: var(--ink); }
-        .contact-box a {
-            display: block; text-align: center; padding: 10px; border-radius: var(--radius-s);
-            text-decoration: none; font-weight: 600; font-size: 13.5px; margin-top: 10px;
-            transition: transform .18s var(--ease);
-        }
-        .contact-box a.mail { background: var(--primary); color: #fff; }
-        .contact-box a.li { background: var(--ink); color: #fff; }
-        .contact-box a:hover { transform: translateY(-2px); }
+    .floating-chip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 8px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--text);
+      background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 6px 16px rgba(16,24,40,.06);
+      font-family: var(--font-code);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: grab;
+      user-select: none;
+      will-change: transform;
+      transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
 
-        .copyright {
-            max-width: 1280px; margin: auto; display: flex; justify-content: space-between;
-            align-items: center; font-size: 12.5px; color: var(--faint);
-        }
+    .floating-chip:hover {
+      border-color: var(--primary);
+      box-shadow: 0 10px 24px rgba(36,81,255,.18);
+      color: var(--primary);
+      z-index: 10;
+    }
 
-        #backTop {
-            position: fixed; right: 22px; bottom: 22px; width: 42px; height: 42px;
-            border: 1px solid var(--border); border-radius: 50%; background: var(--surface);
-            color: var(--ink); cursor: pointer; z-index: 100;
-            opacity: 0; transform: translateY(10px); transition: all .22s var(--ease);
-            box-shadow: 0 6px 18px rgba(18,20,28,.1);
-            display: grid; place-items: center; font-size: 14px;
-        }
-        #backTop.show { opacity: 1; transform: none; }
+    .floating-chip.dragging {
+      cursor: grabbing !important;
+      border-color: var(--primary);
+      background: var(--surface-solid);
+      box-shadow: 0 14px 34px rgba(36,81,255,.28);
+      z-index: 50 !important;
+      transform: scale(1.08) !important;
+    }
 
-        @media (max-width: 980px) {
-            .hero { grid-template-columns: 1fr; padding-top: 44px; }
-            .hero h1 { max-width: none; }
-        }
-        @media (max-width: 860px) {
-            .mobile-btn { display: block; }
-            .nav-links {
-                position: fixed; top: 68px; left: -100%; width: 100%; height: calc(100vh - 68px);
-                background: var(--surface); flex-direction: column; align-items: flex-start;
-                padding: 28px 24px; gap: 20px; transition: left .3s var(--ease); border-top: 1px solid var(--border);
-            }
-            .nav-links.active { left: 0; }
-            .about-box { padding: 30px 22px; }
-            .footer-container { grid-template-columns: 1fr; gap: 32px; }
-            .copyright { flex-direction: column; gap: 10px; text-align: center; }
-            .tools-grid { grid-template-columns: 1fr; }
-            .hero-stats { flex-wrap: wrap; row-gap: 16px; }
-        }
+    /* =========================================================
+       MAIN
+       ========================================================= */
 
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-            .marquee-track { animation: none !important; }
-        }
-    </style>
+    .main {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+      padding-bottom: 100px;
+    }
+
+    /* =========================================================
+       PERSONAL TOOLBAR
+       ========================================================= */
+
+    .toolkit-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toolkit-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .toolkit-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .toolkit-title {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .toolkit-subtitle {
+      margin-top: 3px;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .result-counter {
+      color: var(--text-soft);
+      font-family: var(--font-code);
+      font-size: 11px;
+    }
+
+    /* =========================================================
+       QUICK SECTIONS
+       ========================================================= */
+
+    .quick-section {
+      display: none;
+      margin-bottom: 58px;
+    }
+
+    .quick-section.visible {
+      display: block;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: -.04em;
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       CATEGORY
+       ========================================================= */
+
+    .category {
+      margin-bottom: 62px;
+      scroll-margin-top: 100px;
+    }
+
+    .category-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .category-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .category-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--category-color);
+      background:
+        color-mix(
+          in srgb,
+          var(--category-color) 10%,
+          transparent
+        );
+      border:
+        1px solid
+        color-mix(
+          in srgb,
+          var(--category-color) 16%,
+          transparent
+        );
+    }
+
+    .category-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .category-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: -.04em;
+    }
+
+    .category-count {
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      font-size: 10px;
+    }
+
+    /* =========================================================
+       TOOL GRID
+       ========================================================= */
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .tool-card {
+      min-width: 0;
+      position: relative;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
+    }
+
+    .tool-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 2px;
+      background:
+        linear-gradient(
+          90deg,
+          var(--card-accent),
+          transparent
+        );
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color:
+        color-mix(
+          in srgb,
+          var(--card-accent) 30%,
+          var(--line)
+        );
+      box-shadow: var(--shadow-md);
+    }
+
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+
+    .tool-card.hidden {
+      display: none;
+    }
+
+    .tool-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .tool-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--card-accent);
+      background:
+        color-mix(
+          in srgb,
+          var(--card-accent) 10%,
+          transparent
+        );
+      font-size: 17px;
+    }
+
+    .tool-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .favorite-btn {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      border-radius: 8px;
+      color: var(--text-muted);
+      background: transparent;
+      transition:
+        color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+    }
+
+    .favorite-btn:hover {
+      color: #f79009;
+      background: rgba(247,144,9,.08);
+      transform: scale(1.08);
+    }
+
+    .favorite-btn.active {
+      color: #f79009;
+    }
+
+    .favorite-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .tool-name {
+      margin: 15px 0 6px;
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -.025em;
+    }
+
+    .tool-description {
+      min-height: 36px;
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .tool-footer {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .tool-category {
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      font-size: 9px;
+    }
+
+    .launch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text-soft);
+      background: transparent;
+      font-size: 10px;
+      font-weight: 700;
+      transition:
+        color .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .launch-btn:hover {
+      color: var(--card-accent);
+      border-color:
+        color-mix(
+          in srgb,
+          var(--card-accent) 30%,
+          var(--line)
+        );
+      background:
+        color-mix(
+          in srgb,
+          var(--card-accent) 7%,
+          transparent
+        );
+    }
+
+    .launch-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* =========================================================
+       NO RESULTS
+       ========================================================= */
+
+    .empty-state {
+      display: none;
+      padding: 70px 20px;
+      text-align: center;
+      border: 1px dashed var(--line-strong);
+      border-radius: 24px;
+      background: var(--surface);
+    }
+
+    .empty-state.visible {
+      display: block;
+    }
+
+    .empty-icon {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      border-radius: 17px;
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .empty-state h3 {
+      margin: 0 0 7px;
+      font-family: var(--font-display);
+      font-size: 21px;
+    }
+
+    .empty-state p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 13px;
+    }
+
+    .empty-reset {
+      margin-top: 18px;
+      padding: 9px 14px;
+      border: 0;
+      border-radius: 10px;
+      color: white;
+      background: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       ABOUT
+       ========================================================= */
+
+    .about {
+      padding: 80px 0 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 60px;
+    }
+
+    .about h2 {
+      margin: 0 0 18px;
+      font-family: var(--font-display);
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -.06em;
+    }
+
+    .about p {
+      max-width: 650px;
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--surface);
+    }
+
+    .feature-check {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--green);
+      background: rgba(18,183,106,.09);
+    }
+
+    .feature-text {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       FAQ
+       ========================================================= */
+
+    .faq {
+      margin-top: 85px;
+    }
+
+    .faq h2 {
+      margin: 0 0 20px;
+      font-family: var(--font-display);
+      font-size: 30px;
+      letter-spacing: -.045em;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 17px 18px;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 18px 18px;
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-plus {
+      transform: rotate(45deg);
+    }
+
+    .faq-plus {
+      font-size: 20px;
+      transition: transform .2s ease;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      width: min(1240px, calc(100% - 36px));
+      margin: auto;
+      padding: 38px 0 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      color: var(--text-soft);
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* =========================================================
+       COMMAND PALETTE
+       ========================================================= */
+
+    .palette-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 13vh;
+      background: rgba(8,11,18,.46);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .palette-backdrop.open {
+      display: flex;
+    }
+
+    .palette {
+      width: min(650px, calc(100% - 28px));
+      max-height: 72vh;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      background: var(--surface-solid);
+      box-shadow: 0 40px 120px rgba(0,0,0,.28);
+      overflow: hidden;
+      animation: paletteIn .18s ease;
+    }
+
+    @keyframes paletteIn {
+      from {
+        opacity: 0;
+        transform: translateY(-12px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .palette-search {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 17px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .palette-search svg {
+      width: 19px;
+      height: 19px;
+      color: var(--text-muted);
+    }
+
+    #paletteInput {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 15px;
+    }
+
+    .palette-results {
+      overflow-y: auto;
+      padding: 8px;
+    }
+
+    .palette-result {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px;
+      border: 0;
+      border-radius: 11px;
+      color: var(--text);
+      background: transparent;
+      text-align: left;
+      transition: background .15s ease;
+    }
+
+    .palette-result:hover,
+    .palette-result.selected {
+      background: var(--primary-soft);
+    }
+
+    .palette-result-icon {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--bg-soft);
+      color: var(--primary);
+      font-size: 13px;
+    }
+
+    .palette-result-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .palette-result-name {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .palette-result-meta {
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    .palette-key {
+      color: var(--text-muted);
+      font-family: var(--font-code);
+      font-size: 9px;
+    }
+
+    .palette-footer {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 11px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       BACK TO TOP
+       ========================================================= */
+
+    #backTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 42px;
+      height: 42px;
+      z-index: 70;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition:
+        opacity .2s ease,
+        visibility .2s ease,
+        transform .2s ease;
+    }
+
+    #backTop.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      z-index: 300;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--text);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow-md);
+      font-size: 11px;
+      font-weight: 600;
+      transition:
+        opacity .2s ease,
+        transform .2s ease;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1050px) {
+      .tool-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .nav a {
+        padding-inline: 8px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .header-inner {
+        width: min(100% - 24px, 1240px);
+      }
+      .nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 12px;
+        right: 12px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: var(--surface-solid);
+        box-shadow: var(--shadow-md);
+      }
+      .nav.open {
+        display: flex;
+      }
+      .nav a {
+        padding: 12px;
+      }
+      .mobile-toggle {
+        display: grid;
+      }
+      .tool-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding-top: 62px;
+      }
+      .hero h1 {
+        font-size: clamp(42px, 14vw, 65px);
+      }
+      .hero-description {
+        font-size: 14px;
+      }
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+      .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+      .toybox {
+        min-height: 145px;
+      }
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+      .tool-card {
+        padding: 16px;
+      }
+      .toolkit-bar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .category-head {
+        align-items: flex-start;
+        gap: 15px;
+      }
+    }
+
+    /* =========================================================
+       ACCESSIBILITY
+       ========================================================= */
+
+    :focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+      #particleCanvas {
+        display: none;
+      }
+      .bg-mesh-container {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="read-progress"></div>
-<div class="backdrop"><div class="blob blob-a"></div><div class="blob blob-b"></div></div>
-<canvas id="particles"></canvas>
-<div class="grid-spotlight" id="gridSpotlight"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-<div class="grain"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+  <div id="scrollProgress"></div>
 
-<header>
-    <div class="navbar">
-        <a href="index.html" class="logo">
-            QuickTooles
+  <!-- CREATIVE BACKGROUND -->
+  <div class="bg-mesh-container">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+  </div>
+
+  <div class="dot-grid"></div>
+  <canvas id="particleCanvas"></canvas>
+  <div class="grain"></div>
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="header">
+    <div class="header-inner">
+      <a
+        href="#home"
+        class="brand"
+        aria-label="QuickTooles home"
+      >
+        <span class="brand-mark">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+          >
+            <path d="M13 2L4 14h7l-1 8 9-12h-7z"/>
+          </svg>
+        </span>
+        <span>QuickTooles</span>
+      </a>
+
+      <nav
+        class="nav"
+        id="mainNav"
+      >
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          class="icon-btn"
+          id="themeToggle"
+          aria-label="Toggle theme"
+          title="Toggle theme"
+        >
+          <svg
+            id="themeIcon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        </button>
+
+        <button
+          class="icon-btn mobile-toggle"
+          id="mobileToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M4 6h16"/>
+            <path d="M4 12h16"/>
+            <path d="M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
+
+  <main id="home">
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>
+          <strong id="heroToolCount">56</strong>
+          tools · processed in your browser
+        </span>
+      </div>
+
+      <h1>
+        Every tool you need,
+        <span>in one place.</span>
+      </h1>
+
+      <p class="hero-description">
+        Format JSON, resize images, generate passwords,
+        calculate EMI and explore dozens of fast utilities —
+        simple, private and built for everyday work.
+      </p>
+
+      <!-- SEARCH -->
+      <div class="search-shell">
+        <div class="search-box">
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-4-4"/>
+          </svg>
+
+          <input
+            id="toolSearch"
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Search tools… try “json”, “image”, “password”"
+            aria-label="Search tools"
+          >
+
+          <button
+            class="shortcut"
+            id="openPalette"
+            type="button"
+          >
+            ⌘ K
+          </button>
+        </div>
+
+        <div class="search-meta">
+          <span>
+            Showing
+            <strong id="visibleCount">56</strong>
+            tools
+          </span>
+          <span>·</span>
+          <span>
+            Press
+            <strong>/</strong>
+            to search
+          </span>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div
+        class="filter-row"
+        id="filterRow"
+      ></div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat">
+          <div
+            class="stat-value"
+            id="statTools"
+          >
+            56
+          </div>
+          <div class="stat-label">
+            Tools
+          </div>
+        </div>
+
+        <div class="stat">
+          <div
+            class="stat-value"
+            id="statCategories"
+          >
+            6
+          </div>
+          <div class="stat-label">
+            Categories
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-value">
+            ₹0
+          </div>
+          <div class="stat-label">
+            Cost
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-value">
+            0
+          </div>
+          <div class="stat-label">
+            Sign-ups
+          </div>
+        </div>
+      </div>
+
+      <!-- PHYSICS TOOLBOX -->
+      <div
+        class="toybox"
+        id="toybox"
+        aria-hidden="true"
+      >
+        <div class="toybox-label">
+          drag or throw any tool
+        </div>
+
+        <span class="floating-chip">JSON</span>
+        <span class="floating-chip">Password</span>
+        <span class="floating-chip">Color</span>
+        <span class="floating-chip">PDF</span>
+        <span class="floating-chip">Base64</span>
+        <span class="floating-chip">Words</span>
+        <span class="floating-chip">Image</span>
+        <span class="floating-chip">EMI</span>
+        <span class="floating-chip">GST</span>
+        <span class="floating-chip">Minify</span>
+        <span class="floating-chip">Random</span>
+        <span class="floating-chip">Regex</span>
+        <span class="floating-chip">UUID</span>
+        <span class="floating-chip">QR</span>
+        <span class="floating-chip">URL</span>
+        <span class="floating-chip">Unit</span>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         TOOLS
+         ===================================================== -->
+
+    <section
+      class="main"
+      id="tools"
+    >
+      <div class="toolkit-bar">
+        <div class="toolkit-left">
+          <div class="toolkit-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M4 6h16"/>
+              <path d="M4 12h16"/>
+              <path d="M4 18h16"/>
+            </svg>
+          </div>
+
+          <div>
+            <div class="toolkit-title">
+              Your toolkit
+            </div>
+            <div class="toolkit-subtitle">
+              Search, filter, favorite and launch instantly
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="result-counter"
+          id="resultCounter"
+        >
+          56 / 56
+        </div>
+      </div>
+
+      <!-- RECENT -->
+      <section
+        class="quick-section"
+        id="recentSection"
+      >
+        <div class="section-heading">
+          <div>
+            <h2>Recently used</h2>
+            <p>
+              Your latest tools, kept locally in this browser.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="tool-grid"
+          id="recentGrid"
+        ></div>
+      </section>
+
+      <!-- FAVORITES -->
+      <section
+        class="quick-section"
+        id="favoriteSection"
+      >
+        <div class="section-heading">
+          <div>
+            <h2>Your favorites</h2>
+            <p>
+              Your most useful tools, one click away.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="tool-grid"
+          id="favoriteGrid"
+        ></div>
+      </section>
+
+      <!-- DYNAMIC CATEGORIES -->
+      <div id="categoryContainer"></div>
+
+      <!-- EMPTY -->
+      <div
+        class="empty-state"
+        id="emptyState"
+      >
+        <div class="empty-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-4-4"/>
+            <path d="M8 11h6"/>
+          </svg>
+        </div>
+
+        <h3>
+          No tool found
+        </h3>
+
+        <p>
+          Try another keyword like JSON, image, PDF, password or calculator.
+        </p>
+
+        <button
+          class="empty-reset"
+          id="emptyReset"
+        >
+          Show all tools
+        </button>
+      </div>
+
+      <!-- ===================================================
+           ABOUT
+           =================================================== -->
+
+      <section
+        class="about"
+        id="about"
+      >
+        <div class="about-grid">
+          <div>
+            <h2>
+              Small tools.
+              Big productivity.
+            </h2>
+
+            <p>
+              QuickTooles is designed around a simple idea:
+              the small utilities you repeatedly search for
+              should be available in one clean workspace.
+            </p>
+
+            <p>
+              Most operations happen directly inside your browser,
+              making the experience fast and reducing unnecessary
+              data movement.
+            </p>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature">
+              <div class="feature-check">✓</div>
+              <div class="feature-text">
+                Fast browser-based processing
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature-check">✓</div>
+              <div class="feature-text">
+                Search powered by indexed tool data
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature-check">✓</div>
+              <div class="feature-text">
+                Favorites stored locally
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature-check">✓</div>
+              <div class="feature-text">
+                Keyboard-first command palette
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature-check">✓</div>
+              <div class="feature-text">
+                Responsive on desktop and mobile
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div
+          class="faq"
+          id="faq"
+        >
+          <h2>
+            Frequently asked
+          </h2>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                type="button"
+              >
+                <span>
+                  Are these tools free?
+                </span>
+                <span class="faq-plus">
+                  +
+                </span>
+              </button>
+
+              <div class="faq-answer">
+                QuickTooles is designed as a free collection
+                of everyday browser utilities.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                type="button"
+              >
+                <span>
+                  Do I need an account?
+                </span>
+                <span class="faq-plus">
+                  +
+                </span>
+              </button>
+
+              <div class="faq-answer">
+                No account is required to use the tools.
+                Favorites and recent tools are stored locally
+                in your browser.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                type="button"
+              >
+                <span>
+                  How does the search work?
+                </span>
+                <span class="faq-plus">
+                  +
+                </span>
+              </button>
+
+              <div class="faq-answer">
+                QuickTooles builds an in-memory token index.
+                Search results are ranked using exact,
+                prefix, keyword, description and category matches.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                type="button"
+              >
+                <span>
+                  Can I use keyboard shortcuts?
+                </span>
+                <span class="faq-plus">
+                  +
+                </span>
+              </button>
+
+              <div class="faq-answer">
+                Yes. Use Command + K on macOS or Ctrl + K on
+                Windows/Linux to open the command palette.
+                Arrow keys navigate results and Enter launches one.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        © 2026 QuickTooles · Built by Adarsh Kumar Katiyar
+      </div>
+
+      <div class="footer-links">
+        <a
+          href="mailto:adarshkatiyar37@gmail.com"
+        >
+          Email
         </a>
-        <button class="mobile-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
-        <nav class="nav-links" id="menu">
-            <a href="index.html">Home</a>
-            <a href="#cat-text">Text</a>
-            <a href="#cat-image">Media &amp; PDF</a>
-            <a href="#cat-dev">Developer</a>
-            <a href="#about-section">About</a>
-            <a href="#contact-section" class="nav-btn">Contact</a>
-        </nav>
+
+        <a
+          href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b073225/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </div>
     </div>
-</header>
+  </footer>
 
-<section class="hero">
-    <span class="hero-numeral" aria-hidden="true">56</span>
-    <div>
-        <div class="hero-eyebrow"><span class="pulse-dot"></span> 56 tools, all running locally in your tab</div>
-        <h1><span class="word" style="animation-delay:.02s">Every</span> <span class="word" style="animation-delay:.08s">tool</span> <span class="word" style="animation-delay:.14s">you</span> <span class="word" style="animation-delay:.2s">reach</span> <span class="word" style="animation-delay:.26s">for,</span> <span class="word" style="animation-delay:.32s">in</span> <span class="word" style="animation-delay:.38s">one</span> <span class="word" style="animation-delay:.44s">place.</span></h1>
-        <p class="lede">Format JSON, resize images, generate passwords, calculate EMI and 52 more everyday utilities — free, instant, and processed right in your browser.</p>
+  <!-- =======================================================
+       COMMAND PALETTE
+       ======================================================= -->
 
-        <div class="search-capsule">
-            <span class="search-icon">⚲</span>
-            <input type="text" id="toolSearch" placeholder="Search 56 tools — try “json” or “resize”" autocomplete="off">
-            <span class="key-shortcut mono">⌘K</span>
-        </div>
+  <div
+    class="palette-backdrop"
+    id="paletteBackdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Quick tool launcher"
+  >
+    <div class="palette">
+      <div class="palette-search">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-4-4"/>
+        </svg>
 
-        <div class="category-pills">
-            <button class="filter-chip active" onclick="filterByGroup('all')">All</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-text')">Text</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-image')">Media &amp; PDF</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-dev')">Developer</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-security')">Security</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-calc')">Calculators</button>
-            <button class="filter-chip" onclick="filterByGroup('cat-finance')">Finance</button>
-        </div>
+        <input
+          id="paletteInput"
+          autocomplete="off"
+          placeholder="Search a tool..."
+          aria-label="Command palette search"
+        >
 
-        <div class="hero-stats">
-            <div class="stat"><b class="mono" data-count="56">0</b><span>Tools</span></div>
-            <div class="stat"><b class="mono" data-count="6">0</b><span>Categories</span></div>
-            <div class="stat"><b class="mono" data-count="0">0</b><span>₹ cost, ever</span></div>
-            <div class="stat"><b class="mono" data-count="0">0</b><span>Sign-ups required</span></div>
-        </div>
+        <span class="shortcut">
+          ESC
+        </span>
+      </div>
+
+      <div
+        class="palette-results"
+        id="paletteResults"
+      ></div>
+
+      <div class="palette-footer">
+        <span>↑ ↓ Navigate</span>
+        <span>Enter Open</span>
+        <span>Esc Close</span>
+      </div>
     </div>
+  </div>
 
-    <div class="toybox-wrap">
-        <div class="toybox" id="toybox" aria-hidden="true">
-            <!-- chips injected by JS -->
-        </div>
-        <p class="toybox-hint">🖱️ Drag, flick, or just watch them settle — that's 16 of the 56 tools.</p>
-    </div>
-</section>
+  <!-- BACK TOP -->
+  <button
+    id="backTop"
+    aria-label="Back to top"
+    title="Back to top"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path d="m18 15-6-6-6 6"/>
+    </svg>
+  </button>
 
-<section class="marquee-band" aria-hidden="true">
-    <div class="marquee-track">
-        <span>JSON Formatter</span><span class="dot">•</span>
-        <span>Image Resizer</span><span class="dot">•</span>
-        <span>Password Generator</span><span class="dot">•</span>
-        <span>EMI Calculator</span><span class="dot">•</span>
-        <span>QR Generator</span><span class="dot">•</span>
-        <span>PDF Compressor</span><span class="dot">•</span>
-        <span>Regex Tester</span><span class="dot">•</span>
-        <span>Color Converter</span><span class="dot">•</span>
-        <span>UUID Generator</span><span class="dot">•</span>
-        <span>GST Calculator</span><span class="dot">•</span>
-        <span>JSON Formatter</span><span class="dot">•</span>
-        <span>Image Resizer</span><span class="dot">•</span>
-        <span>Password Generator</span><span class="dot">•</span>
-        <span>EMI Calculator</span><span class="dot">•</span>
-        <span>QR Generator</span><span class="dot">•</span>
-        <span>PDF Compressor</span><span class="dot">•</span>
-        <span>Regex Tester</span><span class="dot">•</span>
-        <span>Color Converter</span><span class="dot">•</span>
-        <span>UUID Generator</span><span class="dot">•</span>
-        <span>GST Calculator</span><span class="dot">•</span>
-    </div>
-</section>
+  <div id="toast"></div>
 
-<main class="container" id="all-tools">
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
 
-    <div id="noResultsMsg" class="no-results">
-        No tools matched that search. Try a different keyword.
-    </div>
+  <script>
+    /* =======================================================
+       1. TOOL DATABASE
+       ======================================================= */
 
-    <!-- TEXT TOOLS -->
-    <section class="category-wrapper" id="cat-text">
-        <div class="category-header">
-            <span class="cat-dot" style="background:var(--c-text)"></span>
-            <h2 class="category-title">Text &amp; content tools</h2>
-            <span class="category-count mono">12 tools</span>
-        </div>
-        <div class="tools-grid" style="--accent:var(--c-text); --accent-tint:rgba(36,81,255,.1)">
-            <div class="tool-card"><a href="tools/word-counter.html"><div class="card-main"><span class="card-icon">📝</span> Word Counter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/character-counter.html"><div class="card-main"><span class="card-icon">🔤</span> Character Counter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/case-converter.html"><div class="card-main"><span class="card-icon">🔠</span> Case Converter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/remove-spaces.html"><div class="card-main"><span class="card-icon">✂️</span> Remove Extra Spaces</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/text-sorter.html"><div class="card-main"><span class="card-icon">🔃</span> Text Sorter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/text-reverser.html"><div class="card-main"><span class="card-icon">🔁</span> Text Reverser</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/duplicate-line-remover.html"><div class="card-main"><span class="card-icon">📄</span> Duplicate Line Remover</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/duplicate-number-checker.html"><div class="card-main"><span class="card-icon">🔢</span> Duplicate Number Checker</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/random-text.html"><div class="card-main"><span class="card-icon">🎲</span> Random Text Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/lorem-generator.html"><div class="card-main"><span class="card-icon">📜</span> Lorem Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/ascii-to-text.html"><div class="card-main"><span class="card-icon">🔡</span> ASCII to Text</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/text-to-ascii.html"><div class="card-main"><span class="card-icon">🔤</span> Text to ASCII</div><span class="card-arrow">↗</span></a></div>
-        </div>
-    </section>
+    const TOOL_CATALOG = [
+      /* TEXT */
+      {
+        id: "word-counter",
+        name: "Word Counter",
+        category: "text",
+        icon: "W",
+        url: "tools/word-counter.html",
+        description: "Count words, characters and text statistics instantly.",
+        keywords: ["word", "words", "count", "characters", "text", "length"]
+      },
+      {
+        id: "character-counter",
+        name: "Character Counter",
+        category: "text",
+        icon: "#",
+        url: "tools/character-counter.html",
+        description: "Count characters, spaces and text length.",
+        keywords: ["character", "count", "length", "text"]
+      },
+      {
+        id: "case-converter",
+        name: "Case Converter",
+        category: "text",
+        icon: "Aa",
+        url: "tools/case-converter.html",
+        description: "Convert text between upper, lower, title and sentence case.",
+        keywords: ["case", "uppercase", "lowercase", "title", "sentence"]
+      },
+      {
+        id: "remove-spaces",
+        name: "Remove Spaces",
+        category: "text",
+        icon: "↔",
+        url: "tools/remove-spaces.html",
+        description: "Clean unwanted spaces and format text quickly.",
+        keywords: ["spaces", "trim", "clean", "text"]
+      },
+      {
+        id: "text-sorter",
+        name: "Text Sorter",
+        category: "text",
+        icon: "↕",
+        url: "tools/text-sorter.html",
+        description: "Sort lines of text alphabetically or numerically.",
+        keywords: ["sort", "sorting", "lines", "alphabetical", "text"]
+      },
+      {
+        id: "text-reverser",
+        name: "Text Reverser",
+        category: "text",
+        icon: "↔",
+        url: "tools/text-reverser.html",
+        description: "Reverse text, words or characters instantly.",
+        keywords: ["reverse", "text", "words", "characters"]
+      },
+      {
+        id: "duplicate-line-remover",
+        name: "Duplicate Line Remover",
+        category: "text",
+        icon: "≠",
+        url: "tools/duplicate-line-remover.html",
+        description: "Remove duplicate lines from large text blocks.",
+        keywords: ["duplicate", "remove", "lines", "unique", "text"]
+      },
+      {
+        id: "duplicate-number-checker",
+        name: "Duplicate Number Checker",
+        category: "text",
+        icon: "123",
+        url: "tools/duplicate-number-checker.html",
+        description: "Find repeated numbers inside a list.",
+        keywords: ["duplicate", "number", "numbers", "repeat", "checker"]
+      },
+      {
+        id: "random-text",
+        name: "Random Text Generator",
+        category: "text",
+        icon: "⌁",
+        url: "tools/random-text.html",
+        description: "Generate random text for testing and prototypes.",
+        keywords: ["random", "text", "generator", "dummy"]
+      },
+      {
+        id: "lorem-generator",
+        name: "Lorem Ipsum Generator",
+        category: "text",
+        icon: "L",
+        url: "tools/lorem-generator.html",
+        description: "Generate placeholder Lorem Ipsum content.",
+        keywords: ["lorem", "ipsum", "dummy", "placeholder", "text"]
+      },
+      {
+        id: "ascii-to-text",
+        name: "ASCII to Text",
+        category: "text",
+        icon: "A",
+        url: "tools/ascii-to-text.html",
+        description: "Convert ASCII numbers into readable text.",
+        keywords: ["ascii", "text", "decode", "numbers"]
+      },
+      {
+        id: "text-to-ascii",
+        name: "Text to ASCII",
+        category: "text",
+        icon: "⌘",
+        url: "tools/text-to-ascii.html",
+        description: "Convert normal text into ASCII values.",
+        keywords: ["ascii", "encode", "text", "numbers"]
+      },
 
-    <!-- IMAGE & PDF TOOLS -->
-    <section class="category-wrapper" id="cat-image">
-        <div class="category-header">
-            <span class="cat-dot" style="background:var(--c-image)"></span>
-            <h2 class="category-title">Image &amp; PDF utilities</h2>
-            <span class="category-count mono">14 tools</span>
-        </div>
-        <div class="tools-grid" style="--accent:var(--c-image); --accent-tint:rgba(214,130,26,.1)">
-            <div class="tool-card"><a href="tools/image-resizer.html"><div class="card-main"><span class="card-icon">🖼️</span> Image Resizer</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-compressor.html"><div class="card-main"><span class="card-icon">📉</span> Image Compressor</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/png-to-jpg.html"><div class="card-main"><span class="card-icon">🔄</span> PNG to JPG</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/jpg-to-png.html"><div class="card-main"><span class="card-icon">🔄</span> JPG to PNG</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-to-base64.html"><div class="card-main"><span class="card-icon">📦</span> Image to Base64</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/base64-to-image.html"><div class="card-main"><span class="card-icon">📤</span> Base64 to Image</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-rotator.html"><div class="card-main"><span class="card-icon">🔄</span> Image Rotator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-cropper.html"><div class="card-main"><span class="card-icon">✂️</span> Image Cropper</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-color-picker.html"><div class="card-main"><span class="card-icon">🎯</span> Image Color Picker</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-converter.html"><div class="card-main"><span class="card-icon">🎨</span> Image Converter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/image-to-pdf.html"><div class="card-main"><span class="card-icon">📑</span> Image to PDF</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/word-to-pdf.html"><div class="card-main"><span class="card-icon">📄</span> Word to PDF</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/pdf-compressor.html"><div class="card-main"><span class="card-icon">📄</span> PDF Compressor</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/pdf-cleaner.html"><div class="card-main"><span class="card-icon">🧹</span> PDF Cleaner &amp; Editor</div><span class="card-arrow">↗</span></a></div>
-        </div>
-    </section>
+      /* IMAGE + PDF */
+      {
+        id: "image-resizer",
+        name: "Image Resizer",
+        category: "media",
+        icon: "↗",
+        url: "tools/image-resizer.html",
+        description: "Resize images to exact dimensions in your browser.",
+        keywords: ["image", "resize", "photo", "dimensions", "size"]
+      },
+      {
+        id: "image-compressor",
+        name: "Image Compressor",
+        category: "media",
+        icon: "⌁",
+        url: "tools/image-compressor.html",
+        description: "Compress images while keeping useful quality.",
+        keywords: ["image", "compress", "compression", "photo", "size"]
+      },
+      {
+        id: "png-to-jpg",
+        name: "PNG to JPG",
+        category: "media",
+        icon: "PNG",
+        url: "tools/png-to-jpg.html",
+        description: "Convert PNG images into JPG format.",
+        keywords: ["png", "jpg", "jpeg", "convert", "image"]
+      },
+      {
+        id: "jpg-to-png",
+        name: "JPG to PNG",
+        category: "media",
+        icon: "JPG",
+        url: "tools/jpg-to-png.html",
+        description: "Convert JPG images into PNG format.",
+        keywords: ["jpg", "jpeg", "png", "convert", "image"]
+      },
+      {
+        id: "image-to-base64",
+        name: "Image to Base64",
+        category: "media",
+        icon: "64",
+        url: "tools/image-to-base64.html",
+        description: "Convert an image into a Base64 string.",
+        keywords: ["image", "base64", "encode", "data url"]
+      },
+      {
+        id: "base64-to-image",
+        name: "Base64 to Image",
+        category: "media",
+        icon: "IMG",
+        url: "tools/base64-to-image.html",
+        description: "Decode Base64 data and preview the image.",
+        keywords: ["base64", "image", "decode", "data url"]
+      },
+      {
+        id: "image-rotator",
+        name: "Image Rotator",
+        category: "media",
+        icon: "⟳",
+        url: "tools/image-rotator.html",
+        description: "Rotate images by custom angles.",
+        keywords: ["image", "rotate", "rotation", "photo"]
+      },
+      {
+        id: "image-cropper",
+        name: "Image Cropper",
+        category: "media",
+        icon: "⌗",
+        url: "tools/image-cropper.html",
+        description: "Crop images to the exact area you need.",
+        keywords: ["image", "crop", "photo", "resize"]
+      },
+      {
+        id: "image-color-picker",
+        name: "Image Color Picker",
+        category: "media",
+        icon: "●",
+        url: "tools/image-color-picker.html",
+        description: "Pick colors directly from an image.",
+        keywords: ["image", "color", "picker", "eyedropper", "hex"]
+      },
+      {
+        id: "image-converter",
+        name: "Image Converter",
+        category: "media",
+        icon: "⇄",
+        url: "tools/image-converter.html",
+        description: "Convert images between common formats.",
+        keywords: ["image", "convert", "format", "photo"]
+      },
+      {
+        id: "image-to-pdf",
+        name: "Image to PDF",
+        category: "media",
+        icon: "PDF",
+        url: "tools/image-to-pdf.html",
+        description: "Turn one or multiple images into a PDF.",
+        keywords: ["image", "pdf", "convert", "document"]
+      },
+      {
+        id: "word-to-pdf",
+        name: "Word to PDF",
+        category: "media",
+        icon: "DOC",
+        url: "tools/word-to-pdf.html",
+        description: "Convert Word-style content into PDF.",
+        keywords: ["word", "pdf", "document", "convert"]
+      },
+      {
+        id: "pdf-compressor",
+        name: "PDF Compressor",
+        category: "media",
+        icon: "PDF",
+        url: "tools/pdf-compressor.html",
+        description: "Reduce PDF file size for easier sharing.",
+        keywords: ["pdf", "compress", "compression", "document"]
+      },
+      {
+        id: "pdf-cleaner",
+        name: "PDF Cleaner",
+        category: "media",
+        icon: "✦",
+        url: "tools/pdf-cleaner.html",
+        description: "Clean and process PDF files locally.",
+        keywords: ["pdf", "clean", "document", "utility"]
+      },
 
-    <!-- DEVELOPER TOOLS -->
-    <section class="category-wrapper" id="cat-dev">
-        <div class="category-header">
-            <span class="cat-dot" style="background:var(--c-dev)"></span>
-            <h2 class="category-title">Developer &amp; web tools</h2>
-            <span class="category-count mono">15 tools</span>
-        </div>
-        <div class="tools-grid" style="--accent:var(--c-dev); --accent-tint:rgba(101,40,217,.1)">
-            <div class="tool-card"><a href="tools/json-formatter.html"><div class="card-main"><span class="card-icon">{"}</span> JSON Formatter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/html-minifier.html"><div class="card-main"><span class="card-icon">🌐</span> HTML Minifier</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/css-minifier.html"><div class="card-main"><span class="card-icon">🎨</span> CSS Minifier</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/js-minifier.html"><div class="card-main"><span class="card-icon">⚡</span> JS Minifier</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/url-encoder.html"><div class="card-main"><span class="card-icon">🔗</span> URL Encoder</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/url-decoder.html"><div class="card-main"><span class="card-icon">🔓</span> URL Decoder</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/base64-encoder.html"><div class="card-main"><span class="card-icon">🔒</span> Base64 Encoder</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/base64-decoder.html"><div class="card-main"><span class="card-icon">🔑</span> Base64 Decoder</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/regex-tester.html"><div class="card-main"><span class="card-icon">🧪</span> Regex Tester</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/color-code-converter.html"><div class="card-main"><span class="card-icon">🎨</span> Color Converter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/meta-tag-generator.html"><div class="card-main"><span class="card-icon">🏷️</span> Meta Tag Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/robots-generator.html"><div class="card-main"><span class="card-icon">🤖</span> Robots Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/sitemap-generator.html"><div class="card-main"><span class="card-icon">🗺️</span> Sitemap Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/binary-converter.html"><div class="card-main"><span class="card-icon">💻</span> Binary Converter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/number-base-converter.html"><div class="card-main"><span class="card-icon">🔢</span> Number Base Converter</div><span class="card-arrow">↗</span></a></div>
-        </div>
-    </section>
+      /* DEVELOPER */
+      {
+        id: "json-formatter",
+        name: "JSON Formatter",
+        category: "developer",
+        icon: "{}",
+        url: "tools/json-formatter.html",
+        description: "Format, beautify and inspect JSON data.",
+        keywords: ["json", "format", "beautify", "developer", "api"]
+      },
+      {
+        id: "html-minifier",
+        name: "HTML Minifier",
+        category: "developer",
+        icon: "</>",
+        url: "tools/html-minifier.html",
+        description: "Minify HTML code for smaller output.",
+        keywords: ["html", "minify", "compress", "code"]
+      },
+      {
+        id: "css-minifier",
+        name: "CSS Minifier",
+        category: "developer",
+        icon: "#",
+        url: "tools/css-minifier.html",
+        description: "Minify CSS and remove unnecessary whitespace.",
+        keywords: ["css", "minify", "compress", "frontend"]
+      },
+      {
+        id: "js-minifier",
+        name: "JS Minifier",
+        category: "developer",
+        icon: "JS",
+        url: "tools/js-minifier.html",
+        description: "Minify JavaScript code quickly.",
+        keywords: ["javascript", "js", "minify", "compress", "code"]
+      },
+      {
+        id: "url-encoder",
+        name: "URL Encoder",
+        category: "developer",
+        icon: "%",
+        url: "tools/url-encoder.html",
+        description: "Encode URLs safely for web applications.",
+        keywords: ["url", "encode", "uri", "web", "developer"]
+      },
+      {
+        id: "url-decoder",
+        name: "URL Decoder",
+        category: "developer",
+        icon: "↯",
+        url: "tools/url-decoder.html",
+        description: "Decode URL-encoded strings.",
+        keywords: ["url", "decode", "uri", "web"]
+      },
+      {
+        id: "base64-encoder",
+        name: "Base64 Encoder",
+        category: "developer",
+        icon: "64",
+        url: "tools/base64-encoder.html",
+        description: "Encode text or data into Base64.",
+        keywords: ["base64", "encode", "developer", "data"]
+      },
+      {
+        id: "base64-decoder",
+        name: "Base64 Decoder",
+        category: "developer",
+        icon: "D",
+        url: "tools/base64-decoder.html",
+        description: "Decode Base64 strings back into data.",
+        keywords: ["base64", "decode", "developer", "data"]
+      },
+      {
+        id: "regex-tester",
+        name: "Regex Tester",
+        category: "developer",
+        icon: ".*",
+        url: "tools/regex-tester.html",
+        description: "Test regular expressions against sample text.",
+        keywords: ["regex", "regexp", "regular expression", "developer"]
+      },
+      {
+        id: "color-code-converter",
+        name: "Color Code Converter",
+        category: "developer",
+        icon: "RGB",
+        url: "tools/color-code-converter.html",
+        description: "Convert HEX, RGB and other color formats.",
+        keywords: ["color", "hex", "rgb", "hsl", "converter"]
+      },
+      {
+        id: "meta-tag-generator",
+        name: "Meta Tag Generator",
+        category: "developer",
+        icon: "SEO",
+        url: "tools/meta-tag-generator.html",
+        description: "Generate useful HTML SEO meta tags.",
+        keywords: ["meta", "seo", "html", "tags", "generator"]
+      },
+      {
+        id: "robots-generator",
+        name: "Robots.txt Generator",
+        category: "developer",
+        icon: "BOT",
+        url: "tools/robots-generator.html",
+        description: "Generate robots.txt configuration.",
+        keywords: ["robots", "seo", "txt", "crawler", "google"]
+      },
+      {
+        id: "sitemap-generator",
+        name: "Sitemap Generator",
+        category: "developer",
+        icon: "XML",
+        url: "tools/sitemap-generator.html",
+        description: "Generate XML sitemap content for websites.",
+        keywords: ["sitemap", "xml", "seo", "website"]
+      },
+      {
+        id: "binary-converter",
+        name: "Binary Converter",
+        category: "developer",
+        icon: "01",
+        url: "tools/binary-converter.html",
+        description: "Convert numbers and text to binary.",
+        keywords: ["binary", "convert", "number", "developer"]
+      },
+      {
+        id: "number-base-converter",
+        name: "Number Base Converter",
+        category: "developer",
+        icon: "16",
+        url: "tools/number-base-converter.html",
+        description: "Convert numbers between different bases.",
+        keywords: ["number", "base", "hex", "binary", "decimal"]
+      },
 
-    <!-- SECURITY & GENERATORS -->
-    <section class="category-wrapper" id="cat-security">
-        <div class="category-header">
-            <span class="cat-dot" style="background:var(--c-security)"></span>
-            <h2 class="category-title">Security &amp; random generators</h2>
-            <span class="category-count mono">8 tools</span>
-        </div>
-        <div class="tools-grid" style="--accent:var(--c-security); --accent-tint:rgba(214,51,92,.1)">
-            <div class="tool-card"><a href="tools/password-generator.html"><div class="card-main"><span class="card-icon">🔑</span> Password Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/password-checker.html"><div class="card-main"><span class="card-icon">🔐</span> Password Checker</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/qr-generator.html"><div class="card-main"><span class="card-icon">📷</span> QR Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/uuid-generator.html"><div class="card-main"><span class="card-icon">🆔</span> UUID Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/random-number.html"><div class="card-main"><span class="card-icon">🔢</span> Random Number</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/random-color-generator.html"><div class="card-main"><span class="card-icon">🎨</span> Random Color Gen</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/md5-generator.html"><div class="card-main"><span class="card-icon">🛡️</span> MD5 Generator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/sha-generator.html"><div class="card-main"><span class="card-icon">🛡️</span> SHA Generator</div><span class="card-arrow">↗</span></a></div>
-        </div>
-    </section>
+      /* SECURITY */
+      {
+        id: "password-generator",
+        name: "Password Generator",
+        category: "security",
+        icon: "⚿",
+        url: "tools/password-generator.html",
+        description: "Generate strong random passwords.",
+        keywords: ["password", "security", "random", "secure"]
+      },
+      {
+        id: "password-checker",
+        name: "Password Strength Checker",
+        category: "security",
+        icon: "✓",
+        url: "tools/password-checker.html",
+        description: "Check password strength and security characteristics.",
+        keywords: ["password", "strength", "security", "checker"]
+      },
+      {
+        id: "qr-generator",
+        name: "QR Code Generator",
+        category: "security",
+        icon: "▦",
+        url: "tools/qr-generator.html",
+        description: "Generate QR codes from text or links.",
+        keywords: ["qr", "qrcode", "code", "generator"]
+      },
+      {
+        id: "uuid-generator",
+        name: "UUID Generator",
+        category: "security",
+        icon: "ID",
+        url: "tools/uuid-generator.html",
+        description: "Generate unique UUID identifiers.",
+        keywords: ["uuid", "guid", "id", "random", "developer"]
+      },
+      {
+        id: "random-number",
+        name: "Random Number Generator",
+        category: "security",
+        icon: "R",
+        url: "tools/random-number.html",
+        description: "Generate random numbers within a range.",
+        keywords: ["random", "number", "generator"]
+      },
+      {
+        id: "random-color-generator",
+        name: "Random Color Generator",
+        category: "security",
+        icon: "●",
+        url: "tools/random-color-generator.html",
+        description: "Generate random HEX and RGB colors.",
+        keywords: ["random", "color", "hex", "rgb"]
+      },
+      {
+        id: "md5-generator",
+        name: "MD5 Generator",
+        category: "security",
+        icon: "MD5",
+        url: "tools/md5-generator.html",
+        description: "Generate MD5 hashes from text.",
+        keywords: ["md5", "hash", "security", "checksum"]
+      },
+      {
+        id: "sha-generator",
+        name: "SHA Generator",
+        category: "security",
+        icon: "SHA",
+        url: "tools/sha-generator.html",
+        description: "Generate SHA hashes directly in your browser.",
+        keywords: ["sha", "hash", "security", "checksum"]
+      },
 
-    <!-- CALCULATORS -->
-    <section class="category-wrapper" id="cat-calc">
-        <div class="category-header">
-            <span class="cat-dot" style="background:var(--c-calc)"></span>
-            <h2 class="category-title">Calculators &amp; measurements</h2>
-            <span class="category-count mono">5 tools</span>
-        </div>
-        <div class="tools-grid" style="--accent:var(--c-calc); --accent-tint:rgba(15,157,110,.1)">
-            <div class="tool-card"><a href="tools/age-calculator.html"><div class="card-main"><span class="card-icon">🎂</span> Age Calculator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/percentage-calculator.html"><div class="card-main"><span class="card-icon">📊</span> Percentage Calculator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/emi-calculator.html"><div class="card-main"><span class="card-icon">💰</span> EMI Calculator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/time-converter.html"><div class="card-main"><span class="card-icon">⏱️</span> Time Converter</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/unit-converter.html"><div class="card-main"><span class="card-icon">📏</span> Unit Converter</div><span class="card-arrow">↗</span></a></div>
-        </div>
-    </section>
+      /* CALCULATORS */
+      {
+        id: "age-calculator",
+        name: "Age Calculator",
+        category: "calculators",
+        icon: "AGE",
+        url: "tools/age-calculator.html",
+        description: "Calculate exact age between two dates.",
+        keywords: ["age", "date", "calculator", "birthday"]
+      },
+      {
+        id: "percentage-calculator",
+        name: "Percentage Calculator",
+        category: "calculators",
+        icon: "%",
+        url: "tools/percentage-calculator.html",
+        description: "Calculate percentages, increases and decreases.",
+        keywords: ["percentage", "percent", "calculator", "math"]
+      },
+      {
+        id: "emi-calculator",
+        name: "EMI Calculator",
+        category: "calculators",
+        icon: "₹",
+        url: "tools/emi-calculator.html",
+        description: "Calculate monthly EMI, interest and repayment.",
+        keywords: ["emi", "loan", "interest", "calculator", "finance"]
+      },
+      {
+        id: "time-converter",
+        name: "Time Converter",
+        category: "calculators",
+        icon: "◷",
+        url: "tools/time-converter.html",
+        description: "Convert time between common formats and units.",
+        keywords: ["time", "convert", "hours", "minutes", "calculator"]
+      },
+      {
+        id: "unit-converter",
+        name: "Unit Converter",
+        category: "calculators",
+        icon: "↔",
+        url: "tools/unit-converter.html",
+        description: "Convert length, weight, temperature and more.",
+        keywords: ["unit", "convert", "length", "weight", "temperature"]
+      },
 
-    <!-- FINANCE -->
-    <section class="category-wrapper" id="cat-finance">
-        <div class="category-header">
-            <span class="cat-dot" style="background:var(--c-finance)"></span>
-            <h2 class="category-title">Finance calculators</h2>
-            <span class="category-count mono">2 tools</span>
-        </div>
-        <div class="tools-grid" style="--accent:var(--c-finance); --accent-tint:rgba(11,143,158,.1)">
-            <div class="tool-card"><a href="tools/salary-calculator.html"><div class="card-main"><span class="card-icon">🧮</span> Salary Calculator</div><span class="card-arrow">↗</span></a></div>
-            <div class="tool-card"><a href="tools/gst-calculator.html"><div class="card-main"><span class="card-icon">🧾</span> GST Calculator</div><span class="card-arrow">↗</span></a></div>
-        </div>
-    </section>
+      /* FINANCE */
+      {
+        id: "salary-calculator",
+        name: "Salary Calculator",
+        category: "finance",
+        icon: "₹",
+        url: "tools/salary-calculator.html",
+        description: "Calculate salary components and deductions.",
+        keywords: ["salary", "income", "pay", "finance", "calculator"]
+      },
+      {
+        id: "gst-calculator",
+        name: "GST Calculator",
+        category: "finance",
+        icon: "GST",
+        url: "tools/gst-calculator.html",
+        description: "Calculate GST amount and final price.",
+        keywords: ["gst", "tax", "finance", "calculator", "india"]
+      }
+    ];
 
-</main>
+    /* =======================================================
+       2. CATEGORY DATABASE
+       ======================================================= */
 
-<section class="about-section" id="about-section">
-    <article class="about-box">
-        <h2>A workbench of small tools, not another app to manage</h2>
-        <p><strong>QuickTooles</strong> is a set of 56 focused utilities for the tasks that come up every day — formatting a messy JSON file, checking a word count, resizing an image, or working out an EMI. Open the one you need, use it, close the tab. Nothing to configure first.</p>
+    const CATEGORY_META = new Map([
+      [
+        "text",
+        {
+          name: "Text & Content",
+          color: "#2451ff",
+          icon: "T",
+          description: "Write, clean and transform text."
+        }
+      ],
+      [
+        "media",
+        {
+          name: "Image & PDF",
+          color: "#ff7a3d",
+          icon: "◈",
+          description: "Process images and documents."
+        }
+      ],
+      [
+        "developer",
+        {
+          name: "Developer & Web",
+          color: "#12b76a",
+          icon: "</>",
+          description: "Build, encode and debug web data."
+        }
+      ],
+      [
+        "security",
+        {
+          name: "Security & Random",
+          color: "#7f56d9",
+          icon: "✦",
+          description: "Generate secure and random data."
+        }
+      ],
+      [
+        "calculators",
+        {
+          name: "Calculators & Measurements",
+          color: "#f79009",
+          icon: "∑",
+          description: "Calculate everyday values."
+        }
+      ],
+      [
+        "finance",
+        {
+          name: "Finance",
+          color: "#12b76a",
+          icon: "₹",
+          description: "Useful financial calculators."
+        }
+      ]
+    ]);
 
-        <h3 style="font-size:19px;font-weight:600;margin-bottom:16px;">Why people keep this tab open</h3>
-        <div class="features-grid">
-            <div class="feature-item">
-                <div class="icon" style="background:var(--primary-tint);">🚀</div>
-                <h4>Runs the moment you open it</h4>
-                <p>Every tool works client-side in JavaScript, so there's no server round-trip and no loading screen between you and the result.</p>
-            </div>
-            <div class="feature-item">
-                <div class="icon" style="background:var(--signal-tint);">🔒</div>
-                <h4>Your files stay on your device</h4>
-                <p>Text, images and documents are processed locally in your browser. Nothing is uploaded to a server unless the tool tells you otherwise.</p>
-            </div>
-            <div class="feature-item">
-                <div class="icon" style="background:rgba(15,157,110,.12);">💸</div>
-                <h4>Free, with no catch</h4>
-                <p>No sign-up, no trial period, no usage cap. Every tool stays free the next time you need it too.</p>
-            </div>
-        </div>
+    /* =======================================================
+       3. DATA STRUCTURES
+       ======================================================= */
 
-        <div class="faq-container">
-            <h3 style="font-size:19px;font-weight:600;margin-bottom:4px;">Questions people ask</h3>
-            <div class="faq-item">
-                <h4>Are the tools on QuickTooles really free?</h4>
-                <p>Yes. All 56 tools — image converters, code minifiers, calculators and the rest — are free with no hidden charges or subscriptions.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Do I need to install anything?</h4>
-                <p>No. QuickTooles runs entirely in your browser on any device — phone, tablet or desktop. There's nothing to download.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Is my data safe when I use the text or image tools?</h4>
-                <p>Yes. Most tools process your text, images and data locally on your device — we don't store or track your input.</p>
-            </div>
-        </div>
-    </article>
-</section>
+    const toolById = new Map(
+      TOOL_CATALOG.map(tool => [tool.id, tool])
+    );
 
-<footer id="contact-section">
-    <div class="footer-container">
-        <div class="footer-col">
-            <h3>QuickTooles</h3>
-            <p>Simple, focused web tools for developers, students and creators to get everyday digital tasks done without friction.</p>
-        </div>
+    const favoriteIds = new Set(
+      JSON.parse(
+        localStorage.getItem("qt:favorites") || "[]"
+      )
+    );
 
-        <div class="footer-col">
-            <h3 style="font-size:15px;">Browse</h3>
-            <ul class="footer-links">
-                <li><a href="#cat-text">Text &amp; content tools</a></li>
-                <li><a href="#cat-image">Image &amp; PDF utilities</a></li>
-                <li><a href="#cat-dev">Developer tools</a></li>
-                <li><a href="#">Privacy policy</a></li>
-            </ul>
-        </div>
+    let recentIds =
+      JSON.parse(
+        localStorage.getItem("qt:recent") || "[]"
+      )
+      .filter(id => toolById.has(id));
 
-        <div class="footer-col">
-            <h3 style="font-size:15px;">Get in touch</h3>
-            <p>Found a bug or want a new tool added? Reach out directly.</p>
-            <div class="contact-box">
-                <p class="name">Adarsh Kumar Katiyar</p>
-                <a href="mailto:adarshkatiyar37@gmail.com" target="_blank" class="mail">Email Adarsh</a>
-                <a href="https://www.linkedin.com/in/adarsh-kumar-katiyar-3b0732258/" target="_blank" class="li">Connect on LinkedIn</a>
-            </div>
-        </div>
-    </div>
+    const searchIndex = new Map();
 
-    <div class="copyright">
-        <p>© 2026 QuickTooles. Built by Adarsh Kumar Katiyar.</p>
-        <p>All 56 tools, always free.</p>
-    </div>
-</footer>
+    /* =======================================================
+       4. BUILD SEARCH INDEX
+       ======================================================= */
 
-<button id="backTop" aria-label="Back to top">↑</button>
-
-<script>
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    /* ---------- Scroll progress + back to top ---------- */
-    const readProgress = document.getElementById('read-progress');
-    const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll', () => {
-        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        readProgress.style.width = `${(window.scrollY / totalHeight) * 100}%`;
-        backTop.classList.toggle('show', window.scrollY > 500);
-    });
-    backTop.onclick = () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-
-    /* ---------- Search + filter ---------- */
-    const searchInput = document.getElementById("toolSearch");
-    const categories = document.querySelectorAll(".category-wrapper");
-    const noResultsMsg = document.getElementById("noResultsMsg");
-
-    function executeSearch() {
-        const query = searchInput.value.toLowerCase().trim();
-        let totalMatches = 0;
-        categories.forEach(category => {
-            const cards = category.querySelectorAll(".tool-card");
-            let matched = 0;
-            cards.forEach(card => {
-                const hit = card.innerText.toLowerCase().includes(query);
-                card.style.display = hit ? "block" : "none";
-                if (hit) { matched++; totalMatches++; }
-            });
-            category.style.display = matched === 0 ? "none" : "block";
-        });
-        noResultsMsg.style.display = totalMatches === 0 ? "block" : "none";
+    function normalize(text) {
+      return String(text || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9+#.-]+/g, " ")
+        .trim();
     }
-    searchInput.addEventListener("input", executeSearch);
 
-    window.filterByGroup = function (groupId) {
-        document.querySelectorAll(".filter-chip").forEach(btn => btn.classList.remove("active"));
-        event.target.classList.add("active");
-        if (groupId === "all") {
-            categories.forEach(cat => cat.style.display = "block");
-            searchInput.value = "";
-            executeSearch();
-            return;
-        }
-        categories.forEach(cat => cat.style.display = (cat.id === groupId) ? "block" : "none");
-    };
+    function tokenize(text) {
+      return normalize(text)
+        .split(/\s+/)
+        .filter(Boolean);
+    }
 
-    window.addEventListener("keydown", (e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-            e.preventDefault();
-            searchInput.focus();
-        }
+    function addToIndex(token, id) {
+      if (!searchIndex.has(token)) {
+        searchIndex.set(token, new Set());
+      }
+      searchIndex.get(token).add(id);
+    }
+
+    TOOL_CATALOG.forEach(tool => {
+      const searchable = [
+        tool.name,
+        tool.description,
+        tool.category,
+        ...tool.keywords
+      ].join(" ");
+
+      const tokens = new Set(tokenize(searchable));
+      tokens.forEach(token => {
+        addToIndex(token, tool.id);
+      });
     });
 
-    function toggleMenu() { document.getElementById("menu").classList.toggle("active"); }
+    /* =======================================================
+       5. CATEGORY COUNTS
+       ======================================================= */
 
-    /* ---------- Custom cursor (desktop / fine pointer only) ---------- */
-    (function () {
-        const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-        if (!fine) return;
-        document.documentElement.classList.add('has-cursor');
-        const dot = document.getElementById('cursorDot');
-        const ring = document.getElementById('cursorRing');
-        let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-        let rx = mx, ry = my;
+    const categoryCounts = new Map();
+    TOOL_CATALOG.forEach(tool => {
+      categoryCounts.set(
+        tool.category,
+        (categoryCounts.get(tool.category) || 0) + 1
+      );
+    });
 
-        window.addEventListener('mousemove', (e) => {
-            mx = e.clientX; my = e.clientY;
-            dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-        }, { passive: true });
+    /* =======================================================
+       6. SEARCH ENGINE
+       ======================================================= */
 
-        function loop() {
-            rx += (mx - rx) * 0.18;
-            ry += (my - ry) * 0.18;
-            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-            requestAnimationFrame(loop);
+    function scoreTool(tool, query) {
+      const q = normalize(query);
+      if (!q) return 0;
+
+      const name = normalize(tool.name);
+      const description = normalize(tool.description);
+      const keywords = tool.keywords.map(normalize);
+      const category = normalize(CATEGORY_META.get(tool.category)?.name);
+
+      let score = 0;
+
+      if (name === q) score += 1000;
+      if (name.startsWith(q)) score += 500;
+      if (name.includes(q)) score += 300;
+      if (keywords.some(k => k === q)) score += 250;
+      if (keywords.some(k => k.includes(q))) score += 160;
+      if (description.includes(q)) score += 100;
+      if (category.includes(q)) score += 70;
+
+      const queryTokens = tokenize(q);
+      const searchableTokens = new Set(
+        tokenize([tool.name, tool.description, ...tool.keywords].join(" "))
+      );
+
+      queryTokens.forEach(token => {
+        if (searchableTokens.has(token)) {
+          score += 80;
         }
-        loop();
+      });
 
-        document.querySelectorAll('a, button, input, .tool-card, .filter-chip').forEach(el => {
-            el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+      return score;
+    }
+
+    function searchTools(query) {
+      const q = normalize(query);
+      if (!q) return [...TOOL_CATALOG];
+
+      const queryTokens = tokenize(q);
+      const candidates = new Set();
+
+      queryTokens.forEach(token => {
+        const direct = searchIndex.get(token);
+        if (direct) {
+          direct.forEach(id => candidates.add(id));
+        }
+
+        for (const [indexedToken, ids] of searchIndex) {
+          if (indexedToken.startsWith(token)) {
+            ids.forEach(id => candidates.add(id));
+          }
+        }
+      });
+
+      const pool = candidates.size
+        ? [...candidates]
+        : TOOL_CATALOG.map(tool => tool.id);
+
+      return pool
+        .map(id => {
+          const tool = toolById.get(id);
+          return { tool, score: scoreTool(tool, q) };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => {
+          if (b.score !== a.score) return b.score - a.score;
+          return a.tool.name.localeCompare(b.tool.name);
+        })
+        .map(item => item.tool);
+    }
+
+    /* =======================================================
+       7. STATE
+       ======================================================= */
+
+    let activeCategory = "all";
+    let currentQuery = "";
+    let paletteSelectedIndex = 0;
+    let paletteResults = [];
+
+    /* =======================================================
+       8. DOM
+       ======================================================= */
+
+    const categoryContainer = document.getElementById("categoryContainer");
+    const filterRow = document.getElementById("filterRow");
+    const toolSearch = document.getElementById("toolSearch");
+    const visibleCount = document.getElementById("visibleCount");
+    const resultCounter = document.getElementById("resultCounter");
+    const emptyState = document.getElementById("emptyState");
+    const recentSection = document.getElementById("recentSection");
+    const favoriteSection = document.getElementById("favoriteSection");
+    const recentGrid = document.getElementById("recentGrid");
+    const favoriteGrid = document.getElementById("favoriteGrid");
+
+    /* =======================================================
+       9. SVG HELPERS
+       ======================================================= */
+
+    function starSvg(filled = false) {
+      return `
+        <svg
+          viewBox="0 0 24 24"
+          fill="${filled ? "currentColor" : "none"}"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9z"
+          />
+        </svg>
+      `;
+    }
+
+    function arrowSvg() {
+      return `
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M5 12h13"/>
+          <path d="m13 6 6 6-6 6"/>
+        </svg>
+      `;
+    }
+
+    /* =======================================================
+       10. TOOL CARD
+       ======================================================= */
+
+    function createToolCard(tool, options = {}) {
+      const { compact = false } = options;
+      const category = CATEGORY_META.get(tool.category);
+      const isFavorite = favoriteIds.has(tool.id);
+
+      const article = document.createElement("article");
+      article.className = "tool-card";
+      article.dataset.id = tool.id;
+      article.style.setProperty("--card-accent", category.color);
+
+      article.innerHTML = `
+        <div class="tool-top">
+          <div class="tool-icon">${tool.icon}</div>
+          <button
+            class="favorite-btn ${isFavorite ? "active" : ""}"
+            type="button"
+            data-action="favorite"
+            data-id="${tool.id}"
+            aria-label="${isFavorite ? "Remove from favorites" : "Add to favorites"}"
+            title="${isFavorite ? "Remove favorite" : "Add favorite"}"
+          >
+            ${starSvg(isFavorite)}
+          </button>
+        </div>
+
+        <h3 class="tool-name">${tool.name}</h3>
+        <p class="tool-description">${tool.description}</p>
+
+        <div class="tool-footer">
+          <span class="tool-category">${category.name}</span>
+          <a
+            class="launch-btn"
+            href="${tool.url}"
+            data-action="launch"
+            data-id="${tool.id}"
+          >
+            Open
+            ${arrowSvg()}
+          </a>
+        </div>
+      `;
+
+      if (compact) {
+        article.style.minHeight = "0";
+      }
+
+      return article;
+    }
+
+    /* =======================================================
+       11. RENDER FILTERS
+       ======================================================= */
+
+    function renderFilters() {
+      const fragment = document.createDocumentFragment();
+
+      const allButton = document.createElement("button");
+      allButton.className = "filter-btn active";
+      allButton.dataset.category = "all";
+      allButton.type = "button";
+      allButton.innerHTML = `
+        All
+        <span class="filter-count">${TOOL_CATALOG.length}</span>
+      `;
+      fragment.appendChild(allButton);
+
+      CATEGORY_META.forEach((meta, category) => {
+        const button = document.createElement("button");
+        button.className = "filter-btn";
+        button.dataset.category = category;
+        button.type = "button";
+        button.innerHTML = `
+          ${meta.name}
+          <span class="filter-count">${categoryCounts.get(category) || 0}</span>
+        `;
+        fragment.appendChild(button);
+      });
+
+      filterRow.replaceChildren(fragment);
+    }
+
+    /* =======================================================
+       12. RENDER CATEGORY
+       ======================================================= */
+
+    function renderCategories(filteredTools) {
+      categoryContainer.innerHTML = "";
+
+      CATEGORY_META.forEach((meta, category) => {
+        let tools = filteredTools.filter(tool => tool.category === category);
+        if (!tools.length) return;
+
+        const section = document.createElement("section");
+        section.className = "category";
+        section.id = `category-${category}`;
+
+        section.innerHTML = `
+          <div class="category-head">
+            <div class="category-title-wrap">
+              <div class="category-icon" style="--category-color:${meta.color}">
+                ${meta.icon}
+              </div>
+              <div>
+                <h2 class="category-title">${meta.name}</h2>
+                <div class="category-count">
+                  ${tools.length} ${tools.length === 1 ? "tool" : "tools"}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tool-grid"></div>
+        `;
+
+        const grid = section.querySelector(".tool-grid");
+        const fragment = document.createDocumentFragment();
+
+        tools.forEach(tool => {
+          fragment.appendChild(createToolCard(tool));
         });
-    })();
 
-    /* ---------- Mouse parallax on ambient blobs ---------- */
+        grid.appendChild(fragment);
+        categoryContainer.appendChild(section);
+      });
+    }
+
+    /* =======================================================
+       13. RECENT TOOLS
+       ======================================================= */
+
+    function renderRecent() {
+      recentGrid.innerHTML = "";
+
+      const recentTools = recentIds
+        .map(id => toolById.get(id))
+        .filter(Boolean)
+        .slice(0, 4);
+
+      if (!recentTools.length) {
+        recentSection.classList.remove("visible");
+        return;
+      }
+
+      recentSection.classList.add("visible");
+      const fragment = document.createDocumentFragment();
+
+      recentTools.forEach(tool => {
+        fragment.appendChild(createToolCard(tool, { compact: true }));
+      });
+
+      recentGrid.appendChild(fragment);
+    }
+
+    /* =======================================================
+       14. FAVORITES
+       ======================================================= */
+
+    function renderFavorites() {
+      favoriteGrid.innerHTML = "";
+
+      const favoriteTools = [...favoriteIds]
+        .map(id => toolById.get(id))
+        .filter(Boolean);
+
+      if (!favoriteTools.length) {
+        favoriteSection.classList.remove("visible");
+        return;
+      }
+
+      favoriteSection.classList.add("visible");
+      const fragment = document.createDocumentFragment();
+
+      favoriteTools.forEach(tool => {
+        fragment.appendChild(createToolCard(tool));
+      });
+
+      favoriteGrid.appendChild(fragment);
+    }
+
+    /* =======================================================
+       15. MAIN RENDER
+       ======================================================= */
+
+    function render() {
+      let results = searchTools(currentQuery);
+
+      if (activeCategory !== "all") {
+        results = results.filter(tool => tool.category === activeCategory);
+      }
+
+      renderCategories(results);
+      renderRecent();
+      renderFavorites();
+
+      const count = results.length;
+      visibleCount.textContent = count;
+      resultCounter.textContent = `${count} / ${TOOL_CATALOG.length}`;
+
+      emptyState.classList.toggle("visible", count === 0);
+
+      const hasSearch = Boolean(currentQuery.trim());
+      const hasCategoryFilter = activeCategory !== "all";
+
+      if (hasSearch || hasCategoryFilter) {
+        recentSection.classList.remove("visible");
+        favoriteSection.classList.remove("visible");
+      }
+
+      updateFilterButtons();
+    }
+
+    /* =======================================================
+       16. FILTER BUTTON STATE
+       ======================================================= */
+
+    function updateFilterButtons() {
+      document.querySelectorAll(".filter-btn").forEach(button => {
+        button.classList.toggle(
+          "active",
+          button.dataset.category === activeCategory
+        );
+      });
+    }
+
+    /* =======================================================
+       17. FAVORITE TOGGLE
+       ======================================================= */
+
+    function toggleFavorite(id) {
+      if (favoriteIds.has(id)) {
+        favoriteIds.delete(id);
+        showToast("Removed from favorites");
+      } else {
+        favoriteIds.add(id);
+        showToast("Added to favorites");
+      }
+
+      localStorage.setItem("qt:favorites", JSON.stringify([...favoriteIds]));
+      render();
+    }
+
+    /* =======================================================
+       18. RECENT STACK
+       ======================================================= */
+
+    function rememberRecent(id) {
+      recentIds = recentIds.filter(item => item !== id);
+      recentIds.unshift(id);
+      recentIds = recentIds.slice(0, 8);
+      localStorage.setItem("qt:recent", JSON.stringify(recentIds));
+    }
+
+    /* =======================================================
+       19. EVENT DELEGATION
+       ======================================================= */
+
+    document.addEventListener("click", event => {
+      const favorite = event.target.closest('[data-action="favorite"]');
+      if (favorite) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleFavorite(favorite.dataset.id);
+        return;
+      }
+
+      const launch = event.target.closest('[data-action="launch"]');
+      if (launch) {
+        rememberRecent(launch.dataset.id);
+      }
+    });
+
+    /* =======================================================
+       20. FILTER EVENTS
+       ======================================================= */
+
+    filterRow.addEventListener("click", event => {
+      const button = event.target.closest(".filter-btn");
+      if (!button) return;
+
+      activeCategory = button.dataset.category;
+      render();
+      document.getElementById("tools").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+
+    /* =======================================================
+       21. DEBOUNCE
+       ======================================================= */
+
+    function debounce(callback, delay = 120) {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => callback(...args), delay);
+      };
+    }
+
+    const handleSearch = debounce(() => {
+      currentQuery = toolSearch.value;
+      if (currentQuery.trim()) {
+        activeCategory = "all";
+      }
+      render();
+    }, 100);
+
+    toolSearch.addEventListener("input", handleSearch);
+
+    /* =======================================================
+       22. CLEAR SEARCH
+       ======================================================= */
+
+    document.getElementById("emptyReset").addEventListener("click", () => {
+      toolSearch.value = "";
+      currentQuery = "";
+      activeCategory = "all";
+      render();
+      toolSearch.focus();
+    });
+
+    /* =======================================================
+       23. COMMAND PALETTE
+       ======================================================= */
+
+    const paletteBackdrop = document.getElementById("paletteBackdrop");
+    const paletteInput = document.getElementById("paletteInput");
+    const paletteResultsEl = document.getElementById("paletteResults");
+
+    function openPalette() {
+      paletteBackdrop.classList.add("open");
+      paletteInput.value = currentQuery;
+      paletteSelectedIndex = 0;
+      updatePalette();
+      requestAnimationFrame(() => paletteInput.focus());
+    }
+
+    function closePalette() {
+      paletteBackdrop.classList.remove("open");
+    }
+
+    function updatePalette() {
+      paletteResults = searchTools(paletteInput.value).slice(0, 10);
+      paletteSelectedIndex = Math.min(
+        paletteSelectedIndex,
+        Math.max(0, paletteResults.length - 1)
+      );
+
+      paletteResultsEl.innerHTML = "";
+
+      if (!paletteResults.length) {
+        paletteResultsEl.innerHTML = `
+          <div style="padding:35px 15px;text-align:center;color:var(--text-muted);font-size:12px;">
+            No matching tools
+          </div>
+        `;
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+
+      paletteResults.forEach((tool, index) => {
+        const category = CATEGORY_META.get(tool.category);
+        const button = document.createElement("button");
+        button.className = "palette-result";
+
+        if (index === paletteSelectedIndex) {
+          button.classList.add("selected");
+        }
+
+        button.dataset.index = index;
+        button.innerHTML = `
+          <div class="palette-result-icon">${tool.icon}</div>
+          <div class="palette-result-info">
+            <div class="palette-result-name">${tool.name}</div>
+            <div class="palette-result-meta">${category.name}</div>
+          </div>
+          <span class="palette-key">↵</span>
+        `;
+        fragment.appendChild(button);
+      });
+
+      paletteResultsEl.appendChild(fragment);
+    }
+
+    function launchPaletteSelection() {
+      const tool = paletteResults[paletteSelectedIndex];
+      if (!tool) return;
+      rememberRecent(tool.id);
+      window.location.href = tool.url;
+    }
+
+    paletteInput.addEventListener("input", () => {
+      paletteSelectedIndex = 0;
+      updatePalette();
+    });
+
+    paletteResultsEl.addEventListener("click", event => {
+      const item = event.target.closest(".palette-result");
+      if (!item) return;
+      paletteSelectedIndex = Number(item.dataset.index);
+      launchPaletteSelection();
+    });
+
+    document.getElementById("openPalette").addEventListener("click", openPalette);
+
+    paletteBackdrop.addEventListener("click", event => {
+      if (event.target === paletteBackdrop) {
+        closePalette();
+      }
+    });
+
+    /* =======================================================
+       24. KEYBOARD SHORTCUTS
+       ======================================================= */
+
+    document.addEventListener("keydown", event => {
+      const isCommand = event.metaKey || event.ctrlKey;
+
+      if (isCommand && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        openPalette();
+        return;
+      }
+
+      if (
+        event.key === "/" &&
+        document.activeElement.tagName !== "INPUT" &&
+        document.activeElement.tagName !== "TEXTAREA"
+      ) {
+        event.preventDefault();
+        toolSearch.focus();
+        return;
+      }
+
+      if (paletteBackdrop.classList.contains("open")) {
+        if (event.key === "Escape") {
+          closePalette();
+          return;
+        }
+
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          paletteSelectedIndex = Math.min(
+            paletteSelectedIndex + 1,
+            paletteResults.length - 1
+          );
+          updatePalette();
+          return;
+        }
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          paletteSelectedIndex = Math.max(paletteSelectedIndex - 1, 0);
+          updatePalette();
+          return;
+        }
+
+        if (event.key === "Enter") {
+          event.preventDefault();
+          launchPaletteSelection();
+        }
+      }
+    });
+
+    /* =======================================================
+       25. THEME
+       ======================================================= */
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeColor = document.getElementById("themeColor");
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("qt:theme", theme);
+      themeColor.content = theme === "dark" ? "#080b12" : "#f7f9fc";
+
+      if (theme === "dark") {
+        themeToggle.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z"/>
+          </svg>
+        `;
+      } else {
+        themeToggle.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        `;
+      }
+    }
+
+    const savedTheme = localStorage.getItem("qt:theme");
+    const systemDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    applyTheme(savedTheme || (systemDark ? "dark" : "light"));
+
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+
+    /* =======================================================
+       26. MOBILE MENU
+       ======================================================= */
+
+    const mobileToggle = document.getElementById("mobileToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    mobileToggle.addEventListener("click", () => {
+      const open = mainNav.classList.toggle("open");
+      mobileToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    mainNav.addEventListener("click", event => {
+      if (event.target.closest("a")) {
+        mainNav.classList.remove("open");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    /* =======================================================
+       27. FAQ
+       ======================================================= */
+
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        item.classList.toggle("open");
+      });
+    });
+
+    /* =======================================================
+       28. TOAST
+       ======================================================= */
+
+    const toast = document.getElementById("toast");
+    let toastTimer;
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add("show");
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    /* =======================================================
+       29. SCROLL PROGRESS
+       ======================================================= */
+
+    const scrollProgress = document.getElementById("scrollProgress");
+
+    function updateScrollUI() {
+      const scrollTop = window.scrollY;
+      const max =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? (scrollTop / max) * 100 : 0;
+
+      scrollProgress.style.width = `${progress}%`;
+      document.getElementById("backTop").classList.toggle("show", scrollTop > 500);
+    }
+
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+
+    document.getElementById("backTop").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    /* =======================================================
+       30. HERO DYNAMIC COUNTS
+       ======================================================= */
+
+    document.getElementById("heroToolCount").textContent = TOOL_CATALOG.length;
+    document.getElementById("statTools").textContent = TOOL_CATALOG.length;
+    document.getElementById("statCategories").textContent = CATEGORY_META.size;
+
+    /* =======================================================
+       31. CREATIVE INTERACTIVE PHYSICS TOOLBOX
+       ======================================================= */
+
+    const toybox = document.getElementById("toybox");
+    const chips = [...document.querySelectorAll(".floating-chip")];
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // Interactive State
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let draggedChip = null;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+    let lastDragX = 0;
+    let lastDragY = 0;
+    let lastDragTime = 0;
+
+    const chipObjects = chips.map((element, index) => ({
+      element,
+      x: 30 + (index % 6) * 140 + (Math.random() * 20),
+      y: 40 + Math.floor(index / 6) * 45 + (Math.random() * 15),
+      // Gentle, smooth floating velocities
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      radius: 36,
+      index,
+      isDragging: false
+    }));
+
+    toybox.addEventListener("pointermove", e => {
+      const rect = toybox.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+
+      if (draggedChip) {
+        draggedChip.x = mouseX - dragOffsetX;
+        draggedChip.y = mouseY - dragOffsetY;
+
+        const now = performance.now();
+        const dt = Math.max(1, now - lastDragTime);
+        draggedChip.vx = (draggedChip.x - lastDragX) / (dt * 0.12);
+        draggedChip.vy = (draggedChip.y - lastDragY) / (dt * 0.12);
+
+        // Clamp extreme throw speeds
+        draggedChip.vx = Math.max(-4.5, Math.min(4.5, draggedChip.vx));
+        draggedChip.vy = Math.max(-4.5, Math.min(4.5, draggedChip.vy));
+
+        lastDragX = draggedChip.x;
+        lastDragY = draggedChip.y;
+        lastDragTime = now;
+      }
+    });
+
+    toybox.addEventListener("pointerleave", () => {
+      mouseX = -9999;
+      mouseY = -9999;
+    });
+
+    chipObjects.forEach(chip => {
+      chip.element.addEventListener("pointerdown", e => {
+        e.preventDefault();
+        draggedChip = chip;
+        chip.isDragging = true;
+        chip.element.classList.add("dragging");
+
+        const rect = toybox.getBoundingClientRect();
+        const curMouseX = e.clientX - rect.left;
+        const curMouseY = e.clientY - rect.top;
+
+        dragOffsetX = curMouseX - chip.x;
+        dragOffsetY = curMouseY - chip.y;
+        lastDragX = chip.x;
+        lastDragY = chip.y;
+        lastDragTime = performance.now();
+        chip.vx = 0;
+        chip.vy = 0;
+      });
+    });
+
+    window.addEventListener("pointerup", () => {
+      if (draggedChip) {
+        draggedChip.element.classList.remove("dragging");
+        draggedChip.isDragging = false;
+        draggedChip = null;
+      }
+    });
+
+    function updateToybox() {
+      if (reduceMotion || document.hidden) return;
+
+      const width = toybox.clientWidth;
+      const height = toybox.clientHeight;
+
+      chipObjects.forEach(chip => {
+        if (!chip.isDragging) {
+          // Subtle damping to maintain calm, elegant float
+          chip.vx *= 0.995;
+          chip.vy *= 0.995;
+
+          // Natural minimum drift so it never stops completely
+          if (Math.abs(chip.vx) < 0.1) chip.vx += (Math.random() - 0.5) * 0.05;
+          if (Math.abs(chip.vy) < 0.1) chip.vy += (Math.random() - 0.5) * 0.05;
+
+          // Cursor soft magnetic repelling
+          if (mouseX > 0 && mouseY > 0) {
+            const dxM = chip.x + 30 - mouseX;
+            const dyM = chip.y + 15 - mouseY;
+            const distM = Math.hypot(dxM, dyM);
+            if (distM < 85 && distM > 0) {
+              const repForce = (85 - distM) * 0.008;
+              chip.vx += (dxM / distM) * repForce;
+              chip.vy += (dyM / distM) * repForce;
+            }
+          }
+
+          chip.x += chip.vx;
+          chip.y += chip.vy;
+        }
+
+        const w = chip.element.offsetWidth || 70;
+        const h = chip.element.offsetHeight || 34;
+
+        // Soft elastic bounce off boundaries
+        if (chip.x < 6) {
+          chip.vx = Math.abs(chip.vx) * 0.7;
+          chip.x = 6;
+        } else if (chip.x + w > width - 6) {
+          chip.vx = -Math.abs(chip.vx) * 0.7;
+          chip.x = width - w - 6;
+        }
+
+        if (chip.y < 32) {
+          chip.vy = Math.abs(chip.vy) * 0.7;
+          chip.y = 32;
+        } else if (chip.y + h > height - 6) {
+          chip.vy = -Math.abs(chip.vy) * 0.7;
+          chip.y = height - h - 6;
+        }
+      });
+
+      // Smooth collision push between chips
+      for (let i = 0; i < chipObjects.length; i++) {
+        for (let j = i + 1; j < chipObjects.length; j++) {
+          const c1 = chipObjects[i];
+          const c2 = chipObjects[j];
+
+          const dx = (c1.x + 35) - (c2.x + 35);
+          const dy = (c1.y + 16) - (c2.y + 16);
+          const dist = Math.hypot(dx, dy);
+          const minDist = 65;
+
+          if (dist < minDist && dist > 0) {
+            const overlap = (minDist - dist) * 0.025;
+            const nx = dx / dist;
+            const ny = dy / dist;
+
+            if (!c1.isDragging) {
+              c1.x += nx * overlap;
+              c1.y += ny * overlap;
+              c1.vx += nx * 0.04;
+              c1.vy += ny * 0.04;
+            }
+            if (!c2.isDragging) {
+              c2.x -= nx * overlap;
+              c2.y -= ny * overlap;
+              c2.vx -= nx * 0.04;
+              c2.vy -= ny * 0.04;
+            }
+          }
+        }
+      }
+
+      // Render transforms
+      chipObjects.forEach(chip => {
+        chip.element.style.transform = `translate3d(${chip.x}px, ${chip.y}px, 0)`;
+      });
+
+      requestAnimationFrame(updateToybox);
+    }
+
     if (!reduceMotion) {
-        const blobA = document.querySelector('.blob-a');
-        const blobB = document.querySelector('.blob-b');
-        window.addEventListener('mousemove', (e) => {
-            const dx = (e.clientX / window.innerWidth - 0.5) * 24;
-            const dy = (e.clientY / window.innerHeight - 0.5) * 24;
-            blobA.style.transform = `translate(${dx}px, ${dy}px)`;
-            blobB.style.transform = `translate(${-dx}px, ${-dy}px)`;
-        });
+      requestAnimationFrame(updateToybox);
     }
 
-    /* ---------- Cursor glow + grid spotlight that follow the pointer ---------- */
-    (function () {
-        const spotlight = document.getElementById('gridSpotlight');
-        const glow = document.getElementById('cursorGlow');
-        let on = false;
-        window.addEventListener('mousemove', (e) => {
-            document.documentElement.style.setProperty('--mx', e.clientX + 'px');
-            document.documentElement.style.setProperty('--my', e.clientY + 'px');
-            if (!on) { spotlight.classList.add('on'); glow.classList.add('on'); on = true; }
-        }, { passive: true });
-        window.addEventListener('mouseleave', () => {
-            spotlight.classList.remove('on'); glow.classList.remove('on'); on = false;
-        });
-    })();
+    /* =======================================================
+       32. CREATIVE PARTICLE NETWORK (BACKGROUND)
+       ======================================================= */
 
-    /* ---------- Mouse-reactive particle network background ---------- */
-    (function () {
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let w, h, particles = [];
-        const mouse = { x: -9999, y: -9999, active: false };
+    const canvas = document.getElementById("particleCanvas");
+    const ctx = canvas.getContext("2d");
 
-        function sizeCanvas() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = Math.min(window.innerHeight * 1.15, document.querySelector('.hero').offsetHeight + 260);
-            canvas.style.height = h + 'px';
-        }
+    let particles = [];
+    let bgMouseX = -9999;
+    let bgMouseY = -9999;
 
-        function makeParticles() {
-            const density = w < 640 ? 16000 : 9000;
-            const count = Math.min(90, Math.round((w * h) / density));
-            particles = Array.from({ length: count }, (_, i) => ({
-                x: Math.random() * w,
-                y: Math.random() * h,
-                vx: (Math.random() - 0.5) * 0.25,
-                vy: (Math.random() - 0.5) * 0.25,
-                r: Math.random() * 1.6 + 1,
-                accent: i % 11 === 0
-            }));
-        }
-
-        function step() {
-            ctx.clearRect(0, 0, w, h);
-
-            particles.forEach(p => {
-                // gentle drift
-                p.x += p.vx;
-                p.y += p.vy;
-
-                // mouse repulsion field
-                if (mouse.active) {
-                    const dx = p.x - mouse.x, dy = p.y - mouse.y;
-                    const dist = Math.hypot(dx, dy);
-                    const radius = 150;
-                    if (dist < radius && dist > 0.01) {
-                        const force = (1 - dist / radius) * 1.1;
-                        p.x += (dx / dist) * force;
-                        p.y += (dy / dist) * force;
-                    }
-                }
-
-                if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-                if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-            });
-
-            // connecting lines
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const a = particles[i], b = particles[j];
-                    const dx = a.x - b.x, dy = a.y - b.y;
-                    const dist = Math.hypot(dx, dy);
-                    if (dist < 130) {
-                        ctx.strokeStyle = `rgba(36,81,255,${0.14 * (1 - dist / 130)})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(a.x, a.y);
-                        ctx.lineTo(b.x, b.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            // dots
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = p.accent ? 'rgba(255,122,61,.55)' : 'rgba(36,81,255,.35)';
-                ctx.fill();
-            });
-
-            if (!reduceMotion) requestAnimationFrame(step);
-        }
-
-        sizeCanvas();
-        makeParticles();
-
-        window.addEventListener('resize', () => { sizeCanvas(); makeParticles(); });
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
-        }, { passive: true });
-        window.addEventListener('mouseleave', () => { mouse.active = false; });
-
-        if (reduceMotion) {
-            step(); // draw one static frame, no loop
-        } else {
-            requestAnimationFrame(step);
-        }
-    })();
-
-    /* ---------- Hero stat count-up (single orchestrated moment) ---------- */
-    document.querySelectorAll('[data-count]').forEach(el => {
-        const target = parseInt(el.dataset.count, 10);
-        if (reduceMotion || target === 0) { el.textContent = target; return; }
-        let cur = 0;
-        const step = Math.max(1, Math.round(target / 30));
-        const tick = () => {
-            cur = Math.min(target, cur + step);
-            el.textContent = cur;
-            if (cur < target) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
+    window.addEventListener("pointermove", e => {
+      bgMouseX = e.clientX;
+      bgMouseY = e.clientY;
     });
 
-    /* ---------- Physics toybox: the hero's playable centerpiece ---------- */
-    (function () {
-        const box = document.getElementById('toybox');
-        if (!box) return;
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      createParticles();
+    }
 
-        const tools = [
-            { icon: '🧩', label: 'JSON', color: '#2451ff' },
-            { icon: '🔑', label: 'Password', color: '#d6335c' },
-            { icon: '🎨', label: 'Color', color: '#6528d9' },
-            { icon: '📄', label: 'PDF', color: '#d6821a' },
-            { icon: '🔒', label: 'Base64', color: '#2451ff' },
-            { icon: '📝', label: 'Words', color: '#0f9d6e' },
-            { icon: '🖼️', label: 'Image', color: '#d6821a' },
-            { icon: '💰', label: 'EMI', color: '#0b8f9e' },
-            { icon: '🧮', label: 'GST', color: '#0b8f9e' },
-            { icon: '⚡', label: 'Minify', color: '#6528d9' },
-            { icon: '🎲', label: 'Random', color: '#0f9d6e' },
-            { icon: '🧪', label: 'Regex', color: '#6528d9' },
-            { icon: '🆔', label: 'UUID', color: '#d6335c' },
-            { icon: '📷', label: 'QR', color: '#d6335c' },
-            { icon: '🔗', label: 'URL', color: '#2451ff' },
-            { icon: '📏', label: 'Unit', color: '#0f9d6e' }
-        ];
+    function createParticles() {
+      const area = window.innerWidth * window.innerHeight;
+      const base = Math.min(85, Math.max(28, Math.floor(area / 19000)));
 
-        let bw = box.clientWidth, bh = box.clientHeight;
-        const chips = tools.map((t, i) => {
-            const el = document.createElement('div');
-            el.className = 'chip';
-            el.innerHTML = `<span class="chip-icon" style="background:${t.color}1a">${t.icon}</span>${t.label}`;
-            box.appendChild(el);
-            const r = el.offsetWidth / 2 || 60;
-            return {
-                el, r,
-                x: 24 + Math.random() * Math.max(10, bw - 140),
-                y: -80 - i * 46,
-                vx: (Math.random() - 0.5) * 0.6,
-                vy: 0,
-                dragging: false
-            };
-        });
+      particles = Array.from(
+        {
+          length: window.innerWidth < 700 ? Math.floor(base * 0.5) : base
+        },
+        () => ({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.28,
+          r: Math.random() * 1.8 + 0.8,
+          pulse: Math.random() * Math.PI
+        })
+      );
+    }
 
-        function place() {
-            chips.forEach(c => {
-                c.el.style.transform = `translate(${c.x}px, ${c.y}px)`;
-            });
+    function animateParticles() {
+      if (reduceMotion || document.hidden) {
+        requestAnimationFrame(animateParticles);
+        return;
+      }
+
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      const maxDist = 130;
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+
+      particles.forEach(p => {
+        p.pulse += 0.02;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = window.innerWidth;
+        if (p.x > window.innerWidth) p.x = 0;
+        if (p.y < 0) p.y = window.innerHeight;
+        if (p.y > window.innerHeight) p.y = 0;
+
+        // Subtle interactive mouse reaction
+        const mdx = p.x - bgMouseX;
+        const mdy = p.y - bgMouseY;
+        const mdist = Math.hypot(mdx, mdy);
+        if (mdist < 100 && mdist > 0) {
+          p.x += (mdx / mdist) * 0.4;
+          p.y += (mdy / mdist) * 0.4;
         }
 
-        if (reduceMotion) {
-            // Static, tidy arrangement — no autoplay motion.
-            let cx = 16, cy = 16, rowH = 0;
-            chips.forEach(c => {
-                const w = c.el.offsetWidth, h = c.el.offsetHeight;
-                if (cx + w > bw - 16) { cx = 16; cy += rowH + 10; rowH = 0; }
-                c.x = cx; c.y = cy;
-                cx += w + 10; rowH = Math.max(rowH, h);
-            });
-            place();
-            return;
+        const size = p.r + Math.sin(p.pulse) * 0.4;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(0.4, size), 0, Math.PI * 2);
+        ctx.fillStyle = isDark
+          ? "rgba(102,130,255,0.45)"
+          : "rgba(36,81,255,0.32)";
+        ctx.fill();
+      });
+
+      // Connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.hypot(dx, dy);
+
+          if (distance < maxDist) {
+            const alpha = (1 - distance / maxDist) * (isDark ? 0.12 : 0.08);
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = isDark
+              ? `rgba(127,86,217,${alpha})`
+              : `rgba(36,81,255,${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
         }
+      }
 
-        const GRAVITY = 0.42, REST = 0.48, FRICTION = 0.985, AIR = 0.996;
-        let mouse = { x: -9999, y: -9999, active: false };
+      requestAnimationFrame(animateParticles);
+    }
 
-        box.addEventListener('mousemove', (e) => {
-            const r = box.getBoundingClientRect();
-            mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
-        });
-        box.addEventListener('mouseleave', () => { mouse.active = false; });
+    if (!reduceMotion) {
+      resizeCanvas();
+      requestAnimationFrame(animateParticles);
+    }
 
-        let dragChip = null, dragOffX = 0, dragOffY = 0, lastX = 0, lastY = 0, lastVX = 0, lastVY = 0;
+    window.addEventListener("resize", debounce(resizeCanvas, 150));
 
-        chips.forEach(c => {
-            c.el.addEventListener('pointerdown', (e) => {
-                c.el.setPointerCapture(e.pointerId);
-                const r = box.getBoundingClientRect();
-                dragChip = c; c.dragging = true;
-                dragOffX = (e.clientX - r.left) - c.x;
-                dragOffY = (e.clientY - r.top) - c.y;
-                lastX = c.x; lastY = c.y;
-            });
-            c.el.addEventListener('pointermove', (e) => {
-                if (dragChip !== c) return;
-                const r = box.getBoundingClientRect();
-                const nx = (e.clientX - r.left) - dragOffX;
-                const ny = (e.clientY - r.top) - dragOffY;
-                lastVX = nx - c.x; lastVY = ny - c.y;
-                c.x = nx; c.y = ny;
-            });
-            const release = () => {
-                if (dragChip === c) {
-                    c.dragging = false;
-                    c.vx = Math.max(-18, Math.min(18, lastVX));
-                    c.vy = Math.max(-18, Math.min(18, lastVY));
-                    dragChip = null;
-                }
-            };
-            c.el.addEventListener('pointerup', release);
-            c.el.addEventListener('pointercancel', release);
-        });
+    /* =======================================================
+       33. VISIBILITY OPTIMIZATION
+       ======================================================= */
 
-        window.addEventListener('resize', () => { bw = box.clientWidth; bh = box.clientHeight; });
+    document.addEventListener("visibilitychange", () => {});
 
-        function step() {
-            bw = box.clientWidth; bh = box.clientHeight;
+    /* =======================================================
+       34. INITIALIZE
+       ======================================================= */
 
-            chips.forEach(c => {
-                if (c.dragging) return;
-                c.vy += GRAVITY;
-                c.vx *= AIR; c.vy *= AIR;
-                c.x += c.vx; c.y += c.vy;
+    renderFilters();
+    render();
+    updateScrollUI();
 
-                if (mouse.active) {
-                    const cx = c.x + c.r, cy = c.y + c.r;
-                    const dx = cx - mouse.x, dy = cy - mouse.y;
-                    const dist = Math.hypot(dx, dy);
-                    const radius = 90;
-                    if (dist < radius && dist > 0.01) {
-                        const force = (1 - dist / radius) * 2.2;
-                        c.vx += (dx / dist) * force;
-                        c.vy += (dy / dist) * force;
-                    }
-                }
+    /* =======================================================
+       35. AUTO FOCUS FROM URL
+       ======================================================= */
 
-                const maxX = bw - c.r * 2, floorY = bh - c.r * 2;
-                if (c.x < 0) { c.x = 0; c.vx = -c.vx * REST; }
-                if (c.x > maxX) { c.x = maxX; c.vx = -c.vx * REST; }
-                if (c.y > floorY) {
-                    c.y = floorY; c.vy = -c.vy * REST; c.vx *= FRICTION;
-                    if (Math.abs(c.vy) < 0.6) c.vy = 0;
-                }
-                if (c.y < -3000) { c.y = -3000; c.vy = 0; }
-            });
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlSearch = urlParams.get("search");
 
-            // chip-to-chip collision (simple separation, few items so O(n^2) is cheap)
-            for (let i = 0; i < chips.length; i++) {
-                for (let j = i + 1; j < chips.length; j++) {
-                    const a = chips[i], b = chips[j];
-                    const ax = a.x + a.r, ay = a.y + a.r, bx = b.x + b.r, by = b.y + b.r;
-                    const dx = bx - ax, dy = by - ay;
-                    const dist = Math.hypot(dx, dy) || 0.01;
-                    const minDist = a.r + b.r;
-                    if (dist < minDist) {
-                        const overlap = (minDist - dist) / 2;
-                        const nx = dx / dist, ny = dy / dist;
-                        if (!a.dragging) { a.x -= nx * overlap; a.y -= ny * overlap; }
-                        if (!b.dragging) { b.x += nx * overlap; b.y += ny * overlap; }
-                        const avx = a.vx, avy = a.vy;
-                        if (!a.dragging) { a.vx = b.vx * 0.4; a.vy = b.vy * 0.4; }
-                        if (!b.dragging) { b.vx = avx * 0.4; b.vy = avy * 0.4; }
-                    }
-                }
-            }
-
-            place();
-            requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    })();
-</script>
-
+    if (urlSearch) {
+      toolSearch.value = urlSearch;
+      currentQuery = urlSearch;
+      render();
+    }
+  </script>
 </body>
 </html>
