@@ -12,7 +12,9 @@
     <link rel="canonical" href="https://quicktooles.in/tools/salary-calculator">
     <link rel="icon" type="image/png" href="../logo.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -44,174 +46,596 @@
 
     <style>
         :root {
-            --primary: #4f46e5;
-            --primary-dark: #3730a3;
-            --secondary: #0f172a;
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #334155;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --success: #10b981;
-            --danger: #ef4444;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            --transition: all 0.3s ease;
+            --ds-bg: #fbfcfe;
+            --ds-surface: #ffffff;
+            --ds-blue: #4d6bfe;
+            --ds-blue-deep: #1e3a8a;
+            --ds-cyan: #00d2ff;
+            --ds-text: #0f172a;
+            --ds-muted: #64748b;
+            --ds-border: rgba(226, 232, 240, 0.85);
+            --ds-border-hover: rgba(77, 107, 254, 0.4);
+            --ds-radius-card: 16px;
+            --ds-radius-pill: 9999px;
+            --ds-success: #10b981;
+            --ds-danger: #ef4444;
+            --ds-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
+            --ds-shadow-hover: 0 16px 32px -4px rgba(77, 107, 254, 0.08);
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background: var(--bg-light); color: var(--text-main); line-height: 1.7; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
-        /* NAVBAR */
-        header { background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .navbar { max-width: 1300px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; }
-        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
-        .logo span { color: var(--secondary); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 15px; }
+        body {
+            background-color: var(--ds-bg);
+            color: var(--ds-text);
+            font-family: var(--font-sans);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1200px;
+            height: 500px;
+            background: radial-gradient(circle at 50% 10%, rgba(77, 107, 254, 0.06) 0%, rgba(0, 210, 255, 0.03) 45%, transparent 75%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--ds-border);
+            width: 100%;
+        }
+        .navbar {
+            max-width: 1240px;
+            height: 70px;
+            margin: auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--ds-text);
+        }
+        .logo-glyph {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #4d6bfe 0%, #00d2ff 100%);
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            color: #ffffff;
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(77, 107, 254, 0.28);
+        }
+        .logo span { color: var(--ds-blue); }
+        
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ds-muted);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--ds-blue); }
+        .nav-btn {
+            background: var(--ds-text) !important;
+            color: #ffffff !important;
+            padding: 8px 18px;
+            border-radius: var(--ds-radius-pill);
+            font-size: 13.5px !important;
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--ds-text);
+            padding: 4px;
+        }
 
         /* HERO SECTION */
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: white; text-align: center; padding: 60px 20px 80px 20px; }
-        .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
-        .hero p { font-size: 18px; color: #cbd5e1; max-width: 750px; margin: auto; font-weight: 300; }
+        .hero {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 70px 20px 40px 20px;
+        }
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: #ffffff;
+            border: 1px solid var(--ds-border);
+            border-radius: var(--ds-radius-pill);
+            box-shadow: var(--ds-shadow);
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ds-text);
+            margin-bottom: 18px;
+        }
+        .dot-live {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16);
+        }
+        .hero h1 {
+            font-size: clamp(26px, 5vw, 50px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--ds-text);
+            margin-bottom: 14px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            word-break: break-word;
+        }
+        .hero h1 span {
+            background: linear-gradient(120deg, #4d6bfe 10%, #00d2ff 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            color: var(--ds-muted);
+            max-width: 700px;
+            margin: auto;
+            font-size: clamp(14px, 2.8vw, 16.5px);
+            line-height: 1.6;
+        }
 
         /* BREADCRUMBS */
-        .breadcrumbs { max-width: 1300px; margin: 20px auto; padding: 0 20px; font-size: 14px; color: var(--text-light); }
-        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs {
+            max-width: 1240px;
+            margin: 5px auto 20px auto;
+            padding: 0 24px;
+            color: var(--ds-muted);
+            font-size: 13px;
+            position: relative;
+            z-index: 2;
+            word-break: break-word;
+        }
+        .breadcrumbs a {
+            color: var(--ds-text);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .breadcrumbs a:hover { color: var(--ds-blue); }
 
         /* MAIN LAYOUT */
-        .layout { max-width: 1300px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 40px; padding: 0 20px; }
+        .layout {
+            max-width: 1240px;
+            margin: 0 auto 60px auto;
+            display: grid;
+            grid-template-columns: 3fr 1.1fr;
+            gap: 32px;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
 
         /* TOOL WORKSPACE */
-        .tool-workspace { background: var(--card-bg); padding: 35px; border-radius: 20px; box-shadow: var(--shadow); border-top: 5px solid var(--primary); }
-        
-        /* MODE SWITCH STYLING */
-        .mode-switch {
-            background: #eef2ff;
-            padding: 14px 18px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border: 1px solid #c7d2fe;
+        .tool-workspace {
+            background: var(--ds-surface);
+            padding: 35px 30px;
+            border-radius: var(--ds-radius-card);
+            box-shadow: var(--ds-shadow);
+            border: 1px solid var(--ds-border);
         }
-        .mode-switch span {
-            font-weight: 800;
-            font-size: 13px;
-            color: var(--primary-dark);
+
+        /* MODERN SEGMENTED PILL SWITCH (NO CONFLICT) */
+        .mode-container {
+            margin-bottom: 24px;
+        }
+        .mode-label-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--ds-muted);
+            text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: block;
         }
-        .mode-switch label {
-            font-weight: 600;
+        .mode-switch-segmented {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 12px;
+            border: 1px solid var(--ds-border);
+            gap: 4px;
+        }
+        .mode-switch-segmented button {
+            background: transparent;
+            border: none;
+            padding: 10px 14px;
             font-size: 14px;
-            color: var(--secondary);
+            font-weight: 600;
+            color: var(--ds-muted);
+            border-radius: 9px;
             cursor: pointer;
+            transition: var(--transition);
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+        }
+        .mode-switch-segmented button.active {
+            background: #ffffff;
+            color: var(--ds-text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            font-weight: 700;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
             gap: 6px;
         }
-
-        .input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
-        .input-group { display: flex; flex-direction: column; gap: 5px; }
-        .input-group label { font-weight: 700; color: var(--secondary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .input-group label {
+            font-weight: 700;
+            color: var(--ds-text);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
         
-        input, select { padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 15px; outline: none; transition: var(--transition); background: #f8fafc; width: 100%; color: var(--secondary); }
-        input:focus, select:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.05); }
-
-        .btn-calc { background: var(--primary); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: 800; cursor: pointer; transition: var(--transition); width: 100%; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-calc:hover { background: var(--primary-dark); transform: translateY(-2px); }
-
-        /* RESULT BOX - Integrated No Scroll */
-        .result-container { margin-top: 25px; display: none; background: #f8fafc; padding: 25px; border-radius: 15px; border: 1px dashed var(--primary); }
-        .res-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px; }
-        .res-row.highlight { background: #eef2ff; padding: 8px 12px; border-radius: 8px; font-weight: 700; color: var(--primary); }
-        .res-row.final { margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--border); font-weight: 800; font-size: 20px; color: var(--success); }
-        .neg { color: var(--danger); font-weight: 600; }
-
-        /* SEO CONTENT */
-        .seo-article { background: var(--card-bg); padding: 45px; border-radius: 20px; box-shadow: var(--shadow); margin-top: 40px; border: 1px solid var(--border); }
-        .seo-article h2 { font-size: 28px; color: var(--secondary); margin: 30px 0 15px 0; font-weight: 800; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px; }
-        .seo-article p { font-size: 16px; margin-bottom: 20px; }
-        .seo-article ul { padding-left: 20px; margin-bottom: 20px; }
-        .seo-article li { margin-bottom: 10px; }
-
-        /* SIDEBAR */
-        .sidebar { position: sticky; top: 100px; height: fit-content; }
-        .widget { background: var(--card-bg); padding: 25px; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); margin-bottom: 30px; }
-        .widget h3 { font-size: 18px; font-weight: 800; color: var(--secondary); margin-bottom: 15px; }
-        .widget-links a { display: block; padding: 12px; border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; background: var(--bg-light); margin-bottom: 10px; transition: var(--transition); }
-        .widget-links a:hover { background: var(--primary); color: white; transform: translateX(5px); }
-
-        footer { background: var(--secondary); color: #cbd5e1; padding: 60px 20px; text-align: center; }
-
-        /* UNIVERSAL MOBILE FIX */
-        @media (max-width: 992px) {
-            body { font-size:15px !important; line-height:1.6 !important; }
-            .navbar { flex-direction: column !important; height: auto !important; padding: 15px 10px !important; text-align: center !important; }
-            .nav-links { margin-top: 15px !important; gap: 12px !important; flex-wrap: wrap !important; justify-content: center !important; }
-            .nav-links a { font-size:14px !important; }
-            .hero { padding: 40px 15px 60px 15px !important; }
-            .hero h1 { font-size:26px !important; line-height:1.3 !important; }
-            .hero p { font-size:15px !important; }
-            .breadcrumbs { text-align: center !important; margin: 10px auto !important; padding: 10px !important; font-size:13px !important; }
-            .layout { display: flex !important; flex-direction: column !important; padding: 0 15px !important; gap: 25px !important; width: 100% !important; }
-            .main-content { width:100% !important; }
-            .tool-workspace { padding: 22px 15px !important; margin-top: 0 !important; width: 100% !important; }
-            .mode-switch { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .seo-article { padding:25px 18px !important; }
-            .seo-article h2 { font-size:22px !important; }
-            .seo-article h3 { font-size:18px !important; }
-            .seo-article p { font-size:14px !important; }
-            .data-table-container { overflow-x:auto !important; }
-            .data-table th, .data-table td { font-size:13px !important; padding:12px !important; }
-            .sidebar { position: static !important; width: 100% !important; }
-            .widget { padding: 20px !important; width: 100% !important; }
-            .widget h3 { font-size:18px !important; }
-            .widget-links a { font-size:14px !important; padding:10px 12px !important; }
+        input, select {
+            padding: 13px 16px;
+            border: 1.5px solid var(--ds-border);
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: var(--transition);
+            background: #ffffff;
+            width: 100%;
+            color: var(--ds-text);
+            font-family: var(--font-sans);
+            -webkit-appearance: none;
+        }
+        input:focus, select:focus {
+            border-color: var(--ds-blue);
+            box-shadow: 0 0 0 4px rgba(77, 107, 254, 0.1);
         }
 
-        html, body { max-width:100%; overflow-x:hidden; }
-        @media (max-width:768px) {
-            .input-grid { grid-template-columns:1fr !important; }
-            .case-table { display:block; overflow-x:auto; }
-            input, select { max-width:100%; }
+        .btn-calc {
+            background: var(--ds-blue);
+            color: #ffffff;
+            border: none;
+            padding: 16px 24px;
+            border-radius: var(--ds-radius-pill);
+            cursor: pointer;
+            font-size: 15.5px;
+            font-weight: 700;
+            width: 100%;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(77, 107, 254, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-calc:hover {
+            background: #3b5df5;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(77, 107, 254, 0.35);
+        }
+
+        /* RESULT BOX */
+        .result-container {
+            margin-top: 25px;
+            display: none;
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 14px;
+            border: 1.5px dashed var(--ds-border-hover);
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .res-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14.5px;
+            font-weight: 500;
+        }
+        .res-row span:last-child {
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+        .res-row.highlight {
+            background: rgba(77, 107, 254, 0.08);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: var(--ds-blue);
+        }
+        .res-row.final {
+            margin-top: 15px;
+            padding-top: 14px;
+            border-top: 1.5px solid var(--ds-border);
+            font-weight: 800;
+            font-size: 19px;
+            color: var(--ds-success);
+        }
+        .neg { color: var(--ds-danger); }
+
+        /* SEO ARTICLE & TABLES */
+        .seo-article {
+            background: var(--ds-surface);
+            padding: 38px 32px;
+            border-radius: var(--ds-radius-card);
+            box-shadow: var(--ds-shadow);
+            margin-top: 35px;
+            border: 1px solid var(--ds-border);
+        }
+        .toc {
+            background: #f8fafc;
+            padding: 22px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--ds-border);
+            margin-bottom: 30px;
+        }
+        .toc h3 {
+            font-size: 17px;
+            color: var(--ds-text);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .toc ul { list-style: none; }
+        .toc ul li { margin-bottom: 8px; font-size: 14px; }
+        .toc ul li a {
+            color: var(--ds-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .toc ul li a:hover { color: #3b5df5; padding-left: 4px; }
+
+        .seo-article h2 {
+            font-size: clamp(20px, 3.5vw, 23px);
+            color: var(--ds-text);
+            margin: 32px 0 14px 0;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            line-height: 1.3;
+            border-bottom: 1px solid var(--ds-border);
+            padding-bottom: 8px;
+        }
+        .seo-article h3 {
+            font-size: 17.5px;
+            color: var(--ds-text);
+            margin: 22px 0 10px 0;
+            font-weight: 700;
+        }
+        .seo-article p {
+            font-size: 15px;
+            color: var(--ds-muted);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .seo-article ul { padding-left: 20px; margin-bottom: 20px; color: var(--ds-muted); }
+        .seo-article li { margin-bottom: 8px; font-size: 14.5px; }
+        .seo-article blockquote {
+            background: #f8fafc;
+            border-left: 4px solid var(--ds-blue);
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 10px 10px 0;
+            color: var(--ds-text);
+            font-size: 14.5px;
+        }
+
+        .data-table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            border: 1px solid var(--ds-border);
+        }
+        .case-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            text-align: left;
+        }
+        .case-table th {
+            background: #f1f5f9;
+            color: var(--ds-text);
+            padding: 12px 16px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--ds-border);
+        }
+        .case-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--ds-border);
+            color: var(--ds-muted);
+        }
+        .case-table tr:last-child td { border-bottom: none; }
+
+        .faq-box {
+            border-bottom: 1px solid var(--ds-border);
+            padding: 16px 0;
+        }
+        .faq-box:last-child { border-bottom: none; }
+        .faq-box h4 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: var(--ds-text);
+            margin-bottom: 6px;
+        }
+        .faq-box p { font-size: 14.5px; color: var(--ds-muted); margin: 0; }
+
+        /* SIDEBAR */
+        .sidebar { position: sticky; top: 90px; height: fit-content; }
+        .widget {
+            background: var(--ds-surface);
+            padding: 24px;
+            border-radius: var(--ds-radius-card);
+            box-shadow: var(--ds-shadow);
+            margin-bottom: 20px;
+            border: 1px solid var(--ds-border);
+        }
+        .widget h3 {
+            margin-bottom: 14px;
+            color: var(--ds-text);
+            font-size: 17px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--ds-border);
+            padding-bottom: 10px;
+        }
+        .widget-links a {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--ds-text);
+            font-size: 13.5px;
+            font-weight: 600;
+            background: #f8fafc;
+            border: 1px solid var(--ds-border);
+            transition: var(--transition);
+        }
+        .widget-links a:hover {
+            background: #eff6ff;
+            border-color: var(--ds-border-hover);
+            color: var(--ds-blue);
+            transform: translateX(3px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0b111e;
+            color: #94a3b8;
+            padding: 50px 20px 25px 20px;
+            font-size: 13.5px;
+            margin-top: 60px;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+        }
+        footer a { color: #cbd5e1; text-decoration: none; }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 900px) {
+            .layout { grid-template-columns: 1fr; gap: 25px; padding: 0 16px; }
+            .hero { padding: 50px 16px 30px; }
+            .tool-workspace { padding: 24px 18px; }
+            .seo-article { padding: 25px 18px; }
+            .breadcrumbs { padding: 0 16px; }
+        }
+
+        @media (max-width: 768px) {
+            .input-grid { grid-template-columns: 1fr !important; }
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 24px;
+                gap: 15px;
+                border-bottom: 1px solid var(--ds-border);
+                display: none;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; padding: 6px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .mode-switch-segmented button { font-size: 12.5px; padding: 8px 6px; }
         }
     </style>
 </head>
 <body>
 
+<div class="ambient-glow"></div>
+
 <header>
     <div class="navbar">
-        <a href="https://quicktooles.in/" class="logo">Quick<span>Tooles</span></a>
-        <nav class="nav-links">
+        <a href="https://quicktooles.in/" class="logo">
+            <div class="logo-glyph">⚡</div>
+            <div>Quick<span>Tooles</span></div>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links" id="mobileNav">
             <a href="https://quicktooles.in/">Home</a>
             <a href="https://quicktooles.in/#all-tools">All Tools</a>
+            <a href="https://quicktooles.in/#contact-section" class="nav-btn">Contact</a>
         </nav>
     </div>
 </header>
 
 <section class="hero">
-    <h1>Salary Calculator</h1>
-    <p>Professional net pay estimator including leave deductions, shift working hours, OT earnings, and PF contributions.</p>
+    <div class="hero-pill">
+        <span class="dot-live"></span> Precision In-Hand Pay & OT Engine
+    </div>
+    <h1>Salary & Overtime Calculator<br><span>Professional Net Pay Estimator</span></h1>
+    <p>Calculate your monthly take-home salary including leave deductions, shift working hours, OT earnings, and PF contributions.</p>
 </section>
 
 <div class="breadcrumbs">
-    <a href="https://quicktooles.in/">Home</a> › <a href="#">Finance Tools</a> › Salary Calculator
+    <a href="https://quicktooles.in/">Home</a> › <a href="https://quicktooles.in/#cat-finance">Finance Tools</a> › Salary Calculator
 </div>
 
 <div class="layout">
     <main class="main-content">
         <section class="tool-workspace">
 
-            <!-- MODE SWITCH OPTION -->
-            <div class="mode-switch">
-                <span>MODE:</span>
-                <label>
-                    <input type="radio" name="calcMode" value="standard" checked onclick="toggleCalcMode()"> Standard Days Mode
-                </label>
-                <label>
-                    <input type="radio" name="calcMode" value="workingHours" onclick="toggleCalcMode()"> Working Hours Mode
-                </label>
+            <!-- MODERN SEGMENTED MODE SWITCH -->
+            <div class="mode-container">
+                <span class="mode-label-title">Calculation Mode</span>
+                <div class="mode-switch-segmented">
+                    <button type="button" id="btnStandard" class="active" onclick="switchMode('standard')">📅 Standard Days</button>
+                    <button type="button" id="btnHours" onclick="switchMode('workingHours')">⏱️ Working Hours</button>
+                </div>
             </div>
 
             <div class="input-grid">
@@ -221,7 +645,7 @@
                 </div>
 
                 <div class="input-group">
-                    <label>Month</label>
+                    <label>Month Days</label>
                     <select id="monthSelect">
                         <option value="31">January (31 Days)</option>
                         <option value="28">February (28/29 Days)</option>
@@ -244,7 +668,7 @@
                     <input type="number" id="leaves" value="0">
                 </div>
 
-                <!-- WORKING HOURS MODE FIELDS (HIDDEN BY DEFAULT) -->
+                <!-- WORKING HOURS MODE FIELDS -->
                 <div class="input-group" id="shiftHoursGroup" style="display: none;">
                     <label>Shift Timing (Daily Hours)</label>
                     <input type="number" id="shiftHours" value="10" placeholder="e.g. 8, 10">
@@ -275,8 +699,8 @@
                 </div>
 
                 <div class="input-group">
-                    <label>OT Multiplier (Optional)</label>
-                    <input type="number" step="0.1" id="otMultiplier" placeholder="e.g. 2" list="otOptions">
+                    <label>OT Multiplier</label>
+                    <input type="number" step="0.1" id="otMultiplier" placeholder="e.g. 1, 1.5, 2" list="otOptions">
                     <datalist id="otOptions">
                         <option value="1">
                         <option value="1.5">
@@ -301,7 +725,7 @@
                 <div class="res-row" id="resRowEarned" style="display: none; font-weight:700;"><span>Earned Salary:</span><span id="resEarned">₹0</span></div>
 
                 <div class="res-row neg" id="resRowLeave"><span>Leave Deduction:</span><span id="resLeaveDec">- ₹0</span></div>
-                <div class="res-row" style="color:var(--primary); font-weight:600;"><span>Overtime Pay:</span><span id="resOTPay">+ ₹0</span></div>
+                <div class="res-row" style="color:var(--ds-blue); font-weight:600;"><span>Overtime Pay:</span><span id="resOTPay">+ ₹0</span></div>
                 <div class="res-row neg"><span>PF Contribution (<span id="pfLab">12</span>%):</span><span id="resPF">- ₹0</span></div>
                 <div class="res-row final"><span>Take-Home Pay:</span><span id="resNet">₹0</span></div>
             </div>
@@ -341,22 +765,24 @@
             <p>It is vital to distinguish between what you "earn" and what you "receive." Gross salary is the total cost to the company (CTC) minus some employer-side benefits. Net pay is what remains after the government and your company take their mandated shares.</p>
 
             <h3 style="margin-top:20px;">Table 1: Comparison of Salary Components</h3>
-            <table class="case-table" style="width:100%; border-collapse: collapse; margin: 20px 0;">
-                <thead>
-                    <tr style="background:var(--secondary); color:white;">
-                        <th style="padding:12px; border:1px solid var(--border);">Component</th>
-                        <th style="padding:12px; border:1px solid var(--border);">Type</th>
-                        <th style="padding:12px; border:1px solid var(--border);">Impact on Net Pay</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Basic Salary</td><td>Fixed</td><td>The core of your paycheck.</td></tr>
-                    <tr><td>Overtime Pay</td><td>Variable</td><td>Increases your take-home amount.</td></tr>
-                    <tr><td>Leave Deduction</td><td>Variable</td><td>Decreases your take-home amount.</td></tr>
-                    <tr><td>PF Deduction</td><td>Statutory</td><td>Mandatory savings for retirement.</td></tr>
-                    <tr><td>Bonus/Incentives</td><td>Variable</td><td>Extra earnings based on performance.</td></tr>
-                </tbody>
-            </table>
+            <div class="data-table-container">
+                <table class="case-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Type</th>
+                            <th>Impact on Net Pay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Basic Salary</td><td>Fixed</td><td>The core of your paycheck.</td></tr>
+                        <tr><td>Overtime Pay</td><td>Variable</td><td>Increases your take-home amount.</td></tr>
+                        <tr><td>Leave Deduction</td><td>Variable</td><td>Decreases your take-home amount.</td></tr>
+                        <tr><td>PF Deduction</td><td>Statutory</td><td>Mandatory savings for retirement.</td></tr>
+                        <tr><td>Bonus/Incentives</td><td>Variable</td><td>Extra earnings based on performance.</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h2 id="leave-deduction">4. Understanding Leave Deduction (LWP) Logic</h2>
             <p>Leave Without Pay (LWP) or unpaid leaves can significantly dent your monthly budget. The calculation isn't just about "missing a day." It's about how much that day was worth. If you take a leave in a month with many holidays, the impact on your productivity is higher, and thus the deduction is calculated based on the total calendar days.</p>
@@ -366,21 +792,23 @@
             <p>Overtime is often the primary source of extra income for many workers. In many labor jurisdictions, companies are required to pay "Double OT" (2x the hourly rate) for working on Sundays or public holidays. Regular overtime is usually 1.5x the normal rate. Our tool allows you to input your <strong>actual hourly rate</strong> so you can get an exact figure regardless of your company's multiplier policy.</p>
 
             <h3 style="margin-top:20px;">Table 2: Common Overtime Multipliers</h3>
-            <table class="case-table" style="width:100%; border-collapse: collapse; margin: 20px 0;">
-                <thead>
-                    <tr style="background:var(--secondary); color:white;">
-                        <th style="padding:12px; border:1px solid var(--border);">Scenario</th>
-                        <th style="padding:12px; border:1px solid var(--border);">Typical Multiplier</th>
-                        <th style="padding:12px; border:1px solid var(--border);">Rate Calculation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Weekday Overtime</td><td>1.5x</td><td>Hourly Rate x 1.5</td></tr>
-                    <tr><td>Weekend Overtime</td><td>2.0x</td><td>Hourly Rate x 2.0</td></tr>
-                    <tr><td>Public Holiday</td><td>2.0x - 2.5x</td><td>Premium Pay</td></tr>
-                    <tr><td>Night Shift Premium</td><td>Fixed Bonus</td><td>Added per shift</td></tr>
-                </tbody>
-            </table>
+            <div class="data-table-container">
+                <table class="case-table">
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Typical Multiplier</th>
+                            <th>Rate Calculation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Weekday Overtime</td><td>1.5x</td><td>Hourly Rate x 1.5</td></tr>
+                        <tr><td>Weekend Overtime</td><td>2.0x</td><td>Hourly Rate x 2.0</td></tr>
+                        <tr><td>Public Holiday</td><td>2.0x - 2.5x</td><td>Premium Pay</td></tr>
+                        <tr><td>Night Shift Premium</td><td>Fixed Bonus</td><td>Added per shift</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h2 id="pf-breakdown">6. Provident Fund (PF) Deduction & Benefits</h2>
             <p>The Provident Fund (PF) is your forced savings account. While it might feel painful to see ₹2,000 to ₹5,000 missing from your paycheck every month, it is one of the best debt-free investment vehicles. In India, the interest rate for EPF is typically around 8.1% to 8.5%, which is higher than most fixed deposits.</p>
@@ -392,20 +820,22 @@
             <h2 id="data-tables">8. Reference Tables (Days & Months)</h2>
             <p>Below is a reference table showing how the number of days in a month affects your <strong>Daily Wage</strong> if your salary is ₹30,000:</p>
 
-            <table class="case-table" style="width:100%; border-collapse: collapse; margin: 20px 0;">
-                <thead>
-                    <tr style="background:var(--secondary); color:white;">
-                        <th>Days in Month</th>
-                        <th>Daily Wage (₹)</th>
-                        <th>Loss per 1 Day Leave</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>28 Days (Feb)</td><td>₹1,071.42</td><td>₹1,071.42</td></tr>
-                    <tr><td>30 Days (Apr/Jun)</td><td>₹1,000.00</td><td>₹1,000.00</td></tr>
-                    <tr><td>31 Days (Jan/Mar)</td><td>₹967.74</td><td>₹967.74</td></tr>
-                </tbody>
-            </table>
+            <div class="data-table-container">
+                <table class="case-table">
+                    <thead>
+                        <tr>
+                            <th>Days in Month</th>
+                            <th>Daily Wage (₹)</th>
+                            <th>Loss per 1 Day Leave</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>28 Days (Feb)</td><td>₹1,071.42</td><td>₹1,071.42</td></tr>
+                        <tr><td>30 Days (Apr/Jun)</td><td>₹1,000.00</td><td>₹1,000.00</td></tr>
+                        <tr><td>31 Days (Jan/Mar)</td><td>₹967.74</td><td>₹967.74</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h2 id="expert-faqs">9. Expert Frequently Asked Questions (FAQs)</h2>
             <div class="faq-box">
@@ -437,7 +867,7 @@
                 <p>If you joined a company in the middle of the month, you can use the "Leaves" field to input the days you were not employed. This will give you the correct pro-rata payout amount.</p>
             </div>
 
-            <p style="margin-top:40px; font-size: 14px; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 20px;">
+            <p style="margin-top:30px; font-size: 13.5px; color: var(--ds-muted); font-style: italic; border-top: 1px solid var(--ds-border); padding-top: 16px;">
                 <strong>Disclaimer:</strong> This tool is an estimator. QuickTooles is not responsible for any legal or payroll disputes. Please consult your HR department or a certified accountant for official financial advice.
             </p>
         </article>
@@ -453,35 +883,50 @@
                 <a href="percentage-calculator.html">📊 Percentage Tool</a>
                 <a href="age-calculator.html">🎂 Age Calculator</a>
                 <a href="unit-converter.html">📏 Unit Converter</a>
-                <a href="sha-generator.html"> 🛡️ Sha Generator</a>
-                <a href="sitemap-generator.html"> 🗺️ Sitemap Generator</a>
+                <a href="sha-generator.html">🛡️ SHA Generator</a>
+                <a href="sitemap-generator.html">🗺️ Sitemap Generator</a>
             </div>
         </div>
-        <div class="widget" style="background: #eff6ff; border: 2px dashed #3b82f6;">
-            <h3>💡 Pro Tip</h3>
-            <p style="font-size: 14px; color: var(--text-main);">Use 'Working Hours Mode' if you work on dynamic daily shift timings (e.g. 10 hours) and want Sundays auto-credited as paid hours!</p>
+        <div class="widget" style="background: #f8fafc; border: 1.5px dashed var(--ds-border);">
+            <h3 style="border:none; padding:0; font-size: 16px;">💡 Pro Tip</h3>
+            <p style="font-size: 13.5px; color: var(--ds-muted); margin-top: 8px;">Use 'Working Hours Mode' if you work on dynamic daily shift timings (e.g. 10 hours) and want Sundays auto-credited as paid hours!</p>
         </div>
     </aside>
 </div>
 
 <footer>
-    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#" style="color:white;">Privacy Policy</a></p>
+    <p>© 2026 QuickTooles. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
 </footer>
 
 <script>
-    function toggleCalcMode() {
-        const mode = document.querySelector('input[name="calcMode"]:checked').value;
+    let currentMode = 'standard';
+
+    function toggleMobileNav() {
+        const nav = document.getElementById("mobileNav");
+        nav.classList.toggle("active");
+    }
+
+    function switchMode(mode) {
+        currentMode = mode;
+        const btnStandard = document.getElementById('btnStandard');
+        const btnHours = document.getElementById('btnHours');
         const leavesGroup = document.getElementById('leavesGroup');
         const shiftHoursGroup = document.getElementById('shiftHoursGroup');
         const sundaysGroup = document.getElementById('sundaysGroup');
         const actualHoursGroup = document.getElementById('actualHoursGroup');
 
         if (mode === 'standard') {
+            btnStandard.classList.add('active');
+            btnHours.classList.remove('active');
+
             leavesGroup.style.display = 'flex';
             shiftHoursGroup.style.display = 'none';
             sundaysGroup.style.display = 'none';
             actualHoursGroup.style.display = 'none';
         } else {
+            btnHours.classList.add('active');
+            btnStandard.classList.remove('active');
+
             leavesGroup.style.display = 'none';
             shiftHoursGroup.style.display = 'flex';
             sundaysGroup.style.display = 'flex';
@@ -499,22 +944,20 @@
         if (base <= 0) { alert("Please enter a valid base salary."); return; }
         if (!multiplier || multiplier <= 0) { multiplier = 1; }
 
-        const mode = document.querySelector('input[name="calcMode"]:checked').value;
         const perDay = base / days;
         const pfDec = (base * pf) / 100;
 
         let netPay = 0;
         let otPay = 0;
 
-        if (mode === 'standard') {
+        if (currentMode === 'standard') {
             const leaves = parseFloat(document.getElementById('leaves').value) || 0;
-            const perHour = perDay / 8; // Standard 8hr OT calculation
+            const perHour = perDay / 8;
             otPay = otHours * perHour * multiplier;
             const leaveDec = perDay * leaves;
 
             netPay = (base - leaveDec + otPay) - pfDec;
 
-            // DOM Updates for Standard Mode
             document.getElementById('resRowLeave').style.display = 'flex';
             document.getElementById('resRowPerHour').style.display = 'none';
             document.getElementById('resRowWorked').style.display = 'none';
@@ -543,7 +986,6 @@
             otPay = otHours * perHour * multiplier;
             netPay = (earnedSalary + otPay) - pfDec;
 
-            // DOM Updates for Working Hours Mode
             document.getElementById('resRowLeave').style.display = 'none';
             document.getElementById('resRowPerHour').style.display = 'flex';
             document.getElementById('resRowWorked').style.display = 'flex';
